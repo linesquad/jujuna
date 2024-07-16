@@ -4,24 +4,31 @@ export default {
   theme: {
     extend: {
       colors: {
-        textColor: {
-          lightBlue: "#bae6fd",
-          mediumBlue: "##0ea5e9",
-          inputText: "#333",
-        },
-
         backgroundColor: {
-          inputLightGrey: "#ebebeb",
-          inputMediumGrey: "#6f788d",
-
-          listPrimary: "#ff6f80",
-          listSecondary: "#ffea5c",
-          listNotActive: "#b9dbe6",
+          purpleStart: "#A583D1",
+          purpleMid: "#724AA4",
+          purpleEnd: "#1E122E",
         },
 
-        borderColor: {
-          inputLightGrey: "#ebebeb",
-          inputMediumGrey: "#6f788d",
+        textColor: {
+          primary: "#FFF",
+          secondary: "#aea6b7",
+          black: "#000",
+        },
+
+        logoColor: {
+          circle: "#BA92ED",
+          insideCircle: "#000",
+        },
+
+        buttonColor: {
+          primary: "#613994",
+          secondary: "#000",
+        },
+
+        inputColor: {
+          primary: "#000",
+          secondary: "#D0CFCF",
         },
       },
     },

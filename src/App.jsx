@@ -1,19 +1,17 @@
 function App() {
   return (
     <div>
-      <h1>Welcome to your first challange in our team!</h1>
-      <h1 className="text-lightBlue">Nugo</h1>
-      <input
-        type="text"
-        placeholder="Enter your text here"
-        className="p-2 bg-input-lightGrey border border-input-mediumGrey text-inputText"
-      />
-      <ul className="list-none">
-        <li className="flex items-center mb-2">
-          <span className="h-2 w-2 rounded-full bg-listSecondary mr-2"></span>
-          List item 1
-        </li>
-      </ul>
+      <div
+        className="bg-gradient-to-bl 
+      from-backgroundColor-purpleStart from-0% 
+      via-backgroundColor-purpleMid via-34% 
+      to-backgroundColor-purpleEnd to-100% 
+      w-auto h-[700px]"
+      >
+        <span className="text-textColor-primary">nugo</span>
+        <br></br>
+        <span className="text-textColor-secondary text-xl">JUJUNA</span>
+      </div>
     </div>
   );
 }
