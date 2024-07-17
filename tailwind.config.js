@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        arialgeo: ['"Arial GEO"', "sans-serif"],
+      },
       colors: {
         backgroundColor: {
           purpleStart: "#A583D1",
