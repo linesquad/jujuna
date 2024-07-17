@@ -4,3 +4,10 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "ALK Tommaso";
+  src: url("../../public/fonts/alk_tommaso.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
