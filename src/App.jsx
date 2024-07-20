@@ -6,6 +6,7 @@ import News from "./pages/News";
 import Wines from "./pages/Wines";
 import AppLayout from "./ui/AppLayout";
 import PageNotFound from "./pages/PageNotFound";
+import { Orders } from "./pages/Orders";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="cocktail" element={<Cocktails />} />
         <Route path="news" element={<News />} />
         <Route path="wines" element={<Wines />} />
+        <Route path="orders" element={<Orders />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
