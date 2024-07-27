@@ -12,12 +12,30 @@ i18n
       ge: {
         translation: {
           greeting: "გამარჯობა",
+          navbar: {
+            about: "ჩვენს შესახებ",
+            news: "სიახლეები",
+            bottle: "ბოთლი",
+            cocktails: "კოქტეილები",
+            mobileBar: "მობილური ბარი",
+            contact: "კონტაქტი",
+          },
         },
       },
       en: {
         translation: {
           greeting: "Hello",
+          navbar: {
+            about: "About Us",
+            news: "News",
+            bottle: "Bottle",
+            cocktails: "Cocktails",
+            mobileBar: "Mobile Bar",
+            contact: "Contact",
+          },
         },
       },
     },
   });
+
+export default i18n;
