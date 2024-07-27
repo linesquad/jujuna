@@ -1,0 +1,4 @@
+// instal
+// npm i react-i18next i18next i18next-browser-languagedetector --save
+// npm i @reduxjs/toolkit
+// npm i react-redux
