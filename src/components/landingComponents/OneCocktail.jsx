@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
 function OneCocktail({ title, image, ingredients, size }) {
   return (
-    <div
-      className={`${size === "small" ? "xl:max-w-[50%]" : "xl:max-w-[100%]"} `}
-    >
+    <div className={`${size === "big" ? "col-span-3" : ""} `}>
       <div className="bg-[#000] pt-[30px] pr-[15px] pb-[30px]">
         <div className="flex items-start mt-[26px] gap-[15px] lg:mt-[0px]">
           <div>
