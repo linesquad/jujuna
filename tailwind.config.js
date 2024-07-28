@@ -3,7 +3,17 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "darkMode",
   theme: {
+    screens: {
+      beforeTablet: "570px",
+      tablet: "760px",
+      desktop: "1000px",
+      biggerDesktop: "1200px",
+    },
     extend: {
+      backgroundImage: {
+        marani: "url('/images/marani.png')",
+        mobileBar: "url('/images/banner2.png')",
+      },
       fontFamily: {
         arialgeo: ['"Arial GEO"', "sans-serif"],
         tommaso: ['"ALK Tommaso"', "sans-serif"],
