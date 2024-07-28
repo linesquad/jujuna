@@ -55,6 +55,9 @@ export default {
           },
         },
       },
+      screens: {
+        small: { max: "410px" },
+      },
     },
   },
   plugins: [],
