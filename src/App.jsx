@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import Cocktails from "./pages/Cocktails";
-import FeedBack from "./pages/FeedBack";
 import News from "./pages/News";
 import Wines from "./pages/Wines";
 import AppLayout from "./ui/AppLayout";
@@ -19,7 +18,6 @@ function App() {
         <Route path="cocktail" element={<Cocktails />} />
         <Route path="news" element={<News />} />
         <Route path="wines" element={<Wines />} />
-        <Route path="feedBack" element={<FeedBack />} />
         <Route path="orders" element={<Orders />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
