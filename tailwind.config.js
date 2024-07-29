@@ -3,12 +3,6 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "darkMode",
   theme: {
-    screens: {
-      beforeTablet: "570px",
-      tablet: "760px",
-      desktop: "1000px",
-      biggerDesktop: "1200px",
-    },
     extend: {
       backgroundImage: {
         marani: "url('/images/marani.png')",
