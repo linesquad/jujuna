@@ -3,9 +3,9 @@ import HeroContent from "./HeroContent";
 
 function AboutUsComp() {
   return (
-    <div className="bg-[url('/images/marani.png')] bg-no-repeat bg-cover w-full">
+    <div className="w-full ">
       <Wrapper>
-        <div className="p-[23px] lg:p-[0px] lg:pt-[70px] lg:pb-[40px]">
+        <div className="p-[23px] lg:px-[40px] lg:pt-[70px] lg:pb-[40px] bg-[url('/images/marani.png')] bg-no-repeat bg-cover w-full">
           <HeroContent
             title="ჩვენ შესახებ"
             description={[
