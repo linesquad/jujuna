@@ -6,7 +6,9 @@ import rotateBottle4 from "/images/rotateBottleDesktop2.png";
 
 function Hero() {
   return (
+    // ეს ჩასვი დივში და ბექგრაუნდ ქოლორი გაუკეტე ვიდსი მთლიანე დანარჩენი კაია
     <Wrapper>
+      {/* ჯობია ეს კომპონენტში გაიტანო */}
       <div className="w-full bg-[linear-gradient(249deg,_#A583D1_22.95%,_#724AA4_46.44%,_#1E122E_93.06%)] relative">
         <div className="w-full h-[459px] lg:h-[650px]  pt-[30px] px-[23px] relative lg:pt-[77px] lg:px-[40px] xl:px-[80px]">
           <div className="flex flex-col gap-[24px] max-w-[371px] md:max-w-[400px] lg:gap-[48px] lg:max-w-[650px]">

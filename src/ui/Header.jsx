@@ -28,6 +28,7 @@ const Header = () => {
   return (
     <>
       {!open ? (
+        // აქაც გვინდა იგივე ანიმაცია გასვლის დროსაც
         <div className="w-full bg-black text-white">
           <Wrapper>
             <nav className="flex justify-between items-center px-5 md:px-0 py-2">
