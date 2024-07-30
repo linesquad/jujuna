@@ -47,7 +47,7 @@ const Header = () => {
         </div>
       ) : (
         <motion.div
-          className="bg-black w-4/5 h-dvh fixed text-white flex flex-col justify-center items-center gap-10"
+          className="bg-black w-4/5 h-dvh fixed text-white flex flex-col justify-center items-center gap-10 z-50"
           initial={{ x: "-100%" }}
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
