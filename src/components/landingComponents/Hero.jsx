@@ -9,7 +9,7 @@ function Hero() {
     <Wrapper>
       <div className="w-full bg-[linear-gradient(249deg,_#A583D1_22.95%,_#724AA4_46.44%,_#1E122E_93.06%)] relative">
         <div className="w-full h-[459px] lg:h-[650px]  pt-[30px] px-[23px] relative lg:pt-[77px] lg:px-[40px] xl:px-[80px]">
-          <div className="flex flex-col gap-[24px] max-w-[371px] md:max-w-[500px] lg:gap-[48px] lg:max-w-[769px]">
+          <div className="flex flex-col gap-[24px] max-w-[371px] md:max-w-[400px] lg:gap-[48px] lg:max-w-[650px]">
             <h2 className="text-color-primary text-[48px] font-tommaso lg:text-[72px]">
               ჟუჟუნა
             </h2>
