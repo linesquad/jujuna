@@ -7,10 +7,8 @@ import HeroContent from "./HeroContent";
 
 function Hero() {
   return (
-    // ეს ჩასვი დივში და ბექგრაუნდ ქოლორი გაუკეტე ვიდსი მთლიანე დანარჩენი კაია
     <div className="w-full bg-[linear-gradient(249deg,_#A583D1_22.95%,_#724AA4_46.44%,_#1E122E_93.06%)] relative">
       <Wrapper>
-        {/* ჯობია ეს კომპონენტში გაიტანო */}
         <div className="">
           <div className="w-full h-[459px] lg:h-[650px]  pt-[30px] px-[23px] relative lg:pt-[77px] lg:px-[0px]">
             <HeroContent
