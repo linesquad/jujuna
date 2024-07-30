@@ -7,31 +7,27 @@ i18n
   .use(initReactI18next)
   .init({
     debug: true,
-    lng: "ge",
+    lng: localStorage.getItem("lng") || "ge",
     resources: {
       ge: {
         translation: {
-          greeting: "გამარჯობა",
           navbar: {
             about: "ჩვენს შესახებ",
+            cocktail: "კოქტეილი",
+            wines: "ღვინო",
             news: "სიახლეები",
-            bottle: "ბოთლი",
-            cocktails: "კოქტეილები",
-            mobileBar: "მობილური ბარი",
-            contact: "კონტაქტი",
+            enter: "შესვლა",
           },
         },
       },
       en: {
         translation: {
-          greeting: "Hello",
           navbar: {
             about: "About Us",
+            cocktail: "Cocktail",
+            wines: "Wine",
             news: "News",
-            bottle: "Bottle",
-            cocktails: "Cocktails",
-            mobileBar: "Mobile Bar",
-            contact: "Contact",
+            enter: "Enter",
           },
         },
       },

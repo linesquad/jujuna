@@ -64,5 +64,13 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        ".overflow-hidden": {
+          overflow: "hidden",
+        },
+      });
+    },
+  ],
 };
