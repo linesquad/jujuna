@@ -2,20 +2,27 @@ import ReactCountryFlag from "react-country-flag";
 import i18n from "../../../i18n";
 import { useSelector } from "react-redux";
 import { getIsOpen } from "../../../features/burgerMenuSlice";
+import { useState } from "react";
 
 const LanguageChanger = () => {
   const open = useSelector(getIsOpen);
+  const [language, setLanguage] = useState("ge");
 
   const handleChangeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     localStorage.setItem("lng", lng);
+    setLanguage(i18n.language);
   };
 
   const size = open ? 3 : 1.7;
 
   return (
     <div className="flex gap-2">
-      <button onClick={() => handleChangeLanguage("ge")}>
+      <button
+        onClick={() => handleChangeLanguage("ge")}
+        disabled={language === "ge"}
+        className={`${language === "ge" ? "cursor-no-drop" : ""}`}
+      >
         <ReactCountryFlag
           countryCode="GE"
           svg
@@ -25,7 +32,11 @@ const LanguageChanger = () => {
           }}
         />
       </button>
-      <button onClick={() => handleChangeLanguage("en")}>
+      <button
+        onClick={() => handleChangeLanguage("en")}
+        disabled={language === "en"}
+        className={`${language === "en" ? "cursor-no-drop" : ""}`}
+      >
         <ReactCountryFlag
           countryCode="US"
           svg

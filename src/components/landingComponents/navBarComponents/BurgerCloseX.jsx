@@ -11,7 +11,7 @@ const BurgerCloseX = () => {
 
   return (
     <button onClick={handleClose}>
-      <IoClose size="50" />
+      <IoClose size="45" />
     </button>
   );
 };
