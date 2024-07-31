@@ -1,5 +1,6 @@
 import AboutUsComp from "../components/landingComponents/AboutUsComp";
 import Hero from "../components/landingComponents/Hero";
+import MobileBar from "../components/landingComponents/MobileBar";
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
         <Hero />
         <AboutUsComp />
       </div>
+      <MobileBar />
     </div>
   );
 };
