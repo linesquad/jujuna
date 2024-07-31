@@ -1,11 +1,17 @@
-import { useSelector } from "react-redux";
-import BurgerCloseX from "./BurgerCloseX";
-import { getIsOpen } from "../../../features/burgerMenuSlice";
-import BurgerMenu from "./BurgerMenu";
+import { useDispatch, useSelector } from "react-redux";
+import { getIsOpen, toggleBurgerMenu } from "../../../features/burgerMenuSlice";
 import { motion, AnimatePresence } from "framer-motion";
+import { IoClose } from "react-icons/io5";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const BurgerNav = () => {
   const open = useSelector(getIsOpen);
+
+  const dispatch = useDispatch();
+
+  const handleToggle = () => {
+    dispatch(toggleBurgerMenu());
+  };
 
   const menuVariants = {
     initial: { opacity: 0, scale: 0.5 },
@@ -15,7 +21,7 @@ const BurgerNav = () => {
 
   return (
     <div className={`w-full bg-black text-white sticky top-0 z-40`}>
-      <nav className="flex justify-between items-center px-5 py-2">
+      <nav className="flex justify-between items-center">
         <div></div>
         <div className="flex md:hidden">
           <AnimatePresence>
@@ -28,7 +34,11 @@ const BurgerNav = () => {
                 variants={menuVariants}
                 transition={{ duration: 0.5 }}
               >
-                <BurgerCloseX />
+                <IoClose
+                  size="25"
+                  onClick={handleToggle}
+                  className=" cursor-pointer"
+                />
               </motion.div>
             ) : (
               <motion.div
@@ -39,7 +49,11 @@ const BurgerNav = () => {
                 variants={menuVariants}
                 transition={{ duration: 0.5 }}
               >
-                <BurgerMenu />
+                <GiHamburgerMenu
+                  size="25"
+                  onClick={handleToggle}
+                  className=" cursor-pointer"
+                />
               </motion.div>
             )}
           </AnimatePresence>

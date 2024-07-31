@@ -1,14 +1,13 @@
 import { motion } from "framer-motion";
-import Logo from "../../Logo";
+
 import NavLinks from "./NavLinks";
 import LanguageChanger from "./LanguageChanger";
 import ThemeChanger from "../../ThemeChanger";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 import { getIsOpen, close } from "../../../features/burgerMenuSlice";
-import BurgerNav from "./BurgerNav";
 
-const OpenBurger = () => {
+const OpenBurger = memo(() => {
   const dispatch = useDispatch();
   const menuRef = useRef(null);
   const open = useSelector(getIsOpen);
@@ -30,24 +29,23 @@ const OpenBurger = () => {
   }, [open, dispatch]);
 
   return (
-    <>
-      <motion.div
-        ref={menuRef}
-        className="bg-black w-4/5 h-dvh fixed text-white flex flex-col justify-center items-center gap-28 z-50"
-        key="open"
-        initial={{ x: "-100%" }}
-        animate={{ x: 0 }}
-        exit={{ x: "-100%" }}
-        transition={{ duration: 0.5 }}
-      >
-        <Logo />
-        <NavLinks />
-        <LanguageChanger />
-        <ThemeChanger />
-      </motion.div>
-      <BurgerNav />
-    </>
+    <motion.div
+      ref={menuRef}
+      className="bg-black w-4/5 h-dvh fixed text-white flex flex-col justify-center items-center gap-28 z-50"
+      key="open"
+      initial={{ x: "-100%" }}
+      exit={{ x: "-100%" }}
+      animate={{ x: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      {/* shegilia chaamato image calke komponenti sadac shemoaimporteb sidebaris logo */}
+      <NavLinks />
+      <LanguageChanger />
+      <ThemeChanger />
+    </motion.div>
   );
-};
+});
+
+OpenBurger.displayName = "OpenBurger";
 
 export default OpenBurger;

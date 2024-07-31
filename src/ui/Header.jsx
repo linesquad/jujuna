@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import CloseBurger from "../components/landingComponents/navBarComponents/CloseBurger";
 import OpenBurger from "../components/landingComponents/navBarComponents/OpenBurger";
 import useWindowSize from "../hooks/useWindowSize";
+import { AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const open = useSelector(getIsOpen);
@@ -30,14 +31,10 @@ const Header = () => {
   }, [width, dispatch]);
 
   return (
-    <>
-      {!open ? (
-        // აქაც გვინდა იგივე ანიმაცია გასვლის დროსაც
-        <CloseBurger />
-      ) : (
-        <OpenBurger />
-      )}
-    </>
+    <div className="sticky top-0 w-full z-40 header">
+      <CloseBurger />
+      <AnimatePresence>{open && <OpenBurger />}</AnimatePresence>
+    </div>
   );
 };
 

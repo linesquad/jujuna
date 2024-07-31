@@ -26,7 +26,7 @@ const NavLinks = () => {
       className={`${
         open
           ? "flex flex-col gap-5 text-start text-2xl"
-          : "text-base md:text-sm lg:text-base flex gap-0 md:gap-5 lg:gap-10"
+          : "hidden text-base md:text-sm lg:text-base md:flex gap-0 md:gap-5 lg:gap-10"
       }`}
     >
       {navbarItems.map(({ name, id, path }) => (

@@ -16,6 +16,7 @@ const CloseBurger = () => {
     >
       <Wrapper>
         <nav className="flex justify-between items-center px-5 md:px-0 py-2">
+          {/* es logo unda waishalos amitom jobia headers mianicho height rom washlis dros zoma ar dapataravdes */}
           <Logo />
           <div className="flex md:hidden">
             <BurgerNav />

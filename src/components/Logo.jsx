@@ -1,23 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { close, getIsOpen } from "../features/burgerMenuSlice";
+import { close } from "../features/burgerMenuSlice";
 
 const Logo = () => {
-  const open = useSelector(getIsOpen);
-
   const dispatch = useDispatch();
 
   const handleClose = () => {
     dispatch(close());
   };
 
-  const size = open ? 90 : 45;
-
   return (
     <Link to="/" onClick={handleClose}>
       <svg
-        width={size}
-        height={size}
+        width={45}
+        height={45}
         viewBox="0 0 45 45"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
