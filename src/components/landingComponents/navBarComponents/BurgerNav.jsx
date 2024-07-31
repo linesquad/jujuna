@@ -20,7 +20,7 @@ const BurgerNav = () => {
   };
 
   return (
-    <div className={`w-full bg-black text-white sticky top-0 z-40`}>
+    <div className={`w-full  text-white sticky top-0 z-40`}>
       <nav className="flex justify-between items-center">
         <div></div>
         <div className="flex md:hidden">

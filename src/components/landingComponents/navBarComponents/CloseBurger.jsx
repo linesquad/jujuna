@@ -5,18 +5,25 @@ import LanguageChanger from "./LanguageChanger";
 import ThemeChanger from "../../ThemeChanger";
 import useScroll from "../../../hooks/useScroll";
 import BurgerNav from "./BurgerNav";
+import { useSelector } from "react-redux";
+import { getIsOpen } from "../../../features/burgerMenuSlice";
 
 const CloseBurger = () => {
   const scrolled = useScroll();
+  const open = useSelector(getIsOpen);
+
   return (
     <div
       className={`sticky top-0 w-full ${
-        scrolled ? "bg-black bg-opacity-70 backdrop-blur-md" : "bg-black"
-      } text-white z-40 header`}
+        scrolled && open
+          ? "bg-black"
+          : scrolled
+          ? "bg-black bg-opacity-70 backdrop-blur-md"
+          : "bg-black"
+      } "text-white z-40 header"`}
     >
       <Wrapper>
         <nav className="flex justify-between items-center px-5 md:px-0 py-2">
-          {/* es logo unda waishalos amitom jobia headers mianicho height rom washlis dros zoma ar dapataravdes */}
           <Logo />
           <div className="flex md:hidden">
             <BurgerNav />
