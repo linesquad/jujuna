@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="w-full bg-[#000]">
+    <div className="w-full bg-[#000] fixed bottom-0">
       <Wrapper>
         <div className="py-[20px] pr-[10px] pl-[30px] lg:pr-[0px] lg:pl-[0px]">
           <div className="flex justify-between">
