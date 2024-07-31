@@ -3,6 +3,7 @@ import facebook from "/images/facebook.svg";
 import linkedin from "/images/linkedin.svg";
 import Wrapper from "../components/Wrapper";
 import Logo from "../components/Logo";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -26,27 +27,28 @@ const Footer = () => {
 
             <div className="flex flex-col justify-end gap-[10px] items-end md:flex-col md:justify-end md:gap-[17px]">
               <div className="flex gap-[2px] lg:gap-[10px]">
-                <a href="https://www.instagram.com/">
+                {/* აქ გვჭირდება ლინკ კომპონენტი და არა ანქორი ასევე დავამატე ტარგეთიც რომ ახალ ფანჯარაში გაიხსნას */}
+                <Link to="https://www.instagram.com/" target="_blank">
                   <img
                     src={instagram}
                     alt="instagram"
                     className="lg:w-[24px] lg:h-[24px]"
                   />
-                </a>
-                <a href="https://www.facebook.com/">
+                </Link>
+                <Link to="https://www.facebook.com/" target="_blank">
                   <img
                     src={facebook}
                     alt="facebook"
                     className="lg:w-[24px] lg:h-[24px]"
                   />
-                </a>
-                <a href="https://www.linkedin.com/feed/">
+                </Link>
+                <Link to="https://www.linkedin.com/feed/" target="_blank">
                   <img
                     src={linkedin}
                     alt="linkedin"
                     className="lg:w-[24px] lg:h-[24px]"
                   />
-                </a>
+                </Link>
               </div>
 
               <div className="hidden text-[10px] lg:text-[14px] text-[#908F8F] md:flex md:gap-[49px]">
