@@ -7,12 +7,12 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="w-full bg-[#000] fixed bottom-0">
+    <div className="w-full bg-[#000] ">
       <Wrapper>
         <div className="py-[20px] pr-[10px] pl-[30px] lg:pr-[0px] lg:pl-[0px]">
-          <div className="flex justify-between">
-            <div className="flex gap-[20px] lg:gap-[64px]">
-              <div className="bg-[#ba92ed] w-[45px] h-[45px] flex items-center justify-center rounded-full lg:mt-[15px]">
+          <div className="flex flex-col md:flex-row justify-between">
+            <div className="flex flex-col text-center md:text-start md:flex-row gap-[20px] lg:gap-[64px]">
+              <div className="bg-[#ba92ed] w-[45px] h-[45px] mx-auto flex items-center justify-center rounded-full lg:mt-[15px]">
                 <Logo />
               </div>
               <div className="flex flex-col gap-[12px] text-color-primary text-[12px] lg:text-[16px]">
@@ -25,7 +25,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="flex flex-col justify-end gap-[10px] items-end md:flex-col md:justify-end md:gap-[17px]">
+            <div className="flex justify-center mt-4 md:mt-0 gap-[10px] items-end md:flex-col md:justify-end md:gap-[17px]">
               <div className="flex gap-[2px] lg:gap-[10px]">
                 {/* აქ გვჭირდება ლინკ კომპონენტი და არა ანქორი ასევე დავამატე ტარგეთიც რომ ახალ ფანჯარაში გაიხსნას */}
                 <Link to="https://www.instagram.com/" target="_blank">
@@ -59,7 +59,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="text-[10px] text-[#908F8F] mt-[32px] flex justify-between md:hidden">
+          <div className="text-[10px] text-[#908F8F] mt-[32px] flex flex-col gap-3 md:flex-row justify-between md:hidden">
             <p>პერსონალური მონაცემების დაცვის პოლიტიკა</p>
             <p>უსაფრთხოების ცენტრი</p>
           </div>
