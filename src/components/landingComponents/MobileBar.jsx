@@ -5,6 +5,7 @@ function MobileBar() {
   return (
     <Wrapper>
       <div className="bg-[url('/images/banner2.png')] bg-no-repeat bg-cover pt-[12px] pr-[12px] pb-[16px] md:pt-[30px] md:pr-[30px] md:pb-[40px] lg:pt-[80px] lg:pr-[114px] lg:pb-[87px] flex justify-end rounded-md">
+        {/* aq gamoiyene herocontent komponenti */}
         <div className="w-[305px] md:w-[450px] lg:w-[600px] flex flex-col">
           <h2 className="text-[32px] lg:text-[60px] text-color-black font-tommaso">
             მობილური ბარი
