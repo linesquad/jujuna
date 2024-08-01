@@ -31,7 +31,7 @@ const OpenBurger = memo(() => {
   return (
     <motion.div
       ref={menuRef}
-      className="bg-black w-4/5 h-dvh fixed  text-white flex flex-col justify-center items-center gap-28 z-50 "
+      className="bg-black w-4/5 h-dvh fixed  text-white flex flex-col items-center gap-28 z-50 pt-3"
       key="open"
       initial={{ x: "-100%" }}
       exit={{ x: "-100%" }}

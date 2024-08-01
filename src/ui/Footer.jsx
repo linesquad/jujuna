@@ -27,7 +27,6 @@ const Footer = () => {
 
             <div className="flex justify-center mt-4 md:mt-0 gap-[10px] items-end md:flex-col md:justify-end md:gap-[17px]">
               <div className="flex gap-[2px] lg:gap-[10px]">
-                {/* აქ გვჭირდება ლინკ კომპონენტი და არა ანქორი ასევე დავამატე ტარგეთიც რომ ახალ ფანჯარაში გაიხსნას */}
                 <Link to="https://www.instagram.com/" target="_blank">
                   <img
                     src={instagram}
