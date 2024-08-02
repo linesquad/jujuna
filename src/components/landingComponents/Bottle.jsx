@@ -4,8 +4,8 @@ import bottle from "/images/bottle1.png";
 function Bottle() {
   return (
     <Wrapper>
-      <div className="relative rounded-md">
-        <div className="bg-[#eaeaea] lg:px-[40px]  xl:px-[80px] lg:pb-[60px]">
+      <div className="relative">
+        <div className="bg-[#eaeaea] lg:px-[40px]  xl:px-[80px] lg:pb-[60px] rounded-md">
           <h2 className="ml-[20px] pt-[10px] text-[40px] text-color-black  font-tommaso font-normal lg:text-[64px]">
             ბოთლი
           </h2>
