@@ -1,4 +1,5 @@
 import AboutUsComp from "../components/landingComponents/AboutUsComp";
+import Connect from "../components/landingComponents/Connect";
 import Hero from "../components/landingComponents/Hero";
 import MobileBar from "../components/landingComponents/MobileBar";
 
@@ -10,6 +11,7 @@ const Home = () => {
         <AboutUsComp />
       </div>
       <MobileBar />
+      <Connect />
     </div>
   );
 };
