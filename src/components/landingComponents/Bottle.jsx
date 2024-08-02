@@ -5,7 +5,7 @@ function Bottle() {
   return (
     <Wrapper>
       <div className="relative">
-        <div className="bg-[#eaeaea] lg:px-[40px]  xl:px-[80px] lg:pb-[60px] rounded-md">
+        <div className="bg-[#eaeaea]  lg:px-[40px]  xl:px-[80px] lg:pb-[60px] rounded-md">
           <h2 className="ml-[20px] pt-[10px] text-[40px] text-color-black  font-tommaso font-normal lg:text-[64px]">
             ბოთლი
           </h2>
@@ -22,8 +22,8 @@ function Bottle() {
                 მისართმევად საუკეთესო ტემპერატურასა და გაზს.
               </p>
             </div>
-            <div className="w-[50%] lg:w-[69%] lg:pb-[20px]">
-              <h2 className="text-[32px] font-tommaso text-center lg:text-left lg:text-[40px]">
+            <div className="w-[50%] lg:w-[69%] lg:pb-[20px] bg-[url('/images/layerBlack.png')] bg-no-repeat bg-cover">
+              <h2 className="text-[32px] text-color-primary font-tommaso text-center lg:text-left lg:text-[40px] mix-blend-difference">
                 ჟუჟუნა ბოთლი
               </h2>
               <div className="flex flex-col items-center gap-[10px] mt-[15px] w-[160px] m-auto lg:w-[100%] lg:items-start lg:flex-row lg:mt-[40px] lg:gap-[20px]">
@@ -43,7 +43,7 @@ function Bottle() {
                 </div>
               </div>
 
-              <p className="hidden lg:block text-[16px] font-normal lg:text-[24px] lg:mt-[50px]">
+              <p className="hidden lg:block text-[16px] font-normal lg:text-[24px] lg:mt-[50px] mix-blend-difference text-color-primary">
                 ჟუჟუს ბოთლი 250 მლ-იანია, რადგან სწორედ ეს პორცია ინარჩუნებს
                 მისართმევად საუკეთესო ტემპერატურასა და გაზს.
               </p>
