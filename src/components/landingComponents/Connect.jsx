@@ -1,10 +1,10 @@
-// import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import Wrapper from "../Wrapper";
 import ConnectForm from "./connectComponents/ConnectForm";
 import HeroContent from "./HeroContent";
 
 const Connect = () => {
-  //   const { t } = useTranslation();
+  const { t } = useTranslation();
   return (
     <Wrapper>
       <div
@@ -14,34 +14,27 @@ const Connect = () => {
       >
         <ConnectForm />
         <div>
-          <div className="block md:hidden">
+          <div className="block md:hidden small:flex small:justify-center small:items-center small:h-full">
             <HeroContent
-              descriptionStyle="text-sm text-color-primary md:text-base lg:text-lg xl:text-xl"
+              descriptionStyle="text-sm text-color-primary md:text-base lg:text-lg xl:text-xl small:text-base"
               containerStyle="font-normal p-5"
               description={[
                 {
-                  paragraph:
-                    "ქორფა ჟუჯუნა უამრავ კაფე-ბარში შეგხვდება და შენთვის საყვარელ კოქტეილებს ააცქრიალებს. ცივი და ჩქრიალა ჟუჟუ კოქტეილში პირდაპირ ონკანიდან ეშვება.",
-                },
-                {
-                  paragraph:
-                    "ჩამოსასხმელი ჟუჟუნა კაფე-ბარებს მრავალჯერადი გამოყენების კეგებში მიეწოდება და დამატებით შეფუთვას არ საჭიროებს",
+                  paragraph: t("connectForm.paragraphOne"),
                 },
               ]}
             />
           </div>
-          <div className="hidden md:block">
+          <div className="hidden smallExtra:block">
             <HeroContent
-              descriptionStyle="text-base text-color-primary md:text-base lg:text-lg xl:text-xl"
+              descriptionStyle="text-base smallExtra:text-sm text-color-primary md:text-base lg:text-lg xl:text-xl"
               containerStyle="font-normal p-5"
               description={[
                 {
-                  paragraph:
-                    "ქორფა ჟუჯუნა უამრავ კაფე-ბარში შეგხვდება და შენთვის საყვარელ კოქტეილებს ააცქრიალებს. ცივი და ჩქრიალა ჟუჟუ კოქტეილში პირდაპირ ონკანიდან ეშვება.",
+                  paragraph: t("connectForm.paragraphOne"),
                 },
                 {
-                  paragraph:
-                    "ჩამოსასხმელი ჟუჟუნა კაფე-ბარებს მრავალჯერადი გამოყენების კეგებში მიეწოდება და დამატებით შეფუთვას არ საჭიროებს, რის გამოც გარემოსთან განსაკუთრებით მეგობრობს და არც მის დაბინძურებას იწვევს.",
+                  paragraph: t("connectForm.paragraphTwo"),
                 },
               ]}
             />

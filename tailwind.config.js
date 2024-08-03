@@ -61,6 +61,7 @@ export default {
       },
       screens: {
         small: { max: "410px" },
+        smallExtra: { min: "411px" },
       },
     },
   },

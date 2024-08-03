@@ -1,10 +1,13 @@
 import Button from "../../Button";
 import { DevTool } from "@hookform/devtools";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ConnectForm = () => {
   const darkMode = useSelector(getMode);
@@ -18,15 +21,31 @@ const ConnectForm = () => {
   const { register, control, handleSubmit, formState, reset } = form;
   const { errors, isSubmitting, isSubmitSuccessful } = formState;
 
-  const onSubmit = (data) => {
-    console.log("Form submitted", data);
-  };
-
   const { t } = useTranslation();
 
   useEffect(() => {
     if (isSubmitSuccessful) reset();
   }, [isSubmitSuccessful, reset]);
+
+  const formRef = useRef(null);
+
+  const onSubmit = async () => {
+    if (formRef.current) {
+      try {
+        await emailjs.sendForm(
+          "service_r2rzhyi",
+          "template_hv04snn",
+          formRef.current,
+          "lCDNh2nw5t1Ek4MQ8"
+        );
+        toast.success(t(`toast.success`));
+      } catch (error) {
+        toast.error(t(`toast.error`));
+      }
+    } else {
+      toast.error(t(`toast.hardError`));
+    }
+  };
 
   return (
     <div className="">
@@ -34,6 +53,7 @@ const ConnectForm = () => {
         className="space-y-4 flex flex-col gap-3 md:gap-2"
         onSubmit={handleSubmit(onSubmit)}
         noValidate
+        ref={formRef}
       >
         <div className="mb-5 h-[70px]">
           <label
@@ -43,6 +63,7 @@ const ConnectForm = () => {
             {t(`connectForm.tel`)}
           </label>
           <input
+            name="mobile"
             type="tel"
             id="mobile"
             placeholder={t(`connectForm.enterPhoneNumber`)}
@@ -59,7 +80,7 @@ const ConnectForm = () => {
               },
             })}
           />
-          <p className="text-red-500 text-base mt-1 font-bold bg-backgroundColor-purpleMid inline-block">
+          <p className="text-red-500 text-base mt-1 font-bold bg-backgroundColor-purpleMid inline-block rounded">
             {errors.mobile?.message}
           </p>
         </div>
@@ -67,11 +88,12 @@ const ConnectForm = () => {
         <div className="mb-5 h-[80px]">
           <label
             htmlFor="email"
-            className="block text-md font-medium text-color-primary mb-1 "
+            className="block text-md font-medium text-color-primary mb-1"
           >
             {t(`connectForm.mail`)}
           </label>
           <input
+            name="email"
             type="email"
             id="email"
             placeholder={t(`connectForm.enterEmail`)}
@@ -88,7 +110,7 @@ const ConnectForm = () => {
               },
             })}
           />
-          <p className="text-red-500 text-base mt-1 font-bold bg-backgroundColor-purpleMid inline-block">
+          <p className="text-red-500 text-base mt-1 font-bold bg-backgroundColor-purpleMid inline-block rounded">
             {errors.email?.message}
           </p>
         </div>
@@ -101,7 +123,8 @@ const ConnectForm = () => {
             {t(`connectForm.message`)}
           </label>
           <textarea
-            id="message"
+            name="textArea"
+            id="textArea"
             placeholder={t(`connectForm.writeMessage`)}
             className={`w-full p-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-buttonColor-primary resize-none
                 ${darkMode ? "bg-black text-white border-none" : ""}`}
@@ -121,17 +144,18 @@ const ConnectForm = () => {
               },
             })}
           />
-          <p className="text-red-500 text-base mt-1 font-bold bg-backgroundColor-purpleMid inline-block">
+          <p className="text-red-500 text-base mt-1 font-bold bg-backgroundColor-purpleMid inline-block rounded">
             {errors.textArea?.message}
           </p>
         </div>
 
-        <div className="flex justify-end">
+        <div className="flex justify-end small:p-2">
           <Button type="large" disabled={isSubmitting}>
             {t(`connectForm.send`)}
           </Button>
         </div>
       </form>
+      <ToastContainer />;
       <DevTool control={control} />
     </div>
   );
