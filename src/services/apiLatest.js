@@ -14,3 +14,18 @@ export const fetchLatestBlogs = async () => {
 
   return data;
 };
+
+export const fetchLatestCocktails = async () => {
+  let { data, error } = await supabase
+    .from("cocktail")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(3);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Cocktail could not be loaded");
+  }
+
+  return data;
+};
