@@ -12,7 +12,7 @@ i18n
       ge: {
         translation: {
           navbar: {
-            about: "ჩვენს შესახებ",
+            about: "ჩვენზე",
             cocktail: "კოქტეილი",
             wines: "ღვინო",
             news: "სიახლეები",
