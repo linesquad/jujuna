@@ -48,7 +48,7 @@ const ConnectForm = () => {
   };
 
   return (
-    <div className="">
+    <div>
       <form
         className="space-y-4 flex flex-col gap-3 md:gap-2"
         onSubmit={handleSubmit(onSubmit)}
