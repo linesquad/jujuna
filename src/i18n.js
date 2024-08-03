@@ -12,11 +12,20 @@ i18n
       ge: {
         translation: {
           navbar: {
-            about: "ჩვენს შესახებ",
+            about: "ჩვენზე",
             cocktail: "კოქტეილი",
             wines: "ღვინო",
             news: "სიახლეები",
             enter: "შესვლა",
+          },
+          connectForm: {
+            tel: "ტელეფონი",
+            mail: "ელ.ფოსტა",
+            message: "მესიჯი",
+            enterPhoneNumber: "მიუთითეთ ნომერი...",
+            enterEmail: "მიუთითეთ მაილი...",
+            writeMessage: "დაწერეთ მესიჯი...",
+            send: "გაგზავნა",
           },
         },
       },
@@ -28,6 +37,15 @@ i18n
             wines: "Wine",
             news: "News",
             enter: "Enter",
+          },
+          connectForm: {
+            tel: "Mobile Number",
+            mail: "Email",
+            message: "Message",
+            enterPhoneNumber: "Enter a phone number...",
+            enterEmail: "Enter a email address...",
+            writeMessage: "Write a message...",
+            send: "Submit",
           },
         },
       },
