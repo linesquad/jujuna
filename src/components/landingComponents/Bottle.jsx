@@ -48,7 +48,7 @@ function Bottle() {
                 მისართმევად საუკეთესო ტემპერატურასა და გაზს.
               </p>
 
-              <div className="flex justify-end w-[160px] m-auto mt-[15px] lg:w-[100%] lg:mt-[46px]">
+              <div className="flex justify-end w-[160px] m-auto mt-[15px] lg:w-[100%] lg:mt-[46px] lg:pr-[50px]">
                 <div className="w-[61px] h-[58px] border-[1px] border-[#613994] self-end rounded-[10px] flex justify-center items-center lg:w-[114px] lg:h-[108px] lg:bg-[#613994] lg:text-color-primary">
                   <p className="text-[12px] lg:text-[24px]">4.5₾</p>
                 </div>
