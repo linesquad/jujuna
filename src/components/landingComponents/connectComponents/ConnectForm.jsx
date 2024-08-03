@@ -27,6 +27,7 @@ const ConnectForm = () => {
   useEffect(() => {
     if (isSubmitSuccessful) reset();
   }, [isSubmitSuccessful, reset]);
+
   return (
     <div className="">
       <form

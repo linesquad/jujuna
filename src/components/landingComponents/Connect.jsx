@@ -1,8 +1,10 @@
+// import { useTranslation } from "react-i18next";
 import Wrapper from "../Wrapper";
 import ConnectForm from "./connectComponents/ConnectForm";
 import HeroContent from "./HeroContent";
 
 const Connect = () => {
+  //   const { t } = useTranslation();
   return (
     <Wrapper>
       <div
