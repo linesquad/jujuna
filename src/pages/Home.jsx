@@ -1,5 +1,6 @@
 import AboutUsComp from "../components/landingComponents/AboutUsComp";
 import Bottle from "../components/landingComponents/Bottle";
+import CocktailsComp from "../components/landingComponents/CocktailsComp";
 import Connect from "../components/landingComponents/Connect";
 import Hero from "../components/landingComponents/Hero";
 import MobileBar from "../components/landingComponents/MobileBar";
@@ -11,6 +12,7 @@ const Home = () => {
         <Hero />
         <AboutUsComp />
         <Bottle />
+        <CocktailsComp />
         <MobileBar />
         <Connect />
       </div>
