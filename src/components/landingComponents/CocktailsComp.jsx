@@ -11,7 +11,6 @@ import { Pagination } from "swiper/modules";
 
 function CocktailsComp() {
   const { data: cocktails } = useLatestCocktails();
-  console.log(cocktails);
   return (
     <div className="bg-gray-500 md:py-[30px]">
       <Wrapper>
