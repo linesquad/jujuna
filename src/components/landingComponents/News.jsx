@@ -13,7 +13,6 @@ const News = () => {
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading blogs: {error.message}</p>;
   if (!blogNews || blogNews.length === 0) return <p>No blog news available.</p>;
-  console.log(blogNews);
 
   return (
     <Wrapper>
@@ -21,7 +20,7 @@ const News = () => {
         სიახლეები
       </h2>
       <Swiper
-        className="w-full h-[1000px]"
+        className="w-full h-[650px]"
         breakpoints={{
           320: {
             slidesPerView: 1,
@@ -46,14 +45,13 @@ const News = () => {
       >
         {blogNews.map((item, index) => (
           <SwiperSlide key={item.id}>
-            <div className="w-full h-full">
-              <OneNews
-                image={item.image}
-                description={item.description}
-                title={item.title}
-                bgColor={`${index % 2 === 0 ? "bg-#724AA4" : "bg-black"}`}
-              />
-            </div>
+            <OneNews
+              image={item.image}
+              description={item.description.split("").slice(0, 100).join("")}
+              title={item.title}
+              bgColor={`${index % 2 === 0 ? "bg-gray-500" : "bg-black"}`}
+              type={"primary"}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

@@ -3,7 +3,7 @@ import Button from "../Button";
 /* eslint-disable react/prop-types */
 function OneNews({ image, date, title, description, type, bgColor }) {
   return (
-    <div className="flex flex-col  rounded-xl overflow-hidden">
+    <div className="flex flex-col  rounded-xl">
       <div className="w-full h-[347px]">
         <img
           className="w-full h-full object-cover"
