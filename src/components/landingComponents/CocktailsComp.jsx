@@ -9,7 +9,6 @@ import Wrapper from "../Wrapper";
 
 function CocktailsComp() {
   const { data: cocktails } = useLatestCocktails();
-  console.log(cocktails);
   return (
     <div className="bg-[#eaeaea] md:py-[30px]">
       <Wrapper>
