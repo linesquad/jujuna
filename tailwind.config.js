@@ -60,6 +60,8 @@ export default {
         },
       },
       screens: {
+        tiny: { max: "300px" },
+        smaller: { min: "301px", max: "410px" },
         small: { max: "410px" },
         smallExtra: { min: "411px" },
       },
