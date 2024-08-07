@@ -1,6 +1,7 @@
 import useCocktails from "../../hooks/useCocktails";
 import Wrapper from "../Wrapper";
 import CocktailCard from "./CocktailCard";
+import CocktailsPegination from "./CocktailsPegination";
 
 function DisplayCocktails() {
   const { data: cocktails } = useCocktails();
@@ -12,6 +13,7 @@ function DisplayCocktails() {
           return <CocktailCard key={item.id} item={item} />;
         })}
       </div>
+      <CocktailsPegination />
     </Wrapper>
   );
 }
