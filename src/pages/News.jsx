@@ -1,6 +1,6 @@
-import BlogDisplay from "../components/landingComponents/newsComponents/BlogDisplay";
-import FilterNews from "../components/landingComponents/newsComponents/FilterNews";
-import HeroNews from "../components/landingComponents/newsComponents/HeroNews";
+import BlogDisplay from "../components/newsComponents/BlogDisplay";
+import FilterNews from "../components/newsComponents/FilterNews";
+import HeroNews from "../components/newsComponents/HeroNews";
 
 function News() {
   return (

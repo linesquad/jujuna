@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const FilterCategory = ({ toggleCategoryVisibility, isCategoryVisible }) => {
   const links = (
     <div
-      className={`mt-4 flex ${
+      className={` flex ${
         toggleCategoryVisibility === undefined ||
         isCategoryVisible === undefined
           ? "flex-row gap-[40px] lg:gap-[80px] xl:gap-[100px] 2xl:gap-[120px]"
@@ -63,10 +63,14 @@ const FilterCategory = ({ toggleCategoryVisibility, isCategoryVisible }) => {
         opacity: isCategoryVisible ? 1 : 0,
         y: isCategoryVisible ? 0 : -20,
       }}
-      exit={{ opacity: 0, y: -20 }}
+      exit={{
+        opacity: 0,
+        y: -20,
+        transition: { duration: 0.8, ease: "easeInOut" },
+      }}
       transition={{
-        opacity: { duration: 0.5, ease: "easeOut" },
-        y: { duration: 0.5, ease: "easeOut" },
+        opacity: { duration: 0.8, ease: "easeInOut" },
+        y: { duration: 0.8, ease: "easeInOut" },
       }}
       className="mt-4 flex flex-col gap-3"
     >

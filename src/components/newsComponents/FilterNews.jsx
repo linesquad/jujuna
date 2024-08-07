@@ -1,8 +1,9 @@
 import { useState } from "react";
-import BlogWrapper from "./BlogWrapper";
-import { GiHamburgerMenu } from "react-icons/gi";
 import FilterCategory from "./FilterCategory";
 import { AnimatePresence } from "framer-motion";
+import BlogWrapper from "./BlogWrapper";
+
+import FilterButton from "./FilterButton";
 
 const FilterNews = () => {
   const [isCategoryVisible, setCategoryVisible] = useState(false);
@@ -14,11 +15,12 @@ const FilterNews = () => {
     <div className="bg-[#EAEAEA] w-full">
       <BlogWrapper>
         <div className="pb-4 md:hidden">
-          <div className="flex justify-between px-3">
-            <h1 className="text-[#613994] ">POPULAR CATEGORIES</h1>
-            <button onClick={toggleCategoryVisibility}>
-              <GiHamburgerMenu />
-            </button>
+          <div className="flex justify-between items-center px-3">
+            <h1 className="text-[#613994] text-[18px]">POPULAR CATEGORIES</h1>
+            <FilterButton
+              isCategoryVisible={isCategoryVisible}
+              toggleCategoryVisibility={toggleCategoryVisibility}
+            />
           </div>
           <div className="text-center">
             <AnimatePresence>

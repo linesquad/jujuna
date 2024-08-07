@@ -17,16 +17,16 @@ const HeroNews = () => {
           </h2>
         </div>
         <div className="w-full h-full pb-20 sm:pb-20">
-          <div className="relative w-full flex justify-center 2xl:justify-between">
+          <div className="relative w-full flex justify-center 2xl:justify-around">
             <div className="hidden 2xl:block"></div>
             <img
               src="./images/blogpage.jpg"
               alt="banner"
-              className="max-h-[413px] sm:max-h-[500px] md:max-h-[700px] lg:max-h-[799px]"
+              className="max-h-[413px] sm:max-h-[450px] md:max-h-[450px] lg:max-h-[450px]"
             />
             <div
               className="p-4 bg-white w-[350px] absolute bottom-[-50px] left-1/2 -translate-x-1/2 
-            tiny:w-[230px] tiny:p-3 smaller:w-[300px] smaller:py-4 sm:w-[400px] md:w-[500px] 2xl:bottom-[300px] 2xl:left-56"
+            tiny:w-[230px] tiny:p-3 smaller:w-[300px] smaller:py-4 sm:w-[400px] md:w-[500px] 2xl:bottom-[150px] 2xl:left-[600px]"
             >
               <div
                 className="text-center px-3 py-6 border-2 border-[#613994]
