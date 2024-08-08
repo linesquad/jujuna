@@ -1,8 +1,10 @@
+import Product from "../components/winesComponents/product";
+
 const Wines = () => {
   return (
     <>
       <div className="flex justify-center items-center flex-col">
-        <div className="flex justify-center items-center size-full bg-gradient-to-b from-[#A583D1] via-[#724AA4] to-[#1E122E]">
+        <div className="flex justify-center items-center size-full bg-gradient-to-b from-[#8A63A2] via-[#AE85CC] to-[#B99CCB]">
           {/* Header  */}
           <div className="flex justify-center items-center h-[499.84px] w-[573.83px] relative">
             <img
@@ -29,28 +31,43 @@ const Wines = () => {
         </div>
         {/* Navigation  */}
         <div className="flex justify-center items-center p-8 gap-[100px] size-full bg-[#8A63A2]">
-          <p className="size-20px font-[400] leading-[24.8px] text-white">
+          <a
+            href="/wines"
+            className="size-20px font-[400] leading-[24.8px] text-white"
+          >
             All Wines
-          </p>
-          <p className="size-20px font-[400] leading-[24.8px] text-white">
+          </a>
+          <a
+            href="/wines"
+            className="size-20px font-[400] leading-[24.8px] text-white"
+          >
             Red Wine
-          </p>
-          <p className="size-20px font-[400] leading-[24.8px] text-white">
+          </a>
+          <a
+            href="/wines"
+            className="size-20px font-[400] leading-[24.8px] text-white"
+          >
             White and Rose Wine
-          </p>
-          <p className="size-20px font-[400] leading-[24.8px] text-white">
+          </a>
+          <a
+            href="/wines"
+            className="size-20px font-[400] leading-[24.8px] text-white"
+          >
             Gifts
-          </p>
+          </a>
         </div>
       </div>
 
       {/* Products  */}
-
-      <div className="flex flex-col bg-gradient-to-b from-[#A583D1] via-[#724AA4] to-[#1E122E] p-20">
+      <div className="bg-gradient-to-b bg-[#EAEAEA] p-20">
         <div className="flex items-center justify-between size-full">
-          <p>Our Product</p>
-          <div>
-            Filter{" "}
+          <p className="text-[32px] font-[400] leading-[39.68px] text-[#8A63A2]">
+            Our Product
+          </p>
+          <div className="flex items-center justify-center gap-2">
+            <p className="text-[#908F8F] text-[24px] font-[400] leading-[29.76px]">
+              Filter
+            </p>
             <select
               name=""
               id=""
@@ -60,10 +77,11 @@ const Wines = () => {
             </select>
           </div>
         </div>
-        <div className="flex justify-between items-center p-10 m-5">
-          <div>
-            <img src={"/images/winebottle.png"} alt="" className="w-[160px]" />
-          </div>
+
+        <div className="flex justify-between flex-row items-center gap-10">
+          <Product />
+          <Product />
+          <Product />
         </div>
       </div>
     </>
