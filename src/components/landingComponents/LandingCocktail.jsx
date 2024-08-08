@@ -20,7 +20,7 @@ function OneCocktail({ title, image, ingredients, size }) {
                 size === "small" ? "md:grid-cols-[1fr]" : ""
               }`}
             >
-              {ingredients.map((item, index) => {
+              {ingredients?.map((item, index) => {
                 return (
                   <div
                     key={index}

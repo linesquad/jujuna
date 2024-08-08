@@ -24,7 +24,7 @@ function CocktailCard({ item }) {
             darkMode ? "text-color-primary" : "text-color-black"
           } text-[12px] md:text-[14px]`}
         >
-          {name}
+          {name.ge}
         </p>
       </div>
       <div className="flex justify-between mt-[10px] md:mt-[18px]">
