@@ -105,7 +105,7 @@ const Wines = () => {
               darkMode ? "text-black" : "text-[#8A63A2]"
             }`}
           >
-            Our Product
+            {language === "ge" ? "ჩვენი პროდუქცია" : "Our Product"}
           </p>
           <div className="flex items-center justify-center gap-2">
             <p
@@ -113,7 +113,7 @@ const Wines = () => {
                 darkMode ? "text-[#000000]" : "text-[#908F8F]"
               } text-[24px] font-[400] leading-[29.76px]`}
             >
-              Filter
+              {language === "ge" ? "ფილტრი" : "Filter"}
             </p>
             <select
               name=""
@@ -124,7 +124,7 @@ const Wines = () => {
                 value=""
                 className="text-[20px] font-[400] leading-[24.8px]"
               >
-                Price
+                {language === "ge" ? "ფასი" : "Price"}
               </option>
             </select>
           </div>

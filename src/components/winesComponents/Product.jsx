@@ -74,7 +74,7 @@ function Product({ darkMode, wine, language }) {
             darkMode ? "text-white" : "text-[#613994]"
           }`}
         >
-          Add To Cart
+          {language === "ge" ? "კალათაში დამატება" : "Add To Cart"}
         </button>
       </div>
     </div>
