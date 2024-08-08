@@ -4,10 +4,13 @@ import Wrapper from "../components/Wrapper";
 import { getMode } from "../features/darkModeSlice";
 import useWines from "../hooks/useWines";
 import { useEffect, useState } from "react";
+import Header from "../components/winesComponents/Header";
+import WineNavigation from "../components/winesComponents/WineNavigation";
+import Spinner from "../components/Spinner";
 
 const Wines = () => {
   const darkMode = useSelector(getMode);
-  const { data } = useWines();
+  const { data, isLoading } = useWines();
 
   const [language, setLanguage] = useState(localStorage.getItem("lng") || "en");
 
@@ -23,6 +26,26 @@ const Wines = () => {
     return () => clearInterval(intervalId);
   }, [language]);
 
+  if (isLoading)
+    return (
+      <>
+        <div className="flex justify-center items-center flex-col">
+          <div
+            className={`flex justify-center items-center size-full ${
+              darkMode
+                ? "bg-gradient-to-b from-[#A583D1] via-[#724AA4] to-[#1E122E]"
+                : "bg-gradient-to-b from-[#8A63A2] via-[#AE85CC] to-[#B99CCB]"
+            }`}
+          >
+            {/* Header  */}
+            <Header />
+          </div>
+        </div>
+        <WineNavigation language={language} />
+        <Spinner />;
+      </>
+    );
+
   return (
     <Wrapper>
       <div className="flex justify-center items-center flex-col">
@@ -34,64 +57,15 @@ const Wines = () => {
           }`}
         >
           {/* Header  */}
-          <div className="flex justify-center items-center md:h-[499.84px] md:w-[573.83px] relative">
-            <img
-              src={"/images/splash.png"}
-              alt=""
-              className="w-[350px]  md:w-[765px] md:h-[920.77px] -rotate-[66deg]"
-            />
-            <img
-              src={"/images/winebottle.png"}
-              alt=""
-              className="absolute w-[200px] left-[100px] top-[100px] md:w-[300.22px] md:left-[170px] md:top-[100px]"
-            />
-            <img
-              src={"/images/winebottle.png"}
-              alt=""
-              className="absolute w-[200px] left-[30px] md:w-[300.22px] md:left-[50px]"
-            />
-            <img
-              src={"/images/winebottle.png"}
-              alt=""
-              className="absolute w-[200px] left-[170px] md:w-[300.22px] md:left-[280px]"
-            />
-          </div>
+          <Header />
         </div>
-        {/* Navigation  */}
       </div>
 
-      <div className="flex justify-center items-center p-2 gap-[20px] md:p-8 md:gap-[100px] size-full bg-[#8A63A2]">
-        <a
-          href="/wines"
-          className="size-20px font-[400] leading-[24.8px] text-white"
-        >
-          {language === "ge" ? "ყველა ღვინო" : "All Wines"}
-        </a>
+      {/* Navigation  */}
 
-        <a
-          href="/wines"
-          className="size-20px font-[400] leading-[24.8px] text-white"
-        >
-          {language === "ge" ? "თეთრი და ვარდის ღვინო" : "White and Rose Wine"}
-        </a>
-
-        <a
-          href="/wines"
-          className="size-20px font-[400] leading-[24.8px] text-white "
-        >
-          {language === "ge" ? "წითელი ღვინო" : "Red Wine"}
-        </a>
-
-        <a
-          href="/wines"
-          className="size-20px font-[400] leading-[24.8px] text-white"
-        >
-          {language === "ge" ? "საჩუქრები" : "Gifts"}
-        </a>
-      </div>
+      <WineNavigation language={language} />
 
       {/* Products  */}
-
       <div
         className={`bg-gradient-to-b ${
           darkMode
