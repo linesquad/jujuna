@@ -83,20 +83,29 @@ const Wines = () => {
             Our Product
           </p>
           <div className="flex items-center justify-center gap-2">
-            <p className="text-[#908F8F] text-[24px] font-[400] leading-[29.76px]">
+            <p
+              className={`${
+                darkMode ? "text-[#000000]" : "text-[#908F8F]"
+              } text-[24px] font-[400] leading-[29.76px]`}
+            >
               Filter
             </p>
             <select
               name=""
               id=""
-              className="w-[140px] h-[30px] border border-color-black  rounded-sm p-1"
+              className="w-[140px] h-[30px] border border-black bg-transparent rounded-sm p-1"
             >
-              <option value="">Price</option>
+              <option
+                value=""
+                className="text-[20px] font-[400] leading-[24.8px]"
+              >
+                Price
+              </option>
             </select>
           </div>
         </div>
 
-        <div className="flex justify-between flex-col md:flex-row items-center gap-10">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
           <Product darkMode={darkMode} />
           <Product darkMode={darkMode} />
           <Product darkMode={darkMode} />
