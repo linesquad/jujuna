@@ -8,8 +8,8 @@
     width: 60px;
     aspect-ratio: 1;
     border-radius: 50%;
-    border: 8px solid theme("colors.primary.DEFAULT");
-    border-right-color: theme("colors.secondary.DEFAULT");
+    border: 8px solid theme("colors.backgroundColor.purpleMid");
+    border-right-color: theme("colors.backgroundColor.backgroundCol");
     animation: rotate 1s infinite linear;
   }
 
@@ -18,7 +18,7 @@
     width: 20px;
     aspect-ratio: 1;
     border-radius: 50%;
-    border: 2px solid theme("colors.primary.DEFAULT");
+    border: 2px solid theme("colors.backgroundColor.purpleMid");
     border-right-color: transparent;
     animation: rotate 1s infinite linear;
   }
