@@ -1,56 +1,91 @@
+import { useSelector } from "react-redux";
+import Product from "../components/winesComponents/product";
+import Wrapper from "../components/Wrapper";
+import { getMode } from "../features/darkModeSlice";
+
 const Wines = () => {
+  const darkMode = useSelector(getMode);
+  console.log(darkMode);
+
   return (
-    <>
+    <Wrapper>
       <div className="flex justify-center items-center flex-col">
-        <div className="flex justify-center items-center size-full bg-gradient-to-b from-[#A583D1] via-[#724AA4] to-[#1E122E]">
+        <div
+          className={`flex justify-center items-center size-full ${
+            darkMode
+              ? "bg-gradient-to-b from-[#A583D1] via-[#724AA4] to-[#1E122E]"
+              : "bg-gradient-to-b from-[#8A63A2] via-[#AE85CC] to-[#B99CCB]"
+          }`}
+        >
           {/* Header  */}
-          <div className="flex justify-center items-center h-[499.84px] w-[573.83px] relative">
+          <div className="flex justify-center items-center md:h-[499.84px] md:w-[573.83px] relative">
             <img
               src={"/images/splash.png"}
               alt=""
-              className="w-[765px] h-[920.77] -rotate-[66deg]"
+              className="w-[350px]  md:w-[765px] md:h-[920.77px] -rotate-[66deg]"
             />
             <img
               src={"/images/winebottle.png"}
               alt=""
-              className="absolute w-[300.22px] left-[170px] top-[100px]"
+              className="absolute w-[200px] left-[100px] top-[100px] md:w-[300.22px] md:left-[170px] md:top-[100px]"
             />
             <img
               src={"/images/winebottle.png"}
               alt=""
-              className="absolute w-[300.22px] left-[50px]"
+              className="absolute w-[200px] left-[30px] md:w-[300.22px] md:left-[50px]"
             />
             <img
               src={"/images/winebottle.png"}
               alt=""
-              className="absolute w-[300.22px] left-[280px]"
+              className="absolute w-[200px] left-[170px] md:w-[300.22px] md:left-[280px]"
             />
           </div>
         </div>
         {/* Navigation  */}
-        <div className="flex justify-center items-center p-8 gap-[100px] size-full bg-[#8A63A2]">
-          <p className="size-20px font-[400] leading-[24.8px] text-white">
+        <div className="flex justify-center items-center p-2 gap-[20px] md:p-8 md:gap-[100px] size-full bg-[#8A63A2]">
+          <a
+            href="/wines"
+            className="size-20px font-[400] leading-[24.8px] text-white"
+          >
             All Wines
-          </p>
-          <p className="size-20px font-[400] leading-[24.8px] text-white">
+          </a>
+          <a
+            href="/wines"
+            className="size-20px font-[400] leading-[24.8px] text-white"
+          >
             Red Wine
-          </p>
-          <p className="size-20px font-[400] leading-[24.8px] text-white">
+          </a>
+          <a
+            href="/wines"
+            className="size-20px font-[400] leading-[24.8px] text-white"
+          >
             White and Rose Wine
-          </p>
-          <p className="size-20px font-[400] leading-[24.8px] text-white">
+          </a>
+          <a
+            href="/wines"
+            className="size-20px font-[400] leading-[24.8px] text-white"
+          >
             Gifts
-          </p>
+          </a>
         </div>
       </div>
 
       {/* Products  */}
-
-      <div className="flex flex-col bg-gradient-to-b from-[#A583D1] via-[#724AA4] to-[#1E122E] p-20">
-        <div className="flex items-center justify-between size-full">
-          <p>Our Product</p>
-          <div>
-            Filter{" "}
+      <div
+        className={`bg-gradient-to-b ${
+          darkMode
+            ? "bg-gradient-to-b from-[#A583D1] via-[#724AA4] to-[#1E122E]"
+            : "bg-[#EAEAEA]"
+        } p-20`}
+      >
+        <div className="flex items-center flex-col gap-5 md:justify-between md:flex-row md:size-full">
+          <p className="text-[32px] font-[400] leading-[39.68px] text-[#8A63A2]">
+            Our Product
+          </p>
+          <div className="flex items-center justify-center gap-2">
+            <p className="text-[#908F8F] text-[24px] font-[400] leading-[29.76px]">
+              Filter
+            </p>
             <select
               name=""
               id=""
@@ -60,13 +95,14 @@ const Wines = () => {
             </select>
           </div>
         </div>
-        <div className="flex justify-between items-center p-10 m-5">
-          <div>
-            <img src={"/images/winebottle.png"} alt="" className="w-[160px]" />
-          </div>
+
+        <div className="flex justify-between flex-col md:flex-row items-center gap-10">
+          <Product darkMode={darkMode} />
+          <Product darkMode={darkMode} />
+          <Product darkMode={darkMode} />
         </div>
       </div>
-    </>
+    </Wrapper>
   );
 };
 
