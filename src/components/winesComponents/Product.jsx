@@ -12,7 +12,7 @@ function Product({ darkMode, wine, language }) {
 
   return (
     <div className="relative flex flex-col justify-center mt-10">
-      <div className="relative flex justify-center items-center flex-col border border-[#613994] w-[315px] p-5 rounded-md gap-2">
+      <div className="relative flex justify-center items-center flex-col border border-[#613994] min-w-[315px] p-5 rounded-md gap-2">
         {/* Heart Icon Button */}
         <div></div>
         <button
@@ -31,7 +31,7 @@ function Product({ darkMode, wine, language }) {
         </button>
 
         {/* Product card */}
-        <img src={"/images/winebottle.png"} alt="" className="w-[160px]" />
+        <img src={image} alt="" className="w-[160px] h-[235.38px]" />
         <p
           className={`text-[14px] font-[700] leading-[17.36px] ${
             darkMode ? "text-[#FFFFFF]" : "text-[#613994]"
