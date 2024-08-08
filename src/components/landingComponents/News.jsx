@@ -47,7 +47,7 @@ const News = () => {
           <SwiperSlide key={item.id}>
             <OneNews
               image={item.image}
-              description={item.description.split("").slice(0, 100).join("")}
+              description={item.description}
               title={item.title}
               bgColor={`${index % 2 === 0 ? "bg-gray-500" : "bg-black"}`}
               type={"primary"}

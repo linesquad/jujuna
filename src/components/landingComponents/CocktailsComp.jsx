@@ -33,9 +33,9 @@ function CocktailsComp() {
                   <SwiperSlide key={item.id}>
                     <div>
                       <OneCocktail
-                        title={item.name}
+                        title={item.name.ge}
                         image={item.image}
-                        ingredients={item.ingredients}
+                        ingredients={item.ingredients.ge}
                         size={index === 0 ? "big" : "small"}
                       />
                     </div>
@@ -49,9 +49,9 @@ function CocktailsComp() {
               return (
                 <OneCocktail
                   key={item.id}
-                  title={item.name}
+                  title={item.name.ge}
                   image={item.image}
-                  ingredients={item.ingredients}
+                  ingredients={item.ingredients.ge}
                   size={index === 0 ? "big" : "small"}
                 />
               );
