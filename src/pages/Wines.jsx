@@ -130,7 +130,7 @@ const Wines = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-12 xl:grid-cols-3">
           {data?.map((wine) => (
             <Product
               key={wine.id}

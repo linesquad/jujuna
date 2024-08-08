@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Product({ darkMode, wine, language }) {
-  const { name, image, brand, price } = wine;
+  const { name, image, brand, price, id } = wine;
 
   const [isFavorited, setIsFavorited] = useState(false);
 
@@ -22,7 +23,7 @@ function Product({ darkMode, wine, language }) {
           } w-[40px] h-[40px]`}
         >
           <img
-            src={image}
+            src={"/images/wineheart.png"}
             alt={name.en}
             className={`${
               isFavorited ? "text-red-500" : "text-gray-300"
@@ -31,7 +32,13 @@ function Product({ darkMode, wine, language }) {
         </button>
 
         {/* Product card */}
-        <img src={image} alt="" className="w-[160px] h-[235.38px]" />
+        <Link to={`/wines/${id}`}>
+          <img
+            src={image}
+            alt=""
+            className="w-[160px] h-[235.38px] cursor-pointer"
+          />
+        </Link>
         <p
           className={`text-[14px] font-[700] leading-[17.36px] ${
             darkMode ? "text-[#FFFFFF]" : "text-[#613994]"
@@ -61,7 +68,7 @@ function Product({ darkMode, wine, language }) {
 
       {/* Quantity/Add to cart  */}
 
-      <div className="flex items-center flex-row gap-2 mt-5 pl-5">
+      <div className="flex items-center justify-center flex-row gap-2 mt-5">
         <button
           className={`border w-[62px] h-[64px] border-[#613994] ${
             darkMode ? "text-black" : "text-[#613994]"
