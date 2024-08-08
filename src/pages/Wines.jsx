@@ -2,10 +2,26 @@ import { useSelector } from "react-redux";
 import Product from "../components/winesComponents/product";
 import Wrapper from "../components/Wrapper";
 import { getMode } from "../features/darkModeSlice";
+import useWines from "../hooks/useWines";
+import { useEffect, useState } from "react";
 
 const Wines = () => {
   const darkMode = useSelector(getMode);
-  console.log(darkMode);
+  const { data } = useWines();
+
+  const [language, setLanguage] = useState(localStorage.getItem("lng") || "en");
+
+  // Update state when language changes
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const storedLang = localStorage.getItem("lng");
+      if (storedLang !== language) {
+        setLanguage(storedLang);
+      }
+    }, 100);
+
+    return () => clearInterval(intervalId);
+  }, [language]);
 
   return (
     <Wrapper>
@@ -42,35 +58,40 @@ const Wines = () => {
           </div>
         </div>
         {/* Navigation  */}
-        <div className="flex justify-center items-center p-2 gap-[20px] md:p-8 md:gap-[100px] size-full bg-[#8A63A2]">
-          <a
-            href="/wines"
-            className="size-20px font-[400] leading-[24.8px] text-white"
-          >
-            All Wines
-          </a>
-          <a
-            href="/wines"
-            className="size-20px font-[400] leading-[24.8px] text-white"
-          >
-            Red Wine
-          </a>
-          <a
-            href="/wines"
-            className="size-20px font-[400] leading-[24.8px] text-white"
-          >
-            White and Rose Wine
-          </a>
-          <a
-            href="/wines"
-            className="size-20px font-[400] leading-[24.8px] text-white"
-          >
-            Gifts
-          </a>
-        </div>
+      </div>
+
+      <div className="flex justify-center items-center p-2 gap-[20px] md:p-8 md:gap-[100px] size-full bg-[#8A63A2]">
+        <a
+          href="/wines"
+          className="size-20px font-[400] leading-[24.8px] text-white"
+        >
+          {language === "ge" ? "ყველა ღვინო" : "All Wines"}
+        </a>
+
+        <a
+          href="/wines"
+          className="size-20px font-[400] leading-[24.8px] text-white"
+        >
+          {language === "ge" ? "თეთრი და ვარდის ღვინო" : "White and Rose Wine"}
+        </a>
+
+        <a
+          href="/wines"
+          className="size-20px font-[400] leading-[24.8px] text-white "
+        >
+          {language === "ge" ? "წითელი ღვინო" : "Red Wine"}
+        </a>
+
+        <a
+          href="/wines"
+          className="size-20px font-[400] leading-[24.8px] text-white"
+        >
+          {language === "ge" ? "საჩუქრები" : "Gifts"}
+        </a>
       </div>
 
       {/* Products  */}
+
       <div
         className={`bg-gradient-to-b ${
           darkMode
@@ -79,7 +100,11 @@ const Wines = () => {
         } p-20`}
       >
         <div className="flex items-center flex-col gap-5 md:justify-between md:flex-row md:size-full">
-          <p className="text-[32px] font-[400] leading-[39.68px] text-[#8A63A2]">
+          <p
+            className={`text-[32px] font-[400] leading-[39.68px] ${
+              darkMode ? "text-black" : "text-[#8A63A2]"
+            }`}
+          >
             Our Product
           </p>
           <div className="flex items-center justify-center gap-2">
@@ -106,9 +131,14 @@ const Wines = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
-          <Product darkMode={darkMode} />
-          <Product darkMode={darkMode} />
-          <Product darkMode={darkMode} />
+          {data?.map((wine) => (
+            <Product
+              key={wine.id}
+              darkMode={darkMode}
+              wine={wine}
+              language={language}
+            />
+          ))}
         </div>
       </div>
     </Wrapper>
