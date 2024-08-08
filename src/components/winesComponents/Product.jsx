@@ -1,10 +1,14 @@
-function Product() {
+function Product({ darkMode }) {
   return (
     <>
       <div className="flex  flex-col justify-center mt-10">
         <div className="flex justify-center items-center flex-col border border-[#613994] w-[315px] p-5 rounded-md gap-2">
           <img src={"/images/winebottle.png"} alt="" className="w-[160px]" />
-          <p className="text-[#613994] text-[14px] font-[700] leading-[17.36px]">
+          <p
+            className={`text-[14px] font-[700] leading-[17.36px] ${
+              darkMode ? "text-[#FFFFFF]" : "text-[#613994]"
+            }`}
+          >
             Jujuna
           </p>
           <p className="text-[14px] font-[400] leading-[17.36px]">
@@ -46,10 +50,18 @@ function Product() {
         {/* Quanity/Add to cart  */}
 
         <div className="flex items-center flex-row gap-2 mt-5 pl-5">
-          <button className="border w-[62px] h-[64px] border-[#613994]">
+          <button
+            className={`border w-[62px] h-[64px] border-[#613994] ${
+              darkMode ? "text-black" : "text-[#613994]"
+            }`}
+          >
             1
           </button>
-          <button className="border w-[197px] h-[64px] border-[#613994]">
+          <button
+            className={`border w-[197px] h-[64px] border-[#613994]" ${
+              darkMode ? "text-white" : "text-[#613994]"
+            }`}
+          >
             Add To Cart
           </button>
         </div>
