@@ -1,5 +1,3 @@
-import Header from "../ui/Header";
-import Footer from "../ui/Footer";
 import BackgroundGrapes from "../../public/images/bg-grapes.svg";
 import Contact from "../../public/images/contact.svg";
 import Grape from "../../public/images/grape-animation.png";
@@ -14,7 +12,7 @@ const PageNotFound = () => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col ${
+      className={` h-screen flex flex-col ${
         mode
           ? "bg-dark-backgroundCol text-dark-black"
           : "bg-[linear-gradient(249deg,_#A583D1_22.95%,_#724AA4_46.44%,_#1E122E_93.06%)] text-[#fff]"
@@ -28,7 +26,6 @@ const PageNotFound = () => {
       //   // backgroundPosition: "center",
       // }}
     >
-      <Header />
       <div
         className="flex-grow flex flex-col md:flex-row-reverse justify-center items-center text-center md:text-left p-4 md:justify-around"
         style={{
@@ -73,7 +70,6 @@ const PageNotFound = () => {
         alt="contact"
         className="w-16 h-16 absolute bottom-1/4 right-10  md:top-2/4 md:right-20 cursor-pointer"
       />
-      <Footer />
     </div>
   );
 };
