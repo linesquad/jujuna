@@ -6,9 +6,9 @@ function CocktailsSidebar() {
   const darkMode = useSelector(getMode);
   return (
     <div
-      className={`w-[305px] h-[764px] ${
-        darkMode ? "bg-[#55426E]" : "bg-[#fff]/30"
-      }  rounded-[15px] hidden md:block pt-[50px] pr-[25px] pl-[19px]`}
+      className={`w-[250px] lg:w-[305px] h-full ${
+        darkMode ? "bg-[#55426E]/30" : "bg-[#fff]/30"
+      }  rounded-[15px]  pt-[50px] pr-[25px] pl-[19px] z-10`}
     >
       <div className="flex flex-col gap-[35px]">
         <div className="flex justify-between items-center">

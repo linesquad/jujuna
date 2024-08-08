@@ -8,7 +8,7 @@ function CocktailCard({ item }) {
   const darkMode = useSelector(getMode);
   return (
     <div
-      className={`w-full max-w-[180px] md:w-[200px] md:max-w-[200px] lg:max-w-[220px] lg:w-[220px] xl:max-w-[260px] xl:w-[260px] m-auto  bg-[#fff]/30 flex flex-col pt-[6px] pr-[12px] pb-[33px] pl-[3px] md:pb-[50px] md:px-[10px] lg:pb-[70px] rounded-[11px]`}
+      className={`w-full max-w-[180px] md:w-[200px] md:max-w-[200px] lg:max-w-[220px] lg:w-[220px] xl:max-w-[260px] xl:w-[260px] m-auto  bg-[#fff]/30 flex flex-col pt-[6px] pr-[12px] pb-[33px] pl-[3px] md:pb-[50px] md:px-[10px] lg:pb-[70px] rounded-[11px] cursor-pointer`}
     >
       <div className="w-[18px] h-[18px] md:w-[30px] md:h-[30px] rounded-[50%] bg-[#613994] flex justify-center items-center self-end ">
         <img src={heart} alt="heart" className="md:w-[14px] md:h-[14px]" />
