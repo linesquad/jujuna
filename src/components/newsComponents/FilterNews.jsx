@@ -12,7 +12,7 @@ const FilterNews = () => {
     setCategoryVisible((prevState) => !prevState);
   };
   return (
-    <div className="bg-[#EAEAEA] w-full">
+    <div className="w-full">
       <BlogWrapper>
         <div className="pb-4 md:hidden">
           <div className="flex justify-between items-center px-3">

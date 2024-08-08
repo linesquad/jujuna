@@ -1,32 +1,70 @@
 import BlogWrapper from "./BlogWrapper";
 import useBlogs from "../../hooks/useBlogs";
+import { useSelector } from "react-redux";
+import { getMode } from "../../features/darkModeSlice";
 
 const BlogDisplay = () => {
   const { data: allBlogs = [] } = useBlogs();
-  console.log(allBlogs);
+
+  const mode = useSelector(getMode);
 
   return (
-    <div className="bg-[#EAEAEA] w-full">
+    <div className="w-full">
       <BlogWrapper>
-        {allBlogs.map((item) => (
-          <div key={item.id}>
-            <div className="tiny:p-2 tiny:text-center">
-              <img src={item.image} />
-              <h1 className="text-[#8A63A2] pt-4">Latest news</h1>
-              <h1 className={`text-black font-bold pt-2 tiny:px-4 tiny:py-1`}>
-                {item.title.split("").length > 30
-                  ? item.title.split("").slice(0, 30).join("") + "..."
-                  : item.title}
-              </h1>
-              <p>
-                {item.description.split("").length > 170
-                  ? item.description.split("").slice(0, 170).join("") + "..."
-                  : item.description}
-              </p>
-              <button>Read more</button>
+        <div className="flex flex-wrap justify-center gap-4 lg:w-full lg:flex-nowrap lg:justify-between lg:flex-col">
+          {allBlogs.map((item, index) => (
+            <div
+              key={item.id}
+              className={`p-4 lg:p-0 w-full flex flex-col items-center text-center flex-wrap lg:flex-row lg:justify-between lg:pb-32
+                ${
+                  index % 2 !== 0
+                    ? "lg:flex-row-reverse lg:text-start lg:pl-20"
+                    : "lg:text-start "
+                }`}
+            >
+              <div className="w-full sm:w-[490px] lg:w-[400px]">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-auto lg:w-[700px]"
+                />
+              </div>
+              <div className="max-w-[490px] lg:w-full ">
+                <h1
+                  className={`${
+                    mode ? "text-[#c993eb]" : "text-[#8A63A2]"
+                  } pt-4 text-lg font-semibold`}
+                >
+                  Latest news
+                </h1>
+                <h2 className="text-black font-bold pt-4 text-xl">
+                  {item.title.length > 30
+                    ? item.title.slice(0, 30) + "..."
+                    : item.title}
+                </h2>
+                <p
+                  className={`pt-2 ${
+                    mode ? "text-white" : "text-black"
+                  } text-base`}
+                >
+                  {item.description.length > 170
+                    ? item.description.slice(0, 170) + "..."
+                    : item.description}
+                </p>
+                <button
+                  className={`mt-4  text-[#613994] px-6 py-3 text-[20px] border-2 border-[#613994] shadow-[4px_4px_10px_rgba(0,0,0,0.2)] rounded-lg
+                    ${
+                      mode
+                        ? "bg-[#613994] text-white"
+                        : "bg-white text-[#613994]"
+                    }`}
+                >
+                  Read more
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </BlogWrapper>
     </div>
   );
