@@ -5,7 +5,6 @@ import CocktailsPegination from "./CocktailsPegination";
 
 function DisplayCocktails() {
   const { data: cocktails } = useCocktails();
-  console.log(cocktails);
   return (
     <Wrapper>
       <div className="grid gap-[16px] grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr] m-auto">
