@@ -28,14 +28,14 @@ const BlogDisplayItems = ({ item, index }) => {
           Latest news
         </h1>
         <h2 className="text-black font-bold pt-4 text-xl">
-          {item.title.length > 30
-            ? item.title.slice(0, 30) + "..."
-            : item.title}
+          {item.title.ge.length > 30
+            ? item.title.ge.slice(0, 30) + "..."
+            : item.title.ge}
         </h2>
         <p className={`pt-2 ${mode ? "text-white" : "text-black"} text-base`}>
-          {item.description.length > 170
-            ? item.description.slice(0, 170) + "..."
-            : item.description}
+          {item.description.ge.length > 170
+            ? item.description.ge.slice(0, 170) + "..."
+            : item.description.ge}
         </p>
         <button
           className={`mt-4  text-[#613994] px-6 py-3 text-[20px] border-2 border-[#613994] shadow-[4px_4px_10px_rgba(0,0,0,0.2)] rounded-lg
