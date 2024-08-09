@@ -6,9 +6,11 @@ import { FreeMode, Pagination } from "swiper/modules";
 import Wrapper from "../Wrapper";
 import { useLatestBlogs } from "../../hooks/useLatestItems";
 import OneNews from "./LandingBlog";
+import { useTranslation } from "react-i18next";
 
 const News = () => {
   const { data: blogNews, isLoading, error } = useLatestBlogs();
+  const { i18n } = useTranslation();
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading blogs: {error.message}</p>;
@@ -17,7 +19,7 @@ const News = () => {
   return (
     <Wrapper>
       <h2 className="text-white text-[40px] ml-[27px] mb-[5px] font-tommaso md:ml-[0px] md:text-[50px] lg:text-[64px]">
-        სიახლეები
+        {i18n.language === "en" ? "News" : "სიახლეები"}
       </h2>
       <Swiper
         className="w-full h-[650px]"

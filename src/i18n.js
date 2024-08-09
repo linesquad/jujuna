@@ -44,6 +44,55 @@ i18n
               "გვერდი, რომელსაც ეძებთ ვერ მოიძებნა. გთხოვთ შეამოწმოთ URL ან დაბრუნდეთ მთავარ გვერდზე.",
             buttonText: "მთავარ გვერდზე დაბრუნება",
           },
+          home: {
+            hero: {
+              title: "ჟუჟუნა",
+              heading: "ღვინო არც ისე წყნარი და არც ბოლომდე ცქრიალაა",
+              description:
+                "მას ადრეულ რთველზე მიღებული რქაწითელითა და მწვანეთი ვამზადებთ, ამიტომაც სახასიათო სიმჟავე აქვს. მეორადი დუღილისგან კი ბუნებრივ მსუბუქ გაზს იძენს.",
+            },
+            aboutUs: {
+              title: "ჩვენ შესახებ",
+              paragraph1:
+                "ჟუჟუნა ძალიან მშრალი და მომჟავო ღვინო 2017 წელს შეიქმნა.",
+              paragraph2:
+                "ბევრი ფიქრისა და ღვინის მრავალწლიანი სიყვარულის შემდეგ, კომპანია, ჩვენივე სახსრებით, 6-მა მეგობარმა დავაარსეთ. ჩვენი მთავარი მიზანი, დალევის კულტურის განსხვავებული გამოცდილების შექმნა და აქამდე არარსებული თანამდეროვე ღვინის თანამედროვე კულტურაში პოპულარიზაცია იყო.",
+              paragraph3:
+                "ჩამოსასხმელი ჟუჟუნა საქართველოს უამრავ კაფე-ბარს მალევე დაუმეგობრდა და 2020 წელს ბოთლის ფორმითაც შეავსო მაღაზიათა ქსელი, რაც ასეთ მოკლე დროში, ჩვენთვის, მნიშვნელოვანი სიახლეა",
+              paragraph4:
+                "ჟუჟუს ისტორია საქართველოს ფარგლებსაც სცდება და ჩინეთსა და იაპონიაში ექსპორტით გააქვს თბილისური დალევის კულტურა.",
+            },
+            bottle: {
+              title: "ბოთლი",
+              heading: "ჟუჟუნას ბოთლი",
+              paragraph:
+                "ჟუჟუს ბოთლი 250 მლ-იანია, რადგან სწორედ ეს პორცია ინარჩუნებს მისართმევად საუკეთესო ტემპერატურასა და გაზს.",
+              volume: "მოცულობა",
+              volumeQuantity: "250 მლ",
+              alcohol: "ალკოჰოლი",
+              alcoholQuantity: "11%",
+              naturalWay: "ბუნებრივი გზა",
+              naturalWayQuantity: "2.5 ბარი",
+              price: "4.5₾",
+            },
+            mobileBar: {
+              title: "მობილური ბარი",
+              heading: "გავჩნდებით ყველგან, სადაც ისურვებ",
+              paragraph:
+                "ჟუჟუნას ბარი მოგაგნებს ყველგან, სადაც იქნები. თან მოიყვანს ბარმენს,  ქორფა ჟუჟუნას მაცივარს დააა შენი სტუმრების ჩაჟუჟუნებაზე უუამრავი კოქტეილით იზრუნებს.",
+              moreBtn: "გაიგე მეტი",
+            },
+          },
+          footer: {
+            number: "ტელეფონი",
+            numberValue: "+995579760006",
+            email: "ელ.ფოსტა",
+            emailValue: "Hello@jujuna.ge",
+            adress: "მისამართი",
+            adressValue: "ნინოშვილი #8 თბილისი,საქართველო",
+            personalPol: "პერსონალური მონაცემების დაცვის პოლიტიკა",
+            security: "უსაფრთხოების ცენტრი",
+          },
         },
       },
       en: {
@@ -80,6 +129,55 @@ i18n
             message:
               "The page you’re looking for can’t be found. Please check the URL or go back to the homepage.",
             buttonText: "Back To Home",
+          },
+          home: {
+            hero: {
+              title: "Zhuzhuna",
+              heading: "The wine is neither still nor fully sparkling",
+              description:
+                "We prepare it with Rkatsiteli and green grapes obtained in the early harvest, that's why it has a characteristic acidity. Natural light gas is obtained from secondary fermentation.",
+            },
+            aboutUs: {
+              title: "About us",
+              paragraph1:
+                "Zhuzhuna very dry and sour wine was created in 2017.",
+              paragraph2:
+                "After much thought and many years of love for wine, 6 friends founded the company with our own funds. Our main goal was to create a different experience of drinking culture and to popularize previously non-existent contemporary wine in modern culture.",
+              paragraph3:
+                "Bottling Zhuzhuna soon became friends with many cafes and bars in Georgia, and in 2020 it also filled the chain of stores in the form of a bottle, which is an important news for us in such a short period of time.",
+              paragraph4:
+                "The history of Zhuzhu goes beyond the borders of Georgia and exports the Tbilisi drinking culture to China and Japan.",
+            },
+            bottle: {
+              title: "Bottle",
+              heading: "Zhuzhuna bottle",
+              paragraph:
+                "The Zhuzhu bottle is 250 ml, because this portion maintains the best temperature and gas for consumption.",
+              volume: "Volume",
+              volumeQuantity: "250 ml",
+              alcohol: "Alcohol",
+              alcoholQuantity: "11%",
+              naturalWay: "The natural way",
+              naturalWayQuantity: "2.5 ???",
+              price: "GEL 4.5",
+            },
+            mobileBar: {
+              title: "Mobile Bar",
+              heading: "We will appear wherever you want",
+              paragraph:
+                "Zhuzhuna bar will find you wherever you are. He will bring a barman, a refrigerator of Korfa Zhuzhuna, and will take care of your guests' excitement with countless cocktails.",
+              moreBtn: "Learn more",
+            },
+          },
+          footer: {
+            number: "mobile number",
+            numberValue: "+995579760006",
+            email: "e-mail",
+            emailValue: "Hello@jujuna.ge",
+            adress: "adress",
+            adressValue: "#8 Ninoshvili street, Georgia",
+            personalPol: "Personal data protection policy",
+            security: "Security Center",
           },
         },
       },

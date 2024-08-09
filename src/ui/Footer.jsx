@@ -4,8 +4,11 @@ import linkedin from "/images/linkedin.svg";
 import Wrapper from "../components/Wrapper";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="w-full bg-[#000] ">
       <Wrapper>
@@ -16,12 +19,12 @@ const Footer = () => {
                 <Logo />
               </div>
               <div className="flex flex-col gap-[12px] text-color-primary text-[12px] lg:text-[16px]">
-                <p>ტელეფონი</p>
+                <p>{t("footer.number")}</p>
                 <p>+995579760006</p>
-                <p>ელ.ფოსტა</p>
+                <p>{t("footer.email")}</p>
                 <p>Hello@jujuna.ge</p>
-                <p>მისამართი</p>
-                <p>ნინოშვილი #8 თბილისი,საქართველო</p>
+                <p>{t("footer.adress")}</p>
+                <p>{t("footer.adressValue")}</p>
               </div>
             </div>
 
@@ -51,16 +54,14 @@ const Footer = () => {
               </div>
 
               <div className="hidden text-[10px] lg:text-[14px] text-[#908F8F] md:flex md:gap-[49px]">
-                <p className="whitespace-nowrap">
-                  პერსონალური მონაცემების დაცვის პოლიტიკა
-                </p>
-                <p className="whitespace-nowrap">უსაფრთხოების ცენტრი</p>
+                <p className="whitespace-nowrap">{t("footer.personalPol")}</p>
+                <p className="whitespace-nowrap">{t("footer.security")}</p>
               </div>
             </div>
           </div>
           <div className="text-[10px] text-[#908F8F] mt-[32px] flex flex-col gap-3 md:flex-row justify-between md:hidden">
-            <p>პერსონალური მონაცემების დაცვის პოლიტიკა</p>
-            <p>უსაფრთხოების ცენტრი</p>
+            <p>{t("footer.personalPol")}</p>
+            <p>{t("footer.security")}</p>
           </div>
         </div>
       </Wrapper>

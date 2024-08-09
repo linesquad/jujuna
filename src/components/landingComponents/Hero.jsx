@@ -4,17 +4,20 @@ import rotateBottle2 from "/images/rotateBottleMobile2.png";
 import rotateBottle3 from "/images/rotateBottleDesktop1.png";
 import rotateBottle4 from "/images/rotateBottleDesktop2.png";
 import HeroContent from "./HeroContent";
+import { useTranslation } from "react-i18next";
 
 function Hero() {
+  const { t } = useTranslation();
+
   return (
     <div className="w-full">
       <Wrapper>
         <div className=" relative">
           <div className="w-full h-[459px] lg:h-[650px]  pt-[30px] px-[23px] relative lg:pt-[77px] lg:px-[0px]">
             <HeroContent
-              title="ჟუჟუნა"
-              heading="ღვინო არც ისე წყნარი და არც ბოლომდე ცქრიალაა"
-              desktopDescription=" მას ადრეულ რთველზე მიღებული რქაწითელითა და მწვანეთი ვამზადებთ, ამიტომაც სახასიათო სიმჟავე აქვს. მეორადი დუღილისგან კი ბუნებრივ მსუბუქ გაზს იძენს."
+              title={t("home.hero.title")}
+              heading={t("home.hero.heading")}
+              desktopDescription={t("home.hero.description")}
             />
           </div>
 

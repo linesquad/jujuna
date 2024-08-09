@@ -8,15 +8,18 @@ import OneCocktail from "./LandingCocktail";
 import { useLatestCocktails } from "../../hooks/useLatestItems";
 import Wrapper from "../Wrapper";
 import { Pagination } from "swiper/modules";
+import { useTranslation } from "react-i18next";
 
 function CocktailsComp() {
   const { data: cocktails } = useLatestCocktails();
+  const { i18n } = useTranslation();
+
   return (
     <div className="bg-gray-500 md:py-[30px]">
       <Wrapper>
         <div>
           <h2 className="text-color-black text-[40px] ml-[27px] mb-[5px] font-tommaso md:ml-[0px] md:text-[50px] lg:text-[64px]">
-            კოქტეილი
+            {i18n.language === "en" ? "Cocktails" : "კოქტეილი"}
           </h2>
           <div className="md:hidden">
             <Swiper
@@ -33,9 +36,15 @@ function CocktailsComp() {
                   <SwiperSlide key={item.id}>
                     <div>
                       <OneCocktail
-                        title={item.name.ge}
+                        title={
+                          i18n.language === "en" ? item.name.en : item.name.ge
+                        }
                         image={item.image}
-                        ingredients={item.ingredients.ge}
+                        ingredients={
+                          i18n.language === "en"
+                            ? item.ingredients.en
+                            : item.ingredients.ge
+                        }
                         size={index === 0 ? "big" : "small"}
                       />
                     </div>
@@ -49,9 +58,13 @@ function CocktailsComp() {
               return (
                 <OneCocktail
                   key={item.id}
-                  title={item.name.ge}
+                  title={i18n.language === "en" ? item.name.en : item.name.ge}
                   image={item.image}
-                  ingredients={item.ingredients.ge}
+                  ingredients={
+                    i18n.language === "en"
+                      ? item.ingredients.en
+                      : item.ingredients.ge
+                  }
                   size={index === 0 ? "big" : "small"}
                 />
               );

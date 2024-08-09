@@ -53,7 +53,7 @@ const PageNotFound = () => {
             <img
               src={Contact}
               alt="contact"
-              className="w-16 h-16 absolute bottom-0 right-10  md:right-20 cursor-pointer"
+              className="w-16 h-16 absolute bottom-0 right-10  md:right-20 md:-bottom-1/3 cursor-pointer"
             />
           </div>
         </div>
