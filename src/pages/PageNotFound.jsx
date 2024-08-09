@@ -13,15 +13,15 @@ const PageNotFound = () => {
     <div
       className={`min-h-screen flex flex-col ${
         mode
-          ? "bg-dark-backgroundCol text-dark-black"
-          : "bg-[linear-gradient(249deg,_#A583D1_22.95%,_#724AA4_46.44%,_#1E122E_93.06%)] text-[#fff]"
+          ? "bg-[linear-gradient(249deg,_#A583D1_22.95%,_#724AA4_46.44%,_#1E122E_93.06%)] text-[#fff]"
+          : "bg-dark-backgroundCol text-dark-black"
       }`}
     >
       <Wrapper>
         <div className="flex">
           <div className="w-full h-full max-w-screen-xl mx-auto absolute inset-0 bg-no-repeat bg-top  bg-[url('/images/bg-leaves.png')] bg-cover"></div>
           <div className="w-full h-full max-w-screen-xl mx-auto absolute inset-0 bg-no-repeat bg-center bg-[url('/images/bg-grapes.svg')] bg-cover"></div>
-          <div className="z-10 flex-grow flex flex-col md:flex-row-reverse justify-center items-center text-center md:text-left p-4 md:justify-around relative h-screen">
+          <div className="relative flex-grow flex flex-col md:flex-row-reverse justify-center items-center text-center md:text-left p-4 md:justify-around md:items-start h-auto md:mt-10">
             <img
               src={Grape}
               alt="grape"
@@ -39,8 +39,8 @@ const PageNotFound = () => {
                 <button
                   className={`p-4 pl-8 pr-8 mt-6 mb-16 md:mb-4 rounded-lg shadow-[rgba(0,0,15,0.3)_8px_8px_16px_0px] ${
                     mode
-                      ? "text-buttonColor-secondary"
-                      : "bg-backgroundColor-purpleMid text-buttonColor"
+                      ? "bg-backgroundColor-purpleMid text-buttonColor-secondary"
+                      : "bg-backgroundColor-primary text-buttonColor"
                   }`}
                 >
                   <Link to="/">Back To Home</Link>
