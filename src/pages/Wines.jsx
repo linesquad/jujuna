@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import Product from "../components/winesComponents/product";
+// import Product from "../components/winesComponents/product";
 import Wrapper from "../components/Wrapper";
 import { getMode } from "../features/darkModeSlice";
 import useWines from "../hooks/useWines";
@@ -105,14 +105,14 @@ const Wines = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-12 xl:grid-cols-3">
-          {data?.map((wine) => (
+          {/* {data?.map((wine) => (
             <Product
               key={wine.id}
               darkMode={darkMode}
               wine={wine}
               language={language}
             />
-          ))}
+          ))} */}
         </div>
       </div>
     </Wrapper>
