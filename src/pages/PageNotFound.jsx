@@ -13,7 +13,7 @@ const PageNotFound = () => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col ${
+      className={` h-screen flex flex-col ${
         mode
           ? "bg-[linear-gradient(249deg,_#A583D1_22.95%,_#724AA4_46.44%,_#1E122E_93.06%)] text-[#fff]"
           : "bg-dark-backgroundCol text-dark-black"
