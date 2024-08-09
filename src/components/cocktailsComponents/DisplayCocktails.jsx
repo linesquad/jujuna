@@ -4,7 +4,7 @@ import Wrapper from "../Wrapper";
 import CocktailCard from "./CocktailCard";
 import CocktailsPegination from "./CocktailsPegination";
 import CocktailsSidebar from "./CocktailsSidebar";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { getMode } from "../../features/darkModeSlice";
 
 function DisplayCocktails({ isFillterOpen }) {
@@ -16,34 +16,36 @@ function DisplayCocktails({ isFillterOpen }) {
         {cocktails?.map((item) => {
           return <CocktailCard key={item.id} item={item} />;
         })}
-        {isFillterOpen && (
-          <motion.div
-            variants={{
-              open: {
-                x: "0%",
-                transition: {
-                  type: "spring",
-                  bounce: 0.09,
+        <AnimatePresence>
+          {isFillterOpen && (
+            <motion.div
+              variants={{
+                open: {
+                  x: "0%",
+                  transition: {
+                    type: "spring",
+                    bounce: 0.09,
+                  },
                 },
-              },
-              closed: {
-                x: "-100%",
-                transition: {
-                  type: "spring",
-                  bounce: 0.09,
+                closed: {
+                  x: "-100%",
+                  transition: {
+                    type: "spring",
+                    bounce: 0.09,
+                  },
                 },
-              },
-            }}
-            initial="closed"
-            animate="open"
-            exit="closed"
-            className={`absolute top-0 ${
-              darkMode ? "bg-[#000]" : "bg-[#fff]"
-            }  h-[300px] md:hidden rounded-md left-[10px]`}
-          >
-            <CocktailsSidebar />
-          </motion.div>
-        )}
+              }}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              className={`absolute top-0 ${
+                darkMode ? "bg-[#000]" : "bg-[#fff]"
+              }  h-[300px] md:hidden rounded-md`}
+            >
+              <CocktailsSidebar />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
       <CocktailsPegination />
     </Wrapper>

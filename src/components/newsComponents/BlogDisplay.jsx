@@ -1,9 +1,26 @@
 import BlogWrapper from "./BlogWrapper";
 import useBlogs from "../../hooks/useBlogs";
 import BlogDisplayItems from "./BlogDisplayItems";
+import Spinner from "../Spinner";
 
 const BlogDisplay = () => {
-  const { data: allBlogs = [] } = useBlogs();
+  const { data: allBlogs = [], isLoading, isError, error } = useBlogs();
+
+  if (isLoading) {
+    return (
+      <div className="pb-2">
+        <Spinner />;
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div>
+        <p>{error.message}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full">
