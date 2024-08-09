@@ -5,9 +5,11 @@ import Wrapper from "../components/Wrapper";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getMode } from "../features/darkModeSlice";
+import { useTranslation } from "react-i18next";
 
 const PageNotFound = () => {
   const mode = useSelector(getMode);
+  const { t } = useTranslation();
 
   return (
     <div
@@ -28,13 +30,14 @@ const PageNotFound = () => {
               className="w-48 h-48 md:w-80 md:h-80"
             />
             <div className="md:ml-8 flex flex-col items-center md:items-start md:max-w-80 md:mt-20">
-              <h1 className="text-3xl md:text-4xl mb-2">404 Error</h1>
-              <h1 className="text-3xl md:text-4xl mb-2">Ooops.....</h1>
-              <h2 className="text-2xl  mb-4">Page not found</h2>
-              <p className="max-w-80">
-                The page you&apos;re looking for can&apos;t be found. Please
-                check the URL or go back to the homepage.
-              </p>
+              <h1 className="text-3xl md:text-4xl mb-2">
+                {t("pageNotFound.title1")}
+              </h1>
+              <h1 className="text-3xl md:text-4xl mb-2">
+                {t("pageNotFound.title2")}
+              </h1>
+              <h2 className="text-2xl mb-4">{t("pageNotFound.subtitle")}</h2>
+              <p className="max-w-80">{t("pageNotFound.message")}</p>
               <div className="w-full flex justify-center md:justify-end">
                 <button
                   className={`p-4 pl-8 pr-8 mt-6 mb-16 md:mb-4 rounded-lg shadow-[rgba(0,0,15,0.3)_8px_8px_16px_0px] ${
@@ -43,7 +46,7 @@ const PageNotFound = () => {
                       : "bg-backgroundColor-primary text-buttonColor"
                   }`}
                 >
-                  <Link to="/">Back To Home</Link>
+                  <Link to="/">{t("pageNotFound.buttonText")}</Link>
                 </button>
               </div>
             </div>

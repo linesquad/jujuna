@@ -36,6 +36,14 @@ i18n
             error: "ვერ გაიგზავნა მესიჯი. გთხოვთ ცადოთ ხელახლა.",
             hardError: "ვერ ხერხდება მესიჯის გაგზავნა",
           },
+          pageNotFound: {
+            title1: "404 შეცდომა",
+            title2: "უუპს.....",
+            subtitle: "გვერდი ვერ მოიძებნა",
+            message:
+              "გვერდი, რომელსაც ეძებთ ვერ მოიძებნა. გთხოვთ შეამოწმოთ URL ან დაბრუნდეთ მთავარ გვერდზე.",
+            buttonText: "მთავარ გვერდზე დაბრუნება",
+          },
         },
       },
       en: {
@@ -64,6 +72,14 @@ i18n
             success: "Message sent successfully!",
             error: "Failed to send the message. Please try again.",
             hardError: "Form reference is null",
+          },
+          pageNotFound: {
+            title1: "404 Error",
+            title2: "Ooops.....",
+            subtitle: "Page not found",
+            message:
+              "The page you’re looking for can’t be found. Please check the URL or go back to the homepage.",
+            buttonText: "Back To Home",
           },
         },
       },
