@@ -1,16 +1,13 @@
-/* eslint-disable react/prop-types */
 function OneCocktail({ title, image, ingredients, size }) {
   return (
-    <div className={` ${size == "small" ? "col-start-1 col-end-3 " : ""} `}>
-      <div className="bg-[#000] pt-[30px] pr-[15px] pb-[30px]">
+    <div className={size === "big" ? "md:col-span-2" : "md:col-span-1"}>
+      <div className="bg-[#000] pt-[30px] pr-[15px] md:p-[30px] md:rounded-md">
         <div className="flex items-start mt-[26px] gap-[15px] lg:mt-[0px]">
           <div>
             <img
               src={image}
               alt="cocktail"
-              className={`w-[186px] h-[276px] ${
-                size !== "small" ? "col-start-1 col-end-3 " : ""
-              } `}
+              className={`w-[186px] h-[276px] xl:w-[301px] xl:h-[447px] `}
             />
           </div>
 
@@ -23,7 +20,7 @@ function OneCocktail({ title, image, ingredients, size }) {
                 size === "small" ? "md:grid-cols-[1fr]" : ""
               }`}
             >
-              {ingredients.map((item, index) => {
+              {ingredients?.map((item, index) => {
                 return (
                   <div
                     key={index}

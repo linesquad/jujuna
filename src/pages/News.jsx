@@ -1,154 +1,22 @@
+import { useSelector } from "react-redux";
+import BlogDisplay from "../components/newsComponents/BlogDisplay";
+import FilterNews from "../components/newsComponents/FilterNews";
+import HeroNews from "../components/newsComponents/HeroNews";
+import { getMode } from "../features/darkModeSlice";
+
 function News() {
+  const mode = useSelector(getMode);
   return (
-    <div>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum totam
-      voluptate perferendis ex doloribus commodi sunt illo aspernatur veniam
-      ducimus nihil a impedit autem deserunt perspiciatis tempora, doloremque
-      nulla debitis? Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Earum totam voluptate perferendis ex doloribus commodi sunt illo
-      aspernatur veniam ducimus nihil a impedit autem deserunt perspiciatis
-      tempora, doloremque nulla debitis? Lorem ipsum dolor sit amet, consectetur
-      adipisicing elit. Earum totam voluptate perferendis ex doloribus commodi
-      sunt illo aspernatur veniam ducimus nihil a impedit autem deserunt
-      perspiciatis tempora, doloremque nulla debitis? Lorem ipsum dolor sit
-      amet, consectetur adipisicing elit. Earum totam voluptate perferendis ex
-      doloribus commodi sunt illo aspernatur veniam ducimus nihil a impedit
-      autem deserunt perspiciatis tempora, doloremque nulla debitis? Lorem ipsum
-      dolor sit amet, consectetur adipisicing elit. Earum totam voluptate
-      perferendis ex doloribus commodi sunt illo aspernatur veniam ducimus nihil
-      a impedit autem deserunt perspiciatis tempora, doloremque nulla debitis?
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum totam
-      voluptate perferendis ex doloribus commodi sunt illo aspernatur veniam
-      ducimus nihil a impedit autem deserunt perspiciatis tempora, doloremque
-      nulla debitis? Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Earum totam voluptate perferendis ex doloribus commodi sunt illo
-      aspernatur veniam ducimus nihil a impedit autem deserunt perspiciatis
-      tempora, doloremque nulla debitis? Lorem ipsum dolor sit amet, consectetur
-      adipisicing elit. Earum totam voluptate perferendis ex doloribus commodi
-      sunt illo aspernatur veniam ducimus nihil a impedit autem deserunt
-      perspiciatis tempora, doloremque nulla debitis? Lorem ipsum dolor sit
-      amet, consectetur adipisicing elit. Earum totam voluptate perferendis ex
-      doloribus commodi sunt illo aspernatur veniam ducimus nihil a impedit
-      autem deserunt perspiciatis tempora, doloremque nulla debitis? Lorem ipsum
-      dolor sit amet, consectetur adipisicing elit. Earum totam voluptate
-      perferendis ex doloribus commodi sunt illo aspernatur veniam ducimus nihil
-      a impedit autem deserunt perspiciatis tempora, doloremque nulla debitis?
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum totam
-      voluptate perferendis ex doloribus commodi sunt illo aspernatur veniam
-      ducimus nihil a impedit autem deserunt perspiciatis tempora, doloremque
-      nulla debitis? Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Earum totam voluptate perferendis ex doloribus commodi sunt illo
-      aspernatur veniam ducimus nihil a impedit autem deserunt perspiciatis
-      tempora, doloremque nulla debitis? Lorem ipsum dolor sit amet, consectetur
-      adipisicing elit. Earum totam voluptate perferendis ex doloribus commodi
-      sunt illo aspernatur veniam ducimus nihil a impedit autem deserunt
-      perspiciatis tempora, doloremque nulla debitis? Lorem ipsum dolor sit
-      amet, consectetur adipisicing elit. Earum totam voluptate perferendis ex
-      doloribus commodi sunt illo aspernatur veniam ducimus nihil a impedit
-      autem deserunt perspiciatis tempora, doloremque nulla debitis? Lorem ipsum
-      dolor sit amet, consectetur adipisicing elit. Earum totam voluptate
-      perferendis ex doloribus commodi sunt illo aspernatur veniam ducimus nihil
-      a impedit autem deserunt perspiciatis tempora, doloremque nulla debitis?
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum totam
-      voluptate perferendis ex doloribus commodi sunt illo aspernatur veniam
-      ducimus nihil a impedit autem deserunt perspiciatis tempora, doloremque
-      nulla debitis? Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Earum totam voluptate perferendis ex doloribus commodi sunt illo
-      aspernatur veniam ducimus nihil a impedit autem deserunt perspiciatis
-      tempora, doloremque nulla debitis? Lorem ipsum dolor sit amet, consectetur
-      adipisicing elit. Earum totam voluptate perferendis ex doloribus commodi
-      sunt illo aspernatur veniam ducimus nihil a impedit autem deserunt
-      perspiciatis tempora, doloremque nulla debitis? Lorem ipsum dolor sit
-      amet, consectetur adipisicing elit. Earum totam voluptate perferendis ex
-      doloribus commodi sunt illo aspernatur veniam ducimus nihil a impedit
-      autem deserunt perspiciatis tempora, doloremque nulla debitis? Lorem ipsum
-      dolor sit amet, consectetur adipisicing elit. Earum totam voluptate
-      perferendis ex doloribus commodi sunt illo aspernatur veniam ducimus nihil
-      a impedit autem deserunt perspiciatis tempora, doloremque nulla debitis?
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum totam
-      voluptate perferendis ex doloribus commodi sunt illo aspernatur veniam
-      ducimus nihil a impedit autem deserunt perspiciatis tempora, doloremque
-      nulla debitis? Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Earum totam voluptate perferendis ex doloribus commodi sunt illo
-      aspernatur veniam ducimus nihil a impedit autem deserunt perspiciatis
-      tempora, doloremque nulla debitis? Lorem ipsum dolor sit amet, consectetur
-      adipisicing elit. Earum totam voluptate perferendis ex doloribus commodi
-      sunt illo aspernatur veniam ducimus nihil a impedit autem deserunt
-      perspiciatis tempora, doloremque nulla debitis? Lorem ipsum dolor sit
-      amet, consectetur adipisicing elit. Earum totam voluptate perferendis ex
-      doloribus commodi sunt illo aspernatur veniam ducimus nihil a impedit
-      autem deserunt perspiciatis tempora, doloremque nulla debitis? Lorem ipsum
-      dolor sit amet, consectetur adipisicing elit. Earum totam voluptate
-      perferendis ex doloribus commodi sunt illo aspernatur veniam ducimus nihil
-      a impedit autem deserunt perspiciatis tempora, doloremque nulla debitis?
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum totam
-      voluptate perferendis ex doloribus commodi sunt illo aspernatur veniam
-      ducimus nihil a impedit autem deserunt perspiciatis tempora, doloremque
-      nulla debitis? Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Earum totam voluptate perferendis ex doloribus commodi sunt illo
-      aspernatur veniam ducimus nihil a impedit autem deserunt perspiciatis
-      tempora, doloremque nulla debitis? Lorem ipsum dolor sit amet, consectetur
-      adipisicing elit. Earum totam voluptate perferendis ex doloribus commodi
-      sunt illo aspernatur veniam ducimus nihil a impedit autem deserunt
-      perspiciatis tempora, doloremque nulla debitis? Lorem ipsum dolor sit
-      amet, consectetur adipisicing elit. Earum totam voluptate perferendis ex
-      doloribus commodi sunt illo aspernatur veniam ducimus nihil a impedit
-      autem deserunt perspiciatis tempora, doloremque nulla debitis? Lorem ipsum
-      dolor sit amet, consectetur adipisicing elit. Earum totam voluptate
-      perferendis ex doloribus commodi sunt illo aspernatur veniam ducimus nihil
-      a impedit autem deserunt perspiciatis tempora, doloremque nulla debitis?
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum totam
-      voluptate perferendis ex doloribus commodi sunt illo aspernatur veniam
-      ducimus nihil a impedit autem deserunt perspiciatis tempora, doloremque
-      nulla debitis? Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Earum totam voluptate perferendis ex doloribus commodi sunt illo
-      aspernatur veniam ducimus nihil a impedit autem deserunt perspiciatis
-      tempora, doloremque nulla debitis? Lorem ipsum dolor sit amet, consectetur
-      adipisicing elit. Earum totam voluptate perferendis ex doloribus commodi
-      sunt illo aspernatur veniam ducimus nihil a impedit autem deserunt
-      perspiciatis tempora, doloremque nulla debitis? Lorem ipsum dolor sit
-      amet, consectetur adipisicing elit. Earum totam voluptate perferendis ex
-      doloribus commodi sunt illo aspernatur veniam ducimus nihil a impedit
-      autem deserunt perspiciatis tempora, doloremque nulla debitis? Lorem ipsum
-      dolor sit amet, consectetur adipisicing elit. Earum totam voluptate
-      perferendis ex doloribus commodi sunt illo aspernatur veniam ducimus nihil
-      a impedit autem deserunt perspiciatis tempora, doloremque nulla debitis?
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum totam
-      voluptate perferendis ex doloribus commodi sunt illo aspernatur veniam
-      ducimus nihil a impedit autem deserunt perspiciatis tempora, doloremque
-      nulla debitis? Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Earum totam voluptate perferendis ex doloribus commodi sunt illo
-      aspernatur veniam ducimus nihil a impedit autem deserunt perspiciatis
-      tempora, doloremque nulla debitis? Lorem ipsum dolor sit amet, consectetur
-      adipisicing elit. Earum totam voluptate perferendis ex doloribus commodi
-      sunt illo aspernatur veniam ducimus nihil a impedit autem deserunt
-      perspiciatis tempora, doloremque nulla debitis? Lorem ipsum dolor sit
-      amet, consectetur adipisicing elit. Earum totam voluptate perferendis ex
-      doloribus commodi sunt illo aspernatur veniam ducimus nihil a impedit
-      autem deserunt perspiciatis tempora, doloremque nulla debitis? Lorem ipsum
-      dolor sit amet, consectetur adipisicing elit. Earum totam voluptate
-      perferendis ex doloribus commodi sunt illo aspernatur veniam ducimus nihil
-      a impedit autem deserunt perspiciatis tempora, doloremque nulla debitis?
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum totam
-      voluptate perferendis ex doloribus commodi sunt illo aspernatur veniam
-      ducimus nihil a impedit autem deserunt perspiciatis tempora, doloremque
-      nulla debitis? Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Earum totam voluptate perferendis ex doloribus commodi sunt illo
-      aspernatur veniam ducimus nihil a impedit autem deserunt perspiciatis
-      tempora, doloremque nulla debitis? Lorem ipsum dolor sit amet, consectetur
-      adipisicing elit. Earum totam voluptate perferendis ex doloribus commodi
-      sunt illo aspernatur veniam ducimus nihil a impedit autem deserunt
-      perspiciatis tempora, doloremque nulla debitis? Lorem ipsum dolor sit
-      amet, consectetur adipisicing elit. Earum totam voluptate perferendis ex
-      doloribus commodi sunt illo aspernatur veniam ducimus nihil a impedit
-      autem deserunt perspiciatis tempora, doloremque nulla debitis? Lorem ipsum
-      dolor sit amet, consectetur adipisicing elit. Earum totam voluptate
-      perferendis ex doloribus commodi sunt illo aspernatur veniam ducimus nihil
-      a impedit autem deserunt perspiciatis tempora, doloremque nulla debitis?
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum totam
-      voluptate perferendis ex doloribus commodi sunt illo aspernatur veniam
-      ducimus nihil a impedit autem deserunt perspiciatis tempora, doloremque
-      nulla debitis?
+    <div
+      className={`${
+        mode
+          ? "bg-[linear-gradient(249deg,_#A583D1_22.95%,_#724AA4_46.44%,_#1E122E_93.06%)]"
+          : "bg-[#EAEAEA]"
+      } `}
+    >
+      <HeroNews />
+      <FilterNews />
+      <BlogDisplay />
     </div>
   );
 }
