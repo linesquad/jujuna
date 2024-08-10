@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const BlogDisplayItems = ({ item, index }) => {
@@ -28,7 +29,7 @@ const BlogDisplayItems = ({ item, index }) => {
             mode ? "text-[#c993eb]" : "text-[#8A63A2]"
           } pt-4 text-lg font-semibold`}
         >
-          {t("news.blogDisplay.latestNews")}
+          Latest news
         </h1>
         <h2 className="text-black font-bold pt-4 text-xl">
           {i18n.language === "ge"
@@ -48,16 +49,18 @@ const BlogDisplayItems = ({ item, index }) => {
             ? item.description.en.slice(0, 170) + "..."
             : item.description.en}
         </p>
-        <button
-          className={`mt-4  text-[#613994] px-6 py-3 text-[20px] border-2 border-[#613994] shadow-[4px_4px_10px_rgba(0,0,0,0.2)] rounded-lg
+        <Link to={`/news/${item.id}`}>
+          <button
+            className={`mt-4  text-[#613994] px-6 py-3 text-[20px] border-2 border-[#613994] shadow-[4px_4px_10px_rgba(0,0,0,0.2)] rounded-lg
                     ${
                       mode
                         ? "bg-[#613994] text-white"
                         : "bg-white text-[#613994]"
                     }`}
-        >
-          {t("news.blogDisplay.moreBtn")}
-        </button>
+          >
+            {t("news.blogDisplay.moreBtn")}
+          </button>
+        </Link>
       </div>
     </div>
   );

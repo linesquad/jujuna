@@ -3,9 +3,16 @@ import rightArrow from "/images/rightArrow.svg";
 import cocktailsFilter from "/images/cocktailsFillter.svg";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
+<<<<<<< HEAD
 import { useTranslation } from "react-i18next";
+=======
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import CocktailsSidebar from "./CocktailsSidebar";
+>>>>>>> ff798e127d84396b560d97c6db877331767ed52d
 
-function CocktailsHeader({ setIsFillterOpen }) {
+function CocktailsHeader() {
+  const [isFillterOpen, setIsFillterOpen] = useState(false);
   const darkMode = useSelector(getMode);
   const { t } = useTranslation();
   return (
@@ -26,6 +33,34 @@ function CocktailsHeader({ setIsFillterOpen }) {
           className="mt-[25px] md:hidden"
           onClick={() => setIsFillterOpen((fillter) => !fillter)}
         />
+        <AnimatePresence>
+          {isFillterOpen && (
+            <motion.div
+              variants={{
+                open: {
+                  x: "0%",
+                  transition: {
+                    type: "spring",
+                  },
+                },
+                closed: {
+                  x: "-150%",
+                  transition: {
+                    type: "spring",
+                  },
+                },
+              }}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              className={`absolute top-[120px] z-10 ${
+                darkMode ? "bg-[#000]" : "bg-[#fff]"
+              }  h-[300px] md:hidden rounded-md`}
+            >
+              <CocktailsSidebar />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </Wrapper>
   );

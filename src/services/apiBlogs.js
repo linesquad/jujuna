@@ -12,3 +12,18 @@ const fetchBlogs = async () => {
 };
 
 export default fetchBlogs;
+
+export const fetchBlogsId = async (id) => {
+  const { data, error } = await supabase
+    .from("blog")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    console.error("Error fetching blog:", error);
+    throw new Error("Failed to fetch blog");
+  }
+
+  return data;
+};
