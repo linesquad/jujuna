@@ -8,8 +8,8 @@ import AppLayout from "./ui/AppLayout";
 import PageNotFound from "./pages/PageNotFound";
 import { Orders } from "./pages/Orders";
 import "./index.css";
-
 import WineDetails from "./pages/WineDetails";
+import CocktailDetails from "./pages/CocktailDetails";
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
         <Route path="wines" element={<Wines />} />
         <Route path="orders" element={<Orders />} />
         <Route path="/wines/:id" element={<WineDetails />} />
+        <Route path="/cocktails/:id" element={<CocktailDetails />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
