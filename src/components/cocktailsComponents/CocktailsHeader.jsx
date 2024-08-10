@@ -3,13 +3,10 @@ import rightArrow from "/images/rightArrow.svg";
 import cocktailsFilter from "/images/cocktailsFillter.svg";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
-<<<<<<< HEAD
 import { useTranslation } from "react-i18next";
-=======
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import CocktailsSidebar from "./CocktailsSidebar";
->>>>>>> ff798e127d84396b560d97c6db877331767ed52d
 
 function CocktailsHeader() {
   const [isFillterOpen, setIsFillterOpen] = useState(false);
