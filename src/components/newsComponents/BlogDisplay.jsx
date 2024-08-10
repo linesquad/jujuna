@@ -16,8 +16,8 @@ const BlogDisplay = () => {
 
   if (isError) {
     return (
-      <div>
-        <p>{error.message}</p>
+      <div className="text-center bg-purple-700 p-2">
+        <p className="text-purple-200 font-bold">{error.message}</p>
       </div>
     );
   }
