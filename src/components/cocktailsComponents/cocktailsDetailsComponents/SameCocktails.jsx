@@ -5,13 +5,17 @@ import useCocktails from "../../../hooks/useCocktails";
 import CocktailCard from "../CocktailCard";
 import Wrapper from "../../Wrapper";
 import { Navigation, Pagination } from "swiper/modules";
+import { useTranslation } from "react-i18next";
 
 function SameCocktails() {
   const { data: cocktails } = useCocktails();
+  const { t } = useTranslation();
   return (
     <Wrapper>
       <div>
-        <h2 className="text-[22px] pl-[19px] pt-[40px]">მსგავსი პროდუქტები</h2>
+        <h2 className="text-[22px] pl-[19px] pt-[40px]">
+          {t("cocktails.cocktailDetails.similarProducts")}
+        </h2>
         <div className="pt-[43px]">
           <Swiper
             breakpoints={{

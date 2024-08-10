@@ -94,6 +94,14 @@ i18n
               date: "გამოშვების წელი",
               volume: "ზომა/მოცულობა (მლ)",
             },
+            cocktailDetails: {
+              cart: "კალათაში დამატება",
+              similarProducts: "მსგავსი პროდუქტები",
+            },
+            cocktailDetailsHeader: {
+              homePage: "საწყისი გვერდი",
+              cocktails: "კოქტეილები",
+            },
           },
           news: {
             heroNews: {
@@ -112,6 +120,10 @@ i18n
             blogDisplay: {
               latestNews: "სიახლეები",
               moreBtn: "გაიგე მეტი",
+            },
+            newsDetails: {
+              heading: "ბლოგები",
+              share: "გააზიარე",
             },
           },
           footer: {
@@ -211,6 +223,14 @@ i18n
               date: "Release year",
               volume: "Size/Volume (ml)",
             },
+            cocktailDetails: {
+              cart: "Add to cart",
+              similarProducts: "Similar products",
+            },
+            cocktailDetailsHeader: {
+              homePage: "Home page",
+              cocktails: "Cocktails",
+            },
           },
           news: {
             heroNews: {
@@ -229,6 +249,10 @@ i18n
             blogDisplay: {
               latestNews: "Latest news",
               moreBtn: "Read more",
+            },
+            newsDetails: {
+              heading: "Blogs",
+              share: "Share",
             },
           },
           footer: {

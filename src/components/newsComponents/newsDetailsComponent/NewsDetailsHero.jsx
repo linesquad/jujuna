@@ -5,9 +5,11 @@ import { format } from "date-fns";
 import Wrapper from "../../Wrapper";
 import { FaFacebookSquare, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
+import { useTranslation } from "react-i18next";
 
 const NewsDetailsHero = () => {
   const { data, isLoading, isError, error } = useBlogId();
+  const { t, i18n } = useTranslation();
 
   if (isLoading) return <Spinner />;
 
@@ -29,17 +31,22 @@ const NewsDetailsHero = () => {
       <div className="w-full p-5 tiny:px-1 sm:flex sm:items-center sm:justify-between sm:px-1 sm:gap-10 md:px-0 md:gap-0">
         <div className="flex flex-col pl-5 tiny:gap-1 tiny:pl-3 smaller:pl-4 sm:pl-0 sm:gap-2">
           <h1 className="text-[#613994] tiny:text-sm smaller:text-base text-base lg:text-lg">
-            ბლოგები
+            {t("news.newsDetails.heading")}
           </h1>
           <h1 className="tiny:text-sm">{formattedDate}</h1>
-          <h1 className="font-bold tiny:text-base">{data.title.ge}</h1>
+          <h1 className="font-bold tiny:text-base">
+            {i18n.language === "ge" ? data.title.ge : data.title.en}
+          </h1>
+
           <div className="flex items-center pb-1 gap-2">
             <BsNewspaper />
-            <p className="">{data.author.ge}</p>
+            <p className="">
+              {i18n.language === "ge" ? data.author.ge : data.author.en}
+            </p>
           </div>
           <div className="flex items-center gap-1">
             <div>
-              <h1>Share</h1>
+              <h1>{t("news.newsDetails.share")}</h1>
             </div>
             <div className="flex">
               <FaFacebookSquare />

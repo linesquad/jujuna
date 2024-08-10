@@ -3,10 +3,12 @@ import cart from "/images/cart.svg";
 import { useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function CocktailDetailsCard({ item }) {
   const darkMode = useSelector(getMode);
   const [itemQuantity, setItemQuantity] = useState(1);
+  const { i18n } = useTranslation();
 
   function increaseQuantity() {
     setItemQuantity((quantity) => (quantity += 1));
@@ -38,7 +40,7 @@ function CocktailDetailsCard({ item }) {
               darkMode ? "text-color-primary" : "text-color-black"
             } text-[16px]`}
           >
-            {item?.name.ge}
+            {i18n.language === "ge" ? item?.name.ge : item?.name.en}
           </p>
           <div className="flex items-center gap-[18px]">
             <div
@@ -65,7 +67,7 @@ function CocktailDetailsCard({ item }) {
             darkMode ? "text-color-primary" : "text-color-black"
           } text-[16px]`}
         >
-          {item?.price} ₾
+          {i18n.language === "ge" ? `${item?.price} ₾` : `GEL ${item?.price}`}
         </p>
         <div className="w-[50px] h-[24px] rounded-[33px] bg-[#613994] flex justify-center items-center">
           <img src={cart} alt="cart" className="w-[18px] h-[18px]" />
