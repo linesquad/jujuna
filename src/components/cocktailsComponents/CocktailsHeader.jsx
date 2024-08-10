@@ -48,7 +48,7 @@ function CocktailsHeader() {
               initial="closed"
               animate="open"
               exit="closed"
-              className={`absolute top-0 ${
+              className={`absolute top-[120px] z-10 ${
                 darkMode ? "bg-[#000]" : "bg-[#fff]"
               }  h-[300px] md:hidden rounded-md`}
             >
