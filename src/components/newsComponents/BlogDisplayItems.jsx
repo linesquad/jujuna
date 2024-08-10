@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
+import { Link } from "react-router-dom";
 
 const BlogDisplayItems = ({ item, index }) => {
   const mode = useSelector(getMode);
+
   return (
     <div
       className={`p-4 lg:p-0 w-full flex flex-col items-center text-center flex-wrap lg:flex-row lg:justify-between lg:pb-32
@@ -37,16 +39,18 @@ const BlogDisplayItems = ({ item, index }) => {
             ? item.description.ge.slice(0, 170) + "..."
             : item.description.ge}
         </p>
-        <button
-          className={`mt-4  text-[#613994] px-6 py-3 text-[20px] border-2 border-[#613994] shadow-[4px_4px_10px_rgba(0,0,0,0.2)] rounded-lg
+        <Link to={`/news/${item.id}`}>
+          <button
+            className={`mt-4  text-[#613994] px-6 py-3 text-[20px] border-2 border-[#613994] shadow-[4px_4px_10px_rgba(0,0,0,0.2)] rounded-lg
                     ${
                       mode
                         ? "bg-[#613994] text-white"
                         : "bg-white text-[#613994]"
                     }`}
-        >
-          Read more
-        </button>
+          >
+            Read more
+          </button>
+        </Link>
       </div>
     </div>
   );
