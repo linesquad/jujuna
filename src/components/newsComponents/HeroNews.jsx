@@ -1,6 +1,9 @@
+import { useTranslation } from "react-i18next";
 import BlogWrapper from "./BlogWrapper";
 
 const HeroNews = () => {
+  const { t } = useTranslation();
+
   return (
     <div className=" w-full">
       <BlogWrapper>
@@ -10,10 +13,10 @@ const HeroNews = () => {
         pb-11 sm:pb-10 md:pb-9 lg:pb-8 "
         >
           <h1 className="text-base text-black font-normal md:text-xl lg:text-2xl">
-            BEHIND THE VINES
+            {t("news.heroNews.heading1")}
           </h1>
           <h2 className="text-sm text-black font-normal md:text-base lg:text-xl">
-            No pretenses here — only the good stuff.
+            {t("news.heroNews.heading2")}
           </h2>
         </div>
         <div className="w-full h-full pb-20 sm:pb-20">
@@ -34,10 +37,10 @@ const HeroNews = () => {
               tiny:px-2 tiny:py-2 tiny:border-1 smaller:py-2 sm:py-5"
               >
                 <h2 className="text-base tiny:text-[10px] smaller:text-[12px] sm:text-lg md:text-xl ">
-                  Discover the soul of Georgia through
+                  {t("news.heroNews.text1")}
                 </h2>
                 <h2 className="text-base tiny:text-[10px] smaller:text-[12px] sm:text-lg md:text-xl ">
-                  its exceptional wines
+                  {t("news.heroNews.text2")}
                 </h2>
               </div>
             </div>

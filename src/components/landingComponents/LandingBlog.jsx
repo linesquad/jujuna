@@ -39,7 +39,7 @@ function OneNews({ image, date, title, description, type, bgColor }) {
         </p>
         <div className="self-end">
           <Button type={type}>
-            {i18n.language === "en" ? "Learn more" : "გაიგე მეტი"}
+            {i18n.language === "en" ? "Read more" : "გაიგე მეტი"}
           </Button>
         </div>
       </div>

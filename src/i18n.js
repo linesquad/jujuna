@@ -83,6 +83,37 @@ i18n
               moreBtn: "გაიგე მეტი",
             },
           },
+          cocktails: {
+            cocktailsHeader: {
+              p1: "საწყისი გვერდი",
+              p2: "კოქტეილები",
+            },
+            cocktailsSidebar: {
+              alcohol: "ალკოჰოლური",
+              country: "ქვეყანა",
+              date: "გამოშვების წელი",
+              volume: "ზომა/მოცულობა (მლ)",
+            },
+          },
+          news: {
+            heroNews: {
+              heading1: "ღვინოებს მიღმა",
+              heading2: "აქ არანაირი პრეტენზია - მხოლოდ კარგი რამ.",
+              text1: "აღმოაჩინეთ საქართველოს სული",
+              text2: "მისი განსაკუთრებული ღვინოებით",
+            },
+            filterCategory: {
+              wineClub: "ღვინის კლუბი",
+              wineCocktail: "ღვინის კოქტეილი",
+              inspiration: "ინსპირაცია",
+              vineYard: "ვენახი",
+              latestNews: "სიახლეები",
+            },
+            blogDisplay: {
+              latestNews: "სიახლეები",
+              moreBtn: "გაიგე მეტი",
+            },
+          },
           footer: {
             number: "ტელეფონი",
             numberValue: "+995579760006",
@@ -113,7 +144,7 @@ i18n
             writeMessage: "Write a message...",
             send: "Send",
             paragraphOne:
-              "Fresh Jujuna can be found in many cafes and bars and will make your favorite cocktails. Cold and sparkling juju cocktail straight from the tap.",
+              "Fresh Zhuzhuna can be found in many cafes and bars and will make your favorite cocktails. Cold and sparkling Zhuzhu cocktail straight from the tap.",
             paragraphTwo:
               "Bottling Zhuzhuna is supplied to cafes and bars in reusable kegs and does not require additional packaging, which is why it is particularly friendly to the environment and does not cause pollution.",
           },
@@ -166,7 +197,38 @@ i18n
               heading: "We will appear wherever you want",
               paragraph:
                 "Zhuzhuna bar will find you wherever you are. He will bring a barman, a refrigerator of Korfa Zhuzhuna, and will take care of your guests' excitement with countless cocktails.",
-              moreBtn: "Learn more",
+              moreBtn: "Read more",
+            },
+          },
+          cocktails: {
+            cocktailsHeader: {
+              p1: "Main page",
+              p2: "Cocktails",
+            },
+            cocktailsSidebar: {
+              alcohol: "Alcoholic",
+              country: "Country",
+              date: "Release year",
+              volume: "Size/Volume (ml)",
+            },
+          },
+          news: {
+            heroNews: {
+              heading1: "BEHIND THE VINES",
+              heading2: "No pretenses here — only the good stuff.",
+              text1: "Discover the soul of Georgia through",
+              text2: "its exceptional wines",
+            },
+            filterCategory: {
+              wineClub: "WINE CLUB",
+              wineCocktail: "WINE COCKTAIL",
+              inspiration: "INSPIRATION",
+              vineYard: "VINEYARD",
+              latestNews: "LATEST NEWS",
+            },
+            blogDisplay: {
+              latestNews: "Latest news",
+              moreBtn: "Read more",
             },
           },
           footer: {

@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
+import { useTranslation } from "react-i18next";
 
 const FilterCategory = ({ toggleCategoryVisibility, isCategoryVisible }) => {
+  const { t } = useTranslation();
+
   const mode = useSelector(getMode);
   const links = (
     <div
@@ -21,7 +24,7 @@ const FilterCategory = ({ toggleCategoryVisibility, isCategoryVisible }) => {
           mode ? "bg-[#664293] text-white" : "bg-[#EAEAEA] text-[#613994]"
         } p-3 md:shadow-[4px_4px_10px_rgba(0,0,0,0.2)]  font-bold md:text-sm lg:text-base`}
       >
-        WINE CLUB
+        {t("news.filterCategory.wineClub")}
       </Link>
       <Link
         to="/news"
@@ -30,7 +33,7 @@ const FilterCategory = ({ toggleCategoryVisibility, isCategoryVisible }) => {
           mode ? "bg-[#664293] text-white" : "bg-[#EAEAEA] text-[#613994]"
         } p-3 md:shadow-[4px_4px_10px_rgba(0,0,0,0.2)]  font-bold md:text-sm lg:text-base`}
       >
-        WINE COCKTAIL
+        {t("news.filterCategory.wineCocktail")}
       </Link>
       <Link
         to="/news"
@@ -39,7 +42,7 @@ const FilterCategory = ({ toggleCategoryVisibility, isCategoryVisible }) => {
           mode ? "bg-[#664293] text-white" : "bg-[#EAEAEA] text-[#613994]"
         } p-3 md:shadow-[4px_4px_10px_rgba(0,0,0,0.2)]  font-bold md:text-sm lg:text-base`}
       >
-        INSPIRATION
+        {t("news.filterCategory.inspiration")}
       </Link>
       <Link
         to="/news"
@@ -48,7 +51,7 @@ const FilterCategory = ({ toggleCategoryVisibility, isCategoryVisible }) => {
           mode ? "bg-[#664293] text-white" : "bg-[#EAEAEA] text-[#613994]"
         } p-3 md:shadow-[4px_4px_10px_rgba(0,0,0,0.2)]  font-bold md:text-sm lg:text-base`}
       >
-        VINEYARD
+        {t("news.filterCategory.vineYard")}
       </Link>
       <Link
         to="/news"
@@ -57,7 +60,7 @@ const FilterCategory = ({ toggleCategoryVisibility, isCategoryVisible }) => {
           mode ? "bg-[#664293] text-white" : "bg-[#EAEAEA] text-[#613994]"
         } p-3 md:shadow-[4px_4px_10px_rgba(0,0,0,0.2)]  font-bold md:text-sm lg:text-base`}
       >
-        LATEST NEWS
+        {t("news.filterCategory.latestNews")}
       </Link>
     </div>
   );

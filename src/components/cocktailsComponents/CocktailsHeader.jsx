@@ -3,9 +3,11 @@ import rightArrow from "/images/rightArrow.svg";
 import cocktailsFilter from "/images/cocktailsFillter.svg";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
+import { useTranslation } from "react-i18next";
 
 function CocktailsHeader({ setIsFillterOpen }) {
   const darkMode = useSelector(getMode);
+  const { t } = useTranslation();
   return (
     <Wrapper>
       <div className="pt-[26px] pl-[16px] relative">
@@ -14,9 +16,9 @@ function CocktailsHeader({ setIsFillterOpen }) {
             darkMode ? "text-color-primary" : ""
           }`}
         >
-          <p>საწყისი გვერდი</p>
+          <p>{t("cocktails.cocktailsHeader.p1")}</p>
           <img src={rightArrow} alt="right-arrow" />
-          <p>კოქტეილები</p>
+          <p>{t("cocktails.cocktailsHeader.p2")}</p>
         </div>
         <img
           src={cocktailsFilter}

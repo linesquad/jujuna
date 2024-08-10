@@ -2,10 +2,13 @@ import heart from "/images/heart.svg";
 import cart from "/images/cart.svg";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
+import { useTranslation } from "react-i18next";
 
 function CocktailCard({ item }) {
   const { image, name, price } = item;
   const darkMode = useSelector(getMode);
+  const { i18n } = useTranslation();
+
   return (
     <div
       className={`w-full max-w-[180px] md:w-[200px] md:max-w-[200px] lg:max-w-[220px] lg:w-[220px] xl:max-w-[260px] xl:w-[260px] m-auto  bg-[#fff]/30 flex flex-col pt-[6px] pr-[12px] pb-[33px] pl-[3px] md:pb-[50px] md:px-[10px] lg:pb-[70px] rounded-[11px] cursor-pointer`}
@@ -24,7 +27,7 @@ function CocktailCard({ item }) {
             darkMode ? "text-color-primary" : "text-color-black"
           } text-[12px] md:text-[14px]`}
         >
-          {name.ge}
+          {i18n.language === "ge" ? name.ge : name.en}
         </p>
       </div>
       <div className="flex justify-between mt-[10px] md:mt-[18px]">
@@ -33,7 +36,7 @@ function CocktailCard({ item }) {
             darkMode ? "text-color-primary" : "text-color-black"
           } text-[12px] md:text-[14px]`}
         >
-          {price} ₾
+          {i18n.language === "ge" ? `${price} ₾` : `GEL ${price}`}
         </p>
         <div className="w-[31px] h-[14px] md:w-[50px] md:h-[24px] rounded-[33px] bg-[#613994] flex justify-center items-center">
           <img src={cart} alt="cart" className="md:w-[18px] md:h-[18px]" />
