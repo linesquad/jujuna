@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";

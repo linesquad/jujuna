@@ -1,11 +1,10 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";
 
 export default function WineFilter() {
   const mode = useSelector(getMode);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <form action="" className="mt-4 md:mt-0 md:relative">

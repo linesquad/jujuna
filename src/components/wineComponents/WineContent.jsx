@@ -1,4 +1,3 @@
-import React from "react";
 import Wrapper from "../Wrapper";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
