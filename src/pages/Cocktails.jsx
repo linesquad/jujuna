@@ -13,7 +13,7 @@ function CockTails() {
     <div className={`${darkMode ? "bg-[#55426E]" : "bg-[#eaeaea]"}`}>
       <CocktailsHeader setIsFillterOpen={setIsFillterOpen} />
       <Wrapper>
-        <div className="flex gap-[40px] mt-[23px] md:mt-[40px] lg:mt-[60px] px-[14px] md:px-[0px] py-[15px]">
+        <div className="flex items-start gap-[40px] mt-[23px] md:mt-[40px] lg:mt-[60px] px-[14px] md:px-[0px] py-[15px]">
           <div className="hidden md:block">
             <CocktailsSidebar />
           </div>

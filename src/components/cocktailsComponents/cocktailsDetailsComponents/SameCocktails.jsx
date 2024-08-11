@@ -1,5 +1,4 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import useCocktails from "../../../hooks/useCocktails";
 import CocktailCard from "../CocktailCard";
