@@ -126,6 +126,20 @@ i18n
               share: "გააზიარე",
             },
           },
+          winePage: {
+            list: {
+              li1: "ყველა",
+              li2: "წითელი",
+              li3: "თეთრი და როზე",
+              li4: "საჩუქრები",
+            },
+            title: "ჩვენი პროდუქცია",
+            filter: "გაფილტრვა",
+            options: {
+              price: "ფასი",
+            },
+            cart: "დამატება",
+          },
           footer: {
             number: "ტელეფონი",
             numberValue: "+995579760006",
@@ -254,6 +268,20 @@ i18n
               heading: "Blogs",
               share: "Share",
             },
+          },
+          winePage: {
+            list: {
+              li1: "All Wines",
+              li2: "Red Wine",
+              li3: "White and Rose Wine",
+              li4: "Gifts",
+            },
+            title: "Our Product",
+            filter: "Filter",
+            options: {
+              price: "Price",
+            },
+            cart: "Add To Cart",
           },
           footer: {
             number: "mobile number",
