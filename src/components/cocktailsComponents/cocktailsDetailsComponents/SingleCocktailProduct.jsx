@@ -2,16 +2,25 @@ import { useTranslation } from "react-i18next";
 import Wrapper from "../../Wrapper";
 import CocktailsIngredients from "./CocktailsIngredients";
 import SideCocktails from "./SideCocktails";
+import { useSelector } from "react-redux";
+import { getMode } from "../../../features/darkModeSlice";
 
 function SingleCocktailProduct({ cocktail }) {
   const { i18n } = useTranslation();
   const name = i18n.language === "ge" ? cocktail.name.ge : cocktail.name.en;
+  const darkMode = useSelector(getMode);
 
   return (
-    <div className="bg-[#eaeaea]">
+    <div className={`${darkMode ? "bg-[#55426E]" : "bg-[#eaeaea]"}`}>
       <Wrapper>
         <div>
-          <h2 className="pt-[61px] text-[40px] font-tommaso">{name}</h2>
+          <h2
+            className={`pt-[61px] text-[40px] font-tommaso ${
+              darkMode ? "text-color-primary" : "text-color-black"
+            }`}
+          >
+            {name}
+          </h2>
           <div className="pt-[120px] flex items-start justify-between gap-[90px] lg:gap-[90px] xl:gap-[120px]">
             <SideCocktails cocktail={cocktail} />
             <div>

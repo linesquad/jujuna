@@ -22,7 +22,7 @@ function CocktailDetailsCard({ item }) {
   return (
     <div
       className={`w-full max-w-[300px] m-auto  flex flex-col pt-[10px] pr-[12px] pb-[50px] pl-[9px] rounded-[11px] cursor-pointer mt-[30px] ${
-        darkMode ? "bg-gray-500" : "bg-[#eaeaea]"
+        darkMode ? "bg-gray-900" : "bg-[#eaeaea]"
       }`}
     >
       <div className="w-[30px] h-[30px] rounded-[50%] bg-[#613994] flex justify-center items-center self-end ">
@@ -50,7 +50,11 @@ function CocktailDetailsCard({ item }) {
               <span>+</span>
             </div>
             <div className="h-[20px] flex justify-center items-center">
-              <p>{itemQuantity}</p>
+              <p
+                className={darkMode ? "text-color-primary" : "text-color-black"}
+              >
+                {itemQuantity}
+              </p>
             </div>
             <div
               className="w-[20px] h-[20px] rounded-[50%] bg-[#fff] flex justify-center items-center"

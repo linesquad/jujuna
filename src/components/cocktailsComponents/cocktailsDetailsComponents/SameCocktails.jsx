@@ -5,14 +5,21 @@ import CocktailCard from "../CocktailCard";
 import Wrapper from "../../Wrapper";
 import { Navigation, Pagination } from "swiper/modules";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { getMode } from "../../../features/darkModeSlice";
 
 function SameCocktails() {
   const { data: cocktails } = useCocktails();
   const { t } = useTranslation();
+  const darkMode = useSelector(getMode);
   return (
     <Wrapper>
       <div>
-        <h2 className="text-[22px] pl-[19px] pt-[40px]">
+        <h2
+          className={`text-[22px] pl-[19px] pt-[40px] ${
+            darkMode ? "text-color-primary" : "text-color-black"
+          }`}
+        >
           {t("cocktails.cocktailDetails.similarProducts")}
         </h2>
         <div className="pt-[43px]">

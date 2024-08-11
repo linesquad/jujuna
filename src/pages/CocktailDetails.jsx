@@ -5,11 +5,14 @@ import CocktailDetailsCard from "../components/cocktailsComponents/cocktailsDeta
 import SingleCocktailProduct from "../components/cocktailsComponents/cocktailsDetailsComponents/SingleCocktailProduct";
 import SameCocktails from "../components/cocktailsComponents/cocktailsDetailsComponents/SameCocktails";
 import Spinner from "../components/Spinner";
+import { useSelector } from "react-redux";
+import { getMode } from "../features/darkModeSlice";
 
 function CocktailDetails() {
   const { id } = useParams();
   const { data: cocktails, isLoading, isError, error } = useCocktails();
   const cocktail = cocktails?.find((item) => String(item.id) === String(id));
+  const darkMode = useSelector(getMode);
 
   if (isLoading)
     return (
@@ -26,7 +29,7 @@ function CocktailDetails() {
     );
 
   return (
-    <div className="bg-[#eaeaea]">
+    <div className={`${darkMode ? "bg-[#55426E]" : "bg-[#eaeaea]"}`}>
       <div className="md:hidden">
         <CocktailsDetailsHeader item={cocktail} />
         <CocktailDetailsCard item={cocktail} />
