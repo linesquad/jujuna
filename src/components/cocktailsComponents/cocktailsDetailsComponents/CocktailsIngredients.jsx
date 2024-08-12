@@ -8,7 +8,6 @@ function CocktailsIngredients({ cocktail }) {
   const { t, i18n } = useTranslation();
   const darkMode = useSelector(getMode);
 
-  console.log(cocktail);
   return (
     <div
       className={`bg-[#fff]/30 ${
