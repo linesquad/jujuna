@@ -150,6 +150,9 @@ i18n
             personalPol: "პერსონალური მონაცემების დაცვის პოლიტიკა",
             security: "უსაფრთხოების ცენტრი",
           },
+          newsDetails: {
+            backButton: "უკან",
+          },
         },
       },
       en: {
@@ -292,6 +295,9 @@ i18n
             adressValue: "#8 Ninoshvili street, Georgia",
             personalPol: "Personal data protection policy",
             security: "Security Center",
+          },
+          newsDetails: {
+            backButton: "back",
           },
         },
       },
