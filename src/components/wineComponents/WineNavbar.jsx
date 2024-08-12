@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import Wrapper from "../Wrapper";
@@ -10,10 +9,10 @@ function WineNavbar() {
 
   return (
     <nav
-      className={`relative mt-16 p-4 ${
+      className={`relative p-4 ${
         mode
           ? "bg-wineNavbarColor-dark text-buttonColor-dark-secondary"
-          : "bg-wineNavbarColor-light text-wineNavbarColor-dark"
+          : "bg-wineNavbarColor-light lg:bg-wineNavbarColor-dark text-wineNavbarColor-dark lg:text-buttonColor-dark-secondary"
       }`}
     >
       <Wrapper>
