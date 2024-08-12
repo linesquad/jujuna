@@ -1,6 +1,5 @@
-import { useParams } from "react-router-dom";
 import CocktailsDetailsHeader from "../components/cocktailsComponents/cocktailsDetailsComponents/CocktailsDetailsHeader";
-import useCocktails from "../hooks/useCocktails";
+import { useCocktailId } from "../hooks/useCocktails";
 import CocktailDetailsCard from "../components/cocktailsComponents/cocktailsDetailsComponents/CocktailDetailsCard";
 import SingleCocktailProduct from "../components/cocktailsComponents/cocktailsDetailsComponents/SingleCocktailProduct";
 import SameCocktails from "../components/cocktailsComponents/cocktailsDetailsComponents/SameCocktails";
@@ -9,10 +8,9 @@ import { useSelector } from "react-redux";
 import { getMode } from "../features/darkModeSlice";
 
 function CocktailDetails() {
-  const { id } = useParams();
-  const { data: cocktails, isLoading, isError, error } = useCocktails();
-  const cocktail = cocktails?.find((item) => String(item.id) === String(id));
   const darkMode = useSelector(getMode);
+
+  const { data: cocktail, isLoading, isError, error } = useCocktailId();
 
   if (isLoading)
     return (

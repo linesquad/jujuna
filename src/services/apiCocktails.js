@@ -12,3 +12,18 @@ const fetchCocktails = async () => {
 };
 
 export default fetchCocktails;
+
+export const fetchCocktailsId = async (id) => {
+  let { data, error } = await supabase
+    .from("cocktail")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    console.error("Error fetching Cocktails: ", error);
+    throw new Error("Failed to fetch Cocktails");
+  }
+
+  return data;
+};
