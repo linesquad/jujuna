@@ -2,22 +2,11 @@ import heart from "/images/heart.svg";
 import cart from "/images/cart.svg";
 import { useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 function CocktailDetailsCard({ item }) {
   const darkMode = useSelector(getMode);
-  const [itemQuantity, setItemQuantity] = useState(1);
   const { i18n } = useTranslation();
-
-  function increaseQuantity() {
-    setItemQuantity((quantity) => (quantity += 1));
-  }
-
-  function decreaseQuantity() {
-    if (itemQuantity === 1) return;
-    setItemQuantity((quantity) => (quantity -= 1));
-  }
 
   return (
     <div
@@ -42,27 +31,6 @@ function CocktailDetailsCard({ item }) {
           >
             {i18n.language === "ge" ? item?.name.ge : item?.name.en}
           </p>
-          <div className="flex items-center gap-[18px]">
-            <div
-              className="w-[20px] h-[20px] rounded-[50%] bg-[#fff] flex justify-center items-center"
-              onClick={increaseQuantity}
-            >
-              <span>+</span>
-            </div>
-            <div className="h-[20px] flex justify-center items-center">
-              <p
-                className={darkMode ? "text-color-primary" : "text-color-black"}
-              >
-                {itemQuantity}
-              </p>
-            </div>
-            <div
-              className="w-[20px] h-[20px] rounded-[50%] bg-[#fff] flex justify-center items-center"
-              onClick={decreaseQuantity}
-            >
-              <span>-</span>
-            </div>
-          </div>
         </div>
       </div>
       <div className="flex justify-between mt-[10px] md:mt-[18px]">
