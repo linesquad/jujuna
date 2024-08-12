@@ -4,22 +4,22 @@ function SideCocktails({ cocktail }) {
       <img
         src={cocktail?.image}
         alt="cocktail"
-        className="w-[60px] h-[90px] rounded-md"
+        className="w-[60px] h-[90px] rounded-md cursor-pointer"
       />
       <img
         src={cocktail?.image}
         alt="cocktail"
-        className="w-[60px] h-[90px] rounded-md"
+        className="w-[60px] h-[90px] rounded-md cursor-pointer"
       />
       <img
         src={cocktail?.image}
         alt="cocktail"
-        className="w-[60px] h-[90px] rounded-md"
+        className="w-[60px] h-[90px] rounded-md cursor-pointer"
       />
       <img
         src={cocktail?.image}
         alt="cocktail"
-        className="w-[60px] h-[90px] rounded-md"
+        className="w-[60px] h-[90px] rounded-md cursor-pointer"
       />
     </div>
   );
