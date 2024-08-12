@@ -13,7 +13,7 @@ function SameCocktails() {
 
   return (
     <Wrapper>
-      <div>
+      <div className="pb-[30px]">
         <h2
           className={`text-[22px] pl-[19px] pt-[40px] ${
             darkMode ? "text-color-primary" : "text-color-black"
