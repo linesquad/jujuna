@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 import WineImages from "./WineImages";
 import AddWineToCart from "./AddWineToCart";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { getMode } from "../../features/darkModeSlice";
 
-function WineCardDetails({ item, mode }) {
+function WineCardDetails({ item }) {
   const { i18n } = useTranslation();
+  const mode = useSelector(getMode);
 
   return (
     <div
