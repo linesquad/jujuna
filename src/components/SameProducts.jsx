@@ -9,8 +9,8 @@ function SameProducts({ products, CardComponent }) {
     const nextArrow = document.querySelector(".swiper-button-next");
 
     if (prevArrow && nextArrow) {
-      prevArrow.classList.add("text-gray-600", "text-2xl");
-      nextArrow.classList.add("text-gray-600", "text-2xl");
+      prevArrow.classList.add("text-[#eaeaea]", "text-2xl");
+      nextArrow.classList.add("text-[#eaeaea]", "text-2xl");
     }
   }, []);
 
