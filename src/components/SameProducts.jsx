@@ -2,17 +2,26 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation, Pagination } from "swiper/modules";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { getMode } from "../features/darkModeSlice";
 
 function SameProducts({ products, CardComponent }) {
+  const darkMode = useSelector(getMode);
   useEffect(() => {
     const prevArrow = document.querySelector(".swiper-button-prev");
     const nextArrow = document.querySelector(".swiper-button-next");
 
     if (prevArrow && nextArrow) {
-      prevArrow.classList.add("text-[#eaeaea]", "text-2xl");
-      nextArrow.classList.add("text-[#eaeaea]", "text-2xl");
+      prevArrow.classList.add(
+        `${darkMode ? "text-[#eaeaea]" : "text-[#999797]"}`,
+        "text-2xl"
+      );
+      nextArrow.classList.add(
+        `${darkMode ? "text-[#eaeaea]" : "text-[#999797]"}`,
+        "text-2xl"
+      );
     }
-  }, []);
+  }, [darkMode]);
 
   return (
     <Swiper
