@@ -10,7 +10,7 @@ import ContactInfo from "./ContactInfo";
 function ContactDetails() {
   const { t } = useTranslation();
   return (
-    <div className="bg-[#4E3270] max-w-[361px] mx-auto pt-[20px] px-[40px] pb-[66px] rounded-b-[20px] [box-shadow:5px_8px_10px_0px_rgba(0,_0,_0,_0.25)] flex flex-col items-center">
+    <div className="bg-[#4E3270] max-w-[361px] mx-auto pt-[20px] px-[40px] pb-[66px] rounded-b-[20px] [box-shadow:5px_8px_10px_0px_rgba(0,_0,_0,_0.25)] flex flex-col items-center md:mx-[0px] md:rounded-b-[0px] md:rounded-r-[20px]">
       <h2 className="text-color-primary text-[20px] font-bold text-center">
         {t("home.aboutUs.contactForm.title")}
       </h2>

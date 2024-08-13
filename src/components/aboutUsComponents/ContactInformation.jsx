@@ -5,7 +5,7 @@ import UserDetails from "./UserDetails";
 function ContactInformation() {
   return (
     <Wrapper>
-      <div className="flex flex-col">
+      <div className="flex flex-col md:flex-row md:justify-center">
         <UserDetails />
         <ContactDetails />
       </div>

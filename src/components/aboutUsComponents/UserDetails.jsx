@@ -13,15 +13,15 @@ function UserDetails() {
   }
 
   return (
-    <div className="px-[26px] pt-[16px] pb-[19px] bg-[#fff] rounded-t-[20px] max-w-[361px] mx-auto">
+    <div className="px-[26px] pt-[16px] md:pt-[30px] pb-[19px] bg-[#fff] rounded-t-[20px] max-w-[361px] w-[361px] md:max-w-[450px] md:w-[450px] lg:w-[630px] lg:max-w-[630px] md:mx-[0px] mx-auto md:rounded-t-[0px] md:rounded-l-[20px]">
       <h2 className="text-[#1e1e1e] text-[24px] font-bold text-center">
         {t("home.aboutUs.contactForm.title")}
       </h2>
       <form
-        className="w-[303px] mt-[31px] mx-auto flex flex-col"
+        className="mt-[31px] mx-auto md:mx-[0px] flex flex-col"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="flex flex-col gap-[23px]">
+        <div className="flex flex-col gap-[23px] md:gap-[30px]">
           <OneInputField
             label={t("home.aboutUs.contactForm.name")}
             inputType="text"
@@ -51,7 +51,7 @@ function UserDetails() {
             name="message"
           />
         </div>
-        <button className="px-[33px] py-[16px] w-[141px] text-[15px] text-[#634A81] bg-[#eaeaea] mt-[13px] rounded-[12px] self-end">
+        <button className="px-[33px] py-[16px] w-[141px] text-[15px] text-[#634A81] bg-[#eaeaea] mt-[13px] md:mt-[35px] rounded-[12px] self-end">
           {t("home.aboutUs.contactForm.button")}
         </button>
       </form>
