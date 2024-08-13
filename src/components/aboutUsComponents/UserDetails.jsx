@@ -13,7 +13,7 @@ function UserDetails() {
   }
 
   return (
-    <div className="px-[26px] pt-[16px] md:pt-[30px] pb-[19px] bg-[#fff] rounded-t-[20px] max-w-[361px] w-[361px] md:max-w-[450px] md:w-[450px] lg:w-[630px] lg:max-w-[630px] md:mx-[0px] mx-auto md:rounded-t-[0px] md:rounded-l-[20px]">
+    <div className="px-[26px] pt-[16px] md:pt-[30px] pb-[19px] bg-[#fff] rounded-t-[20px] max-w-[361px] w-full  md:max-w-[450px] md:w-[450px] lg:w-[630px] lg:max-w-[630px] mx-auto md:mx-[0px] md:rounded-l-[20px] md:rounded-tr-[0px] z-10">
       <h2 className="text-[#1e1e1e] text-[24px] font-bold text-center">
         {t("home.aboutUs.contactForm.title")}
       </h2>

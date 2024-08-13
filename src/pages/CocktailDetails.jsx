@@ -1,3 +1,4 @@
+import SingleProductSkeleton from "../components/cocktailsComponents/cocktailsDetailsComponents/loaderComponents/SingleProductSkeleton";
 import CocktailsDetailsHeader from "../components/cocktailsComponents/cocktailsDetailsComponents/CocktailsDetailsHeader";
 import { useCocktailId } from "../hooks/useCocktails";
 import CocktailDetailsCard from "../components/cocktailsComponents/cocktailsDetailsComponents/CocktailDetailsCard";
@@ -35,6 +36,7 @@ function CocktailDetails() {
       </div>
       <div className="hidden md:block">
         <SingleCocktailProduct cocktail={cocktail} />
+        <SingleProductSkeleton />
       </div>
       <SameCocktails />
     </div>
