@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 function UserDetails() {
   const { t } = useTranslation();
   return (
-    <div className="px-[14px] pb-[19px] bg-[#eaeaea] rounded-t-[20px] max-w-[361px] mx-auto">
+    <div className="px-[14px] pb-[19px] bg-[#fff] rounded-t-[20px] max-w-[361px] mx-auto">
       <img src={backArrow} alt="back-arrow" className="pt-[3px]" />
       <h2 className="text-[#1e1e1e] text-[15px] font-bold text-center">
         {t("home.aboutUs.contactForm.title")}
