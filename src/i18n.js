@@ -152,6 +152,8 @@ i18n
           },
           newsDetails: {
             backButton: "უკან",
+            introduction: "შესავალი",
+            share: "გაზიარება",
           },
         },
       },
@@ -298,6 +300,8 @@ i18n
           },
           newsDetails: {
             backButton: "back",
+            introduction: "Introduction",
+            share: "Share",
           },
         },
       },
