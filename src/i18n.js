@@ -71,6 +71,7 @@ i18n
                 articleInput: "შეიყვანეთ საგანი",
                 message: "შეტყობინების ყუთი",
                 messageInput: "შეიყვანეთ ტექსტი",
+                button: "გაგზავნა",
               },
               contactDetails: {
                 location: "წალკა, რუსთაველის 25, ქვემო ქართლი, საქართველო",
@@ -231,6 +232,7 @@ i18n
                 articleInput: "Enter your subject",
                 message: "Message box",
                 messageInput: "text here",
+                button: "Send now",
               },
               contactDetails: {
                 location: "25 Rustaveli Street, Tsalka, Kvemo Kartli, Georgia",
