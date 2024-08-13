@@ -3,7 +3,7 @@ import UserDetails from "./UserDetails";
 
 function ContactInformation() {
   return (
-    <div>
+    <div className="flex flex-col">
       <UserDetails />
       <ContactDetails />
     </div>

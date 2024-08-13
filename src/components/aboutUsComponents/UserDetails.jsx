@@ -1,41 +1,37 @@
-import ContactForm from "./ContactForm";
-import backArrow from "/images/backArrow.png";
-import masterCard from "/images/masterCard.png";
-import visa from "/images/visa.png";
-import ruPay from "/images/ruPay.png";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import OneInputField from "./OneInputField";
 
 function UserDetails() {
   const { t } = useTranslation();
   return (
-    <div className="px-[14px] pb-[19px] bg-[#fff] rounded-t-[20px] max-w-[361px] mx-auto">
-      <Link to={-1}>
-        <img src={backArrow} alt="back-arrow" className="pt-[3px]" />
-      </Link>
-      <h2 className="text-[#1e1e1e] text-[15px] font-bold text-center">
+    <div className="px-[26px] pt-[16px] pb-[19px] bg-[#fff] rounded-t-[20px] max-w-[361px] mx-auto">
+      <h2 className="text-[#1e1e1e] text-[24px] font-bold text-center">
         {t("home.aboutUs.contactForm.title")}
       </h2>
-      <ContactForm />
-
-      <p className="text-[#1E1E1E] font-bold text-[15px] mt-[45px] text-center">
-        {t("home.aboutUs.contactForm.method")}
-      </p>
-      <div className="bg-[#D9D9D9] rounded-[7px] flex items-center justify-between gap-[10px] py-[21px] px-[15px] mt-[20px]">
-        <div className="flex flex-col">
-          <p className="text-[#908F8F] text-[15px]">
-            {t("home.aboutUs.contactForm.card")}
-          </p>
-          <p className="text-[#908F8F] text-[11px]">
-            {t("home.aboutUs.contactForm.safety")}
-          </p>
+      <form className="w-[303px] mt-[31px] mx-auto">
+        <div className="flex flex-col gap-[23px]">
+          <OneInputField
+            label={t("home.aboutUs.contactForm.name")}
+            inputType="text"
+            placeholder={t("home.aboutUs.contactForm.inputName")}
+          />
+          <OneInputField
+            label={t("home.aboutUs.contactForm.email")}
+            inputType="email"
+            placeholder={t("home.aboutUs.contactForm.emailInput")}
+          />
+          <OneInputField
+            label={t("home.aboutUs.contactForm.article")}
+            inputType="text"
+            placeholder={t("home.aboutUs.contactForm.articleInput")}
+          />
+          <OneInputField
+            label={t("home.aboutUs.contactForm.message")}
+            placeholder={t("home.aboutUs.contactForm.messageInput")}
+            textType="message"
+          />
         </div>
-        <div className="flex gap-[10px]">
-          <img src={masterCard} alt="mastercard" />
-          <img src={visa} alt="visa" />
-          <img src={ruPay} alt="ruPay" />
-        </div>
-      </div>
+      </form>
     </div>
   );
 }
