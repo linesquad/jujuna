@@ -7,6 +7,8 @@ import Wines from "./pages/Wines";
 import AppLayout from "./ui/AppLayout";
 import PageNotFound from "./pages/PageNotFound";
 import { Orders } from "./pages/Orders";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import "./index.css";
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
         <Route path="news" element={<News />} />
         <Route path="wines" element={<Wines />} />
         <Route path="orders" element={<Orders />} />
+        <Route path="signin" element={<SignIn />} />
+        <Route path="signup" element={<SignUp />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
