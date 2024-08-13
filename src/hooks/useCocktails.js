@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import fetchCocktails, { fetchCocktailsId } from "../services/apiCocktails";
-import { useParams } from "react-router-dom";
 
 const useCocktails = () => {
   const { isLoading, data, isError, error } = useQuery({
@@ -14,9 +13,7 @@ const useCocktails = () => {
 
 export default useCocktails;
 
-export const useCocktailId = () => {
-  const { id } = useParams();
-
+export const useCocktailId = (id) => {
   const { isLoading, data, isError, error } = useQuery({
     queryKey: ["cocktailId", id],
     queryFn: () => fetchCocktailsId(id),

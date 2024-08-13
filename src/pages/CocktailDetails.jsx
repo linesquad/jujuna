@@ -6,10 +6,12 @@ import SameCocktails from "../components/cocktailsComponents/cocktailsDetailsCom
 import Spinner from "../components/Spinner";
 import { useSelector } from "react-redux";
 import { getMode } from "../features/darkModeSlice";
+import { useParams } from "react-router-dom";
 
 function CocktailDetails() {
+  const { id } = useParams();
   const darkMode = useSelector(getMode);
-  const { data: cocktail, isLoading, isError, error } = useCocktailId();
+  const { data: cocktail, isLoading, isError, error } = useCocktailId(id);
 
   if (isLoading)
     return (
