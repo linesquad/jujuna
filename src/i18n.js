@@ -61,6 +61,25 @@ i18n
                 "ჩამოსასხმელი ჟუჟუნა საქართველოს უამრავ კაფე-ბარს მალევე დაუმეგობრდა და 2020 წელს ბოთლის ფორმითაც შეავსო მაღაზიათა ქსელი, რაც ასეთ მოკლე დროში, ჩვენთვის, მნიშვნელოვანი სიახლეა",
               paragraph4:
                 "ჟუჟუს ისტორია საქართველოს ფარგლებსაც სცდება და ჩინეთსა და იაპონიაში ექსპორტით გააქვს თბილისური დალევის კულტურა.",
+              contactForm: {
+                title: "საკონტაქტო ინფორმაცია",
+                email: "ელ.ფოსტა",
+                firstName: "სახელი",
+                lastName: "გვარი",
+                address: "მისამართი",
+                city: "ქალაქი",
+                country: "ქვეყანა",
+                state: "სახელმწიფო",
+                zipCode: "საფოსტო კოდი",
+                phone: "ტელეფონი(არასავალდებულო)",
+                submit: "მიწოდების გაგრძელება",
+                method: "გადახდის მეთოდი",
+                card: "საკრედიტო ბარათი",
+                safety: "უსაფრთხო და დაშიფრული",
+              },
+              contactDetails: {
+                location: "წალკა, რუსთაველის 25, ქვემო ქართლი, საქართველო",
+              },
             },
             bottle: {
               title: "ბოთლი",
@@ -207,6 +226,25 @@ i18n
                 "Bottling Zhuzhuna soon became friends with many cafes and bars in Georgia, and in 2020 it also filled the chain of stores in the form of a bottle, which is an important news for us in such a short period of time.",
               paragraph4:
                 "The history of Zhuzhu goes beyond the borders of Georgia and exports the Tbilisi drinking culture to China and Japan.",
+              contactForm: {
+                title: "Contact Information",
+                email: "email",
+                firstName: "First name",
+                lastName: "Last name",
+                address: "Address",
+                city: "City",
+                country: "Country",
+                state: "State",
+                zipCode: "Zip Code",
+                phone: "Phone(optional)",
+                submit: "Continue Shipping",
+                method: "Payment Method",
+                card: "Credit Card",
+                safety: "Secure and encrypted",
+              },
+              contactDetails: {
+                location: "25 Rustaveli Street, Tsalka, Kvemo Kartli, Georgia",
+              },
             },
             bottle: {
               title: "Bottle",
