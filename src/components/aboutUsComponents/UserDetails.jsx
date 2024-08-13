@@ -4,12 +4,15 @@ import masterCard from "/images/masterCard.png";
 import visa from "/images/visa.png";
 import ruPay from "/images/ruPay.png";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 function UserDetails() {
   const { t } = useTranslation();
   return (
     <div className="px-[14px] pb-[19px] bg-[#fff] rounded-t-[20px] max-w-[361px] mx-auto">
-      <img src={backArrow} alt="back-arrow" className="pt-[3px]" />
+      <Link to={-1}>
+        <img src={backArrow} alt="back-arrow" className="pt-[3px]" />
+      </Link>
       <h2 className="text-[#1e1e1e] text-[15px] font-bold text-center">
         {t("home.aboutUs.contactForm.title")}
       </h2>

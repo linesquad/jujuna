@@ -4,17 +4,13 @@ import CocktailsIngredients from "./CocktailsIngredients";
 import SideCocktails from "./SideCocktails";
 import { useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function SingleCocktailProduct({ cocktail }) {
   const { i18n } = useTranslation();
   const name = i18n.language === "ge" ? cocktail.name.ge : cocktail.name.en;
   const darkMode = useSelector(getMode);
   const [mainImage, setMainImage] = useState(cocktail?.image);
-
-  useEffect(() => {
-    setMainImage(cocktail?.image);
-  }, [cocktail]);
 
   return (
     <div className={`${darkMode ? "bg-[#55426E]" : "bg-[#eaeaea]"}`}>

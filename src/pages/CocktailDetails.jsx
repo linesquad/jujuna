@@ -9,7 +9,6 @@ import { getMode } from "../features/darkModeSlice";
 
 function CocktailDetails() {
   const darkMode = useSelector(getMode);
-
   const { data: cocktail, isLoading, isError, error } = useCocktailId();
 
   if (isLoading)
