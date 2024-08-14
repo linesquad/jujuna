@@ -78,9 +78,10 @@ const SignIn = () => {
           <button className="rounded-lg px-5 py-2 border border-[rgba(236, 236, 236, 1)] text-[.8rem] sm:text-[.7rem] xl:text-[1rem] font-bold ease-in-out duration-300 hover:scale-[1.02]">
             ავტორიზაცია Google ით
           </button>
-          <p className="text-center my-4 cursor-pointer text-[.8rem] sm:text-[.7rem] xl:text-[1rem]">
+          {/* we do not need to ask this question here */}
+          {/* <p className="text-center my-4 cursor-pointer text-[.8rem] sm:text-[.7rem] xl:text-[1rem]">
             უკვე გაქთ ანგარიში?
-          </p>
+          </p> */}
           <input
             {...register("email", {
               required: "Email is required",
