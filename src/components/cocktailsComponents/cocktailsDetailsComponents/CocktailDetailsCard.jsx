@@ -10,7 +10,7 @@ function CocktailDetailsCard({ item }) {
 
   return (
     <div
-      className={`w-full max-w-[300px] m-auto  flex flex-col pt-[10px] pr-[12px] pb-[50px] pl-[9px] rounded-[11px] cursor-pointer mt-[30px] ${
+      className={`w-full max-w-[350px] m-auto  flex flex-col pt-[10px] pr-[12px] pb-[50px] pl-[9px] rounded-[11px] cursor-pointer mt-[30px] ${
         darkMode ? "bg-gray-900" : "bg-[#eaeaea]"
       }`}
     >

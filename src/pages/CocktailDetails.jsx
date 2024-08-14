@@ -23,7 +23,7 @@ function CocktailDetails() {
 
   return (
     <div className={`${darkMode ? "bg-[#55426E]" : "bg-[#eaeaea]"}`}>
-      <div className="md:hidden">
+      <div className="md:hidden px-[20px]">
         {isLoading ? (
           <SkeletonForMobile />
         ) : (
