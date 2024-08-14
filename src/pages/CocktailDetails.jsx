@@ -7,6 +7,7 @@ import SameCocktails from "../components/cocktailsComponents/cocktailsDetailsCom
 import { useSelector } from "react-redux";
 import { getMode } from "../features/darkModeSlice";
 import { useParams } from "react-router-dom";
+import SkeletonForMobile from "../components/cocktailsComponents/cocktailsDetailsComponents/skeletonLoaderComponents/SkeletonForMobile";
 
 function CocktailDetails() {
   const { id } = useParams();
@@ -23,8 +24,14 @@ function CocktailDetails() {
   return (
     <div className={`${darkMode ? "bg-[#55426E]" : "bg-[#eaeaea]"}`}>
       <div className="md:hidden">
-        <CocktailsDetailsHeader item={cocktail} />
-        <CocktailDetailsCard item={cocktail} />
+        {isLoading ? (
+          <SkeletonForMobile />
+        ) : (
+          <>
+            <CocktailsDetailsHeader item={cocktail} />
+            <CocktailDetailsCard item={cocktail} />
+          </>
+        )}
       </div>
       <div className="hidden md:block">
         {isLoading ? (
