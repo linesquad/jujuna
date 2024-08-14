@@ -1,25 +1,18 @@
-import { useParams } from "react-router-dom";
+import SingleProductSkeleton from "../components/cocktailsComponents/cocktailsDetailsComponents/skeletonLoaderComponents/SingleProductSkeleton";
 import CocktailsDetailsHeader from "../components/cocktailsComponents/cocktailsDetailsComponents/CocktailsDetailsHeader";
-import useCocktails from "../hooks/useCocktails";
+import { useCocktailId } from "../hooks/useCocktails";
 import CocktailDetailsCard from "../components/cocktailsComponents/cocktailsDetailsComponents/CocktailDetailsCard";
 import SingleCocktailProduct from "../components/cocktailsComponents/cocktailsDetailsComponents/SingleCocktailProduct";
 import SameCocktails from "../components/cocktailsComponents/cocktailsDetailsComponents/SameCocktails";
-import Spinner from "../components/Spinner";
 import { useSelector } from "react-redux";
 import { getMode } from "../features/darkModeSlice";
+import { useParams } from "react-router-dom";
+import SkeletonForMobile from "../components/cocktailsComponents/cocktailsDetailsComponents/skeletonLoaderComponents/SkeletonForMobile";
 
 function CocktailDetails() {
   const { id } = useParams();
-  const { data: cocktails, isLoading, isError, error } = useCocktails();
-  const cocktail = cocktails?.find((item) => String(item.id) === String(id));
   const darkMode = useSelector(getMode);
-
-  if (isLoading)
-    return (
-      <div className="h-[60vh] flex items-center justify-center">
-        <Spinner />
-      </div>
-    );
+  const { data: cocktail, isLoading, isError, error } = useCocktailId(id);
 
   if (isError)
     return (
@@ -31,11 +24,21 @@ function CocktailDetails() {
   return (
     <div className={`${darkMode ? "bg-[#55426E]" : "bg-[#eaeaea]"}`}>
       <div className="md:hidden">
-        <CocktailsDetailsHeader item={cocktail} />
-        <CocktailDetailsCard item={cocktail} />
+        {isLoading ? (
+          <SkeletonForMobile />
+        ) : (
+          <>
+            <CocktailsDetailsHeader item={cocktail} />
+            <CocktailDetailsCard item={cocktail} />
+          </>
+        )}
       </div>
       <div className="hidden md:block">
-        <SingleCocktailProduct cocktail={cocktail} />
+        {isLoading ? (
+          <SingleProductSkeleton />
+        ) : (
+          <SingleCocktailProduct cocktail={cocktail} />
+        )}
       </div>
       <SameCocktails />
     </div>

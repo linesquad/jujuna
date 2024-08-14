@@ -19,7 +19,7 @@ function CocktailsIngredients({ cocktail }) {
           <OneCocktailIngredient key={index} item={item} />
         ))}
       </div>
-      <div className="mt-[80px] flex flex-col gap-[10px]">
+      <div className="mt-[80px] flex flex-col gap-[10px] md:gap-[20px]">
         <button className="w-full h-[28px] lg:h-[49px] bg-[#613994] rounded-[50px] flex items-center justify-center">
           <img
             src={heart}

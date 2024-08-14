@@ -61,6 +61,21 @@ i18n
                 "ჩამოსასხმელი ჟუჟუნა საქართველოს უამრავ კაფე-ბარს მალევე დაუმეგობრდა და 2020 წელს ბოთლის ფორმითაც შეავსო მაღაზიათა ქსელი, რაც ასეთ მოკლე დროში, ჩვენთვის, მნიშვნელოვანი სიახლეა",
               paragraph4:
                 "ჟუჟუს ისტორია საქართველოს ფარგლებსაც სცდება და ჩინეთსა და იაპონიაში ექსპორტით გააქვს თბილისური დალევის კულტურა.",
+              contactForm: {
+                title: "საკონტაქტო ინფორმაცია",
+                name: "სახელი",
+                inputName: "შეიყვანე სახელი",
+                email: "ელ.ფოსტის მისამართი",
+                emailInput: "შეიყვანეთ ელ.ფოსტა",
+                article: "სტატიის შესახებ",
+                articleInput: "შეიყვანეთ საგანი",
+                message: "შეტყობინების ყუთი",
+                messageInput: "შეიყვანეთ ტექსტი",
+                button: "გაგზავნა",
+              },
+              contactDetails: {
+                location: "წალკა, რუსთაველის 25, ქვემო ქართლი, საქართველო",
+              },
             },
             bottle: {
               title: "ბოთლი",
@@ -165,6 +180,11 @@ i18n
             personalPol: "პერსონალური მონაცემების დაცვის პოლიტიკა",
             security: "უსაფრთხოების ცენტრი",
           },
+          newsDetails: {
+            backButton: "უკან",
+            introduction: "შესავალი",
+            share: "გაზიარება",
+          },
         },
       },
       en: {
@@ -219,6 +239,21 @@ i18n
                 "Bottling Zhuzhuna soon became friends with many cafes and bars in Georgia, and in 2020 it also filled the chain of stores in the form of a bottle, which is an important news for us in such a short period of time.",
               paragraph4:
                 "The history of Zhuzhu goes beyond the borders of Georgia and exports the Tbilisi drinking culture to China and Japan.",
+              contactForm: {
+                title: "Contact Us",
+                name: "Your Name",
+                inputName: "Enter your name",
+                email: "Email address",
+                emailInput: "Enter your email",
+                article: "About article",
+                articleInput: "Enter your subject",
+                message: "Message box",
+                messageInput: "text here",
+                button: "Send now",
+              },
+              contactDetails: {
+                location: "25 Rustaveli Street, Tsalka, Kvemo Kartli, Georgia",
+              },
             },
             bottle: {
               title: "Bottle",
@@ -322,6 +357,11 @@ i18n
             adressValue: "#8 Ninoshvili street, Georgia",
             personalPol: "Personal data protection policy",
             security: "Security Center",
+          },
+          newsDetails: {
+            backButton: "back",
+            introduction: "Introduction",
+            share: "Share",
           },
         },
       },

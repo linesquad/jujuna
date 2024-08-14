@@ -2,7 +2,7 @@ import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
 import Wrapper from "../../Wrapper";
 
 const StarRatings = () => {
-  const rating = 3.5;
+  const rating = 1.5;
   const total = 72;
   const renderStars = () => {
     const stars = [];
