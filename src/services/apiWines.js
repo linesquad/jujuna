@@ -11,4 +11,18 @@ const fetchWines = async () => {
   return data;
 };
 
+export const fetchWineById = async (id) => {
+  const { data, error } = await supabase
+    .from("wine")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    console.error("Error fetching wine:", error);
+    throw new Error("Failed to fetch wine");
+  }
+  return data;
+};
+
 export default fetchWines;

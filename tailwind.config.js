@@ -36,6 +36,13 @@ export default {
           dark: "#583980",
           light: "#D9D9D9",
           border: "#C8C5C5",
+          addBtn: "#8862B7",
+          arrowBg: "#33204B",
+        },
+
+        wineDetailsColor: {
+          textColor: "#BB8DF5",
+          textDark: "#000",
         },
 
         color: {

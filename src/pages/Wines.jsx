@@ -13,16 +13,6 @@ const Wines = () => {
 
   const { data: wines, isLoading, isError, error } = useWines();
 
-  if (isLoading) return <Spinner />;
-
-  if (isError) {
-    return (
-      <div className="text-center bg-purple-700 p-2 -mb-24">
-        <p className="text-purple-200 font-bold">{error.message}</p>
-      </div>
-    );
-  }
-
   return (
     <div
       className={`flex flex-col pb-24  ${
@@ -41,6 +31,12 @@ const Wines = () => {
           ))}
         </div>
       </Wrapper>
+      {isLoading && <Spinner />}
+      {isError && (
+        <div className="text-center bg-purple-700 p-2 -mb-24">
+          <p className="text-purple-200 font-bold">{error.message}</p>
+        </div>
+      )}
     </div>
   );
 };

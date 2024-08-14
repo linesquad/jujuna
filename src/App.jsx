@@ -8,7 +8,7 @@ import AppLayout from "./ui/AppLayout";
 import PageNotFound from "./pages/PageNotFound";
 import { Orders } from "./pages/Orders";
 import "./index.css";
-import WineDetails from "./pages/WineDetails";
+import WineDetails from "./components/wineComponents/singleWineComponents/SingleWine";
 import NewsDetails from "./components/newsComponents/NewsDetails";
 import CocktailDetails from "./pages/CocktailDetails";
 

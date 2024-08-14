@@ -8,6 +8,7 @@ import { getMode } from "../../features/darkModeSlice";
 function WineCard({ wine }) {
   const { i18n } = useTranslation();
   const mode = useSelector(getMode);
+  const id = wine.id;
 
   return (
     <div
@@ -17,7 +18,7 @@ function WineCard({ wine }) {
           : "bg-wineCardColor-light shadow-[rgba(0,0,15,0.3)_8px_8px_16px_0px] lg:shadow-none xl:border xl:border-wineCardColor-dark xl:bg-transparent"
       }`}
     >
-      <Link to={`/`}>
+      <Link to={`/wines/${id}`}>
         <div className="relative p-4 flex flex-col items-center">
           <img
             src="/images/wineheart.png"

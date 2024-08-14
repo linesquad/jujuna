@@ -139,6 +139,21 @@ i18n
               price: "ფასი",
             },
             cart: "დამატება",
+            singleWine: {
+              price: "ფასი",
+              size: "მოცულობა",
+              alco: "ალკოჰოლი",
+              cart: "კალათში დამატება",
+              favorites: "ფავორიტებში დამატება",
+              text: {
+                heading1: "ნამდვილი ხილის ნეტარება",
+                heading2: "ო, ღმერთო. როგორი გემრიელია.",
+                img1: "ყლუპები ისეთი, როგორიც ამბავი, რომელიც გინდა, რომ გააზიარო.",
+                img2: "სურნელი, რაღაც არაჩვეულებრივის ჩურჩულივით.",
+                paragraph:
+                  "ჩვენ ავიღეთ ჩვენი საყვარელი მეწამული ყურძნის ღვინო და გავურიეთ მას მაყვლის, ქლიავის და შავი ალუბლის ბუნებრივი არომატები, სიამოვნების შესაქმნელად. გამაგრილებელი ავთენტური ღვინო. დამზადებულია ბუნებრივი ინგრედიენტებით და ყოველგვარი ხელოვნური არომატიზატორების, საღებავების ან მაღალი ფრუქტოზის სიმინდის სიროფის გარეშე. საუკეთესოდ მიირთმევთ გაციებულ მდგომარეობაშო (შესაძლოა ზედმეტად ცივი ან ყინულით). არაჩვეულებრივად უხდება მყუდრო საბანს და შესანიშნავ წიგნს. შეუდარებელი დელიკატესი ყველით. ამაღლებს ნებისმიერ მომენტს.",
+              },
+            },
           },
           footer: {
             number: "ტელეფონი",
@@ -282,6 +297,21 @@ i18n
               price: "Price",
             },
             cart: "Add To Cart",
+            singleWine: {
+              price: "Price",
+              size: "Size",
+              alco: "Abv",
+              cart: "Add To Cart",
+              favorites: "Add To Favorites",
+              text: {
+                heading1: "TRUE FRUIT BLISS",
+                heading2: "Oh, heavens. How delicious.",
+                img1: "Sips like a story you’ll want to share.",
+                img2: "Savors like a whisper of something extraordinary.",
+                paragraph:
+                  "We took our beloved Purple Grape Wine and infused it with natural flavors of blackberry, plum, and black cherry to craft this ready-to-drink delight. A refreshingly authentic wine. Made with natural ingredients and without any artificial flavorings, colorings, or high fructose corn syrup. Best enjoyed chilled (perhaps even extra-cold or over ice). Perfectly pairs with a cozy blanket and a great book. Irresistible with gourmet cheese. Elevates any moment.",
+              },
+            },
           },
           footer: {
             number: "mobile number",
