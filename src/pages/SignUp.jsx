@@ -20,10 +20,10 @@ const SignUo = () => {
     register,
     handleSubmit,
     setError,
+    watch,
     formState: { errors, isSubmitting },
-    
   } = useForm();
-
+  const password = watch("password");
   const handleChange = () => setChecked((prev) => !prev);
 
   const onSubmit = async (data) => {
@@ -112,10 +112,25 @@ const SignUo = () => {
             className="rounded-2xl px-5 py-2 border border-[rgba(236, 236, 236, 1)] text-[.8rem] sm:text-[.7rem] xl:text-[1rem] focus:outline-none"
             placeholder="Your password"
           />
-          
+
           {errors?.password && (
             <p className="text-red-500 text-[.8rem] sm:text-[.7rem] xl:text-[1rem]">
               {errors?.password?.message}
+            </p>
+          )}
+          <input
+            {...register("confirmPassword", {
+              required: "Please confirm your password",
+              validate: (value) =>
+                value === password || "Passwords do not match",
+            })}
+            type="password"
+            className="rounded-2xl px-5 py-2 border border-[rgba(236, 236, 236, 1)] text-[.8rem] sm:text-[.7rem] xl:text-[1rem] focus:outline-none"
+            placeholder="Confirm your password"
+          />
+          {errors?.confirmPassword && (
+            <p className="text-red-500 text-[.8rem] sm:text-[.7rem] xl:text-[1rem]">
+              {errors?.confirmPassword?.message}
             </p>
           )}
           <div className="flex items-center gap-2">
@@ -140,7 +155,7 @@ const SignUo = () => {
             className="bg-buttonColor-primary rounded-2xl text-white py-[6px] text-[.8rem] sm:text-[.7rem] xl:text-[1rem]"
             disabled={isSubmitting}
           >
-            {isSubmitting ? "დაელოდეთ..." : "ავტორიზაცია"}
+            {isSubmitting ? "დაელოდეთ..." : "რეგისტრაცია"}
           </button>
           {errors?.root && (
             <p className="text-red-500 text-[.8rem] sm:text-[.7rem] xl:text-[1rem]">
