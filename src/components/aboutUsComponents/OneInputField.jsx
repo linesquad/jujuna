@@ -13,7 +13,7 @@ function OneInputField({
 }) {
   return (
     <div className="flex flex-col md:flex-row md:items-start gap-[13px]">
-      <p className="text-color-black text-[13px] font-medium md:w-[30%] mt-[10px]">
+      <p className="text-color-black text-[13px] font-medium md:w-[60%] lg:w-[30%] mt-[10px]">
         {label}
       </p>
 
