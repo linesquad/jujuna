@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import fetchBlogs, { fetchBlogsId } from "../services/apiBlogs";
-import { useParams } from "react-router-dom";
 
 const useBlogs = () => {
   const { isLoading, data, isError, error } = useQuery({
@@ -14,9 +13,7 @@ const useBlogs = () => {
 
 export default useBlogs;
 
-export const useBlogId = () => {
-  const { id } = useParams();
-
+export const useBlogId = (id) => {
   const { isLoading, data, isError, error } = useQuery({
     queryKey: [`blogById`, id],
     queryFn: () => fetchBlogsId(id),
