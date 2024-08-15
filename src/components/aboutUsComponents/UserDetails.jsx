@@ -51,11 +51,11 @@ function UserDetails() {
             register={register}
             name="name"
             isRequired={true}
-            errorMessage="Name is required"
+            errorMessage={t("home.aboutUs.contactForm.nameError")}
             error={errors?.name?.message}
             pattern={{
               value: /^[A-Za-z\s]*$/,
-              message: "Only letters are allowed",
+              message: t("home.aboutUs.contactForm.namePattern"),
             }}
           />
           <OneInputField
@@ -65,11 +65,11 @@ function UserDetails() {
             register={register}
             name="email"
             isRequired={true}
-            errorMessage="Email is required"
+            errorMessage={t("home.aboutUs.contactForm.emailError")}
             error={errors?.email?.message}
             pattern={{
               value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-              message: "Invalid email format",
+              message: t("home.aboutUs.contactForm.emailPattern"),
             }}
           />
           <OneInputField
@@ -79,7 +79,7 @@ function UserDetails() {
             register={register}
             name="article"
             isRequired={true}
-            errorMessage="Article is required"
+            errorMessage={t("home.aboutUs.contactForm.articleError")}
             error={errors?.article?.message}
           />
           <OneInputField
@@ -89,7 +89,7 @@ function UserDetails() {
             register={register}
             name="message"
             isRequired={true}
-            errorMessage="Message is required"
+            errorMessage={t("home.aboutUs.contactForm.messageError")}
             error={errors?.message?.message}
             watch={watch}
           />
