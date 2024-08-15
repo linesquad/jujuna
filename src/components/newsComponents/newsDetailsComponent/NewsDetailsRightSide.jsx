@@ -3,12 +3,18 @@ import OneNews from "../../landingComponents/LandingBlog";
 import { SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
 import { Swiper } from "swiper/react";
+import Spinner from "../../Spinner";
 
 const NewsDetailsRightSide = () => {
   const { data: blogNews, isLoading, error } = useLatestBlogs();
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error loading blogs: {error.message}</p>;
+  if (isLoading) return <Spinner />;
+  if (error)
+    return (
+      <p className="text-center bg-purple-700 p-2 h-32 text-purple-200 font-bold">
+        {error.message}
+      </p>
+    );
   if (!blogNews || blogNews.length === 0) return <p>No blog news available.</p>;
 
   return (
