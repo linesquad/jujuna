@@ -8,6 +8,7 @@ import NewsStar from "./NewsStar";
 import NewsShare from "./NewsShare";
 import { useParams } from "react-router-dom";
 import ComentarNews from "./ComentarNews";
+import NewsDetailsWriteComment from "./NewsDetailsWriteComment";
 
 const NewsDetailsLeftSide = () => {
   const { id } = useParams();
@@ -92,8 +93,13 @@ const NewsDetailsLeftSide = () => {
           <NewsShare />
         </div>
       </div>
-      <div className="pt-[100px] sm:pt-[95px] md:pt-[90px] lg:pt-[85px] pb-20">
-        <ComentarNews />
+      <div className="flex flex-col">
+        <div className=" sm:pt-[95px] md:pt-[90px] lg:pt-[85px] pb-16 order-2 sm:order-1">
+          <ComentarNews />
+        </div>
+        <div className="pt-[100px]  sm:pt-0 order-1 sm:order-2">
+          <NewsDetailsWriteComment />
+        </div>
       </div>
     </div>
   );
