@@ -8,12 +8,12 @@ function SingleWineCardAddButtons() {
 
   return (
     <div
-      className={`flex flex-col gap-4 mt-6 font-semibold ${
+      className={`tiny:max-w-[200px] smaller:max-w-[240px] flex flex-col gap-4 mt-6 font-semibold ${
         mode ? "text-wineNavbarColor-textPurple" : "text-buttonColor-primary"
       }`}
     >
       <button
-        className={`border-2 rounded-lg p-2 pl-20 pr-20 ${
+        className={`tiny:pl-0 tiny:pr-0 tiny:max-w-[200px] smaller:pl-0 smaller:pr-0 smaller:w-[240px] border-2 rounded-lg p-2 pl-20 pr-20 ${
           i18n.language === "ge" && "pl-10 pr-10"
         } shadow-[rgba(0,0,0,0.25)_5px_8px_10px_0px] lg:w-96 ${
           mode
@@ -24,7 +24,7 @@ function SingleWineCardAddButtons() {
         {t("winePage.singleWine.cart")}
       </button>
       <button
-        className={`border-2 rounded-lg p-2 pl-20 pr-20 ${
+        className={`tiny:pl-0 tiny:pr-0 tiny:w-[200px] smaller:pl-0 smaller:pr-0 smaller:w-[240px] border-2 rounded-lg p-2 pl-20 pr-20 ${
           i18n.language === "ge" && "pl-10 pr-10"
         } shadow-[rgba(0,0,0,0.25)_5px_8px_10px_0px] lg:w-96 ${
           mode

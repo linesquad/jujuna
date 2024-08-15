@@ -6,11 +6,14 @@ import { getMode } from "../../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";
 import NewsStar from "./NewsStar";
 import NewsShare from "./NewsShare";
+import { useParams } from "react-router-dom";
+import ComentarNews from "./ComentarNews";
 
 const NewsDetailsLeftSide = () => {
+  const { id } = useParams();
   const mode = useSelector(getMode);
   const { t, i18n } = useTranslation();
-  const { data, isLoading, isError, error } = useBlogId();
+  const { data, isLoading, isError, error } = useBlogId(id);
 
   if (isLoading) return <Spinner />;
 
@@ -88,6 +91,9 @@ const NewsDetailsLeftSide = () => {
         <div className="order-2 sm:order-1">
           <NewsShare />
         </div>
+      </div>
+      <div className="pt-[100px] sm:pt-[95px] md:pt-[90px] lg:pt-[85px] pb-20">
+        <ComentarNews />
       </div>
     </div>
   );

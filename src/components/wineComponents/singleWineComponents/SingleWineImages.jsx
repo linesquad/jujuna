@@ -4,7 +4,7 @@ function SingleWineImages() {
   const { t } = useTranslation();
 
   return (
-    <div className="mt-20 flex flex-col items-center lg:flex-row lg:justify-center lg:gap-40 lg:-mt-20">
+    <div className="tiny:max-w-[200px] tiny:m-auto tiny:mt-10 mt-20 flex flex-col items-center lg:flex-row lg:justify-center lg:gap-40 lg:-mt-20">
       <div>
         <img
           src="/images/singleWineImage1.png"
