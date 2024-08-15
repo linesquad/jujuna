@@ -1,4 +1,4 @@
-import SkeletonDiv from "./SkeletonDiv";
+import SkeletonDiv from "../../../SkeletonDiv";
 
 function SideCocktailsSkeleton() {
   return (

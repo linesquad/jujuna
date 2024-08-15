@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import { getMode } from "../../../../features/darkModeSlice";
 import Wrapper from "../../../Wrapper";
-import SkeletonDiv from "./SkeletonDiv";
+import SkeletonDiv from "../../../SkeletonDiv";
+
 import SideCocktailsSkeleton from "./SideCocktailsSkeleton";
 import CocktailsIngredientsSkeleton from "./CocktailsIngredientsSkeleton";
 

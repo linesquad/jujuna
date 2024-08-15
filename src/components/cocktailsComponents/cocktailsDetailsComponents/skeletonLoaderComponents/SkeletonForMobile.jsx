@@ -1,4 +1,5 @@
-import SkeletonDiv from "./SkeletonDiv";
+import SkeletonDiv from "../../../SkeletonDiv";
+
 import rightArrow from "/images/rightArrow.svg";
 
 function SkeletonForMobile() {
