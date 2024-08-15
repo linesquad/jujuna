@@ -20,9 +20,11 @@ function Pegination({ pageQuantity }) {
           return (
             <div
               key={index}
-              className="w-[40px] h-[40px] rounded-[15px] bg-[#d9d9d9] flex justify-center items-center"
+              className="tiny:w-[20px] tiny:h-[20px] w-[40px] h-[40px] rounded-[15px] bg-[#d9d9d9] flex justify-center items-center"
             >
-              <p className="text-[16px] text-color-black font-bold">{item}</p>
+              <p className="tiny:text-[13px] text-[16px] text-color-black font-bold">
+                {item}
+              </p>
             </div>
           );
         })}
