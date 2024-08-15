@@ -3,41 +3,81 @@ import Wrapper from "../../Wrapper";
 import { IoIosStar, IoIosStarOutline } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
+import { useTranslation } from "react-i18next";
 
 function Rate() {
+  const { t } = useTranslation();
   const [stars, setStars] = useState(0);
-  const mode = useSelector(getMode);
+  const [hoveredStars, setHoveredStars] = useState(0);
+  const [isClicked, setIsClicked] = useState(false);
+  const [isRated, setIsRated] = useState(false);
+  const darkMode = useSelector(getMode);
 
   const AddStar = ({ filled }) => {
     return (
-      <div className="mr-2 border-2 border-purple-800 p-2 rounded">
+      <div className="tiny:m-0 tiny:p-1 smaller:m-0 smaller:p-1 mr-2 border-2 border-purple-800 p-2 rounded">
         {filled ? (
-          <IoIosStar className="w-9 h-9 text-purple-800" />
+          <IoIosStar className="tiny:w-5 tiny:w-5 smaller:w-6 smaller:w-6 w-9 h-9 text-purple-800" />
         ) : (
-          <IoIosStarOutline className="w-9 h-9 text-purple-800" />
+          <IoIosStarOutline className="tiny:w-5 tiny:w-5 smaller:w-6 smaller:w-6 w-9 h-9 text-purple-800" />
         )}
       </div>
     );
   };
 
+  const handleStarClick = (index) => {
+    setStars(index + 1);
+    setIsClicked(true);
+    setIsRated(true);
+  };
+
+  const handleMouseEnter = (index) => {
+    if (!isClicked) {
+      setHoveredStars(index + 1);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isClicked) {
+      setHoveredStars(0);
+    }
+  };
+
   return (
-    <div className="mt-10 flex flex-col">
+    <div className="mt-10 flex flex-col ">
       <Wrapper>
-        <p>REVIEW THIS PRODUCT</p>
-        <div className="flex space-x-2 mt-6 mb-6">
-          {[...Array(5)].map((_, i) => (
-            <button key={i} onClick={() => setStars(i + 1)}>
-              <AddStar
-                filled={i < Math.floor(stars)}
-                half={i === Math.floor(stars) && stars % 1 !== 0}
-              />
-            </button>
-          ))}
-        </div>
-        <p>Adding a review will require a valid email for verification</p>
+        <p className="tiny:text-center smaller:text-center">
+          {t("winePage.singleWine.reviews.heading2")}
+        </p>
+        {!isRated ? (
+          <div className="flex space-x-2 mt-6 mb-6 smaller:justify-center">
+            {[...Array(5)].map((_, i) => (
+              <button
+                key={i}
+                onClick={() => handleStarClick(i)}
+                onMouseEnter={() => handleMouseEnter(i)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <AddStar filled={i < Math.max(stars, hoveredStars)} />
+              </button>
+            ))}
+          </div>
+        ) : (
+          <div
+            className={`pt-6 pb-6 font-semibold text-lg tiny:text-center smaller:text-center ${
+              darkMode ? "text-white" : "text-purple-900"
+            }`}
+          >
+            {t("winePage.singleWine.reviews.rated")}
+          </div>
+        )}
+
+        <p className="tiny:text-center smaller:text-center">
+          {t("winePage.singleWine.reviews.paragraph")}
+        </p>
         <hr
-          className={`max-w-[640px] mt-8 border-t-2  ${
-            !mode && "border-gray-500"
+          className={`smaller:ml-4 smaller:mr-4 max-w-[640px] mt-8 border-t-2  ${
+            !darkMode && "border-gray-500"
           }`}
         />
       </Wrapper>

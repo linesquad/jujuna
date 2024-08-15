@@ -168,6 +168,17 @@ i18n
                 paragraph:
                   "ჩვენ ავიღეთ ჩვენი საყვარელი მეწამული ყურძნის ღვინო და გავურიეთ მას მაყვლის, ქლიავის და შავი ალუბლის ბუნებრივი არომატები, სიამოვნების შესაქმნელად. გამაგრილებელი ავთენტური ღვინო. დამზადებულია ბუნებრივი ინგრედიენტებით და ყოველგვარი ხელოვნური არომატიზატორების, საღებავების ან მაღალი ფრუქტოზის სიმინდის სიროფის გარეშე. საუკეთესოდ მიირთმევთ გაციებულ მდგომარეობაშო (შესაძლოა ზედმეტად ცივი ან ყინულით). არაჩვეულებრივად უხდება მყუდრო საბანს და შესანიშნავ წიგნს. შეუდარებელი დელიკატესი ყველით. ამაღლებს ნებისმიერ მომენტს.",
               },
+              reviews: {
+                heading1: "შეფასებები",
+                heading2: "შეაფასე პროდუქტი",
+                rated: "შენ უკვე შეაფასე პროდუქტი",
+                paragraph: "შეფასებისთვის საჭიროა ვერიფიკაცია მეილით",
+              },
+              relatedWines: {
+                title: "მსგავსი ღვინოები",
+                details: "დეტალურად",
+                cart: "კალათში დამატება",
+              },
             },
           },
           footer: {
@@ -345,6 +356,18 @@ i18n
                 img2: "Savors like a whisper of something extraordinary.",
                 paragraph:
                   "We took our beloved Purple Grape Wine and infused it with natural flavors of blackberry, plum, and black cherry to craft this ready-to-drink delight. A refreshingly authentic wine. Made with natural ingredients and without any artificial flavorings, colorings, or high fructose corn syrup. Best enjoyed chilled (perhaps even extra-cold or over ice). Perfectly pairs with a cozy blanket and a great book. Irresistible with gourmet cheese. Elevates any moment.",
+              },
+              reviews: {
+                heading1: "COMMUNITY REVIEWS",
+                heading2: "REVIEW THIS PRODUCT",
+                rated: "YOU HAVE RATED THIS PRODUCT",
+                paragraph:
+                  "Adding a review will require a valid email for verification",
+              },
+              relatedWines: {
+                title: "BROWSE RELATED WINES",
+                details: "View details",
+                cart: "Add To Cart",
               },
             },
           },

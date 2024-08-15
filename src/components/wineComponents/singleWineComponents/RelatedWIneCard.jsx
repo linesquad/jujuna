@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
+import { useTranslation } from "react-i18next";
 
 function RelatedWine({ item }) {
   const { name, id } = item;
   const darkMode = useSelector(getMode);
+  const { i18n, t } = useTranslation();
 
   return (
     <Link to={`/wines/${id}`}>
       <div
-        className={`w-full max-w-[260px] md:max-w-[260px] m-auto mb-40 ${
+        className={`w-full tiny:max-w-[200px] max-w-[260px] md:max-w-[260px] m-auto mb-40 ${
           darkMode
             ? "bg-[#55367B] md:bg-transparent md:border md:border-buttonColor-primary"
             : "transparent md:border md:border-transparent md:shadow-[5px_8px_10px_rgba(0,0,0,0.25)]"
@@ -21,10 +23,12 @@ function RelatedWine({ item }) {
           className="w-[24px] h-[24px] absolute right-4 md:top-3"
         />
         <img src="/images/bottle.png" alt="cocktail" className="md:w-[100px]" />
-        <p className="text-black mt-4">{name.en}</p>
+        <p className="text-black mt-4">
+          {i18n.language === "ge" ? name.ge : name.en}
+        </p>
         <div className="flex justify-between mt-[10px] md:mt-[18px]">
           <p className={`${!darkMode && "text-buttonColor-primary"}`}>
-            View details
+            {t("winePage.singleWine.relatedWines.details")}
           </p>
         </div>
         <button
@@ -34,7 +38,7 @@ function RelatedWine({ item }) {
               : "bg-transparent border-buttonColor-primary text-buttonColor-primary"
           }`}
         >
-          Add To Cart
+          {t("winePage.singleWine.relatedWines.cart")}
         </button>
       </div>
     </Link>

@@ -1,7 +1,9 @@
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
 import Wrapper from "../../Wrapper";
+import { useTranslation } from "react-i18next";
 
 const StarRatings = () => {
+  const { t } = useTranslation();
   const rating = 1.5;
   const total = 72;
   const renderStars = () => {
@@ -26,8 +28,8 @@ const StarRatings = () => {
 
   return (
     <Wrapper>
-      <div className="-ml-[175px] md:m-0">
-        <p>COMMUNITY REVIEWS</p>
+      <div className="-ml-[175px] md:m-0 tiny:w-[200px] tiny:m-auto tiny:mt-8 tiny:text-center smaller:ml-auto">
+        <p>{t("winePage.singleWine.reviews.heading1")}</p>
         <div className="flex mt-4 mb-6">
           {renderStars()}
           <span className="ml-4">

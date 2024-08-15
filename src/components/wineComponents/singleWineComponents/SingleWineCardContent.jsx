@@ -29,18 +29,28 @@ function SingleWineCardContent({ wine }) {
           </p>
           <div className="flex gap-4 font-medium justify-center items-center mt-1 lg:justify-start lg:mt-5 lg:mb-5 text-center">
             <div>
-              <p>{t("winePage.singleWine.price")}</p>
-              <span>${wine.price}</span>
+              <p className={`${i18n.language === "ge" && "tiny:text-xs"}`}>
+                {t("winePage.singleWine.price")}
+              </p>
+              <span className={`${i18n.language === "ge" && "tiny:text-sm"}`}>
+                ${wine.price}
+              </span>
             </div>
             <div>
-              <p>{t("winePage.singleWine.size")}</p>
-              <span>
+              <p className={`${i18n.language === "ge" && "tiny:text-xs"}`}>
+                {t("winePage.singleWine.size")}
+              </p>
+              <span className={`${i18n.language === "ge" && "tiny:text-sm"}`}>
                 {wine.size} {i18n.language === "ge" ? "ლ" : "L"}
               </span>
             </div>
             <div>
-              <p>{t("winePage.singleWine.alco")}</p>
-              <span>{wine.alco}%</span>
+              <p className={`${i18n.language === "ge" && "tiny:text-xs"}`}>
+                {t("winePage.singleWine.alco")}
+              </p>
+              <span className={`${i18n.language === "ge" && "tiny:text-sm"}`}>
+                {wine.alco}%
+              </span>
             </div>
           </div>
           <p className="ml-10 mr-10 mt-6 md:mt-10 sm:m-auto sm:max-w-[400px] lg:m-0">
