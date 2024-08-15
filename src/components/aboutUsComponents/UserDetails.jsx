@@ -4,9 +4,12 @@ import { useForm } from "react-hook-form";
 import { useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { toast, ToastContainer } from "react-toastify";
+import { useSelector } from "react-redux";
+import { getMode } from "../../features/darkModeSlice";
 
 function UserDetails() {
   const { t } = useTranslation();
+  const darkMode = useSelector(getMode);
 
   const form = useForm();
   const { register, watch, handleSubmit, formState, reset } = form;
@@ -34,8 +37,16 @@ function UserDetails() {
   }
 
   return (
-    <div className="px-[26px] pt-[16px] md:pt-[30px] pb-[19px] bg-[#fff] rounded-t-[20px] max-w-[361px] w-full  md:max-w-[450px] md:w-[450px] lg:w-[630px] lg:max-w-[630px] mx-auto md:mx-[0px] md:rounded-l-[20px] md:rounded-tr-[0px] z-10">
-      <h2 className="text-[#1e1e1e] text-[24px] font-bold text-center">
+    <div
+      className={`px-[26px] pt-[16px] md:pt-[30px] pb-[19px] ${
+        darkMode ? "bg-[#5f3dc4] " : "bg-[#fff]"
+      } rounded-t-[20px] max-w-[361px] w-full  md:max-w-[450px] md:w-[450px] lg:w-[630px] lg:max-w-[630px] mx-auto md:mx-[0px] md:rounded-l-[20px] md:rounded-tr-[0px] z-10`}
+    >
+      <h2
+        className={` ${
+          darkMode ? "text-[#fff]" : "text-[#1e1e1e]"
+        }  text-[24px] font-bold text-center`}
+      >
         {t("home.aboutUs.contactForm.title")}
       </h2>
       <form

@@ -18,7 +18,7 @@ function DisplayCocktails() {
 
   return (
     <Wrapper>
-      <div className="grid gap-[16px] grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr] m-auto relative">
+      <div className="grid gap-[16px] tiny:grid-cols-[1fr] grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr] m-auto relative">
         {cocktails?.map((item) => {
           return <CocktailCard key={item.id} item={item} />;
         })}

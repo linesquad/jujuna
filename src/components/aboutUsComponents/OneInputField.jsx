@@ -1,3 +1,6 @@
+import { useSelector } from "react-redux";
+import { getMode } from "../../features/darkModeSlice";
+
 function OneInputField({
   label,
   inputType,
@@ -11,9 +14,14 @@ function OneInputField({
   watch,
   pattern,
 }) {
+  const darkMode = useSelector(getMode);
   return (
     <div className="flex flex-col md:flex-row md:items-start gap-[13px]">
-      <p className="text-color-black text-[13px] font-medium md:w-[60%] lg:w-[30%] mt-[10px]">
+      <p
+        className={`${
+          darkMode ? "text-color-primary" : "text-color-black"
+        } text-[13px] font-medium md:w-[60%] lg:w-[30%] mt-[10px]`}
+      >
         {label}
       </p>
 
@@ -37,7 +45,13 @@ function OneInputField({
               <span className="pl-[12px] text-red-600 text-[13px] md:text-[15px]">
                 {error}
               </span>
-              <p className="self-end">{watch().message?.length || 0} / 500</p>
+              <p
+                className={`self-end ${
+                  darkMode ? "text-color-primary" : "text-color-black"
+                }`}
+              >
+                {watch().message?.length || 0} / 500
+              </p>
             </div>
           </>
         ) : (
@@ -46,7 +60,9 @@ function OneInputField({
               type={inputType}
               placeholder={placeholder}
               name={name}
-              className="pl-[16px] py-[10px] text-[13px] w-full [box-shadow:0px_2.657px_2.657px_0px_rgba(0,_0,_0,_0.25)] rounded-[15px] md:w-[100%]"
+              className={`${
+                darkMode ? "bg-[#eaeaea]" : "bg-[#fff]"
+              } pl-[16px] py-[10px] text-[13px] w-full [box-shadow:0px_2.657px_2.657px_0px_rgba(0,_0,_0,_0.25)] rounded-[15px] md:w-[100%]`}
               {...register(`${name}`, {
                 required: {
                   value: isRequired,
