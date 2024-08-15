@@ -1,15 +1,36 @@
 import { useTranslation } from "react-i18next";
 import OneInputField from "./OneInputField";
 import { useForm } from "react-hook-form";
+import { useEffect, useRef } from "react";
+import emailjs from "@emailjs/browser";
+import { toast, ToastContainer } from "react-toastify";
 
 function UserDetails() {
   const { t } = useTranslation();
 
   const form = useForm();
-  const { register, handleSubmit } = form;
+  const { register, watch, handleSubmit, formState, reset } = form;
+  const { errors, isSubmitSuccessful, isSubmitting } = formState;
+  console.log(errors);
 
-  function onSubmit(data) {
-    console.log(data);
+  const formRef = useRef();
+
+  useEffect(() => {
+    if (isSubmitSuccessful) reset();
+  }, [isSubmitSuccessful, reset]);
+
+  async function onSubmit() {
+    try {
+      await emailjs.sendForm(
+        "service_r2rzhyi",
+        "template_8e18ch6",
+        formRef.current,
+        "lCDNh2nw5t1Ek4MQ8"
+      );
+      toast.success(t(`toast.success`));
+    } catch (error) {
+      toast.error(t(`toast.error`));
+    }
   }
 
   return (
@@ -20,6 +41,7 @@ function UserDetails() {
       <form
         className="mt-[31px] mx-auto md:mx-[0px] flex flex-col"
         onSubmit={handleSubmit(onSubmit)}
+        ref={formRef}
       >
         <div className="flex flex-col gap-[23px] md:gap-[30px]">
           <OneInputField
@@ -28,6 +50,13 @@ function UserDetails() {
             placeholder={t("home.aboutUs.contactForm.inputName")}
             register={register}
             name="name"
+            isRequired={true}
+            errorMessage="Name is required"
+            error={errors?.name?.message}
+            pattern={{
+              value: /^[A-Za-z\s]*$/,
+              message: "Only letters are allowed",
+            }}
           />
           <OneInputField
             label={t("home.aboutUs.contactForm.email")}
@@ -35,6 +64,13 @@ function UserDetails() {
             placeholder={t("home.aboutUs.contactForm.emailInput")}
             register={register}
             name="email"
+            isRequired={true}
+            errorMessage="Email is required"
+            error={errors?.email?.message}
+            pattern={{
+              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+              message: "Invalid email format",
+            }}
           />
           <OneInputField
             label={t("home.aboutUs.contactForm.article")}
@@ -42,6 +78,9 @@ function UserDetails() {
             placeholder={t("home.aboutUs.contactForm.articleInput")}
             register={register}
             name="article"
+            isRequired={true}
+            errorMessage="Article is required"
+            error={errors?.article?.message}
           />
           <OneInputField
             label={t("home.aboutUs.contactForm.message")}
@@ -49,12 +88,22 @@ function UserDetails() {
             textType="message"
             register={register}
             name="message"
+            isRequired={true}
+            errorMessage="Message is required"
+            error={errors?.message?.message}
+            watch={watch}
           />
         </div>
-        <button className="px-[33px] py-[16px] w-[141px] text-[15px] text-[#634A81] bg-[#eaeaea] mt-[13px] md:mt-[35px] rounded-[12px] self-end">
+        <button
+          className={`px-[33px] py-[16px] w-[141px] text-[15px] text-[#634A81] bg-[#eaeaea] mt-[13px] md:mt-[35px] rounded-[12px] self-end ${
+            isSubmitting ? "cursor-not-allowed" : ""
+          }`}
+          disabled={isSubmitting}
+        >
           {t("home.aboutUs.contactForm.button")}
         </button>
       </form>
+      <ToastContainer className="mt-[60px]" />
     </div>
   );
 }
