@@ -11,6 +11,7 @@ import "./index.css";
 import WineDetails from "./components/wineComponents/singleWineComponents/SingleWine";
 import NewsDetails from "./components/newsComponents/NewsDetails";
 import CocktailDetails from "./pages/CocktailDetails";
+import UserPage from "./pages/UserPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="orders" element={<Orders />} />
         <Route path="/wines/:id" element={<WineDetails />} />
         <Route path="/cocktails/:id" element={<CocktailDetails />} />
+        <Route path="/userPage" element={<UserPage />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
