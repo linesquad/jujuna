@@ -46,6 +46,7 @@ function EnterUserInfo() {
               value: /^[\d\s]*$/,
               message: t("userPage.numberPattern"),
             }}
+            isMobile={true}
           />
           <EnterOneInfo
             type="text"
