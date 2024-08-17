@@ -12,6 +12,7 @@ import WineDetails from "./components/wineComponents/singleWineComponents/Single
 import NewsDetails from "./components/newsComponents/NewsDetails";
 import CocktailDetails from "./pages/CocktailDetails";
 import Enter from "./pages/Enter";
+import UserPage from "./pages/UserPage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="orders" element={<Orders />} />
         <Route path="/wines/:id" element={<WineDetails />} />
         <Route path="/cocktails/:id" element={<CocktailDetails />} />
+        <Route path="/userPage" element={<UserPage />} />
       </Route>
       <Route path="enter" element={<Enter />} />
       <Route path="*" element={<PageNotFound />} />

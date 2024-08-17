@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../Button";
 import { useTranslation } from "react-i18next";
 
@@ -38,9 +39,11 @@ function OneNews({ image, date, title, description, type, bgColor }) {
           {`${currentDescription.slice(0, 120)}...`}
         </p>
         <div className="self-end">
-          <Button type={type}>
-            {i18n.language === "en" ? "Read more" : "გაიგე მეტი"}
-          </Button>
+          <Link to={`/news/${3}`}>
+            <Button type={type}>
+              {i18n.language === "en" ? "Read more" : "გაიგე მეტი"}
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
