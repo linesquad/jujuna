@@ -1,7 +1,17 @@
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 
-function OneInputField({ type, placeholder, value }) {
+function EnterOneInfo({
+  type,
+  placeholder,
+  value,
+  register,
+  name,
+  isRequired,
+  errorMessage,
+  error,
+  pattern,
+}) {
   const darkMode = useSelector(getMode);
   return (
     <div>
@@ -12,10 +22,17 @@ function OneInputField({ type, placeholder, value }) {
         } text-[#000]`}
         placeholder={placeholder}
         value={value}
+        {...register(`${name}`, {
+          required: {
+            value: isRequired,
+            message: errorMessage,
+          },
+          pattern: pattern,
+        })}
       ></input>
-      <span className="ml-[5px] text-[13px] text-red-600">error</span>
+      <span className="ml-[5px] text-[13px] text-red-600">{error}</span>
     </div>
   );
 }
 
-export default OneInputField;
+export default EnterOneInfo;
