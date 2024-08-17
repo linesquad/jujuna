@@ -1,12 +1,14 @@
-import { useLatestBlogs } from "../../../hooks/useLatestItems";
 import OneNews from "../../landingComponents/LandingBlog";
 import { SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
 import { Swiper } from "swiper/react";
 import Spinner from "../../Spinner";
+import useBlogs from "../../../hooks/useBlogs";
+import { useParams } from "react-router-dom";
 
 const NewsDetailsRightSide = () => {
-  const { data: blogNews, isLoading, error } = useLatestBlogs();
+  const { data: blogNews, isLoading, error } = useBlogs();
+  const { id } = useParams();
 
   if (isLoading) return <Spinner />;
   if (error)
