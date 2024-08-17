@@ -9,34 +9,43 @@ import SingleWineText from "./SingleWineText";
 import SingleWineImages from "./SingleWineImages";
 import SingleWineReviews from "./SingleWineReviews";
 import RelatedWines from "./RelatedWines";
+import SkeletonWineCard from "./SkeletonWineCard";
+import SkeletonImages from "./SkeletonImages";
 
 function SingleWine() {
   const { id } = useParams();
   const { data: wine, isLoading, isError, error } = useWineById(id);
-  const mode = useSelector(getMode);
-
-  if (isLoading) return <Spinner />;
-  if (isError)
-    return (
-      <div className="text-center bg-purple-700 p-2 -mb-24">
-        <p className="text-purple-200 font-bold">{error.message}</p>
-      </div>
-    );
+  const darkMode = useSelector(getMode);
 
   return (
     <div
       className={`${
-        mode
+        darkMode
           ? "bg-[linear-gradient(249deg,_#A583D1_22.95%,_#724AA4_46.44%,_#1E122E_93.06%)] lg:text-color-dark-black"
           : "bg-wineNavbarColor-light text-dark-black"
       } min-h-screen overflow-hidden`}
     >
       <SingleWineHeader />
-      <SinglWineCard wine={wine} />
-      <SingleWineText />
-      <SingleWineImages />
-      <SingleWineReviews />
-      <RelatedWines />
+
+      {isLoading ? <SkeletonWineCard /> : <SinglWineCard wine={wine} />}
+
+      {isLoading ? <Spinner /> : <SingleWineText />}
+
+      {isLoading ? <SkeletonImages /> : <SingleWineImages />}
+
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          <SingleWineReviews />
+          <RelatedWines />
+        </>
+      )}
+      {isError && (
+        <div className="text-center bg-purple-700 p-2 mb-0 w-full">
+          <p className="text-white font-bold">{error.message}</p>
+        </div>
+      )}
     </div>
   );
 }

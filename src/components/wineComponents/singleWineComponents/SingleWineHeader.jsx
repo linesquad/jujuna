@@ -2,12 +2,12 @@ import { useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
 
 function SingleWineHeader() {
-  const mode = useSelector(getMode);
+  const darkMode = useSelector(getMode);
 
   return (
     <div
       className={`bg-buttonColor-dark-primary lg:bg-wineNavbarColor-textPurple ${
-        !mode && "lg:bg-buttonColor-dark-primary"
+        !darkMode && "lg:bg-buttonColor-dark-primary"
       } flex flex-col lg:flex-row lg:gap-6 justify-center p-5 mb-8 text-center`}
     >
       <p className="text-wineDetailsColor-textColor">

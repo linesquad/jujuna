@@ -6,18 +6,16 @@ import { useTranslation } from "react-i18next";
 
 function SingleWineCardContent({ wine }) {
   const { i18n, t } = useTranslation();
-  const mode = useSelector(getMode);
+  const darkMode = useSelector(getMode);
 
   console.log("from content", wine);
   return (
-    <div
-      className={`flex flex-col items-center lg:items-start max-w-full lg:max-w-[600px]`}
-    >
+    <div className="flex flex-col items-center lg:items-start max-w-full lg:max-w-[600px]">
       <div className="text-center flex mt-6 lg:text-left">
         <Wrapper>
           <h1
             className={`font-bold text-lg ${
-              mode
+              darkMode
                 ? "text-wineNavbarColor-textPurple"
                 : "text-buttonColor-primary"
             }`}

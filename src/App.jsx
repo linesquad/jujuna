@@ -11,6 +11,7 @@ import "./index.css";
 import WineDetails from "./components/wineComponents/singleWineComponents/SingleWine";
 import NewsDetails from "./components/newsComponents/NewsDetails";
 import CocktailDetails from "./pages/CocktailDetails";
+import Enter from "./pages/Enter";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/wines/:id" element={<WineDetails />} />
         <Route path="/cocktails/:id" element={<CocktailDetails />} />
       </Route>
+      <Route path="enter" element={<Enter />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

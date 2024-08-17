@@ -177,7 +177,6 @@ i18n
               reviews: {
                 heading1: "შეფასებები",
                 heading2: "შეაფასე პროდუქტი",
-                rated: "შენ უკვე შეაფასე პროდუქტი",
                 paragraph: "შეფასებისთვის საჭიროა ვერიფიკაცია მეილით",
               },
               relatedWines: {
@@ -186,6 +185,21 @@ i18n
                 cart: "კალათში დამატება",
               },
             },
+          },
+          enter: {
+            register: "რეგისტრაცია",
+            auth: "ავტორიზაცია",
+            authFB: "ავტორიზაცია Facebook ით",
+            authGoogle: "ავტორიზაცია Google ით",
+            haveAccount: "უკვე გაქვთ ანგარიში?",
+            emailInput: "ელ-ფოსტა",
+            emailRequired: "ელ-ფოსტა სავალდებულოა",
+            invalidEmail: "ელ-ფოსტა არ არის ვალიდური",
+            passwordInput: "პაროლი",
+            passwordRequired: "პაროლი სავალდებულოა",
+            remember: "დამახსოვრება",
+            forgot: "პაროლი დამავიწყდა!",
+            submit: "ავტორიზაცია",
           },
           footer: {
             number: "ტელეფონი",
@@ -375,7 +389,6 @@ i18n
               reviews: {
                 heading1: "COMMUNITY REVIEWS",
                 heading2: "REVIEW THIS PRODUCT",
-                rated: "YOU HAVE RATED THIS PRODUCT",
                 paragraph:
                   "Adding a review will require a valid email for verification",
               },
@@ -385,6 +398,21 @@ i18n
                 cart: "Add To Cart",
               },
             },
+          },
+          enter: {
+            register: "Register",
+            auth: "Authorization",
+            authFB: "Sign in with Facebook",
+            authGoogle: "Sign in with Google",
+            haveAccount: "Already have an account?",
+            emailInput: "e-mail",
+            emailRequired: "Email is required",
+            invalidEmail: "Invalid email address",
+            passwordInput: "password",
+            passwordRequired: "Password is required",
+            remember: "Remember",
+            forgot: "Forgot password?",
+            submit: "Sign in",
           },
           footer: {
             number: "mobile number",

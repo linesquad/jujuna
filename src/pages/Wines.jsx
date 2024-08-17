@@ -9,14 +9,14 @@ import Spinner from "../components/Spinner";
 import Wrapper from "../components/Wrapper";
 
 const Wines = () => {
-  const mode = useSelector(getMode);
+  const darkMode = useSelector(getMode);
 
   const { data: wines, isLoading, isError, error } = useWines();
 
   return (
     <div
       className={`flex flex-col pb-24  ${
-        mode
+        darkMode
           ? "bg-[linear-gradient(249deg,_#A583D1_22.95%,_#724AA4_46.44%,_#1E122E_93.06%)] text-[#fff]"
           : "bg-wineNavbarColor-light text-dark-black"
       }`}

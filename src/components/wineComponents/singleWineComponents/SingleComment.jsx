@@ -2,14 +2,14 @@ import { useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
 
 function SingleComment() {
-  const mode = useSelector(getMode);
+  const darkMode = useSelector(getMode);
 
   return (
     <div>
       <div className="flex flex-col items-center md:items-start text-left">
         <h3
           className={`${
-            mode
+            darkMode
               ? "text-wineNavbarColor-textPurple"
               : "text-buttonColor-primary"
           }`}

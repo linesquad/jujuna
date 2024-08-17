@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Wrapper from "../../Wrapper";
 import { IoIosStar, IoIosStarOutline } from "react-icons/io";
 import { useSelector } from "react-redux";
@@ -6,12 +6,18 @@ import { getMode } from "../../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";
 
 function Rate() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [stars, setStars] = useState(0);
   const [hoveredStars, setHoveredStars] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
   const [isRated, setIsRated] = useState(false);
   const darkMode = useSelector(getMode);
+
+  useEffect(() => {
+    if (stars > 0) {
+      setIsRated(true);
+    }
+  }, [stars]);
 
   const AddStar = ({ filled }) => {
     return (
@@ -68,7 +74,11 @@ function Rate() {
               darkMode ? "text-white" : "text-purple-900"
             }`}
           >
-            {t("winePage.singleWine.reviews.rated")}
+            {i18n.language === "en"
+              ? `YOU HAVE RATED THIS PRODUCT WITH ${stars} STAR${
+                  stars > 1 ? "S" : ""
+                }`
+              : `შენ შეაფასე პროდუქტი ${stars} ვარსკვლავით`}
           </div>
         )}
 
