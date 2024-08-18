@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import { useBlogId } from "../../../hooks/useBlogs";
-import Spinner from "../../Spinner";
 import { parseISO, format } from "date-fns";
 import { getMode } from "../../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";
@@ -9,6 +8,7 @@ import NewsShare from "./NewsShare";
 import { useParams } from "react-router-dom";
 import ComentarNews from "./ComentarNews";
 import NewsDetailsWriteComment from "./NewsDetailsWriteComment";
+import NewsDetailsLeftSkeleton from "./NewsDetailsLeftSkeleton";
 
 const NewsDetailsLeftSide = () => {
   const { id } = useParams();
@@ -16,7 +16,9 @@ const NewsDetailsLeftSide = () => {
   const { t, i18n } = useTranslation();
   const { data, isLoading, isError, error } = useBlogId(id);
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) {
+    return <NewsDetailsLeftSkeleton />;
+  }
 
   if (isError) {
     return (
