@@ -2,22 +2,67 @@ import OneNews from "../../landingComponents/LandingBlog";
 import { SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
 import { Swiper } from "swiper/react";
-import Spinner from "../../Spinner";
 import useBlogs from "../../../hooks/useBlogs";
 import { useParams } from "react-router-dom";
+import SkeletonDiv from "../../SkeletonDiv";
 
 const NewsDetailsRightSide = () => {
   const { data: blogNews, isLoading, error } = useBlogs();
   const { id } = useParams();
 
-  if (isLoading) return <Spinner />;
+  if (isLoading || !blogNews || blogNews.length === 0) {
+    return (
+      <div className="">
+        {/* Skeleton for small screens */}
+        <div className="block lg:hidden">
+          <SkeletonDiv style="w-full h-[650px] mb-4">
+            <div className="h-[300px] mb-4"></div>
+            <div className="h-[50px] mb-2"></div>
+            <div className="h-[20px] w-3/4"></div>
+          </SkeletonDiv>
+        </div>
+
+        {/* Skeleton for larger screens */}
+        <div className="hidden lg:flex flex-col gap-4">
+          {[...Array(3)].map((_, index) => (
+            <SkeletonDiv key={index} style="h-[300px] mb-4">
+              <div className="h-[150px] mb-4"></div>
+              <div className="h-[50px] mb-2"></div>
+              <div className="h-[20px] w-3/4"></div>
+            </SkeletonDiv>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   if (error)
     return (
       <p className="text-center bg-purple-700 p-2 h-32 text-purple-200 font-bold">
         {error.message}
       </p>
     );
-  if (!blogNews || blogNews.length === 0) return <p>No blog news available.</p>;
+
+  const currentId = parseInt(id);
+
+  let displayedNews = [];
+  for (let i = currentId; i < blogNews.length; i++) {
+    if (blogNews[i].id !== currentId) {
+      displayedNews.push(blogNews[i]);
+    }
+
+    if (displayedNews.length === 3) {
+      break;
+    }
+  }
+
+  if (displayedNews.length < 3) {
+    for (let i = 0; i < blogNews.length && displayedNews.length < 3; i++) {
+      if (!displayedNews.includes(blogNews[i])) {
+        displayedNews.push(blogNews[i]);
+      }
+    }
+  }
 
   return (
     <div className="">
@@ -43,7 +88,7 @@ const NewsDetailsRightSide = () => {
           }}
           modules={[FreeMode, Pagination]}
         >
-          {blogNews.map((item, index) => (
+          {displayedNews.map((item, index) => (
             <SwiperSlide key={item.id}>
               <OneNews
                 image={item.image}
@@ -59,8 +104,9 @@ const NewsDetailsRightSide = () => {
 
       {/* Column layout for larger screens */}
       <div className="hidden lg:flex flex-col gap-4">
-        {blogNews.map((item, index) => (
+        {displayedNews.map((item, index) => (
           <OneNews
+            id={item.id}
             key={item.id}
             image={item.image}
             description={item.description}
