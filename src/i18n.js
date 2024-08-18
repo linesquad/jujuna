@@ -110,10 +110,7 @@ i18n
               p2: "კოქტეილები",
             },
             cocktailsSidebar: {
-              alcohol: "ალკოჰოლური",
-              country: "ქვეყანა",
-              date: "გამოშვების წელი",
-              volume: "ზომა/მოცულობა (მლ)",
+              inputSearch: "კოქტეილის ძებნა",
             },
             cocktailDetails: {
               cart: "კალათაში დამატება",
@@ -345,10 +342,7 @@ i18n
               p2: "Cocktails",
             },
             cocktailsSidebar: {
-              alcohol: "Alcoholic",
-              country: "Country",
-              date: "Release year",
-              volume: "Size/Volume (ml)",
+              inputSearch: "Search cocktail",
             },
             cocktailDetails: {
               cart: "Add to cart",
