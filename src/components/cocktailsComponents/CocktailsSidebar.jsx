@@ -5,10 +5,11 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import downArrow from "/images/downArrow.svg";
 
-function CocktailsSidebar() {
+function CocktailsSidebar({ setSortValue, sortValue }) {
   const darkMode = useSelector(getMode);
   const { t } = useTranslation();
   const [searchCocktail, setSearchCocktail] = useState("");
+  const [isSortSelectOpen, setIsSortSelectOpen] = useState(false);
 
   return (
     <div
@@ -21,7 +22,7 @@ function CocktailsSidebar() {
           <input
             type="text"
             placeholder={t("cocktails.cocktailsSidebar.inputSearch")}
-            className={`py-[5px] pl-[10px] w-full ${
+            className={`py-[5px] pl-[10px] w-full rounded-md ${
               darkMode
                 ? "bg-[#613994] text-color-primary"
                 : "text-color-black bg-[#dee2e6]"
@@ -33,21 +34,72 @@ function CocktailsSidebar() {
           {searchCocktail && <SearchResult searchCocktail={searchCocktail} />}
         </div>
 
-        <div className="flex gap-[20px] items-center">
+        <div className="flex gap-[15px] items-center">
           <p
             className={`${
               darkMode ? "text-color-primary" : "text-color-black"
             }`}
           >
-            Filtered By:
+            {t("cocktails.cocktailsSidebar.sort")}:
           </p>
           <div
-            className={`w-[150px] h-[25px] border-[1px]  ${
+            className={`min-w-[150px] h-[35px] border-[1px]  ${
               darkMode ? "border-[#fff]" : "border-[#000]"
-            } px-[15px] flex items-center justify-between cursor-pointer`}
+            } px-[15px] flex items-center justify-between cursor-pointer rounded-md relative`}
+            onClick={() => setIsSortSelectOpen((modal) => !modal)}
           >
-            <p>Default</p>
+            <p
+              className={`${
+                darkMode ? "text-color-primary" : "text-color-black"
+              }`}
+            >
+              {sortValue}
+            </p>
             <img src={downArrow} alt="down-arrow" />
+            {isSortSelectOpen && (
+              <div
+                className={`absolute w-full flex flex-col gap-[10px] top-[40px] right-[0px] ${
+                  darkMode ? "bg-[#613994]" : "bg-[#fff]"
+                } rounded-md`}
+              >
+                <p
+                  className={`pl-[8px] pb-[5px] border-b-[1px] border-b-[#000] ${
+                    darkMode
+                      ? "border-b-[#fff] text-[#eaeaea]"
+                      : "border-b-[#000] text-color-black"
+                  }`}
+                  onClick={() =>
+                    setSortValue(t("cocktails.cocktailsSidebar.default"))
+                  }
+                >
+                  {t("cocktails.cocktailsSidebar.default")}
+                </p>
+                <p
+                  className={`pl-[8px] pb-[5px] border-b-[1px] border-b-[#000] ${
+                    darkMode
+                      ? "border-b-[#fff] text-[#eaeaea]"
+                      : "border-b-[#000] text-color-black"
+                  }`}
+                  onClick={() =>
+                    setSortValue(t("cocktails.cocktailsSidebar.price"))
+                  }
+                >
+                  {t("cocktails.cocktailsSidebar.price")}
+                </p>
+                <p
+                  className={`pl-[8px] pb-[5px] border-b-[1px] border-b-[#000] ${
+                    darkMode
+                      ? "border-b-[#fff] text-[#eaeaea]"
+                      : "border-b-[#000] text-color-black"
+                  }`}
+                  onClick={() =>
+                    setSortValue(t("cocktails.cocktailsSidebar.size"))
+                  }
+                >
+                  {t("cocktails.cocktailsSidebar.size")}
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>

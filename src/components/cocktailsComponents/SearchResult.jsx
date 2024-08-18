@@ -1,11 +1,14 @@
 import { useTranslation } from "react-i18next";
 import useCocktails from "../../hooks/useCocktails";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getMode } from "../../features/darkModeSlice";
 
 function SearchResult({ searchCocktail }) {
   const { data: cocktails } = useCocktails();
   const { i18n } = useTranslation();
   const navigate = useNavigate();
+  const darkMode = useSelector(getMode);
 
   // Filter the cocktails based on the searchCocktail input value
   const filteredCocktails = cocktails.filter(
@@ -15,11 +18,15 @@ function SearchResult({ searchCocktail }) {
   );
 
   return (
-    <div className="absolute w-full top-[40px] bg-[#fff]/30 px-[10px] py-[20px] flex flex-col gap-[20px]">
+    <div
+      className={`absolute w-full top-[40px] ${
+        darkMode ? "bg-[#613994]" : "bg-[#fff]"
+      } px-[10px] py-[20px] flex flex-col gap-[20px] z-[10]`}
+    >
       {filteredCocktails.map((item) => {
         return (
           <div
-            className="flex items-center gap-[30px] py-[10px] pl-[5px] bg-[#dee2e6] [box-shadow:5px_8px_10px_0px_rgba(0,_0,_0,_0.25)] rounded-md cursor-pointer"
+            className="flex items-center gap-[30px] py-[10px] pl-[5px] bg-[#dee2e6]/30 [box-shadow:5px_8px_10px_0px_rgba(0,_0,_0,_0.25)] rounded-md cursor-pointer"
             key={item.id}
             onClick={() => navigate(`/cocktails/${item.id}`)}
           >
@@ -28,11 +35,17 @@ function SearchResult({ searchCocktail }) {
               alt="cocktail"
               className="w-[40px] h-[40px] object-cover rounded-md"
             />
-            <p>{i18n.language === "ge" ? item.name.ge : item.name.en}</p>
+            <p
+              className={`${
+                darkMode ? "text-color-primary" : "text-color-black"
+              }`}
+            >
+              {i18n.language === "ge" ? item.name.ge : item.name.en}
+            </p>
           </div>
         );
       })}
-      {filteredCocktails.length === 0 && searchCocktail.length > 0 && (
+      {filteredCocktails.length === 0 && searchCocktail && (
         <div className="flex items-center gap-[30px] py-[10px] pl-[30px] bg-[#dee2e6] [box-shadow:5px_8px_10px_0px_rgba(0,_0,_0,_0.25)] rounded-md cursor-pointer">
           <p>Cocktail not found</p>
         </div>

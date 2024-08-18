@@ -111,6 +111,11 @@ i18n
             },
             cocktailsSidebar: {
               inputSearch: "კოქტეილის ძებნა",
+              sort: "დალაგება",
+              cocktailNotFount: "კოქტეილი არ მოიძებნა",
+              default: "ნაგულისხმევი",
+              price: "ფასი",
+              size: "ზომა",
             },
             cocktailDetails: {
               cart: "კალათაში დამატება",
@@ -343,6 +348,11 @@ i18n
             },
             cocktailsSidebar: {
               inputSearch: "Search cocktail",
+              sort: "Sort By",
+              cocktailNotFount: "Cocktail not found",
+              default: "Default",
+              price: "Price",
+              size: "Size",
             },
             cocktailDetails: {
               cart: "Add to cart",
