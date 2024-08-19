@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
+import supabase from "../../services/supabase";
 
 function RegisterContainer() {
   const { t } = useTranslation();
@@ -19,8 +20,21 @@ function RegisterContainer() {
 
   const password = watch("password");
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log("Form data:", data);
+
+    // warning !!!
+    await supabase.auth.signUp({
+      email: data.email,
+      password: data.password,
+      options: {
+        data: {
+          full_name: data.username,
+        },
+      },
+    });
+    // warning !!!
+
     reset();
     navigate("/enter/signin");
   };
