@@ -14,7 +14,7 @@ function Signin() {
         <div className="flex flex-col items-center justify-center lg:items-end xl:mr-40 pt-10 relative">
           <button
             onClick={() => navigate(-1)}
-            className="hidden lg:flex text-white text-xl text-white absolute left-0 top-10 items-center"
+            className="hidden lg:flex text-xl text-white absolute left-0 top-10 items-center"
           >
             <MdOutlineKeyboardArrowLeft className="w-12 h-12" />
             <span>Back</span>
@@ -28,7 +28,7 @@ function Signin() {
             <div className="flex flex-col items-center gap-2}">
               <button
                 onClick={() => navigate(-1)}
-                className="flex lg:hidden text-white text-xl text-white items-center -ml-6"
+                className="flex lg:hidden text-xl text-white items-center -ml-6"
               >
                 <MdOutlineKeyboardArrowLeft className="w-12 h-12" />
                 <span>Back</span>
@@ -42,7 +42,7 @@ function Signin() {
                 </Link>
                 <Link
                   to={"/enter/signin"}
-                  className="font-tommaso tracking-wide text-xl px-6 py-2 bg-purple-300 rounded-full bg-purple-300 "
+                  className="font-tommaso tracking-wide text-xl px-6 py-2 rounded-full bg-purple-300 "
                 >
                   {t("enter.auth")}
                 </Link>

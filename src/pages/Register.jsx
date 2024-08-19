@@ -13,7 +13,7 @@ function Register() {
         <div className="flex flex-col items-center justify-center lg:items-end xl:mr-40 pt-10 relative ">
           <button
             onClick={() => navigate(-1)}
-            className="hidden lg:flex text-white text-xl text-white absolute left-0 top-10 items-center"
+            className="hidden lg:flex  text-xl text-white absolute left-0 top-10 items-center"
           >
             <MdOutlineKeyboardArrowLeft className="w-12 h-12" />
             <span>Back</span>
@@ -27,7 +27,7 @@ function Register() {
             <div className="flex flex-col items-center gap-2">
               <button
                 onClick={() => navigate(-1)}
-                className="flex lg:hidden text-white text-xl text-white items-center -ml-6"
+                className="flex lg:hidden  text-xl text-white items-center -ml-6"
               >
                 <MdOutlineKeyboardArrowLeft className="w-12 h-12" />
                 <span>Back</span>
