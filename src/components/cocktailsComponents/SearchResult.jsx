@@ -10,7 +10,6 @@ function SearchResult({ searchCocktail }) {
   const navigate = useNavigate();
   const darkMode = useSelector(getMode);
 
-  // Filter the cocktails based on the searchCocktail input value
   const filteredCocktails = cocktails.filter(
     (item) =>
       item.name.ge.toLowerCase().startsWith(searchCocktail.toLowerCase()) ||

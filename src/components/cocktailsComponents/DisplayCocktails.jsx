@@ -8,8 +8,8 @@ import { useEffect, useState } from "react";
 function DisplayCocktails({ sortValue }) {
   const { data: cocktails, isLoading, isError, error } = useCocktails();
   const [sortedCocktails, setSortedCocktails] = useState([]);
+  const [paginatedCocktails, setPeginatedCocktails] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3;
 
   useEffect(() => {
     if (sortValue === "Default" || sortValue === "ნაგულისხმევი") {
@@ -23,11 +23,6 @@ function DisplayCocktails({ sortValue }) {
     }
   }, [cocktails, sortValue]);
 
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedCocktails = sortedCocktails?.slice(
-    startIndex,
-    startIndex + itemsPerPage
-  );
   if (isLoading) return <Spinner />;
 
   if (isError)
@@ -45,9 +40,11 @@ function DisplayCocktails({ sortValue }) {
         })}
       </div>
       <Pegination
-        pageQuantity={Math.ceil(sortedCocktails?.length / itemsPerPage)}
+        itemsArray={sortedCocktails}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        itemsPerPage={3}
+        setPeginatedItems={setPeginatedCocktails}
       />
     </Wrapper>
   );

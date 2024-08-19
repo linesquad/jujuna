@@ -14,7 +14,6 @@ function CockTails() {
   const [sortValue, setSortValue] = useState(
     t("cocktails.cocktailsSidebar.default")
   );
-  console.log(sortValue);
   return (
     <div className={`${darkMode ? "bg-[#55426E]" : "bg-[#eaeaea]"}`}>
       <CocktailsHeader

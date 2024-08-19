@@ -2,7 +2,14 @@ import { useEffect, useState } from "react";
 import leftVector from "/images/vectorLeft.svg";
 import rightArrow from "/images/vectorRight.svg";
 
-function Pegination({ pageQuantity, currentPage, setCurrentPage }) {
+function Pegination({
+  itemsArray,
+  currentPage,
+  setCurrentPage,
+  itemsPerPage,
+  setPeginatedItems,
+}) {
+  const pageQuantity = Math.ceil(itemsArray?.length / itemsPerPage);
   const [pages, setPages] = useState([]);
 
   useEffect(() => {
@@ -12,6 +19,11 @@ function Pegination({ pageQuantity, currentPage, setCurrentPage }) {
 
     return () => setPages([]);
   }, [pageQuantity]);
+
+  useEffect(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    setPeginatedItems(itemsArray?.slice(startIndex, startIndex + itemsPerPage));
+  }, [currentPage, itemsArray, itemsPerPage, setPeginatedItems]);
 
   const handlePrevClick = () => {
     if (currentPage > 1) {
@@ -24,8 +36,6 @@ function Pegination({ pageQuantity, currentPage, setCurrentPage }) {
       setCurrentPage(currentPage + 1);
     }
   };
-
-  if (pageQuantity === 1) return;
 
   return (
     <div className="flex gap-[10px] lg:gap-[30px] items-center justify-center mt-[30px]">
