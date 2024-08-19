@@ -3,8 +3,9 @@ import Button from "../Button";
 import { useTranslation } from "react-i18next";
 
 /* eslint-disable react/prop-types */
-function OneNews({ image, date, title, description, type, bgColor }) {
+function OneNews({ id, image, date, title, description, type, bgColor }) {
   const { i18n } = useTranslation();
+  console.log(id);
 
   const currentTitle = i18n.language === "en" ? title.en : title.ge;
   const currentDescription =
@@ -39,7 +40,7 @@ function OneNews({ image, date, title, description, type, bgColor }) {
           {`${currentDescription.slice(0, 120)}...`}
         </p>
         <div className="self-end">
-          <Link to={`/news/${3}`}>
+          <Link to={`/news/${id}`}>
             <Button type={type}>
               {i18n.language === "en" ? "Read more" : "გაიგე მეტი"}
             </Button>
