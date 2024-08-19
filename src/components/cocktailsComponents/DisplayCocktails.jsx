@@ -9,7 +9,6 @@ function DisplayCocktails({ sortValue }) {
   const { data: cocktails, isLoading, isError, error } = useCocktails();
   const [sortedCocktails, setSortedCocktails] = useState([]);
   const [paginatedCocktails, setPeginatedCocktails] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     if (sortValue === "Default" || sortValue === "ნაგულისხმევი") {
@@ -41,8 +40,6 @@ function DisplayCocktails({ sortValue }) {
       </div>
       <Pegination
         itemsArray={sortedCocktails}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
         itemsPerPage={3}
         setPeginatedItems={setPeginatedCocktails}
       />

@@ -2,15 +2,10 @@ import { useEffect, useState } from "react";
 import leftVector from "/images/vectorLeft.svg";
 import rightArrow from "/images/vectorRight.svg";
 
-function Pegination({
-  itemsArray,
-  currentPage,
-  setCurrentPage,
-  itemsPerPage,
-  setPeginatedItems,
-}) {
+function Pegination({ itemsArray, itemsPerPage, setPeginatedItems }) {
   const pageQuantity = Math.ceil(itemsArray?.length / itemsPerPage);
   const [pages, setPages] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     for (let i = 0; i < pageQuantity; i++) {
