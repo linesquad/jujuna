@@ -17,7 +17,11 @@ function CockTails() {
   console.log(sortValue);
   return (
     <div className={`${darkMode ? "bg-[#55426E]" : "bg-[#eaeaea]"}`}>
-      <CocktailsHeader setIsFillterOpen={setIsFillterOpen} />
+      <CocktailsHeader
+        setIsFillterOpen={setIsFillterOpen}
+        setSortValue={setSortValue}
+        sortValue={sortValue}
+      />
       <Wrapper>
         <div className="flex items-start gap-[40px] mt-[23px] md:mt-[40px] lg:mt-[60px] px-[14px] md:px-[0px] py-[15px]">
           <div className="hidden md:block">

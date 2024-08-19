@@ -34,24 +34,24 @@ function CocktailsSidebar({ setSortValue, sortValue }) {
           {searchCocktail && <SearchResult searchCocktail={searchCocktail} />}
         </div>
 
-        <div className="flex gap-[15px] items-center">
+        <div className="flex gap-[5px] lg:gap-[15px] items-center">
           <p
             className={`${
               darkMode ? "text-color-primary" : "text-color-black"
-            }`}
+            } text-[13px] lg:text-[16px]`}
           >
             {t("cocktails.cocktailsSidebar.sort")}:
           </p>
           <div
-            className={`min-w-[150px] h-[35px] border-[1px]  ${
+            className={`min-w-[110px] lg:min-w-[150px] h-[35px] border-[1px]  ${
               darkMode ? "border-[#fff]" : "border-[#000]"
-            } px-[15px] flex items-center justify-between cursor-pointer rounded-md relative`}
+            } px-[5px] lg:px-[15px] flex items-center justify-between cursor-pointer rounded-md relative`}
             onClick={() => setIsSortSelectOpen((modal) => !modal)}
           >
             <p
               className={`${
                 darkMode ? "text-color-primary" : "text-color-black"
-              }`}
+              } text-[13px] lg:text-[16px]`}
             >
               {sortValue}
             </p>
