@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
-function Signin() {
+function SigninContainer() {
   const { t } = useTranslation();
 
   const {
@@ -18,29 +19,31 @@ function Signin() {
     reset();
   };
   return (
-    <div className="rounded-bl-[0px] rounded-br-[0px] rounded-tl-[20px] rounded-tr-[20px] lg:rounded-[20px] lg:mb-20  bg-white p-14 pt-16 w-full max-w-[467px]">
-      <div className="space-y-4 mb-6">
+    <div className="max-h-[600px] rounded-tl-[20px] rounded-tr-[20px] lg:rounded-[20px] bg-white p-14 pb-6 pt-16 w-full max-w-[467px] lg:w-[467px]">
+      <div className="space-y-4 mb-6 flex flex-col items-center">
         <button className="w-full py-2 border font-semibold rounded-full">
-          {t("enter.authFB")}
+          {t("enter.signin.authFB")}
         </button>
         <button className="w-full py-2 border font-semibold rounded-full">
-          {t("enter.authGoogle")}
+          {t("enter.signin.authGoogle")}
         </button>
       </div>
 
       <div className="space-y-4 mb-6">
-        <h2 className="text-center my-10 font-semibold">
-          {t("enter.haveAccount")}
-        </h2>
+        <Link to={"/enter/register"}>
+          <p className="text-center my-6 font-semibold">
+            {t("enter.signin.dontHaveAccount")}
+          </p>
+        </Link>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type="email"
-            placeholder={t("enter.emailInput")}
+            placeholder={t("enter.signin.emailInput")}
             {...register("email", {
-              required: t("enter.emailRequired"),
+              required: t("enter.signin.emailRequired"),
               pattern: {
                 value: emailRegex,
-                message: t("enter.invalidEmail"),
+                message: t("enter.signin.invalidEmail"),
               },
             })}
             className="w-full px-4 py-2 border rounded-lg "
@@ -51,9 +54,9 @@ function Signin() {
 
           <input
             type="password"
-            placeholder={t("enter.passwordInput")}
+            placeholder={t("enter.signin.passwordInput")}
             {...register("password", {
-              required: t("enter.passwordRequired"),
+              required: t("enter.signin.passwordRequired"),
             })}
             className="w-full px-4 py-2 border rounded-lg mt-4"
           />
@@ -72,16 +75,18 @@ function Signin() {
               htmlFor="remember"
               className="cursor-pointer text-sm font-medium"
             >
-              {t("enter.remember")}
+              {t("enter.signin.remember")}
             </label>
           </div>
 
-          <p className="text-left text-gray-600 mb-4">{t("enter.forgot")}</p>
+          <p className="text-left text-gray-600 mb-4">
+            {t("enter.signin.forgot")}
+          </p>
           <button
             type="submit"
             className="w-full py-2 mt-8 bg-purple-900 text-white rounded-3xl"
           >
-            {t("enter.submit")}
+            {t("enter.signin.submit")}
           </button>
         </form>
       </div>
@@ -89,4 +94,4 @@ function Signin() {
   );
 }
 
-export default Signin;
+export default SigninContainer;

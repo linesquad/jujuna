@@ -11,8 +11,9 @@ import "./index.css";
 import WineDetails from "./components/wineComponents/singleWineComponents/SingleWine";
 import NewsDetails from "./components/newsComponents/NewsDetails";
 import CocktailDetails from "./pages/CocktailDetails";
-import Enter from "./pages/Enter";
+import Signin from "./pages/Signin";
 import UserPage from "./pages/UserPage";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -29,7 +30,8 @@ function App() {
         <Route path="/cocktails/:id" element={<CocktailDetails />} />
         <Route path="/userPage" element={<UserPage />} />
       </Route>
-      <Route path="enter" element={<Enter />} />
+      <Route path="enter/signin" element={<Signin />} />
+      <Route path="enter/register" element={<Register />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
