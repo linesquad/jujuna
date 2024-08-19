@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import CocktailsSidebar from "./CocktailsSidebar";
 
-function CocktailsHeader() {
+function CocktailsHeader({ sortValue, setSortValue }) {
   const [isFillterOpen, setIsFillterOpen] = useState(false);
   const darkMode = useSelector(getMode);
   const { t } = useTranslation();
@@ -54,7 +54,10 @@ function CocktailsHeader() {
                 darkMode ? "bg-[#000]" : "bg-[#fff]"
               }  h-[300px] md:hidden rounded-md`}
             >
-              <CocktailsSidebar />
+              <CocktailsSidebar
+                setSortValue={setSortValue}
+                sortValue={sortValue}
+              />
             </motion.div>
           )}
         </AnimatePresence>
