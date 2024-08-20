@@ -29,9 +29,9 @@ function SingleWine() {
 
       {isLoading ? <SkeletonWineCard /> : <SinglWineCard wine={wine} />}
 
-      {isLoading ? <Spinner /> : <SingleWineText />}
+      {isLoading ? <Spinner /> : <SingleWineText wine={wine} />}
 
-      {isLoading ? <SkeletonImages /> : <SingleWineImages />}
+      {isLoading ? <SkeletonImages /> : <SingleWineImages wine={wine} />}
 
       {isLoading ? (
         <Spinner />

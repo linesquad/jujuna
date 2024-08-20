@@ -52,10 +52,7 @@ function SingleWineCardContent({ wine }) {
             </div>
           </div>
           <p className="ml-10 mr-10 mt-6 md:mt-10 sm:m-auto sm:max-w-[400px] lg:m-0">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate
-            tempora temporibus aperiam aliquam dolorum, ullam accusamus alias
-            repellendus porro? Quaerat dolorum iusto possimus? Distinctio dicta
-            amet alias illum aut animi!
+            {i18n.language === "ge" ? wine.description.ge : wine.description.en}
           </p>
         </Wrapper>
       </div>
