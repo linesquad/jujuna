@@ -9,7 +9,6 @@ import { RiNewspaperLine } from "react-icons/ri";
 import { SignInButton, UserButton, useUser } from "@clerk/clerk-react";
 import Button from "../../Button";
 import { IoEnterOutline } from "react-icons/io5";
-import { useRegisterUserInSupa } from "../../../hooks/useRegisterUserInSupa";
 
 const NavLinks = () => {
   const { user } = useUser();
@@ -20,8 +19,6 @@ const NavLinks = () => {
   const open = useSelector(getIsOpen);
 
   const dispatch = useDispatch();
-
-  useRegisterUserInSupa();
 
   const handleClose = () => {
     dispatch(close());
