@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import fetchWines, { fetchWineById } from "../services/apiWines";
 
-const useWines = () => {
+const useWines = (type) => {
   const { isLoading, data, isError, error } = useQuery({
     queryKey: ["wine"],
-    queryFn: fetchWines,
+    queryFn: () => fetchWines(type),
     staleTime: 0,
   });
 

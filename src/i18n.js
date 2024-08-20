@@ -189,6 +189,7 @@ i18n
             },
           },
           enter: {
+            back: "უკან",
             register: "რეგისტრაცია",
             auth: "ავტორიზაცია",
             signin: {
@@ -445,6 +446,7 @@ i18n
             },
           },
           enter: {
+            back: "Back",
             register: "Register",
             auth: "Authorization",
             signin: {

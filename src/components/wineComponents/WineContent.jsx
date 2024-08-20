@@ -4,7 +4,7 @@ import { getMode } from "../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";
 import WineFilter from "./WineFilter";
 
-export default function WineContent() {
+export default function WineContent({ onSortChange }) {
   const mode = useSelector(getMode);
   const { t } = useTranslation();
 
@@ -18,7 +18,7 @@ export default function WineContent() {
         >
           {t("winePage.title")}
         </h1>
-        <WineFilter />
+        <WineFilter onSortChange={onSortChange} />
       </div>
     </Wrapper>
   );

@@ -1,7 +1,15 @@
 import supabase from "./supabase";
 
-const fetchWines = async () => {
-  let { data, error } = await supabase.from("wine").select("*");
+const fetchWines = async (type) => {
+  // let { data, error } = await supabase.from("wine").select("*");
+
+  let query = supabase.from("wine").select("*");
+
+  if (type) {
+    query = query.eq("type", type);
+  }
+
+  const { data, error } = await query;
 
   if (error) {
     console.error(error);
