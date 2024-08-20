@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import supabase from "../services/supabase";
 import { useUser } from "@clerk/clerk-react";
+import { data } from "autoprefixer";
 
 export const useRegisterUserInSupa = () => {
   const { user } = useUser();
@@ -41,4 +42,6 @@ export const useRegisterUserInSupa = () => {
       registerUser();
     }
   }, [user]);
+
+  return data;
 };

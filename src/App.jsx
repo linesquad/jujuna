@@ -11,9 +11,7 @@ import { Orders } from "./pages/Orders";
 import WineDetails from "./components/wineComponents/singleWineComponents/SingleWine";
 import NewsDetails from "./components/newsComponents/NewsDetails";
 import CocktailDetails from "./pages/CocktailDetails";
-import Signin from "./pages/Signin";
 import UserPage from "./pages/UserPage";
-import Register from "./pages/Register";
 import Admin from "./pages/Admin";
 
 function App() {
@@ -31,8 +29,6 @@ function App() {
         <Route path="/cocktails/:id" element={<CocktailDetails />} />
         <Route path="/userPage" element={<UserPage />} />
       </Route>
-      <Route path="enter/signin" element={<Signin />} />
-      <Route path="enter/register" element={<Register />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
