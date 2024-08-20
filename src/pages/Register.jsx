@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import Wrapper from "../components/Wrapper";
 import { useTranslation } from "react-i18next";
-import RegisterContainer from "../components/enterComponents/RegisterContainer";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
+import { SignUpButton } from "@clerk/clerk-react";
 
 function Register() {
   const { t } = useTranslation();
@@ -48,7 +48,7 @@ function Register() {
               </div>
             </div>
 
-            <RegisterContainer />
+            <SignUpButton />
           </div>
         </div>
       </Wrapper>

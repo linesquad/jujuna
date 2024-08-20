@@ -1,8 +1,9 @@
 import Wrapper from "../components/Wrapper";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
-import SigninContainer from "../components/enterComponents/SigninContainer";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
+import { SignInButton } from "@clerk/clerk-react";
+import Button from "../components/Button";
 
 function Signin() {
   const { t } = useTranslation();
@@ -48,7 +49,10 @@ function Signin() {
                 </Link>
               </div>
             </div>
-            <SigninContainer />
+
+            <SignInButton>
+              <Button type={"primary"}>Sign In</Button>
+            </SignInButton>
           </div>
         </div>
       </Wrapper>
