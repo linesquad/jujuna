@@ -8,6 +8,7 @@ function Button({ children, onClick, type, disabled }) {
     secondary: base + " bg-buttonColor-secondary",
     large:
       base + " xl:w-[222px] xl:h-[55px] xl:text-[24px] bg-buttonColor-primary",
+    signIn: base + " flex items-center gap-2",
   };
 
   return (

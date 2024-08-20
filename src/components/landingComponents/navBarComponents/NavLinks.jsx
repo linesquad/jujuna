@@ -1,18 +1,27 @@
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { close, getIsOpen } from "../../../features/burgerMenuSlice";
 import { RiInformation2Fill } from "react-icons/ri";
 import { FaCocktail } from "react-icons/fa";
 import { PiWineFill } from "react-icons/pi";
 import { RiNewspaperLine } from "react-icons/ri";
+import { SignInButton, UserButton, useUser } from "@clerk/clerk-react";
+import Button from "../../Button";
 import { IoEnterOutline } from "react-icons/io5";
+import { useRegisterUserInSupa } from "../../../hooks/useRegisterUserInSupa";
 
 const NavLinks = () => {
+  const { user } = useUser();
+  console.log(user?.id);
+  const path = useLocation();
+  const { pathname } = path;
   const { t } = useTranslation();
   const open = useSelector(getIsOpen);
 
   const dispatch = useDispatch();
+
+  useRegisterUserInSupa();
 
   const handleClose = () => {
     dispatch(close());
@@ -23,7 +32,7 @@ const NavLinks = () => {
     { name: "cocktail", id: "2", path: "/cocktail", icon: FaCocktail },
     { name: "wines", id: "3", path: "/wines", icon: PiWineFill },
     { name: "news", id: "5", path: "/news", icon: RiNewspaperLine },
-    { name: "enter", id: "4", path: "/enter/register", icon: IoEnterOutline },
+    // { name: "enter", id: "4", path: "/enter/register", icon: IoEnterOutline },
   ];
 
   return (
@@ -31,7 +40,7 @@ const NavLinks = () => {
       className={`${
         open
           ? "flex flex-col gap-5 text-start text-2xl text-white"
-          : "hidden text-base md:text-sm lg:text-base md:flex gap-0 md:gap-5 lg:gap-10 text-white"
+          : "hidden text-base md:text-sm lg:text-base md:flex gap-0 md:gap-5 lg:gap-10 text-white items-center"
       }`}
     >
       {navbarItems.map((navbarItem) => (
@@ -51,6 +60,17 @@ const NavLinks = () => {
           </NavLink>
         </li>
       ))}
+      <li>
+        {!user ? (
+          <SignInButton mode="modal" forceRedirectUrl={pathname}>
+            <Button type={"signIn"}>
+              <IoEnterOutline className=" w-[20px]" /> Enter
+            </Button>
+          </SignInButton>
+        ) : (
+          <UserButton />
+        )}
+      </li>
     </ul>
   );
 };

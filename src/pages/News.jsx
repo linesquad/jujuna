@@ -18,7 +18,7 @@ function News() {
       <HeroNews />
       <FilterNews />
       <BlogDisplay />
-      <Pegination pageQuantity={5} />
+      {/* <Pegination pageQuantity={5} /> */}
     </div>
   );
 }

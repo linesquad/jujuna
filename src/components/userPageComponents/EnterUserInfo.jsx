@@ -105,7 +105,7 @@ function EnterUserInfo() {
             error={errors?.currentPassword?.message}
           />
           <button
-            className={`mt-[100px] text-[13px] ${
+            className={`mt-[40px] text-[13px] ${
               darkMode
                 ? "text-color-black bg-[#fff]"
                 : "text-color-primary bg-[#613994]"

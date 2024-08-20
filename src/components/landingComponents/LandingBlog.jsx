@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 /* eslint-disable react/prop-types */
 function OneNews({ id, image, date, title, description, type, bgColor }) {
   const { i18n } = useTranslation();
-  console.log(id);
 
   const currentTitle = i18n.language === "en" ? title.en : title.ge;
   const currentDescription =
