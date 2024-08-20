@@ -13,6 +13,8 @@ import NewsDetails from "./components/newsComponents/NewsDetails";
 import CocktailDetails from "./pages/CocktailDetails";
 import UserPage from "./pages/UserPage";
 import Admin from "./pages/Admin";
+import AdminLayout from "./pages/adminPages/AdminLayout";
+import Dashboard from "./pages/adminPages/Dashboard";
 
 function App() {
   return (
@@ -31,6 +33,9 @@ function App() {
       </Route>
       <Route path="/admin" element={<Admin />} />
       <Route path="*" element={<PageNotFound />} />
+      <Route element={<AdminLayout />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Route>
     </Routes>
   );
 }
