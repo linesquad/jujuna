@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { supabase } from "../services/supabase";
+import supabase from "../services/supabase";
 import { useUser } from "@clerk/clerk-react";
 
-const useRegisterUserInSupa = () => {
+export const useRegisterUserInSupa = () => {
   const { user } = useUser();
 
   useEffect(() => {
@@ -25,6 +25,7 @@ const useRegisterUserInSupa = () => {
                 email: user.emailAddresses[0].emailAddress,
                 full_name: `${user.firstName} ${user.lastName}`,
               });
+            console.log("inserted");
 
             if (insertError) {
               console.error("Error inserting user:", insertError.message);
@@ -41,5 +42,3 @@ const useRegisterUserInSupa = () => {
     }
   }, [user]);
 };
-
-export default useRegisterUserInSupa;
