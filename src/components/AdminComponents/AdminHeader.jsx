@@ -10,13 +10,13 @@ function AdminHeader() {
         <div className="flex justify-end pr-[46px] py-[10px]">
           <div className="flex items-center gap-[18px]">
             <div className="relative cursor-pointer">
-              <FaEnvelope size={20} />
+              <FaEnvelope size={20} color="#613994" />
               <div className="w-[15px] h-[15px] rounded-[50%] bg-[#FF1E00] flex justify-center items-center absolute top-[-7px] right-[-7px]">
                 <span className="text-color-primary text-[8px]">14</span>
               </div>
             </div>
             <div className="relative cursor-pointer">
-              <FaBell size={20} />
+              <FaBell size={20} color="#613994" />
               <div className="w-[15px] h-[15px] rounded-[50%] bg-[#FF1E00] flex justify-center items-center absolute top-[-7px] right-[-7px]">
                 <span className="text-color-primary text-[8px]">23</span>
               </div>
