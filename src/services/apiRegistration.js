@@ -22,6 +22,7 @@ export const checkIfUserExists = async (userId) => {
 };
 
 export const registerNewUser = async (user) => {
+  console.log(user.email);
   try {
     const email = user.emailAddresses?.[0]?.emailAddress || "No email provided";
     const userId = user.id || "111";

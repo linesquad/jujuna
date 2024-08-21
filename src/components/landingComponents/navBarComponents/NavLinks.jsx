@@ -23,8 +23,8 @@ const NavLinks = () => {
     console.log(user);
     await registerUser(user);
   };
-  console.log(user);
-  console.log(user?.id);
+  // console.log(user);
+  // console.log(user?.id);
 
   const dispatch = useDispatch();
 
@@ -77,9 +77,7 @@ const NavLinks = () => {
         )}
       </li>
       <li>
-        {user && (
-          <button onClick={(user) => handleSignIn(user)}>register</button>
-        )}
+        {user && <button onClick={() => handleSignIn(user)}>register</button>}
       </li>
     </ul>
   );
