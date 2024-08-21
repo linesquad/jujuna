@@ -9,10 +9,10 @@ import { RiNewspaperLine } from "react-icons/ri";
 import { SignInButton, UserButton, useUser } from "@clerk/clerk-react";
 import Button from "../../Button";
 import { IoEnterOutline } from "react-icons/io5";
+import { registerNewUser } from "../../../services/apiRegistration";
 
 const NavLinks = () => {
   const { user } = useUser();
-  console.log(user?.id);
   const path = useLocation();
   const { pathname } = path;
   const { t } = useTranslation();
@@ -59,7 +59,11 @@ const NavLinks = () => {
       ))}
       <li>
         {!user ? (
-          <SignInButton mode="modal" forceRedirectUrl={pathname}>
+          <SignInButton
+            mode="modal"
+            forceRedirectUrl={pathname}
+            onSignIn={(user) => registerNewUser(user)}
+          >
             <Button type={"signIn"}>
               <IoEnterOutline className=" w-[20px]" /> Enter
             </Button>
