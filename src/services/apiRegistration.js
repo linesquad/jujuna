@@ -30,7 +30,7 @@ export const registerNewUser = async (user) => {
     const payload = {
       clerk_user_id: userId,
       email: email,
-      full_name: `${user.firstName} ${user.lastName}`,
+      fullName: `${user.firstName} ${user.lastName}`,
     };
     console.log("Payload being sent to Supabase:", payload);
 

@@ -23,7 +23,7 @@ const NavLinks = () => {
     console.log(user);
     await registerUser(user);
   };
-
+  console.log(user);
   console.log(user?.id);
 
   const dispatch = useDispatch();
