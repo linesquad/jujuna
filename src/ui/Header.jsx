@@ -5,8 +5,8 @@ import CloseBurger from "../components/landingComponents/navBarComponents/CloseB
 import OpenBurger from "../components/landingComponents/navBarComponents/OpenBurger";
 import useWindowSize from "../hooks/useWindowSize";
 import { AnimatePresence } from "framer-motion";
-import { useUser } from "@clerk/clerk-react";
-import { useRegistration } from "../hooks/useRegistration";
+// import { useUser } from "@clerk/clerk-react";
+// import { useRegistration } from "../hooks/useRegistration";
 
 const Header = () => {
   const open = useSelector(getIsOpen);
@@ -14,8 +14,8 @@ const Header = () => {
 
   const { width } = useWindowSize();
 
-  const { user } = useUser();
-  const { registerUser } = useRegistration();
+  // const { user } = useUser();
+  // const { registerUser } = useRegistration();
 
   // useEffect(() => {
   //   if (user) {

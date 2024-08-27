@@ -29,7 +29,7 @@ const NavLinks = () => {
     { name: "cocktail", id: "2", path: "/cocktail", icon: FaCocktail },
     { name: "wines", id: "3", path: "/wines", icon: PiWineFill },
     { name: "news", id: "5", path: "/news", icon: RiNewspaperLine },
-    { name: "enter", id: "4", path: "/enter/register", icon: IoEnterOutline },
+    // { name: "enter", id: "4", path: "/enter/register", icon: IoEnterOutline },
   ];
 
   return (
