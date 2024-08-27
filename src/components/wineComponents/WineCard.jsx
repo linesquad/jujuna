@@ -44,7 +44,7 @@ function WineCard({ wine }) {
           <WineImages />
         </div>
       </Link>
-      <AddWineToCart />
+      <AddWineToCart wine={wine} />
     </div>
   );
 }

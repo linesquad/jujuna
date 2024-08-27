@@ -8,7 +8,6 @@ function SingleWineCardContent({ wine }) {
   const { i18n, t } = useTranslation();
   const darkMode = useSelector(getMode);
 
-  console.log("from content", wine);
   return (
     <div className="flex flex-col items-center lg:items-start max-w-full lg:max-w-[600px]">
       <div className="text-center flex mt-6 lg:text-left">
@@ -56,7 +55,7 @@ function SingleWineCardContent({ wine }) {
           </p>
         </Wrapper>
       </div>
-      <SingleWineCardAddButtons />
+      <SingleWineCardAddButtons wine={wine} />
     </div>
   );
 }
