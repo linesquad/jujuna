@@ -39,7 +39,7 @@ const CloseBurger = () => {
       >
         <Wrapper>
           <div>
-            <nav className="flex justify-between items-center px-5 md:px-0 py-2 md:pb-[30px]">
+            <nav className="flex justify-between items-center px-5 md:px-0 py-2 md:py-[14px]">
               <div className="flex md:hidden">
                 <BurgerNav />
               </div>
