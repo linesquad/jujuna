@@ -9,7 +9,6 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      // Add wine to cart
       const itemExists = state.cartItems.find(
         (item) => item.id === action.payload.id
       );
@@ -20,13 +19,11 @@ export const cartSlice = createSlice({
       }
     },
     removeFromCart: (state, action) => {
-      // Remove wine from cart
       state.cartItems = state.cartItems.filter(
         (item) => item.id !== action.payload.id
       );
     },
     clearCart: (state) => {
-      // Clear the entire cart
       state.cartItems = [];
     },
   },

@@ -1,14 +1,21 @@
 import heart from "/images/heart.svg";
 import cart from "/images/cart.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { addToCart } from "../../features/cartSlice";
 
 function CocktailCard({ item }) {
   const { image, name, price, id } = item;
   const darkMode = useSelector(getMode);
   const { i18n } = useTranslation();
+
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(item));
+  };
 
   return (
     <Link to={`/cocktails/${id}`}>
@@ -40,7 +47,10 @@ function CocktailCard({ item }) {
           >
             {i18n.language === "ge" ? `${price} ₾` : `GEL ${price}`}
           </p>
-          <div className="w-[31px] h-[14px] md:w-[50px] md:h-[24px] rounded-[33px] bg-[#613994] flex justify-center items-center">
+          <div
+            className="w-[31px] h-[14px] md:w-[50px] md:h-[24px] rounded-[33px] bg-[#613994] flex justify-center items-center"
+            onClick={handleAddToCart}
+          >
             <img src={cart} alt="cart" className="md:w-[18px] md:h-[18px]" />
           </div>
         </div>
