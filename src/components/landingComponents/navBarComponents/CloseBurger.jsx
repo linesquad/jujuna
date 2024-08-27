@@ -12,11 +12,19 @@ import { FaSearch } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
+import ModalCart from "../../ModalCart";
+import { useState } from "react";
 
 const CloseBurger = () => {
   const scrolled = useScroll();
   const open = useSelector(getIsOpen);
   const darkMode = useSelector(getMode);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setModalOpen((prev) => !prev);
+    console.log(modalOpen);
+  };
 
   return (
     <div className={`sticky top-0 w-full  "text-white z-40 header"`}>
@@ -54,6 +62,7 @@ const CloseBurger = () => {
                   <FaShoppingCart
                     color={`${darkMode ? "#fff" : "#000"}`}
                     size={20}
+                    onClick={toggleModal}
                   />
                   <FaHeart color={`${darkMode ? "#fff" : "#000"}`} size={20} />
                   <div className="h-[27px] border-[1px] bprder-[#fff]"></div>
@@ -64,6 +73,7 @@ const CloseBurger = () => {
           </div>
         </Wrapper>
       </div>
+      <ModalCart isOpen={modalOpen} onClose={toggleModal} />
     </div>
   );
 };

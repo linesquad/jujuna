@@ -78,7 +78,7 @@ const NavLinks = () => {
               <IoEnterOutline
                 className="w-[20px]"
                 color={darkMode ? "#fff" : "#000"}
-              />{" "}
+              />
               <span
                 className={`${
                   darkMode ? "text-color-primary" : "text-color-black"
