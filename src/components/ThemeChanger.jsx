@@ -19,7 +19,7 @@ const ThemeChanger = () => {
 
   return (
     <motion.div
-      className="mt-1"
+      className=""
       initial="initial"
       animate="animate"
       exit="exit"

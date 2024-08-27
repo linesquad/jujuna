@@ -3,9 +3,11 @@ import { getIsOpen, toggleBurgerMenu } from "../../../features/burgerMenuSlice";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoClose } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { getMode } from "../../../features/darkModeSlice";
 
 const BurgerNav = () => {
   const open = useSelector(getIsOpen);
+  const darkMode = useSelector(getMode);
 
   const dispatch = useDispatch();
 
@@ -20,7 +22,11 @@ const BurgerNav = () => {
   };
 
   return (
-    <div className={`w-full  text-white sticky top-0 z-40`}>
+    <div
+      className={`w-full ${
+        darkMode ? "text-white" : "text-black"
+      } sticky top-0 z-40`}
+    >
       <nav className="flex justify-between items-center">
         <div></div>
         <div className="flex md:hidden">

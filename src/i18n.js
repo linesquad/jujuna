@@ -14,6 +14,7 @@ i18n
           navbar: {
             about: "ჩვენზე",
             cocktail: "კოქტეილი",
+            bottle: "ბოთლი",
             wines: "ღვინო",
             news: "სიახლეები",
             enter: "შესვლა",
@@ -274,6 +275,7 @@ i18n
             about: "About Us",
             cocktail: "Cocktail",
             wines: "Wine",
+            bottle: "Bottle",
             news: "News",
             enter: "Enter",
           },

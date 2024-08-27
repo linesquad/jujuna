@@ -10,6 +10,7 @@ import { SignInButton, UserButton, useUser } from "@clerk/clerk-react";
 import Button from "../../Button";
 import { IoEnterOutline } from "react-icons/io5";
 import { useRegistration } from "../../../hooks/useRegistration";
+import { getMode } from "../../../features/darkModeSlice";
 
 const NavLinks = () => {
   const { user } = useUser();
@@ -18,6 +19,7 @@ const NavLinks = () => {
   const { t } = useTranslation();
   const open = useSelector(getIsOpen);
   const { registerUser } = useRegistration();
+  const darkMode = useSelector(getMode);
 
   const handleSignIn = async (user) => {
     console.log(user);
@@ -34,9 +36,9 @@ const NavLinks = () => {
 
   const navbarItems = [
     { name: "about", id: "1", path: "/about", icon: RiInformation2Fill },
-    { name: "cocktail", id: "2", path: "/cocktail", icon: FaCocktail },
-    { name: "wines", id: "3", path: "/wines", icon: PiWineFill },
     { name: "news", id: "5", path: "/news", icon: RiNewspaperLine },
+    { name: "bottle", id: "3", path: "/wines", icon: PiWineFill },
+    { name: "cocktail", id: "2", path: "/cocktail", icon: FaCocktail },
     // { name: "enter", id: "4", path: "/enter/register", icon: IoEnterOutline },
   ];
 
@@ -58,7 +60,11 @@ const NavLinks = () => {
             }
             onClick={handleClose}
           >
-            <div className="flex items-center gap-2">
+            <div
+              className={`flex items-center gap-2 ${
+                darkMode ? "text-color-primary" : "text-color-black"
+              }`}
+            >
               <navbarItem.icon />
               {t(`navbar.${navbarItem.name}`)}
             </div>
@@ -69,7 +75,17 @@ const NavLinks = () => {
         {!user ? (
           <SignInButton mode="modal" forceRedirectUrl={pathname}>
             <Button type={"signIn"}>
-              <IoEnterOutline className=" w-[20px]" /> Enter
+              <IoEnterOutline
+                className="w-[20px]"
+                color={darkMode ? "#fff" : "#000"}
+              />{" "}
+              <span
+                className={`${
+                  darkMode ? "text-color-primary" : "text-color-black"
+                } mt-[4px]`}
+              >
+                Enter
+              </span>
             </Button>
           </SignInButton>
         ) : (
