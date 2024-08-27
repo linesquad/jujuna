@@ -9,14 +9,22 @@ import { RiNewspaperLine } from "react-icons/ri";
 import { SignInButton, UserButton, useUser } from "@clerk/clerk-react";
 import Button from "../../Button";
 import { IoEnterOutline } from "react-icons/io5";
+import { useRegistration } from "../../../hooks/useRegistration";
 
 const NavLinks = () => {
   const { user } = useUser();
-  console.log(user?.id);
   const path = useLocation();
   const { pathname } = path;
   const { t } = useTranslation();
   const open = useSelector(getIsOpen);
+  const { registerUser } = useRegistration();
+
+  const handleSignIn = async (user) => {
+    console.log(user);
+    await registerUser(user);
+  };
+  // console.log(user);
+  // console.log(user?.id);
 
   const dispatch = useDispatch();
 
@@ -67,6 +75,9 @@ const NavLinks = () => {
         ) : (
           <UserButton />
         )}
+      </li>
+      <li>
+        {user && <button onClick={() => handleSignIn(user)}>register</button>}
       </li>
     </ul>
   );

@@ -22,12 +22,22 @@ export const checkIfUserExists = async (userId) => {
 };
 
 export const registerNewUser = async (user) => {
+  console.log(user.email);
   try {
-    const { error: insertError } = await supabase.from("clients").insert({
-      clerk_user_id: user.id,
-      email: user.emailAddresses[0].emailAddress,
-      full_name: `${user.firstName} ${user.lastName}`,
-    });
+    const email = user.emailAddresses?.[0]?.emailAddress || "No email provided";
+    const userId = user.id || "111";
+
+    // Log the payload
+    const payload = {
+      clerk_user_id: userId,
+      email: email,
+      fullName: `${user.firstName} ${user.lastName}`,
+    };
+    console.log("Payload being sent to Supabase:", payload);
+
+    const { error: insertError } = await supabase
+      .from("clients")
+      .insert(payload);
 
     if (insertError) {
       console.error("Error inserting user:", insertError.message);

@@ -3,7 +3,6 @@ import BlogDisplay from "../components/newsComponents/BlogDisplay";
 import FilterNews from "../components/newsComponents/FilterNews";
 import HeroNews from "../components/newsComponents/HeroNews";
 import { getMode } from "../features/darkModeSlice";
-import Pegination from "../components/Pegination";
 
 function News() {
   const mode = useSelector(getMode);
@@ -18,7 +17,6 @@ function News() {
       <HeroNews />
       <FilterNews />
       <BlogDisplay />
-      {/* <Pegination pageQuantity={5} /> */}
     </div>
   );
 }
