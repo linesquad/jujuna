@@ -15,8 +15,15 @@ import UserPage from "./pages/UserPage";
 import Admin from "./pages/Admin";
 import AdminLayout from "./pages/adminPages/AdminLayout";
 import Dashboard from "./pages/adminPages/Dashboard";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function App() {
+  const cart = useSelector((state) => state.cart);
+  useEffect(() => {
+    console.log("Cart state:", cart); // Log the cart state whenever it updates
+  }, [cart]);
+
   return (
     <Routes>
       <Route element={<AppLayout />}>

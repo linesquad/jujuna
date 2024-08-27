@@ -1,10 +1,16 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";
+import { addToCart } from "../../../features/cartSlice";
 
-function SingleWineCardAddButtons() {
+function SingleWineCardAddButtons({ wine }) {
   const { t, i18n } = useTranslation();
   const mode = useSelector(getMode);
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(wine));
+  };
 
   return (
     <div
@@ -20,6 +26,7 @@ function SingleWineCardAddButtons() {
             ? "bg-wineCardColor-addBtn border-wineNavbarColor-textPurple"
             : "bg-transparent border-buttonColor-primary"
         }`}
+        onClick={handleAddToCart}
       >
         {t("winePage.singleWine.cart")}
       </button>
