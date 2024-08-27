@@ -50,6 +50,9 @@ i18n
               heading: "ღვინო არც ისე წყნარი და არც ბოლომდე ცქრიალაა",
               description:
                 "მას ადრეულ რთველზე მიღებული რქაწითელითა და მწვანეთი ვამზადებთ, ამიტომაც სახასიათო სიმჟავე აქვს. მეორადი დუღილისგან კი ბუნებრივ მსუბუქ გაზს იძენს.",
+              buyBtn: "შეძენა",
+              collectionBtn: "სრული კოლექცია",
+              littleDesc: "ბუნების ნამუშევარი, ტრადიციებით დახვეწილი",
             },
             aboutUs: {
               title: "ჩვენ შესახებ",
@@ -306,6 +309,9 @@ i18n
               heading: "The wine is neither still nor fully sparkling",
               description:
                 "We prepare it with Rkatsiteli and green grapes obtained in the early harvest, that's why it has a characteristic acidity. Natural light gas is obtained from secondary fermentation.",
+              buyBtn: "Buy",
+              collectionBtn: "Full collection",
+              littleDesc: "A work of nature, refined by tradition",
             },
             aboutUs: {
               title: "About us",
