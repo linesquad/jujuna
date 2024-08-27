@@ -45,7 +45,7 @@ const CloseBurger = () => {
               </div>
               <Logo />
 
-              <div className="hidden w-full md:w-[650px]  md:block text-center text-bold gap-10">
+              <div className="hidden w-full md:w-[470px] lg:w-[650px]  md:block text-center text-bold gap-10">
                 <NavLinks />
               </div>
               <div className="flex items-center gap-[15px]">
