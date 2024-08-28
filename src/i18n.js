@@ -100,6 +100,11 @@ i18n
               naturalWay: "ბუნებრივი გზა",
               naturalWayQuantity: "2.5 ბარი",
               price: "4.5₾",
+              addToCart: "დამატება",
+              fullCollectionBtn: "სრული კოლექცია",
+            },
+            cocktails: {
+              buyBtn: "შეძენა",
             },
             mobileBar: {
               title: "მობილური ბარი",
@@ -361,6 +366,11 @@ i18n
               naturalWay: "The natural way",
               naturalWayQuantity: "2.5 ???",
               price: "GEL 4.5",
+              addToCart: "Add to cart",
+              fullCollectionBtn: "Full Collection",
+            },
+            cocktails: {
+              buyBtn: "Buy",
             },
             mobileBar: {
               title: "Mobile Bar",

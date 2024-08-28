@@ -17,15 +17,12 @@ function SameWines({ products, CardComponent }) {
         breakpoints={{
           320: {
             slidesPerView: 1,
-            // spaceBetween: 30,
           },
           768: {
             slidesPerView: 2,
-            // spaceBetween: 40,
           },
           1024: {
             slidesPerView: 3,
-            // spaceBetween: 40,
           },
         }}
         style={{
@@ -34,13 +31,11 @@ function SameWines({ products, CardComponent }) {
         pagination={{
           clickable: true,
         }}
-        // navigation={true}
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
         }}
         modules={[Navigation]}
-        // className="swiper-container"
         onBeforeInit={(swiper) => {
           swiper.params.navigation.prevEl = prevRef.current;
           swiper.params.navigation.nextEl = nextRef.current;
