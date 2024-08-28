@@ -7,10 +7,13 @@ import Wrapper from "../Wrapper";
 import { useLatestBlogs } from "../../hooks/useLatestItems";
 import OneNews from "./LandingBlog";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { getMode } from "../../features/darkModeSlice";
 
 const News = () => {
   const { data: blogNews, isLoading, error } = useLatestBlogs();
   const { i18n } = useTranslation();
+  const darkMode = useSelector(getMode);
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading blogs: {error.message}</p>;
@@ -18,7 +21,11 @@ const News = () => {
 
   return (
     <Wrapper>
-      <h2 className="text-white text-[40px] ml-[27px] mb-[5px] font-tommaso md:ml-[0px] md:text-[50px] lg:text-[64px]">
+      <h2
+        className={`${
+          darkMode ? "text-white" : "text-color-black"
+        } text-[40px] ml-[27px] mb-[5px] font-tommaso md:ml-[0px] md:text-[50px] lg:text-[64px]`}
+      >
         {i18n.language === "en" ? "News" : "სიახლეები"}
       </h2>
       <Swiper

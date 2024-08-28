@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 
-/* eslint-disable react/prop-types */
 function OneNews({ image, title, description }) {
   const { t, i18n } = useTranslation();
   const darkMode = useSelector(getMode);
@@ -13,19 +12,23 @@ function OneNews({ image, title, description }) {
 
   return (
     <div
-      className={`mx-[10px] mt-[30px] border-[1px] ${
+      className={`mx-[10px] mt-[30px] max-w-[400px]  border-[1px] ${
         darkMode ? "border-[#fff]" : "border-[#000]"
-      } h-[650px] rounded-[15px]`}
+      } h-[500px] rounded-[30px]`}
     >
-      <img src={image} alt="landing" className="mx-auto" />
+      <img
+        src={image}
+        alt="landing"
+        className="w-full h-[221px] object-cover rounded-[30px]"
+      />
       <div className="pt-[20px] pl-[28px] flex flex-col">
         <h2
-          className={` text-[26px] h-[90px] ${
+          className={` text-[26px] h-[50px] ${
             darkMode ? "text-color-primary" : "text-color-black"
           }`}
         >
           {currentTitle.length > 17
-            ? currentTitle.split(" ").slice(0, 2).join(" ") + "..."
+            ? currentTitle.split(" ").slice(0, 1).join(" ") + "..."
             : currentTitle}
         </h2>
         <p
@@ -33,8 +36,8 @@ function OneNews({ image, title, description }) {
             darkMode ? "text-color-primary" : "text-color-black"
           }`}
         >
-          {currentDescription.split(" ").length > 10
-            ? currentDescription.split(" ").slice(0, 10).join(" ")
+          {currentDescription.split(" ").length > 8
+            ? currentDescription.split(" ").slice(0, 8).join(" ")
             : currentDescription}
         </p>
       </div>
