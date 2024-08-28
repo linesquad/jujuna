@@ -39,7 +39,9 @@ const CloseBurger = () => {
       <div
         className={`${
           scrolled && open
-            ? "bg-black"
+            ? darkMode
+              ? "bg-black"
+              : "bg-[#fff]"
             : scrolled
             ? " bg-opacity-70 backdrop-blur-md"
             : ""
