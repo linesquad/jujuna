@@ -17,11 +17,11 @@ function AboutUsComp() {
           <div className="px-[15px] md:w-[60%]">
             <HeroContent
               title={t("home.aboutUs.title")}
-              titleStyle={`text-[28px] lg:text-[36px] ${
+              titleStyle={`text-[28px] xl:text-[36px] ${
                 darkMode ? "text-[#fff]" : "text-[#000]"
               }`}
               containerStyle="flex flex-col gap-[9px]"
-              descriptionStyle={`text-[15px] lg:text-[20px] ${
+              descriptionStyle={`text-[15px] xl:text-[20px] ${
                 darkMode ? "text-[#FFFFFF99]" : "text-[#00000099]"
               } `}
               description={[
