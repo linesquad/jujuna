@@ -86,6 +86,7 @@ i18n
               contactDetails: {
                 location: "წალკა, რუსთაველის 25, ქვემო ქართლი, საქართველო",
               },
+              button: "შეიტყვეთ მეტი",
             },
             bottle: {
               title: "ბოთლი",
@@ -346,6 +347,7 @@ i18n
               contactDetails: {
                 location: "25 Rustaveli Street, Tsalka, Kvemo Kartli, Georgia",
               },
+              button: "Learn More",
             },
             bottle: {
               title: "Bottle",

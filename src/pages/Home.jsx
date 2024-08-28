@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import AboutUsComp from "../components/landingComponents/AboutUsComp";
 import Bottle from "../components/landingComponents/Bottle";
 import CocktailsComp from "../components/landingComponents/CocktailsComp";
@@ -5,11 +6,13 @@ import Connect from "../components/landingComponents/Connect";
 import Hero from "../components/landingComponents/Hero";
 import MobileBar from "../components/landingComponents/MobileBar";
 import News from "../components/landingComponents/News";
+import { getMode } from "../features/darkModeSlice";
 
 const Home = () => {
+  const darkMode = useSelector(getMode);
   return (
     <div>
-      <div className="bg-[linear-gradient(249deg,_#A583D1_22.95%,_#724AA4_46.44%,_#1E122E_93.06%)]">
+      <div className={`${darkMode ? "bg-[#12151C]" : "bg-[#fff]"}`}>
         <Hero />
         <AboutUsComp />
         <News />
