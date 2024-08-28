@@ -28,7 +28,7 @@ const CloseBurger = () => {
 
   return (
     <div className={`sticky top-0 w-full  "text-white z-40 header"`}>
-      <div className="bg-[#000] w-full">
+      <div className="bg-[#000] w-full hidden md:block">
         <Wrapper>
           <div className="px-[17px] py-[8px] md:px-0 flex items-center justify-between">
             <ThemeChanger />

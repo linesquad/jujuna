@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getIsOpen, toggleBurgerMenu } from "../../../features/burgerMenuSlice";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { IoClose } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { getMode } from "../../../features/darkModeSlice";
@@ -30,39 +30,39 @@ const BurgerNav = () => {
       <nav className="flex justify-between items-center">
         <div></div>
         <div className="flex md:hidden">
-          <AnimatePresence>
-            {open ? (
-              <motion.div
-                key="close"
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                variants={menuVariants}
-                transition={{ duration: 0.5 }}
-              >
-                <IoClose
-                  size="25"
-                  onClick={handleToggle}
-                  className=" cursor-pointer"
-                />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="menu"
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                variants={menuVariants}
-                transition={{ duration: 0.5 }}
-              >
-                <GiHamburgerMenu
-                  size="25"
-                  onClick={handleToggle}
-                  className=" cursor-pointer"
-                />
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {/* <AnimatePresence> */}
+          {open ? (
+            <motion.div
+              key="close"
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={menuVariants}
+              transition={{ duration: 0.5 }}
+            >
+              <IoClose
+                size="25"
+                onClick={handleToggle}
+                className=" cursor-pointer"
+              />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="menu"
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={menuVariants}
+              transition={{ duration: 0.5 }}
+            >
+              <GiHamburgerMenu
+                size="25"
+                onClick={handleToggle}
+                className=" cursor-pointer"
+              />
+            </motion.div>
+          )}
+          {/* </AnimatePresence> */}
         </div>
       </nav>
     </div>
