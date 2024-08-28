@@ -8,6 +8,7 @@ const ThemeChanger = () => {
   const mode = useSelector(getMode);
   const open = useSelector(getIsOpen);
   const dispatch = useDispatch();
+  const darkMode = useSelector(getMode);
 
   const size = open ? 50 : 25;
 
@@ -38,7 +39,9 @@ const ThemeChanger = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
             transition={{ duration: 0.5 }}
-            className="text-white"
+            className={`${
+              darkMode ? "text-white" : "text-black"
+            } md:text-white`}
           >
             <MdLightMode size={`${size}`} />
           </motion.div>
@@ -49,7 +52,9 @@ const ThemeChanger = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
             transition={{ duration: 0.5 }}
-            className="text-white"
+            className={`${
+              darkMode ? "text-white" : "text-black"
+            } md:text-white`}
           >
             <MdDarkMode size={size} />
           </motion.div>
