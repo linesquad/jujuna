@@ -22,7 +22,7 @@ const News = () => {
         {i18n.language === "en" ? "News" : "სიახლეები"}
       </h2>
       <Swiper
-        className="w-full h-[650px]"
+        className="w-full h-[740px]"
         breakpoints={{
           320: {
             slidesPerView: 1,

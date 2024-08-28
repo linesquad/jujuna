@@ -1,50 +1,51 @@
-import { Link } from "react-router-dom";
-import Button from "../Button";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { getMode } from "../../features/darkModeSlice";
 
 /* eslint-disable react/prop-types */
-function OneNews({ id, image, date, title, description, type, bgColor }) {
-  const { i18n } = useTranslation();
+function OneNews({ image, title, description }) {
+  const { t, i18n } = useTranslation();
+  const darkMode = useSelector(getMode);
 
   const currentTitle = i18n.language === "en" ? title.en : title.ge;
   const currentDescription =
     i18n.language === "en" ? description.en : description.ge;
 
   return (
-    <div className="flex flex-col  rounded-xl">
-      <div className="w-full h-[347px]">
-        <img
-          className="w-full h-full object-cover"
-          src={image}
-          alt="bottle-1"
-        />
-      </div>
-      <div
-        className={`flex flex-col px-[20px] py-[15px] pb-[20px] ${bgColor} text-color-primary h-[255px] justify-between`}
-      >
-        <p className="text-[14px]  font-normal">{date}</p>
-        {/* <h2 className="text-[24px] font-normal">{`${
-          title.ge.length > 27 ? title.ge.slice(0, 20) + "..." : title.ge
-        }`}</h2> */}
-        <h2 className="text-[24px] font-normal">
-          {currentTitle.length > 27
-            ? currentTitle.slice(0, 20) + "..."
+    <div
+      className={`mx-[10px] mt-[30px] border-[1px] ${
+        darkMode ? "border-[#fff]" : "border-[#000]"
+      } h-[650px] rounded-[15px]`}
+    >
+      <img src={image} alt="landing" className="mx-auto" />
+      <div className="pt-[20px] pl-[28px] flex flex-col">
+        <h2
+          className={` text-[26px] h-[90px] ${
+            darkMode ? "text-color-primary" : "text-color-black"
+          }`}
+        >
+          {currentTitle.length > 17
+            ? currentTitle.split(" ").slice(0, 2).join(" ") + "..."
             : currentTitle}
         </h2>
-        {/* <p className="text-[16px] font-normal">{`${description.ge.slice(
-          0,
-          120
-        )}...`}</p> */}
-        <p className="text-[16px] font-normal">
-          {`${currentDescription.slice(0, 120)}...`}
+        <p
+          className={`mt-[10px] h-[120px] ${
+            darkMode ? "text-color-primary" : "text-color-black"
+          }`}
+        >
+          {currentDescription.split(" ").length > 10
+            ? currentDescription.split(" ").slice(0, 10).join(" ")
+            : currentDescription}
         </p>
-        <div className="self-end">
-          <Link to={`/news/${id}`}>
-            <Button type={type}>
-              {i18n.language === "en" ? "Read more" : "გაიგე მეტი"}
-            </Button>
-          </Link>
-        </div>
+      </div>
+      <div className="flex justify-center">
+        <button
+          className={`w-[200px] rounded-[30px] py-[12px] text-color-primary ${
+            darkMode ? " bg-[#58387F]" : "bg-[#000]"
+          }`}
+        >
+          {t("home.aboutUs.button")}
+        </button>
       </div>
     </div>
   );
