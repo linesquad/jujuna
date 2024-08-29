@@ -37,6 +37,7 @@ const ModalCart = ({ isOpen, onClose, title, checkAllProductsText, items }) => {
   };
 
   const handleNavigateToDetails = (item) => {
+    onClose();
     if (item.age) {
       navigate(`/wines/${item.id}`);
     } else {

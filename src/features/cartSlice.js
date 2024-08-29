@@ -1,8 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const getStoredData = (key, defaultValue) => {
+  const data = localStorage.getItem(key);
+  try {
+    return data ? JSON.parse(data) : defaultValue;
+  } catch {
+    return defaultValue;
+  }
+};
+
 const initialState = {
-  cartItems: [],
-  totalPrice: 0,
+  cartItems: getStoredData("cartItems", []),
+  totalPrice: getStoredData("totalPrice", 0),
+};
+
+const saveCartToLocalStorage = (cartItems, totalPrice) => {
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
 };
 
 export const cartSlice = createSlice({
@@ -23,6 +37,8 @@ export const cartSlice = createSlice({
         (total, item) => total + item.price * item.quantity,
         0
       );
+
+      saveCartToLocalStorage(state.cartItems, state.totalPrice);
     },
     removeFromCart: (state, action) => {
       state.cartItems = state.cartItems.filter(
@@ -33,10 +49,14 @@ export const cartSlice = createSlice({
         (total, item) => total + item.price * item.quantity,
         0
       );
+
+      saveCartToLocalStorage(state.cartItems, state.totalPrice);
     },
     clearCart: (state) => {
       state.cartItems = [];
       state.totalPrice = 0;
+
+      saveCartToLocalStorage(state.cartItems, state.totalPrice);
     },
     increaseQuantity: (state, action) => {
       const item = state.cartItems.find(
@@ -49,6 +69,8 @@ export const cartSlice = createSlice({
         (total, item) => total + item.price * item.quantity,
         0
       );
+
+      saveCartToLocalStorage(state.cartItems, state.totalPrice);
     },
     decreaseQuantity: (state, action) => {
       const item = state.cartItems.find(
@@ -67,6 +89,8 @@ export const cartSlice = createSlice({
         (total, item) => total + item.price * item.quantity,
         0
       );
+
+      saveCartToLocalStorage(state.cartItems, state.totalPrice);
     },
   },
 });
