@@ -111,7 +111,7 @@ i18n
               heading: "გავჩნდებით ყველგან, სადაც ისურვებ",
               paragraph:
                 "ჟუჟუნას ბარი მოგაგნებს ყველგან, სადაც იქნები. თან მოიყვანს ბარმენს,  ქორფა ჟუჟუნას მაცივარს დააა შენი სტუმრების ჩაჟუჟუნებაზე უუამრავი კოქტეილით იზრუნებს.",
-              moreBtn: "გაიგე მეტი",
+              moreBtn: "შეიტყვეთ მეტი",
             },
           },
           cocktails: {
@@ -272,6 +272,12 @@ i18n
             addressError: "მისამართის შეყვანა აუცილებელია",
             passwordError: "პაროლის შეყვანა აუცილებელია",
             numberPattern: "გთხოვთ შეიყვანოთ სწორი ნომერი",
+          },
+          cartSlicer: {
+            total: "სულ:",
+            myCart: "ჩემი კალათა",
+            noItems: "კალათაში არაფერიაა.",
+            checkCard: "კალათის ნახვა",
           },
         },
       },
@@ -539,6 +545,12 @@ i18n
             addressError: "Address is required",
             passwordError: "Password is required",
             numberPattern: "Please enter a valid number",
+          },
+          cartSlicer: {
+            total: "total:",
+            myCart: "My cart",
+            noItems: "No items in the cart.",
+            checkCard: "View Cart",
           },
         },
       },

@@ -14,12 +14,16 @@ import { FaHeart } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import ModalCart from "../../ModalCart";
 import { useState } from "react";
+import { cartItems } from "../../../features/cartSlice";
+import { useTranslation } from "react-i18next";
 
 const CloseBurger = () => {
   const scrolled = useScroll();
   const open = useSelector(getIsOpen);
   const darkMode = useSelector(getMode);
   const [modalOpen, setModalOpen] = useState(false);
+  const items = useSelector(cartItems);
+  const { t } = useTranslation();
 
   const toggleModal = () => {
     setModalOpen((prev) => !prev);
@@ -61,16 +65,11 @@ const CloseBurger = () => {
               <div className="flex items-center gap-[15px]">
                 <FaSearch color={`${darkMode ? "#fff" : "#000"}`} size={20} />
                 <div className="hidden lg:flex items-center gap-[15px]">
-                  {/* <div className="flex flex-col relative"> */}
                   <FaShoppingCart
                     color={`${darkMode ? "#fff" : "#000"}`}
                     size={20}
                     onClick={toggleModal}
                   />
-                  {/* </div> */}
-                  {/* <div className="fixed inset-0 bg-opacity-50 flex justify-center items-center z-50">
-                    <ModalCart isOpen={modalOpen} onClose={toggleModal} />
-                    </div> */}
                   <FaHeart color={`${darkMode ? "#fff" : "#000"}`} size={20} />
                   <div className="h-[27px] border-[1px] bprder-[#fff]"></div>
                 </div>
@@ -83,8 +82,9 @@ const CloseBurger = () => {
       <ModalCart
         isOpen={modalOpen}
         onClose={toggleModal}
-        title="ჩემი კალათა"
-        checkAllProductsText="კალათის ნახვა"
+        title={t("cartSlicer.myCart")}
+        checkAllProductsText={t("cartSlicer.checkCard")}
+        items={items}
       />
     </div>
   );
