@@ -45,7 +45,7 @@ function OneNews({ image, title, description, id }) {
               : currentDescription}
           </p>
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center w-[200px] mx-auto">
           <Button type="primary" onClick={() => navigate(`news/${id}`)}>
             {t("home.aboutUs.button")}
           </Button>

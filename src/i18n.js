@@ -58,9 +58,9 @@ i18n
             aboutUs: {
               title: "ჩვენ შესახებ",
               paragraph1:
-                "ჟუჟუნა ძალიან მშრალი და მომჟავო ღვინო 2017 წელს შეიქმნა.",
+                "ქორფა ჟუჟუნა უუუამრავ კაფე-ბარში შეგხვდება და შენთვის საყვარელ კოქტეილებს ააცქრიალებს. ცივი და ჩქრიალა ჟუჟუ კოქტეილში პირდაპირ ონკანიდან ეშვება.",
               paragraph2:
-                "ბევრი ფიქრისა და ღვინის მრავალწლიანი სიყვარულის შემდეგ, კომპანია, ჩვენივე სახსრებით, 6-მა მეგობარმა დავაარსეთ. ჩვენი მთავარი მიზანი, დალევის კულტურის განსხვავებული გამოცდილების შექმნა და აქამდე არარსებული თანამდეროვე ღვინის თანამედროვე კულტურაში პოპულარიზაცია იყო.",
+                "ჩამოსასხმელი ჟუჟუნა კაფე-ბარებს მრავალჯერადი გამოყენების კეგებში მიეწოდება და დამატებით შეფუთვას არ საჭიროებს, რის გამოც გარემოსთან განსაკუთრებით მეგობრობს და არც მის დაბინძურებას იწვევს. ",
               paragraph3:
                 "ჩამოსასხმელი ჟუჟუნა საქართველოს უამრავ კაფე-ბარს მალევე დაუმეგობრდა და 2020 წელს ბოთლის ფორმითაც შეავსო მაღაზიათა ქსელი, რაც ასეთ მოკლე დროში, ჩვენთვის, მნიშვნელოვანი სიახლეა",
               paragraph4:
@@ -324,9 +324,9 @@ i18n
             aboutUs: {
               title: "About us",
               paragraph1:
-                "Zhuzhuna very dry and sour wine was created in 2017.",
+                "Korfa Zhuzhuna can be found in many cafes and bars and will make your favorite cocktails. Cold and sparkling juju are poured from each other's taps in a cocktail.",
               paragraph2:
-                "After much thought and many years of love for wine, 6 friends founded the company with our own funds. Our main goal was to create a different experience of drinking culture and to popularize previously non-existent contemporary wine in modern culture.",
+                "Bottling Zhuzhuna is supplied to cafes and bars in reusable kegs and does not require additional packaging, which is why it is particularly friendly to the environment and does not cause pollution.",
               paragraph3:
                 "Bottling Zhuzhuna soon became friends with many cafes and bars in Georgia, and in 2020 it also filled the chain of stores in the form of a bottle, which is an important news for us in such a short period of time.",
               paragraph4:
