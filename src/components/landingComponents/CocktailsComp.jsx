@@ -18,15 +18,13 @@ function CocktailsComp() {
   const darkMode = useSelector(getMode);
 
   return (
-    <div
-      className={`pt-20 ${darkMode ? "bg-[#12151C]" : "bg-white"} md:py-[30px]`}
-    >
+    <div className={`pt-20 ${darkMode ? "bg-[#12151C]" : "bg-white"} md:py-36`}>
       <Wrapper>
         <div>
           <h2
             className={`${
               darkMode ? "text-color-primary" : "text-black"
-            } text-center text-[40px] mb-[5px] font-tommaso md:text-[50px] lg:text-[64px]`}
+            } text-center text-[40px] mb-8 font-tommaso md:text-[50px] lg:text-[64px]`}
           >
             {i18n.language === "en" ? "Cocktails" : "კოქტეილი"}
           </h2>
@@ -55,6 +53,7 @@ function CocktailsComp() {
                             : item.ingredients.ge
                         }
                         size={index === 0 ? "big" : "small"}
+                        isSwiper={true}
                       />
                     </div>
                   </SwiperSlide>
