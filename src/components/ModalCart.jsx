@@ -3,17 +3,21 @@ import { FaTimes } from "react-icons/fa";
 import Wrapper from "./Wrapper";
 import { useTranslation } from "react-i18next";
 import { RiDeleteBin7Line } from "react-icons/ri";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   decreaseQuantity,
   increaseQuantity,
   removeFromCart,
+  totalPrice,
 } from "../features/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 const ModalCart = ({ isOpen, onClose, title, checkAllProductsText, items }) => {
   const modalRef = useRef(null);
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const dispatch = useDispatch(removeFromCart);
+  const navigate = useNavigate();
+  const totalItemsPrice = useSelector(totalPrice);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -30,6 +34,14 @@ const ModalCart = ({ isOpen, onClose, title, checkAllProductsText, items }) => {
 
   const handleRemoveItem = (itemId) => {
     dispatch(removeFromCart({ id: itemId }));
+  };
+
+  const handleNavigateToDetails = (item) => {
+    if (item.age) {
+      navigate(`/wines/${item.id}`);
+    } else {
+      navigate(`/cocktails/${item.id}`);
+    }
   };
 
   if (!isOpen) return null;
@@ -54,17 +66,21 @@ const ModalCart = ({ isOpen, onClose, title, checkAllProductsText, items }) => {
             <hr />
             <div className="px-5 h-[123px] overflow-y-scroll w-full">
               {items.length === 0 ? (
-                <p>No items in the cart.</p>
+                <p className="py-10 text-center">{t("cartSlicer.noItems")}</p>
               ) : (
                 items.map((item) => (
                   <div key={item.id} className="flex items-center py-4">
                     <img
                       src={item.image}
-                      alt={item.title}
-                      className="max-w-16 max-h-24 object-cover mr-4 rounded-md"
+                      alt={i18n.language === "en" ? item.name.en : item.name.ge}
+                      className="max-w-16 max-h-24 object-cover mr-4 rounded-md cursor-pointer"
+                      onClick={() => handleNavigateToDetails(item)}
                     />
                     <div className="flex flex-col justify-between h-full gap-4">
-                      <h3 className="text-base w-[200px] break-words">
+                      <h3
+                        className="text-base w-[200px] break-words cursor-pointer"
+                        onClick={() => handleNavigateToDetails(item)}
+                      >
                         {i18n.language === "en" ? item.name.en : item.name.ge}
                       </h3>
                       <p className="font-semibold text-[22px]">{`$${item.price}`}</p>
@@ -100,15 +116,17 @@ const ModalCart = ({ isOpen, onClose, title, checkAllProductsText, items }) => {
             </div>
             <hr />
             <div className="flex justify-between items-center px-5 pt-2 pb-7">
-              <h2 className="text-lg font-bold">სულ:</h2>
-              <h2>100$</h2>
+              <h2 className="text-lg font-bold">{t("cartSlicer.total")}</h2>
+              <h2 className="text-[22px] font-semibold">{`$${totalItemsPrice}`}</h2>
             </div>
-            <button
-              className="bg-black text-white py-[10px] px-[131px] rounded-full text-base mb-4 mx-5 text-center font-semibold"
-              onClick={onClose}
-            >
-              {checkAllProductsText}
-            </button>
+            <div className="flex justify-center">
+              <button
+                className="bg-black text-white py-[10px] px-[131px] rounded-full text-base mb-4 mx-5 text-center font-semibold"
+                onClick={onClose}
+              >
+                {checkAllProductsText}
+              </button>
+            </div>
           </div>
         </div>
       </Wrapper>

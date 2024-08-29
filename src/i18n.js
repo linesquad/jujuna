@@ -273,6 +273,12 @@ i18n
             passwordError: "პაროლის შეყვანა აუცილებელია",
             numberPattern: "გთხოვთ შეიყვანოთ სწორი ნომერი",
           },
+          cartSlicer: {
+            total: "სულ:",
+            myCart: "ჩემი კალათა",
+            noItems: "კალათაში არაფერიაა.",
+            checkCard: "კალათის ნახვა",
+          },
         },
       },
       en: {
@@ -539,6 +545,12 @@ i18n
             addressError: "Address is required",
             passwordError: "Password is required",
             numberPattern: "Please enter a valid number",
+          },
+          cartSlicer: {
+            total: "total:",
+            myCart: "My cart",
+            noItems: "No items in the cart.",
+            checkCard: "View Cart",
           },
         },
       },
