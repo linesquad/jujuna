@@ -14,12 +14,14 @@ import { FaHeart } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import ModalCart from "../../ModalCart";
 import { useState } from "react";
+import { cartItems } from "../../../features/cartSlice";
 
 const CloseBurger = () => {
   const scrolled = useScroll();
   const open = useSelector(getIsOpen);
   const darkMode = useSelector(getMode);
   const [modalOpen, setModalOpen] = useState(false);
+  const items = useSelector(cartItems);
 
   const toggleModal = () => {
     setModalOpen((prev) => !prev);
@@ -85,6 +87,7 @@ const CloseBurger = () => {
         onClose={toggleModal}
         title="ჩემი კალათა"
         checkAllProductsText="კალათის ნახვა"
+        items={items}
       />
     </div>
   );
