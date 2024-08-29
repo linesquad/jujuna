@@ -29,7 +29,7 @@ const News = () => {
         {i18n.language === "en" ? "News" : "სიახლეები"}
       </h2>
       <Swiper
-        className="w-full h-[740px]"
+        className="w-full h-[580px]"
         breakpoints={{
           320: {
             slidesPerView: 1,
@@ -58,6 +58,7 @@ const News = () => {
               image={item.image}
               description={item.description}
               title={item.title}
+              id={item.id}
               bgColor={`${index % 2 === 0 ? "bg-gray-500" : "bg-black"}`}
               type={"primary"}
             />

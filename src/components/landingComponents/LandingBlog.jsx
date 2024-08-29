@@ -2,10 +2,12 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import Button from "../Button";
+import { useNavigate } from "react-router-dom";
 
-function OneNews({ image, title, description }) {
+function OneNews({ image, title, description, id }) {
   const { t, i18n } = useTranslation();
   const darkMode = useSelector(getMode);
+  const navigate = useNavigate();
 
   const currentTitle = i18n.language === "en" ? title.en : title.ge;
   const currentDescription =
@@ -21,7 +23,7 @@ function OneNews({ image, title, description }) {
         <img
           src={image}
           alt="landing"
-          className="w-full h-[221px] object-cover rounded-[30px]"
+          className="w-full h-[221px] object-cover rounded-t-[31px]"
         />
         <div className="pt-[20px] pl-[28px] flex flex-col">
           <h2
@@ -44,7 +46,9 @@ function OneNews({ image, title, description }) {
           </p>
         </div>
         <div className="flex justify-center">
-          <Button type="primary">{t("home.aboutUs.button")}</Button>
+          <Button type="primary" onClick={() => navigate(`news/${id}`)}>
+            {t("home.aboutUs.button")}
+          </Button>
         </div>
       </div>
     </div>
