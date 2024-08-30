@@ -16,6 +16,7 @@ import ModalCart from "../../ModalCart";
 import { useState } from "react";
 import { cartItems } from "../../../features/cartSlice";
 import { useTranslation } from "react-i18next";
+import FullCartDisplay from "../../FullCartDisplay";
 
 const CloseBurger = () => {
   const scrolled = useScroll();
@@ -24,10 +25,20 @@ const CloseBurger = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const items = useSelector(cartItems);
   const { t } = useTranslation();
+  const [viewCart, setViewCart] = useState(false);
 
   const toggleModal = () => {
     setModalOpen((prev) => !prev);
-    console.log(modalOpen);
+  };
+
+  const closeAllModals = () => {
+    setModalOpen(false);
+    setViewCart(false);
+  };
+
+  const toggleViewCart = () => {
+    setModalOpen(false);
+    setViewCart(true);
   };
 
   return (
@@ -85,7 +96,9 @@ const CloseBurger = () => {
         title={t("cartSlicer.myCart")}
         checkAllProductsText={t("cartSlicer.checkCard")}
         items={items}
+        onView={toggleViewCart}
       />
+      <FullCartDisplay isOpen={viewCart} onClose={closeAllModals} />
     </div>
   );
 };

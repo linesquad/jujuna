@@ -12,7 +12,14 @@ import {
 } from "../features/cartSlice";
 import { useNavigate } from "react-router-dom";
 
-const ModalCart = ({ isOpen, onClose, title, checkAllProductsText, items }) => {
+const ModalCart = ({
+  isOpen,
+  onClose,
+  title,
+  checkAllProductsText,
+  items,
+  onView,
+}) => {
   const modalRef = useRef(null);
   const { i18n, t } = useTranslation();
   const dispatch = useDispatch(removeFromCart);
@@ -43,6 +50,10 @@ const ModalCart = ({ isOpen, onClose, title, checkAllProductsText, items }) => {
     } else {
       navigate(`/cocktails/${item.id}`);
     }
+  };
+
+  const handleClickCartView = () => {
+    onView();
   };
 
   if (!isOpen) return null;
@@ -123,7 +134,7 @@ const ModalCart = ({ isOpen, onClose, title, checkAllProductsText, items }) => {
             <div className="flex justify-center">
               <button
                 className="bg-black text-white py-[10px] px-[131px] rounded-full text-base mb-4 mx-5 text-center font-semibold"
-                onClick={onClose}
+                onClick={() => handleClickCartView()}
               >
                 {checkAllProductsText}
               </button>
