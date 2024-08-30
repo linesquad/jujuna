@@ -15,7 +15,7 @@ function CockTails() {
     t("cocktails.cocktailsSidebar.default")
   );
   return (
-    <div className={`${darkMode ? "bg-[#55426E]" : "bg-[#eaeaea]"}`}>
+    <div className={`${darkMode ? "bg-[#12151C]" : "bg-[#fff]"}`}>
       <CocktailsHeader
         setIsFillterOpen={setIsFillterOpen}
         setSortValue={setSortValue}
