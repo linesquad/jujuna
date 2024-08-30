@@ -160,6 +160,8 @@ i18n
             },
           },
           winePage: {
+            navHomePage: "მთავარი",
+            navProducts: "პროდუქტები",
             list: {
               li1: "ყველა",
               li2: "წითელი",
@@ -167,7 +169,7 @@ i18n
               li4: "საჩუქრები",
             },
             title: "ჩვენი პროდუქცია",
-            filter: "გაფილტრვა",
+            filter: "ფილტრი",
             options: {
               price: "ფასი",
             },
@@ -432,6 +434,8 @@ i18n
             },
           },
           winePage: {
+            navHomePage: "Home",
+            navProducts: "Products",
             list: {
               li1: "All Wines",
               li2: "Red Wine",
