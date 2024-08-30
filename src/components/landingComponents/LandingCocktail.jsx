@@ -39,7 +39,7 @@ function OneCocktail({
             isSwiper && "smaller:gap-4 smallExtra:gap-16 items-end"
           } ${
             isSwiper && size === "small" && "smaller:gap-14 smallExtra:gap-28"
-          }`}
+          } ${size === "small" && position !== "right" && "lg:gap-28"}`}
         >
           <img
             src={image}

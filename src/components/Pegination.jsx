@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import leftVector from "/images/vectorLeft.svg";
-import rightArrow from "/images/vectorRight.svg";
+import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 
 function Pegination({ itemsArray, itemsPerPage, setPeginatedItems }) {
   const pageQuantity = Math.ceil(itemsArray?.length / itemsPerPage);
@@ -33,22 +32,21 @@ function Pegination({ itemsArray, itemsPerPage, setPeginatedItems }) {
   };
 
   return (
-    <div className="flex gap-[10px] lg:gap-[30px] items-center justify-center mt-[30px]">
-      <img
-        src={leftVector}
-        alt="left-vector"
+    <div className="flex gap-[10px] lg:gap-[20px] items-center justify-center mt-[30px]">
+      <SlArrowLeft
         onClick={handlePrevClick}
-        className="cursor-pointer"
+        className="cursor-pointer w-4 h-4"
       />
+
       <div className="flex items-center gap-[5px] lg:gap-[15px]">
         {pages.map((item, index) => {
           return (
             <div
               key={index}
-              className={`tiny:w-[20px] tiny:h-[20px] w-[40px] h-[40px] rounded-[15px] ${
+              className={`tiny:w-[20px] tiny:h-[20px] w-[40px] h-[40px] rounded-[8px] ${
                 currentPage === item
                   ? "bg-[#ae3ec9] text-[#fff]"
-                  : "bg-[#d9d9d9] text-color-black"
+                  : "bg-[#F5F6F7] text-color-black"
               } flex justify-center items-center cursor-pointer`}
               onClick={() => setCurrentPage(item)}
             >
@@ -57,11 +55,9 @@ function Pegination({ itemsArray, itemsPerPage, setPeginatedItems }) {
           );
         })}
       </div>
-      <img
-        src={rightArrow}
-        alt="right-arrow"
+      <SlArrowRight
         onClick={handleNextClick}
-        className="cursor-pointer"
+        className="cursor-pointer w-4 h-4"
       />
     </div>
   );

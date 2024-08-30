@@ -13,13 +13,13 @@ export default function LandingWineCard({ wine }) {
 
   return (
     <Link to={`/wines/${wine.id}`} onClick={handleClick}>
-      <div className="flex items-center mb-14">
+      <div className="flex items-center mb-14 max-w-[300px]">
         <img
           src="/images/bottle.png"
           alt="wine-bottle"
           className="small:w-[100px] w-[150px]"
         />
-        <div className="small:text-sm small:-ml-4">
+        <div className="small:text-sm small:-ml-4 -ml-8">
           <p>{i18n.language === "ge" ? wine.name.ge : wine.name.en}</p>
           <p className="py-2">
             {i18n.language === "ge" ? wine.brand.ge : wine.brand.en}
@@ -30,6 +30,10 @@ export default function LandingWineCard({ wine }) {
 
           <div className="flex gap-2 mt-4">
             <button
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+              }}
               className={`small:text-xs small:gap-1 small:px-2 flex items-center gap-2 rounded-full px-3 p-1 ${
                 darkMode ? "bg-[#58387F]" : "bg-[#1E122E] text-white"
               }`}
@@ -39,6 +43,10 @@ export default function LandingWineCard({ wine }) {
             </button>
 
             <button
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+              }}
               className={`border ${
                 darkMode ? "border-white" : "border-[#724AA4]"
               } rounded-full p-2`}
