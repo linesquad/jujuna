@@ -98,7 +98,12 @@ const CloseBurger = () => {
         items={items}
         onView={toggleViewCart}
       />
-      <FullCartDisplay isOpen={viewCart} onClose={closeAllModals} />
+      <FullCartDisplay
+        isOpen={viewCart}
+        onClose={closeAllModals}
+        title={t("cartSlicer.myCart")}
+        items={items}
+      />
     </div>
   );
 };
