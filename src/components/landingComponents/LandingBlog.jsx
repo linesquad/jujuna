@@ -20,11 +20,13 @@ function OneNews({ image, title, description, id }) {
           darkMode ? "border-[#fff]" : "border-[#000]"
         } h-[500px] rounded-[30px] `}
       >
-        <img
-          src={image}
-          alt="landing"
-          className="w-full h-[221px] object-cover rounded-t-[31px]"
-        />
+        <div className="w-full h-[221px] overflow-hidden rounded-t-[31px]">
+          <img
+            src={image}
+            alt="landing"
+            className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-[1.3] cursor-pointer"
+          />
+        </div>
         <div className="pt-[20px] pl-[28px] flex flex-col">
           <h2
             className={` text-[26px] h-[50px] ${
