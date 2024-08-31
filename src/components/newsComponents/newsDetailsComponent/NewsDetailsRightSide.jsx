@@ -1,14 +1,17 @@
 import OneNews from "../../landingComponents/LandingBlog";
 import { SwiperSlide } from "swiper/react";
-import { FreeMode, Pagination } from "swiper/modules";
+import { FreeMode, Mousewheel, Navigation, Pagination } from "swiper/modules";
 import { Swiper } from "swiper/react";
 import useBlogs from "../../../hooks/useBlogs";
-import { useParams } from "react-router-dom";
 import SkeletonDiv from "../../SkeletonDiv";
+import { useRef } from "react";
+import { RiArrowDownWideLine, RiArrowUpWideLine } from "react-icons/ri";
 
 const NewsDetailsRightSide = () => {
   const { data: blogNews, isLoading, error } = useBlogs();
-  const { id } = useParams();
+  const swiperRef = useRef(null);
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
 
   if (isLoading || !blogNews || blogNews.length === 0) {
     return (
@@ -43,78 +46,88 @@ const NewsDetailsRightSide = () => {
       </p>
     );
 
-  const currentId = parseInt(id);
-
-  let displayedNews = [];
-  for (let i = currentId; i < blogNews.length; i++) {
-    if (blogNews[i].id !== currentId) {
-      displayedNews.push(blogNews[i]);
-    }
-
-    if (displayedNews.length === 3) {
-      break;
-    }
-  }
-
-  if (displayedNews.length < 3) {
-    for (let i = 0; i < blogNews.length && displayedNews.length < 3; i++) {
-      if (!displayedNews.includes(blogNews[i])) {
-        displayedNews.push(blogNews[i]);
-      }
-    }
-  }
-
   return (
-    <div className="">
-      {/* Swiper for small screens */}
-      <div className="block lg:hidden">
-        <Swiper
-          className="w-full h-[650px]"
-          breakpoints={{
-            320: {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            700: {
-              slidesPerView: 2,
-              spaceBetween: 15,
-            },
-          }}
-          freeMode={true}
-          pagination={{
-            clickable: true,
-            renderBullet: (index, className) =>
-              `<span class="${className}" style="width: 16px; height: 16px; background-color: #A583D1; border-radius: 50%;"></span>`, // Customize pagination bullets
-          }}
-          modules={[FreeMode, Pagination]}
-        >
-          {displayedNews.map((item, index) => (
-            <SwiperSlide key={item.id}>
-              <OneNews
-                image={item.image}
-                description={item.description}
-                title={item.title}
-                bgColor={`${index % 2 === 0 ? "bg-gray-500" : "bg-black"}`}
-                type={"primary"}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+    <div className="relative">
+      <Swiper
+        ref={swiperRef}
+        className="w-full h-[650px] lg:h-[1600px]"
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            direction: "horizontal",
+            Navigation: false,
+            mousewheel: false,
+          },
+          700: {
+            slidesPerView: 2,
+            spaceBetween: 15,
+            direction: "horizontal",
+            Navigation: false,
+            mousewheel: false,
+          },
+
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+            direction: "vertical",
+            Mousewheel: true,
+            pagination: false,
+          },
+        }}
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
+        onBeforeInit={(swiper) => {
+          swiper.params.navigation.prevEl = prevRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
+          swiper.navigation.init();
+          swiper.navigation.update();
+        }}
+        freeMode={true}
+        mousewheel={true}
+        pagination={{
+          clickable: true,
+          renderBullet: (index, className) =>
+            `<span class="${className}" style="width: 16px; height: 16px; background-color: #A583D1; border-radius: 50%;"></span>`,
+        }}
+        modules={[FreeMode, Pagination, Mousewheel, Navigation]}
+      >
+        {blogNews.map((item, index) => (
+          <SwiperSlide key={item.id}>
+            <OneNews
+              id={item.id}
+              image={item.image}
+              description={item.description}
+              title={item.title}
+              bgColor={`${index % 2 === 0 ? "bg-gray-500" : "bg-black"}`}
+              type={"primary"}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      <div
+        ref={prevRef}
+        className="hidden lg:block absolute -top-16 left-[150px]"
+      >
+        <div className="swiper-button-prev opacity-0"></div>
+        <RiArrowUpWideLine
+          className="text-white w-14 h-14 cursor-pointer"
+          onClick={() => swiperRef.current.swiper.slidePrev()}
+        />
       </div>
 
-      {/* Column layout for larger screens */}
-      <div className="hidden lg:flex flex-col gap-4">
-        {displayedNews.map((item, index) => (
-          <OneNews
-            id={item.id}
-            key={item.id}
-            image={item.image}
-            description={item.description}
-            title={item.title}
-            bgColor={`${index % 2 === 0 ? "bg-gray-500" : "bg-black"}`}
-            type={"primary"}
-          />
-        ))}
+      <div
+        ref={nextRef}
+        className="hidden lg:block absolute top-[1620px] left-[160px]"
+      >
+        <div className="swiper-button-next opacity-0"></div>
+        <RiArrowDownWideLine
+          className="text-white w-14 h-14 cursor-pointer"
+          onClick={() => swiperRef.current.swiper.slideNext()}
+        />
       </div>
     </div>
   );
