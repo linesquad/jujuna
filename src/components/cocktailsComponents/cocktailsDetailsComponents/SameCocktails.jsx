@@ -14,7 +14,11 @@ function SameCocktails() {
   return (
     <Wrapper>
       <div className="pb-[30px]">
-        <h2 className={`text-[24px] text-center pl-[19px] pt-[40px]`}>
+        <h2
+          className={`text-[24px] text-center pl-[19px] pt-[40px] ${
+            darkMode ? "text-[#fff]" : "text-[#000]"
+          }`}
+        >
           {t("cocktails.cocktailDetails.similarProducts")}
         </h2>
         <div className="pt-[43px]">
