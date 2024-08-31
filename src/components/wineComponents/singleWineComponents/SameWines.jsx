@@ -45,7 +45,7 @@ function SameWines({ products, CardComponent }) {
       >
         {products?.map((item) => (
           <SwiperSlide key={item.id} className="w-[90%]">
-            <CardComponent item={item} />
+            <CardComponent wine={item} />
           </SwiperSlide>
         ))}
       </Swiper>

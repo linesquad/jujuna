@@ -6,15 +6,9 @@ import NewsDetailsRightSide from "./NewsDetailsRightSide";
 import NewsDetailsWrapper from "./NewsDetailsWrapper";
 
 export default function NewsDetailsHero() {
-  const mode = useSelector(getMode);
+  const darkMode = useSelector(getMode);
   return (
-    <div
-      className={`${
-        mode
-          ? "bg-[linear-gradient(249deg,_#A583D1_22.95%,_#724AA4_46.44%,_#1E122E_93.06%)]"
-          : "bg-[#EAEAEA]"
-      } `}
-    >
+    <div className={`${darkMode ? "bg-[#12151C]" : "bg-white"} `}>
       <NewsDetailsBackButton />
       <NewsDetailsWrapper>
         <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-20">
@@ -25,25 +19,3 @@ export default function NewsDetailsHero() {
     </div>
   );
 }
-
-// return (
-//   <div
-//     className={`${
-//       mode
-//         ? "bg-[linear-gradient(249deg,_#A583D1_22.95%,_#724AA4_46.44%,_#1E122E_93.06%)]"
-//         : "bg-[#EAEAEA]"
-//     } `}
-//   >
-//     <NewsDetailsBackButton />
-//     <NewsDetailsWrapper>
-//       <div className="flex flex-col lg:flex-row">
-//         <div className="flex-1 bg-red-600 p-4">
-//           <NewsDetailsLeftSide />
-//         </div>
-//         <div className="flex-1 bg-green-600 p-4">
-//           <NewsDetailsRightSide />
-//         </div>
-//       </div>
-//     </NewsDetailsWrapper>
-//   </div>
-// );

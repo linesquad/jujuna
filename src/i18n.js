@@ -194,6 +194,7 @@ i18n
                 paragraph: "შეფასებისთვის საჭიროა ვერიფიკაცია მეილით",
               },
               relatedWines: {
+                bottle: "ბოთლი",
                 title: "მსგავსი ღვინოები",
                 details: "დეტალურად",
                 cart: "კალათში დამატება",
@@ -469,6 +470,7 @@ i18n
                   "Adding a review will require a valid email for verification",
               },
               relatedWines: {
+                bottle: "Bottle",
                 title: "BROWSE RELATED WINES",
                 details: "View details",
                 cart: "Add To Cart",

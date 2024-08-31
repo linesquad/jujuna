@@ -60,7 +60,7 @@ const NewsDetailsLeftSide = () => {
           </p>
         </div>
       </div>
-      <div className="py-7 sm:py-8 md:py-9 lg:py-10 flex justify-end sm:pr-20 w-full">
+      <div className="py-7 sm:py-8 md:py-9 lg:py-10 flex justify-start sm:pr-20 w-full">
         <img
           src={data.image}
           alt={i18n.language === "ge" ? data.title.ge : data.title.en}

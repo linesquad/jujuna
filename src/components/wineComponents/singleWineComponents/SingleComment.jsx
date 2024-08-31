@@ -7,13 +7,7 @@ function SingleComment() {
   return (
     <div>
       <div className="flex flex-col items-center md:items-start text-left">
-        <h3
-          className={`${
-            darkMode
-              ? "text-wineNavbarColor-textPurple"
-              : "text-buttonColor-primary"
-          }`}
-        >
+        <h3 className={`${darkMode ? "text-[#A583D1]" : "text-[#613994]"}`}>
           An Absolute Delight!
         </h3>
         <span>1 day ago</span>

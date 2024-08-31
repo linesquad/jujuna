@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import Wrapper from "../Wrapper";
-import LandingWineCard from "./LandingWineCard";
 import { getMode } from "../../features/darkModeSlice";
 import useWines from "../../hooks/useWines";
 import Spinner from "../Spinner";
@@ -11,6 +10,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import WineCard from "../wineComponents/WineCard";
 
 function Bottle() {
   const { t } = useTranslation();
@@ -34,7 +34,7 @@ function Bottle() {
       } pt-20`}
     >
       <Wrapper>
-        <h1 className="text-center text-[40px] mb-[5px] font-tommaso md:text-[50px] lg:text-[64px]">
+        <h1 className="text-center text-[40px] mb-[5px] md:text-[50px] lg:text-[64px]">
           {t("home.bottle.title")}
         </h1>
 
@@ -63,7 +63,7 @@ function Bottle() {
             {wines.map((wine) => (
               <SwiperSlide key={wine.id}>
                 <div className="flex">
-                  <LandingWineCard key={wine.id} wine={wine} />
+                  <WineCard key={wine.id} wine={wine} />
                 </div>
               </SwiperSlide>
             ))}

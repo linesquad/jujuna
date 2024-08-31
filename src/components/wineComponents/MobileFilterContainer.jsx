@@ -1,8 +1,8 @@
 import { IoIosClose } from "react-icons/io";
-import FilterItem from "./FilterItem";
 import { useTranslation } from "react-i18next";
+import FilterItem from "./FilterItem";
 import { useSelector } from "react-redux";
-import { getMode } from "../../../features/darkModeSlice";
+import { getMode } from "../../features/darkModeSlice";
 
 export default function MobileFilterContainer({ setShowFilter }) {
   const { t } = useTranslation();
