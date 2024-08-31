@@ -22,7 +22,7 @@ function CocktailCard({ item }) {
   return (
     <div>
       <div
-        className={`max-w-[210px] md:max-w-none md:w-[210px] xl:w-[230px] border-[1px] border-transparent h-[280px]  cursor-pointer ${
+        className={`max-w-[210px] md:max-w-none md:w-[210px] xl:w-[230px] border-[1px]  h-[280px]  cursor-pointer ${
           showCart ? " border-purple-600" : ""
         }  rounded-[15px] py-[10px] px-[40px] xl:px-[50px] relative`}
         onClick={() => navigate(`/cocktails/${id}`)}
