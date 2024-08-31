@@ -17,7 +17,7 @@ const ComentarNews = () => {
 
   return (
     <div
-      className={`w-full bg-transparent rounded-[20px] border p-8 ${
+      className={`w-full bg-transparent rounded-[20px] border tiny:p-1 smaller:p-2 smaller:pt-4 p-8 ${
         darkMode ? "text-white border-white" : "text-black border-black"
       }`}
     >
@@ -34,9 +34,9 @@ const ComentarNews = () => {
             darkMode ? "text-white border-white" : "text-black border-black"
           }`}
         >
-          <div className="tiny:pl-[11px] smaller:pl-[12px] pl-[13px] sm:pl-[18px] md:pl-[23px] lg:pl-[28px] flex items-center justify-between">
-            <div className="flex items-center tiny:gap-[8px] smaller:gap-[9px] gap-[10px] sm:gap-[17px] md:gap-[24px] lg:gap-[30px]">
-              <div className="tiny:w-[60px] smaller:w-[60px] w-[70px] sm:w-[96px]">
+          <div className="smaller:p-0 pl-[13px] sm:pl-[18px] md:pl-[23px] lg:pl-[28px] flex items-center justify-between">
+            <div className="flex items-center tiny:-ml-4 tiny:gap-[8px] smaller:gap-[9px] gap-[10px] sm:gap-[17px] md:gap-[24px] lg:gap-[30px]">
+              <div className="tiny:w-[40px] smaller:w-[60px] w-[70px] sm:w-[96px]">
                 <img
                   src="/images/user.jpg"
                   alt="user"
@@ -45,7 +45,7 @@ const ComentarNews = () => {
               </div>
               <div className="flex flex-col">
                 <p
-                  className="tiny:text-[14px] smaller:text-[15px] text-base sm:text-[17px] md:text-lg
+                  className="tiny:text-[12px] smaller:text-[12px] text-base sm:text-[17px] md:text-lg
                   tiny:max-w-[80px] lg:max-w-[400px]"
                 >
                   გმადლობთ კარგი მომსახურებისთვის
