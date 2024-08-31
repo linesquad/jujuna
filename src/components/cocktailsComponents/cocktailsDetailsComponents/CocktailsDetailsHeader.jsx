@@ -1,22 +1,26 @@
 import { useTranslation } from "react-i18next";
-import rightArrow from "/images/rightArrow.svg";
+import { FaArrowLeft } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
+import fillterIcon from "/images/filterIcon.svg";
 
 function CocktailsDetailsHeader({ item }) {
   const { t, i18n } = useTranslation();
   const darkMode = useSelector(getMode);
   return (
-    <div
-      className={`text-[12px]  ${
-        darkMode ? "text-[#fff]" : "text-[#999797]"
-      } flex items-center gap-[9px] pt-[26px] pl-[10px]`}
-    >
-      <p>{t("cocktails.cocktailDetailsHeader.homePage")}</p>
-      <img src={rightArrow} alt="right-arrow" />
-      <p>{t("cocktails.cocktailDetailsHeader.cocktails")}</p>
-      <img src={rightArrow} alt="right-arrow" />
-      <p>{i18n.language === "ge" ? item?.name.ge : item?.name.en}</p>
+    <div>
+      <div className="flex justify-between items-center mt-[30px]">
+        <div>
+          <FaArrowLeft />
+        </div>
+
+        <div>
+          <img src={fillterIcon} alt="fillter-icon" />
+        </div>
+      </div>
+      <p className="text-center">
+        {i18n.language === "ge" ? item?.name.ge : item?.name.en}
+      </p>
     </div>
   );
 }
