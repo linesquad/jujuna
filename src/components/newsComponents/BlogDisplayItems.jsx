@@ -23,15 +23,12 @@ const BlogDisplayItems = ({ item, index }) => {
           className="w-full h-auto lg:w-[700px]"
         />
       </div>
-      <div className="max-w-[490px] lg:w-full ">
-        <h1
+      <div className="max-w-[490px] lg:w-full">
+        <h2
           className={`${
-            mode ? "text-[#c993eb]" : "text-[#8A63A2]"
-          } pt-4 text-lg font-semibold`}
+            mode ? "text-white" : "text-black"
+          } font-bold pt-4 text-xl`}
         >
-          Latest news
-        </h1>
-        <h2 className="text-black font-bold pt-4 text-xl">
           {i18n.language === "ge"
             ? item.title.ge.length > 30
               ? item.title.ge.slice(0, 30) + "..."
@@ -51,12 +48,9 @@ const BlogDisplayItems = ({ item, index }) => {
         </p>
         <Link to={`/news/${item.id}`}>
           <button
-            className={`mt-4  text-[#613994] px-6 py-3 text-[20px] border-2 border-[#613994] shadow-[4px_4px_10px_rgba(0,0,0,0.2)] rounded-lg
-                    ${
-                      mode
-                        ? "bg-[#613994] text-white"
-                        : "bg-white text-[#613994]"
-                    }`}
+            className={`${
+              mode ? "bg-[#58387F]" : "bg-[#000]"
+            } text-white w-[168px] h-[39px] rounded-[30px] mt-[30px] md:mt-[120px]`}
           >
             {t("news.blogDisplay.moreBtn")}
           </button>

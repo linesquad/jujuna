@@ -1,21 +1,13 @@
 import { useSelector } from "react-redux";
 import BlogDisplay from "../components/newsComponents/BlogDisplay";
-import FilterNews from "../components/newsComponents/FilterNews";
 import HeroNews from "../components/newsComponents/HeroNews";
 import { getMode } from "../features/darkModeSlice";
 
 function News() {
   const mode = useSelector(getMode);
   return (
-    <div
-      className={`${
-        mode
-          ? "bg-[linear-gradient(249deg,_#A583D1_22.95%,_#724AA4_46.44%,_#1E122E_93.06%)]"
-          : "bg-[#EAEAEA]"
-      } `}
-    >
+    <div className={`${mode ? "bg-[#12151C]" : "bg-[#fff]"} `}>
       <HeroNews />
-      <FilterNews />
       <BlogDisplay />
     </div>
   );

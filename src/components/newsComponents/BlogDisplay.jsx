@@ -3,10 +3,13 @@ import BlogDisplayItems from "./BlogDisplayItems";
 import Spinner from "../Spinner";
 import { useEffect, useState } from "react";
 import { usePaginatedBlogs } from "../../hooks/useBlogs";
+import { useSelector } from "react-redux";
+import { getMode } from "../../features/darkModeSlice";
 
 const BlogDisplay = () => {
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(null);
+  const darkMode = useSelector(getMode);
 
   const {
     data: paginatedBlogs = [],
@@ -41,6 +44,13 @@ const BlogDisplay = () => {
   return (
     <div className="w-full">
       <BlogWrapper>
+        <h2
+          className={`text-[36px] md:text-center md:py-[80px] ${
+            darkMode ? "text-[#fff]" : "text-[#000]"
+          }`}
+        >
+          Latest news
+        </h2>
         <div className="flex flex-wrap justify-center gap-4 lg:w-full lg:flex-nowrap lg:justify-between lg:flex-col pt-5">
           {paginatedBlogs.map((item, index) => (
             <BlogDisplayItems item={item} index={index} key={item.id} />
