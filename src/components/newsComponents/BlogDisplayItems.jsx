@@ -9,7 +9,7 @@ const BlogDisplayItems = ({ item, index }) => {
 
   return (
     <div
-      className={`p-4 lg:p-0 w-full flex flex-col items-center text-center flex-wrap lg:flex-row lg:justify-between lg:pb-32
+      className={`p-4 lg:p-0 w-full flex flex-col items-center text-center flex-wrap lg:flex-row lg:gap-[50px] lg:justify-center lg:pb-32
                 ${
                   index % 2 !== 0
                     ? "lg:flex-row-reverse lg:text-start lg:pl-20"
