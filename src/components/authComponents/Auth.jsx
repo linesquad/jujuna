@@ -8,8 +8,8 @@ function Auth() {
   const { t } = useTranslation();
   const [isSignIn, setIsSignIn] = useState(true);
   return (
-    <div className="fixed top-0 right-0 left-0 bottom-0 z-[30]">
-      <div className="absolute w-[440px]  left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-[50] flex flex-col">
+    <div className="fixed top-0 right-0 left-0 bottom-0 z-[100] bg-[#000]/90">
+      <div className="absolute max-w-[400px] px-[10px] md:px-[0px] md:max-w-none md:w-[440px]  left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-[110] flex flex-col">
         <div className="self-end w-[30px] h-[30px] bg-[#EAE7E7] rounded-[50%] flex justify-center items-center">
           <FaTimes />
         </div>
