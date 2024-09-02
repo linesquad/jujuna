@@ -35,7 +35,7 @@ function Auth({ setIsAuthModalOpen }) {
           <h2 className="text-center text-[23px] font-semibold">
             {t("auth.header")}
           </h2>
-          <div className="mt-[28px] flex items-center justify-center gap-[50px] text-[17px] font-semibold px-[20px]">
+          <div className="mt-[28px] flex items-center justify-center gap-[10px] md:gap-[50px] text-[17px] font-semibold px-[20px]">
             <p
               className={`w-full text-center pb-[14px] border-b-[2px] cursor-pointer ${
                 isSignIn ? "border-b-[#000]" : "border-b-transparent"
