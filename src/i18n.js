@@ -282,6 +282,9 @@ i18n
             noItems: "კალათაში არაფერიაა.",
             checkCard: "კალათის ნახვა",
           },
+          auth: {
+            header: "შექმენით ანგარიში",
+          },
         },
       },
       en: {
@@ -557,6 +560,9 @@ i18n
             myCart: "My cart",
             noItems: "No items in the cart.",
             checkCard: "View Cart",
+          },
+          auth: {
+            header: "Create Account",
           },
         },
       },
