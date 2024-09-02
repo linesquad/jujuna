@@ -4,13 +4,22 @@ import { FaTimes } from "react-icons/fa";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
-function Auth() {
+function Auth({ setIsAuthModalOpen }) {
   const { t } = useTranslation();
   const [isSignIn, setIsSignIn] = useState(true);
   return (
-    <div className="fixed top-0 right-0 left-0 bottom-0 z-[100] bg-[#000]/90">
-      <div className="absolute max-w-[400px] px-[10px] md:px-[0px] md:max-w-none md:w-[440px]  left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-[110] flex flex-col">
-        <div className="self-end w-[30px] h-[30px] bg-[#EAE7E7] rounded-[50%] flex justify-center items-center">
+    <div
+      className="fixed top-0 right-0 left-0 bottom-0 z-[100] bg-[#000]/90"
+      onClick={() => setIsAuthModalOpen(false)}
+    >
+      <div
+        className="absolute max-w-[400px] px-[10px] md:px-[0px] md:max-w-none md:w-[440px]  left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-[110] flex flex-col"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div
+          className="self-end w-[30px] h-[30px] bg-[#EAE7E7] rounded-[50%] flex justify-center items-center cursor-pointer"
+          onClick={() => setIsAuthModalOpen(false)}
+        >
           <FaTimes />
         </div>
         <div className="w-full bg-[#fff] mt-[11px] pt-[38px] rounded-[16px]">

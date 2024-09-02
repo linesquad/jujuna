@@ -18,7 +18,7 @@ import { cartItems } from "../../../features/cartSlice";
 import { useTranslation } from "react-i18next";
 import FullCartDisplay from "../../FullCartDisplay";
 
-const CloseBurger = () => {
+const CloseBurger = ({ setIsAuthModalOpen }) => {
   const scrolled = useScroll();
   const open = useSelector(getIsOpen);
   const darkMode = useSelector(getMode);
@@ -84,7 +84,12 @@ const CloseBurger = () => {
                   <FaHeart color={`${darkMode ? "#fff" : "#000"}`} size={20} />
                   <div className="h-[27px] border-[1px] bprder-[#fff]"></div>
                 </div>
-                <FaUser color={`${darkMode ? "#fff" : "#000"}`} size={20} />
+                <FaUser
+                  color={`${darkMode ? "#fff" : "#000"}`}
+                  size={20}
+                  onClick={() => setIsAuthModalOpen(true)}
+                  cursor="pointer"
+                />
               </div>
             </nav>
           </div>
