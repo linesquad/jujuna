@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import GoogleSignIn from "./GoogleSignIn";
 
 const SignIn = () => {
   const { i18n } = useTranslation();
@@ -101,8 +100,6 @@ const SignIn = () => {
           </button>
         </div>
       </form>
-
-      <GoogleSignIn />
     </div>
   );
 };

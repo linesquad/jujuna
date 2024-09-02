@@ -4,6 +4,7 @@ import { FaTimes } from "react-icons/fa";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import { motion } from "framer-motion";
+import GoogleSignIn from "./GoogleSignIn";
 
 function Auth({ setIsAuthModalOpen }) {
   const { t } = useTranslation();
@@ -37,7 +38,7 @@ function Auth({ setIsAuthModalOpen }) {
           </h2>
           <div className="mt-[28px] flex items-center justify-center gap-[10px] md:gap-[50px] text-[17px] font-semibold px-[20px]">
             <p
-              className={`w-full text-center pb-[14px] border-b-[2px] cursor-pointer ${
+              className={`tiny:text-sm w-full text-center pb-[14px] border-b-[2px] cursor-pointer ${
                 isSignIn ? "border-b-[#000]" : "border-b-transparent"
               } `}
               onClick={() => setIsSignIn(true)}
@@ -45,7 +46,7 @@ function Auth({ setIsAuthModalOpen }) {
               {t("auth.auth")}
             </p>
             <p
-              className={`text-center w-full pb-[14px] border-b-[2px] ${
+              className={`tiny:text-sm text-center w-full pb-[14px] border-b-[2px] ${
                 !isSignIn ? "border-b-[#000]" : "border-b-transparent"
               } cursor-pointer`}
               onClick={() => setIsSignIn(false)}
@@ -55,6 +56,7 @@ function Auth({ setIsAuthModalOpen }) {
           </div>
           {isSignIn && <SignIn />}
           {!isSignIn && <SignUp />}
+          <GoogleSignIn />
         </div>
       </motion.div>
     </div>

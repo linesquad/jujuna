@@ -5,7 +5,7 @@ export default function GoogleSignIn() {
   const { i18n } = useTranslation();
 
   return (
-    <div className="flex flex-col items-center space-y-4 mt-6 mb-8 max-w-sm mx-auto">
+    <div className="flex flex-col items-center space-y-4 mt-6 mb-8 max-w-sm mx-6 md:mx-auto">
       <div className="flex items-center w-full">
         <hr className="flex-grow border-t border-gray-300" />
         <span className="mx-2 text-sm font-semibold">
