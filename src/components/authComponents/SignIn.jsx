@@ -19,7 +19,7 @@ const SignIn = () => {
   };
 
   return (
-    <div>
+    <div className="mx-6">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-4 max-w-sm mx-auto mt-6"

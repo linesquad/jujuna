@@ -3,13 +3,33 @@ import { useTranslation } from "react-i18next";
 import FilterItem from "./FilterItem";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
+import { useEffect, useRef } from "react";
 
 export default function MobileFilterContainer({ setShowFilter }) {
   const { t } = useTranslation();
   const darkMode = useSelector(getMode);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
+        setShowFilter(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [setShowFilter]);
 
   return (
     <div
+      ref={containerRef}
       className={`${
         darkMode
           ? "bg-[#12151C] text-white border border-white"
