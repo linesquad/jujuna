@@ -22,7 +22,7 @@ function Auth({ setIsAuthModalOpen }) {
         animate="open"
         exit="closed"
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
-        className="absolute max-w-[400px] px-[10px] md:px-[0px] md:max-w-none md:w-[440px]  left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-[110] flex flex-col"
+        className="absolute w-full max-w-[400px] px-[10px] md:px-[0px] md:max-w-none md:w-[440px]  left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-[110] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <div
@@ -42,7 +42,7 @@ function Auth({ setIsAuthModalOpen }) {
               } `}
               onClick={() => setIsSignIn(true)}
             >
-              ავტორიზაცია
+              {t("auth.auth")}
             </p>
             <p
               className={`text-center w-full pb-[14px] border-b-[2px] ${
@@ -50,7 +50,7 @@ function Auth({ setIsAuthModalOpen }) {
               } cursor-pointer`}
               onClick={() => setIsSignIn(false)}
             >
-              რეგისტრაცია
+              {t("auth.reg")}
             </p>
           </div>
           {isSignIn && <SignIn />}
