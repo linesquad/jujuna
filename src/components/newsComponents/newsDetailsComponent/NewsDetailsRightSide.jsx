@@ -6,12 +6,18 @@ import useBlogs from "../../../hooks/useBlogs";
 import SkeletonDiv from "../../SkeletonDiv";
 import { useRef } from "react";
 import { RiArrowDownWideLine, RiArrowUpWideLine } from "react-icons/ri";
+import { useSelector } from "react-redux";
+import { getMode } from "../../../features/darkModeSlice";
+import { useParams } from "react-router-dom";
 
 const NewsDetailsRightSide = () => {
+  const darkMode = useSelector(getMode);
   const { data: blogNews, isLoading, error } = useBlogs();
   const swiperRef = useRef(null);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const { id } = useParams();
+  console.log(id);
 
   if (isLoading || !blogNews || blogNews.length === 0) {
     return (
@@ -94,18 +100,20 @@ const NewsDetailsRightSide = () => {
         }}
         modules={[FreeMode, Pagination, Mousewheel, Navigation]}
       >
-        {blogNews.map((item, index) => (
-          <SwiperSlide key={item.id}>
-            <OneNews
-              id={item.id}
-              image={item.image}
-              description={item.description}
-              title={item.title}
-              bgColor={`${index % 2 === 0 ? "bg-gray-500" : "bg-black"}`}
-              type={"primary"}
-            />
-          </SwiperSlide>
-        ))}
+        {blogNews
+          .filter((item) => String(item.id) !== String(id)) // Convert both IDs to strings
+          .map((item, index) => (
+            <SwiperSlide key={item.id}>
+              <OneNews
+                id={item.id}
+                image={item.image}
+                description={item.description}
+                title={item.title}
+                bgColor={`${index % 2 === 0 ? "bg-gray-500" : "bg-black"}`}
+                type={"primary"}
+              />
+            </SwiperSlide>
+          ))}
       </Swiper>
 
       <div
@@ -114,7 +122,9 @@ const NewsDetailsRightSide = () => {
       >
         <div className="swiper-button-prev opacity-0"></div>
         <RiArrowUpWideLine
-          className="text-white w-14 h-14 cursor-pointer"
+          className={`w-14 h-14 cursor-pointer ${
+            darkMode ? "text-white" : "text-black"
+          }`}
           onClick={() => swiperRef.current.swiper.slidePrev()}
         />
       </div>
@@ -125,7 +135,9 @@ const NewsDetailsRightSide = () => {
       >
         <div className="swiper-button-next opacity-0"></div>
         <RiArrowDownWideLine
-          className="text-white w-14 h-14 cursor-pointer"
+          className={`w-14 h-14 cursor-pointer ${
+            darkMode ? "text-white" : "text-black"
+          }`}
           onClick={() => swiperRef.current.swiper.slideNext()}
         />
       </div>
