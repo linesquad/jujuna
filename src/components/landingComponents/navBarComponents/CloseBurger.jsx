@@ -13,7 +13,7 @@ import { FaUser } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import ModalCart from "../../ModalCart";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cartItems } from "../../../features/cartSlice";
 import { useTranslation } from "react-i18next";
 import FullCartDisplay from "../../FullCartDisplay";
@@ -26,6 +26,22 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
   const items = useSelector(cartItems);
   const { t } = useTranslation();
   const [viewCart, setViewCart] = useState(false);
+  const [isFixed, setIsFixed] = useState(false);
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (navRef.current) {
+        const offsetTop = navRef.current.offsetTop;
+        setIsFixed(window.scrollY > offsetTop);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const toggleModal = () => {
     setModalOpen((prev) => !prev);
@@ -42,7 +58,7 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
   };
 
   return (
-    <div className={`sticky top-0 w-full  "text-white z-40 header"`}>
+    <div className={`top-0 w-full  "text-white z-40 header"`}>
       <div className="bg-[#000] w-full hidden md:block">
         <Wrapper>
           <div className="px-[17px] py-[8px] md:px-0 flex items-center justify-between">
@@ -52,6 +68,7 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
         </Wrapper>
       </div>
       <div
+        ref={navRef}
         className={`${
           scrolled && open
             ? darkMode
@@ -60,7 +77,9 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
             : scrolled
             ? " bg-opacity-70 backdrop-blur-md"
             : ""
-        } ${darkMode ? "bg-[#12151C]" : "bg-[#fff]"} `}
+        } ${darkMode ? "bg-[#12151C]" : "bg-[#fff]"} ${
+          isFixed ? "fixed top-0 left-0 right-0 z-50" : ""
+        }`}
       >
         <Wrapper>
           <div>
