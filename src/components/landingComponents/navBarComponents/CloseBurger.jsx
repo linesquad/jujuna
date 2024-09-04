@@ -63,6 +63,10 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
         <Wrapper>
           <div className="px-[17px] py-[8px] md:px-0 flex items-center justify-between">
             <ThemeChanger />
+            <div className="bg-[#fff] w-[70%] flex items-center py-[9px] pl-[8px] gap-[13px] rounded-[15px]">
+              <FaSearch color="#000000" />
+              <input type="text" className="w-full border-none outline-none" />
+            </div>
             <LanguageChanger />
           </div>
         </Wrapper>
