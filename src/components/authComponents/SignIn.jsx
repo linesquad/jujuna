@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
+const URL = "http://localhost:8001";
+
 const SignIn = () => {
   const { i18n } = useTranslation();
 
@@ -13,9 +15,31 @@ const SignIn = () => {
   } = useForm();
   const [showPassword, setShowPassword] = useState(false);
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  async function onSubmit(data) {
+    try {
+      const response = await fetch(`${URL}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(
+          `HTTP error! Status: ${response.status}. Message: ${errorText}`
+        );
+      }
+
+      const result = await response.json();
+      localStorage.setItem("accessToken", result.accessToken);
+      localStorage.setItem("refreshToken", result.refreshToken);
+
+      console.log(result);
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    }
+  }
 
   return (
     <div className="mx-6">

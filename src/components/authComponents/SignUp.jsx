@@ -11,8 +11,27 @@ function SignUp() {
   const { errors } = formState;
   console.log(errors);
 
-  function onSubmit(data) {
-    console.log(data);
+  async function onSubmit(data) {
+    try {
+      const response = await fetch("http://localhost:8001/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(
+          `HTTP error! Status: ${response.status}. Message: ${errorText}`
+        );
+      }
+
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    }
   }
 
   return (
@@ -74,7 +93,7 @@ function SignUp() {
             type="text"
             placeholder={t("auth.mobile")}
             register={register}
-            name="mobile"
+            name="phone"
             errorMessage={t("auth.mobileError")}
             error={errors?.mobile?.message}
             pattern={{
@@ -96,7 +115,7 @@ function SignUp() {
           </p>
           <div className="flex items-start gap-[20px]">
             <OneSignupInput
-              type="text"
+              type="password"
               placeholder={t("auth.password")}
               register={register}
               name="password"
@@ -104,9 +123,9 @@ function SignUp() {
               error={errors?.password?.message}
             />
             <OneSignupInput
-              type="text"
+              type="password"
               placeholder={t("auth.repeatPassword")}
-              name="repeatPassword"
+              name="confirmPassword"
               register={register}
               errorMessage={t("auth.passwordError")}
               error={errors?.repeatPassword?.message}
