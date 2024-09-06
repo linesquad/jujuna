@@ -1,36 +1,32 @@
-import supabase from "./supabase";
+const URL = "http://localhost:8001";
+// const URL = import.meta.env.SERVER_URL;
 
-const fetchWines = async (type) => {
-  // let { data, error } = await supabase.from("wine").select("*");
+const fetchWines = async () => {
+  try {
+    const response = await fetch(`${URL}/wines`);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
 
-  let query = supabase.from("wine").select("*");
-
-  if (type) {
-    query = query.eq("type", type);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error.message);
   }
-
-  const { data, error } = await query;
-
-  if (error) {
-    console.error(error);
-    throw new Error("Blog could not be loaded");
-  }
-
-  return data;
 };
 
 export const fetchWineById = async (id) => {
-  const { data, error } = await supabase
-    .from("wine")
-    .select("*")
-    .eq("id", id)
-    .single();
+  try {
+    const response = await fetch(`${URL}/wine/${id}`);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
 
-  if (error) {
-    console.error("Error fetching wine:", error);
-    throw new Error("Failed to fetch wine");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error.message);
   }
-  return data;
 };
 
 export default fetchWines;

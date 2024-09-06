@@ -16,7 +16,7 @@ export default function WineCard({ wine }) {
   };
 
   return (
-    <Link to={`/wines/${wine.id}`} onClick={handleClick}>
+    <Link to={`/wines/${wine._id}`} onClick={handleClick}>
       <div className="flex items-center mb-14 max-w-[300px]">
         <img
           src="/images/bottle.png"
@@ -24,7 +24,12 @@ export default function WineCard({ wine }) {
           className="small:w-[100px] w-[150px]"
         />
         <div className="small:text-sm small:-ml-4 -ml-8">
-          <p>{i18n.language === "ge" ? wine.name.ge : wine.name.en}</p>
+          {/* <p>{i18n.language === "ge" ? wine.name.ge : wine.name.en}</p> */}
+          <p>
+            {i18n.language === "ge"
+              ? wine.titleTranslations.ge
+              : wine.titleTranslations.en}
+          </p>
           <p className="py-2">
             {i18n.language === "ge" ? wine.brand.ge : wine.brand.en}
           </p>

@@ -1,6 +1,6 @@
 function RateQuality() {
   return (
-    <div className="flex justify-center md:justify-start md:-ml-10">
+    <div className="lg:-mt-12 flex justify-center md:justify-start md:-ml-10">
       <div className="p-10 w-[240px] flex flex-col justify-center">
         <div>
           <span className="text-sm">Quality of product</span>

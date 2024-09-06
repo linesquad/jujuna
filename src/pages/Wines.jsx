@@ -19,13 +19,30 @@ const Wines = () => {
   const { data: wines, isLoading, isError, error } = useWines();
   const [showFilter, setShowFilter] = useState(false);
   const [paginatedWines, setPaginatedWines] = useState([]);
-  const winesPerPage = 3;
+  const winesPerPage = 6;
 
   useEffect(() => {
     setPaginatedWines(wines?.slice(0, winesPerPage));
   }, [wines]);
 
   if (isLoading) return <Spinner />;
+
+  async function getData() {
+    const url = "http://localhost:8001/wines";
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+
+      const json = await response.json();
+      console.log(json);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  getData();
 
   return (
     <div
