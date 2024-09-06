@@ -41,7 +41,7 @@ function CocktailCard({ item }) {
         >
           <p>
             {i18n.language === "ge"
-              ? titleTranslations.ge
+              ? titleTranslations.ge.split(" ")[0] + " ..."
               : titleTranslations.en}
           </p>
           <p>{price} gel</p>
