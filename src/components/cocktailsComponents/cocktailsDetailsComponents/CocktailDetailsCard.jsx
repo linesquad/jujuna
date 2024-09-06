@@ -11,14 +11,14 @@ function CocktailDetailsCard({ item }) {
         <div className="flex flex-col md:flex-row md:gap-[40px] lg:gap-[80px] md:justify-center md:items-start">
           <div>
             <img
-              src={item.image}
+              src={item.url}
               alt="cocktail-image"
               className="w-[191px] h-[268px] mx-auto mt-[40px] rounded-md lg:w-[300px] lg:h-[400px]"
             />
           </div>
 
           <div className="mt-[30px]">
-            <Composition ingredients={item.ingredients} />
+            <Composition ingredients={item.ingsTranslations} />
           </div>
 
           <div>

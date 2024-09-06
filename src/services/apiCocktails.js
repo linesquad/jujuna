@@ -1,29 +1,22 @@
-import supabase from "./supabase";
-
 const fetchCocktails = async () => {
-  let { data, error } = await supabase.from("cocktail").select("*");
+  try {
+    const res = await fetch("http://localhost:8001/cocktails");
+    const data = await res.json();
 
-  if (error) {
-    console.error(error);
-    throw new Error("Blog could not be loaded");
+    return data;
+  } catch (error) {
+    console.log(error.message);
   }
-
-  return data;
 };
 
 export default fetchCocktails;
 
 export const fetchCocktailsId = async (id) => {
-  let { data, error } = await supabase
-    .from("cocktail")
-    .select("*")
-    .eq("id", id)
-    .single();
-
-  if (error) {
-    console.error("Error fetching Cocktails: ", error);
-    throw new Error("Failed to fetch Cocktails");
+  try {
+    const res = await fetch(`http://localhost:8001/cocktail/${id}`);
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error.message);
   }
-
-  return data;
 };

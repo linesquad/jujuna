@@ -35,7 +35,7 @@ function DisplayCocktails({ sortValue }) {
     <Wrapper>
       <div className="grid gap-[16px] small:grid-cols-[1fr] grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr] m-auto relative min-h-[300px] md:min-h-[600px]">
         {paginatedCocktails?.map((item) => {
-          return <CocktailCard key={item.id} item={item} />;
+          return <CocktailCard key={item._id} item={item} />;
         })}
       </div>
       <Pegination

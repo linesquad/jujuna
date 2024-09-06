@@ -30,7 +30,9 @@ function CocktailsDetailsHeader({ item }) {
             darkMode ? "text-[#fff]" : "text-[#0E0F12]"
           } md:font-bold md:text-[32px]`}
         >
-          {i18n.language === "ge" ? item?.name.ge : item?.name.en}
+          {i18n.language === "ge"
+            ? item?.titleTranslations.ge
+            : item?.titleTranslations.en}
         </p>
       </Wrapper>
     </div>

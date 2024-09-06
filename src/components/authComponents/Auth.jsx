@@ -4,7 +4,6 @@ import { FaTimes } from "react-icons/fa";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import { motion } from "framer-motion";
-import GoogleSignIn from "./GoogleSignIn";
 
 function Auth({ setIsAuthModalOpen }) {
   const { t } = useTranslation();
@@ -32,7 +31,7 @@ function Auth({ setIsAuthModalOpen }) {
         >
           <FaTimes />
         </div>
-        <div className="w-full bg-[#fff] mt-[11px] pt-[38px] rounded-[16px]">
+        <div className="w-full bg-[#fff] mt-[11px] pt-[38px] rounded-[16px] pb-8">
           <h2 className="text-center text-[23px] font-semibold">
             {t("auth.header")}
           </h2>
@@ -56,7 +55,7 @@ function Auth({ setIsAuthModalOpen }) {
           </div>
           {isSignIn && <SignIn />}
           {!isSignIn && <SignUp />}
-          <GoogleSignIn />
+          {/* <GoogleSignIn /> */}
         </div>
       </motion.div>
     </div>

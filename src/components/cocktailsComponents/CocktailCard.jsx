@@ -9,7 +9,7 @@ import { useState } from "react";
 function CocktailCard({ item }) {
   const [showCart, setShowCart] = useState(false);
   const navigate = useNavigate();
-  const { image, name, price, id } = item;
+  const { url: image, titleTranslations, price, _id } = item;
   const darkMode = useSelector(getMode);
   const { i18n } = useTranslation();
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ function CocktailCard({ item }) {
         className={`max-w-[210px] md:max-w-none md:w-[210px] xl:w-[230px] border-[1px]  h-[280px]  cursor-pointer ${
           showCart ? " border-purple-600" : ""
         }  rounded-[15px] py-[10px] px-[40px] xl:px-[50px] relative`}
-        onClick={() => navigate(`/cocktails/${id}`)}
+        onClick={() => navigate(`/cocktails/${_id}`)}
         onMouseEnter={() => setShowCart(true)}
         onMouseLeave={() => setShowCart(false)}
       >
@@ -39,7 +39,11 @@ function CocktailCard({ item }) {
             darkMode ? "text-color-primary" : "text-color-black"
           } flex flex-col mt-[5px]`}
         >
-          <p>{i18n.language === "ge" ? name.ge : name.en}</p>
+          <p>
+            {i18n.language === "ge"
+              ? titleTranslations.ge
+              : titleTranslations.en}
+          </p>
           <p>{price} gel</p>
         </div>
         {showCart && (

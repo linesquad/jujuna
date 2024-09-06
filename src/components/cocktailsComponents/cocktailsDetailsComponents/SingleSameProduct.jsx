@@ -14,12 +14,14 @@ function SingleSameProduct({ item }) {
       onClick={() => navigate(`/cocktails/${item.id}`)}
     >
       <img
-        src={item.image}
+        src={item.url}
         alt="cocktail-image"
         className="w-[120px] h-[160px] object-cover"
       />
       <p className={`${darkMode ? "text-[#fff]" : "text-[#000]"}`}>
-        {i18n.language === "ge" ? item.name.ge : item.name.en}
+        {i18n.language === "ge"
+          ? item.titleTranslations.ge
+          : item.titleTranslations.en}
       </p>
     </div>
   );
