@@ -16,31 +16,41 @@ function SingleWineCardContent({ wine }) {
       <div className="flex mt-6">
         <Wrapper>
           <h1 className="text-lg md:text-[48px]">
-            {i18n.language === "ge" ? wine.name.ge : wine.name.en}
+            {i18n.language === "ge"
+              ? wine.titleTranslations.ge
+              : wine.titleTranslations.en}
           </h1>
           <hr className="lg:hidden w-full mb-4 mt-2 md:mt-8" />
           <p className="hidden lg:block font-medium text-backgroundColor-purpleMid lg:text-[48px] mt-4">
             {wine.price}₾
           </p>
-          <SingleWineInfo
+          {/* <SingleWineInfo
             title={i18n.language === "ge" ? "ღვინო" : "Wine"}
             value={i18n.language === "ge" ? wine.color.ge : wine.color.en}
-          />
+          /> */}
           <SingleWineInfo
             title={i18n.language === "ge" ? "ტექნოლოგია" : "Technology"}
-            value={i18n.language === "ge" ? "კლასიკური" : "კლასიკური"}
+            value={
+              i18n.language === "ge"
+                ? wine.technologyTranslations.ge
+                : wine.technologyTranslations.en
+            }
           />
           <SingleWineInfo
             title={i18n.language === "ge" ? "ყურძნის ჯიში" : "Grape variety"}
-            value={i18n.language === "ge" ? "რქაწითელი" : "რქაწითელი"}
+            value={
+              i18n.language === "ge"
+                ? wine.grapeVarietyTranslations.ge
+                : wine.grapeVarietyTranslations.en
+            }
           />
           <SingleWineInfo
             title={i18n.language === "ge" ? "ალკოჰოლი" : "Alcohol"}
-            value={wine.alco + "%"}
+            value={wine.alcohol + "%"}
           />
           <SingleWineInfo
             title={i18n.language === "ge" ? "მოცულობა" : "Volume"}
-            value={wine.size}
+            value={i18n.language === "ge" ? "750მლ" : "750 ml"}
           />
           <hr className="lg:hidden w-96 small:max-w-[290px] md:w-full my-4" />
 

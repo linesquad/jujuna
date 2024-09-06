@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
+import { formatDistanceToNowStrict } from "date-fns";
 
-function SingleComment() {
+function SingleComment({ comment }) {
   const darkMode = useSelector(getMode);
 
   return (
@@ -10,13 +11,12 @@ function SingleComment() {
         <h3 className={`${darkMode ? "text-[#A583D1]" : "text-[#613994]"}`}>
           An Absolute Delight!
         </h3>
-        <span>1 day ago</span>
-        <span className="block font-semibold">Larry43</span>
+        <span>
+          {formatDistanceToNowStrict(comment.updatedAt, { addSuffix: true })}
+        </span>
+        <span className="block font-semibold">{comment.username}</span>
         <p className="m-10 max-w-[400px] text-center md:text-left md:ml-0 md:mt-5 md:max-w-[450px]">
-          The Purple Grape Wine exceeded my expectations. The natural flavors of
-          blackberry, plum, and black cherry are refreshing and indulgent.
-          Perfect for a relaxing evening, especially when chilled. My new go-to
-          wine!
+          {comment.text}
         </p>
       </div>
     </div>

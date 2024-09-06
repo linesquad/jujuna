@@ -73,7 +73,7 @@ const FullCartDisplay = ({ isOpen, onClose, title, items }) => {
                   <div className="flex flex-col items-end gap-6 w-full px-2 py-1">
                     <RiDeleteBin7Line
                       size={20}
-                      onClick={() => handleRemoveItem(item.id)}
+                      // onClick={() => handleRemoveItem(item.id)}
                     />
                     <div className="w-[80px] h-[35px] border rounded-full border-[#8F8F8F] px-2 py-1 flex gap-4">
                       <button
