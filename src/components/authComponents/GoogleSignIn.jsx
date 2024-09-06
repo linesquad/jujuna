@@ -14,7 +14,7 @@ export default function GoogleSignIn() {
         <hr className="flex-grow border-t border-gray-300" />
       </div>
 
-      <button className="flex items-center justify-center w-full w-full px-4 py-2 border border-[#7C7C7C] rounded-full hover:bg-gray-100">
+      <button className="flex items-center justify-center w-full px-4 py-2 border border-[#7C7C7C] rounded-full hover:bg-gray-100">
         <FcGoogle className="w-6 h-6 mr-2" />
         <span className="text-sm font-medium">
           {i18n.language === "ge" ? "Google-ით შესვლა" : "Sign in with Google"}
