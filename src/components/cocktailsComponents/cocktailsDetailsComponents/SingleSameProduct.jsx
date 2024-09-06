@@ -11,7 +11,7 @@ function SingleSameProduct({ item }) {
   return (
     <div
       className="flex flex-col items-center justify-center"
-      onClick={() => navigate(`/cocktails/${item.id}`)}
+      onClick={() => navigate(`/cocktails/${item._id}`)}
     >
       <img
         src={item.url}

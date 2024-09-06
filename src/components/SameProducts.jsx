@@ -49,7 +49,7 @@ function SameProducts({ products, CardComponent }) {
       modules={[Pagination, Navigation]}
     >
       {products?.map((item) => (
-        <SwiperSlide key={item.id} className="w-[90%]">
+        <SwiperSlide key={item._id} className="w-[90%]">
           <CardComponent item={item} />
         </SwiperSlide>
       ))}
