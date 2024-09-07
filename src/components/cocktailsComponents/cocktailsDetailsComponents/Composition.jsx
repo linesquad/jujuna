@@ -31,12 +31,7 @@ function Composition({ ingredients }) {
                   darkMode ? "text-[#fff]" : "text-[#000]"
                 }`}
               >
-                {item.split(" - ")[0]}:{" "}
-                <span
-                  className={`${darkMode ? "#FFFFFFCC" : "text-[#5E636D]"}`}
-                >
-                  {item.split(" - ")[1]}
-                </span>
+                {item}
               </p>
             </div>
           );
