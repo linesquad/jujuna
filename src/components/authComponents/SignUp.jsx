@@ -2,36 +2,20 @@ import { useTranslation } from "react-i18next";
 import OneSignupInput from "./OneSignupInput";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import useRegistration from "../../hooks/useAuth";
 
 function SignUp() {
   const { t } = useTranslation();
   const [isRemembered, setIsRemembered] = useState(false);
+
+  const { registerUser } = useRegistration();
 
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
   console.log(errors);
 
   async function onSubmit(data) {
-    try {
-      const response = await fetch("http://localhost:8001/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(
-          `HTTP error! Status: ${response.status}. Message: ${errorText}`
-        );
-      }
-
-      const result = await response.json();
-      console.log(result);
-    } catch (error) {
-      console.error("There was a problem with the fetch operation:", error);
-    }
+    registerUser(data);
   }
 
   return (
