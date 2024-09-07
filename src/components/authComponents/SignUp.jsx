@@ -2,17 +2,20 @@ import { useTranslation } from "react-i18next";
 import OneSignupInput from "./OneSignupInput";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import useRegistration from "../../hooks/useAuth";
 
 function SignUp() {
   const { t } = useTranslation();
   const [isRemembered, setIsRemembered] = useState(false);
 
+  const { registerUser } = useRegistration();
+
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
   console.log(errors);
 
-  function onSubmit(data) {
-    console.log(data);
+  async function onSubmit(data) {
+    registerUser(data);
   }
 
   return (
@@ -74,7 +77,7 @@ function SignUp() {
             type="text"
             placeholder={t("auth.mobile")}
             register={register}
-            name="mobile"
+            name="phone"
             errorMessage={t("auth.mobileError")}
             error={errors?.mobile?.message}
             pattern={{
@@ -96,7 +99,7 @@ function SignUp() {
           </p>
           <div className="flex items-start gap-[20px]">
             <OneSignupInput
-              type="text"
+              type="password"
               placeholder={t("auth.password")}
               register={register}
               name="password"
@@ -104,9 +107,9 @@ function SignUp() {
               error={errors?.password?.message}
             />
             <OneSignupInput
-              type="text"
+              type="password"
               placeholder={t("auth.repeatPassword")}
-              name="repeatPassword"
+              name="confirmPassword"
               register={register}
               errorMessage={t("auth.passwordError")}
               error={errors?.repeatPassword?.message}
