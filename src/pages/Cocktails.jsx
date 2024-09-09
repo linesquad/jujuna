@@ -14,6 +14,11 @@ function CockTails() {
   const [sortValue, setSortValue] = useState(
     t("cocktails.cocktailsSidebar.default")
   );
+
+  // useEffect(() => {
+  //   window.pageYOffset = 0;
+  // }, []);
+
   return (
     <div className={`${darkMode ? "bg-[#12151C]" : "bg-[#fff]"}`}>
       <CocktailsHeader

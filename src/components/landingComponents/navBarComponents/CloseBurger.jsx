@@ -3,7 +3,6 @@ import Logo from "../../Logo";
 import NavLinks from "./NavLinks";
 import LanguageChanger from "./LanguageChanger";
 import ThemeChanger from "../../ThemeChanger";
-import useScroll from "../../../hooks/useScroll";
 import BurgerNav from "./BurgerNav";
 import { useSelector } from "react-redux";
 import { getIsOpen } from "../../../features/burgerMenuSlice";
@@ -19,7 +18,6 @@ import { useTranslation } from "react-i18next";
 import FullCartDisplay from "../../FullCartDisplay";
 
 const CloseBurger = ({ setIsAuthModalOpen }) => {
-  const scrolled = useScroll();
   const open = useSelector(getIsOpen);
   const darkMode = useSelector(getMode);
   const [modalOpen, setModalOpen] = useState(false);
@@ -71,14 +69,16 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
           </div>
         </Wrapper>
       </div>
+
+      {isFixed && <div className="h-[77px]"></div>}
       <div
         ref={navRef}
         className={`${
-          scrolled && open
+          isFixed && open
             ? darkMode
               ? "bg-black"
               : "bg-[#fff]"
-            : scrolled
+            : isFixed
             ? " bg-opacity-70 backdrop-blur-md"
             : ""
         } ${darkMode ? "bg-[#12151C]" : "bg-[#fff]"} ${
