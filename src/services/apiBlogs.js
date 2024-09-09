@@ -1,14 +1,21 @@
+const URL = "http://localhost:8001";
+
 import supabase from "./supabase";
 
 const fetchBlogs = async () => {
-  let { data, error } = await supabase.from("blog").select("*");
-
-  if (error) {
-    console.error(error);
-    throw new Error("Blog could not be loaded");
+  // let { data, error } = await supabase.from("blog").select("*");
+  // if (error) {
+  //   console.error(error);
+  //   throw new Error("Blog could not be loaded");
+  // }
+  // return data;
+  try {
+    const res = await fetch(`${URL}/blogs`);
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error.message);
   }
-
-  return data;
 };
 
 export default fetchBlogs;

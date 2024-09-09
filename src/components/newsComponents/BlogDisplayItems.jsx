@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 const BlogDisplayItems = ({ item, index }) => {
   const mode = useSelector(getMode);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div
@@ -19,8 +19,8 @@ const BlogDisplayItems = ({ item, index }) => {
       <div className="w-full sm:w-[490px] lg:w-[400px]">
         <img
           src={item.image}
-          alt={i18n.language === "ge" ? item.title.ge : item.title.en}
-          className="w-full h-auto lg:w-[700px]"
+          alt={item.title}
+          className="w-full h-auto lg:w-[700px] lg:h-[400px] object-cover"
         />
       </div>
       <div className="max-w-[490px] lg:w-full">
@@ -29,22 +29,12 @@ const BlogDisplayItems = ({ item, index }) => {
             mode ? "text-white" : "text-black"
           } font-bold pt-4 text-xl`}
         >
-          {i18n.language === "ge"
-            ? item.title.ge.length > 30
-              ? item.title.ge.slice(0, 30) + "..."
-              : item.title.ge
-            : item.title.en.length > 30
-            ? item.title.en.slice(0, 30) + "..."
-            : item.title.en}
+          {item.title.length > 30
+            ? item.title.slice(0, 30) + "..."
+            : item.title}
         </h2>
         <p className={`pt-2 ${mode ? "text-white" : "text-black"} text-base`}>
-          {i18n.language === "ge"
-            ? item.description.ge.length > 170
-              ? item.description.ge.slice(0, 170) + "..."
-              : item.description.ge
-            : item.description.en.length > 170
-            ? item.description.en.slice(0, 170) + "..."
-            : item.description.en}
+          {item.text.length > 170 ? item.text.slice(0, 170) + "..." : item.text}
         </p>
         <Link to={`/news/${item.id}`}>
           <button
