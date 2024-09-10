@@ -2,13 +2,9 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { useLogin } from "../../hooks/useAuth";
-// import { login } from "../../services/apiAuth";
 
 const SignIn = () => {
   const { i18n } = useTranslation();
-
-  const { loginUser } = useLogin();
 
   const {
     register,
@@ -18,13 +14,7 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   async function onSubmit(data) {
-    // try {
-    //   const result = await login(data);
-    //   console.log("Sign-up successfully", result);
-    // } catch (error) {
-    //   console.error("Sign-up failed:", error);
-    // }
-    loginUser(data);
+    console.log(data);
   }
 
   return (
