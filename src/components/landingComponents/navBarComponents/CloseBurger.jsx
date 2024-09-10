@@ -30,8 +30,7 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
   useEffect(() => {
     const handleScroll = () => {
       if (navRef.current) {
-        const offsetTop = navRef.current.offsetTop;
-        setIsFixed(window.scrollY > offsetTop);
+        setIsFixed(window.scrollY > 58);
       }
     };
 
