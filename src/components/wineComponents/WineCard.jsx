@@ -31,7 +31,7 @@ export default function WineCard({ wine }) {
               : wine.titleTranslations.en}
           </p>
           <p className="py-2">
-            {i18n.language === "ge" ? wine.brand.ge : wine.brand.en}
+            {i18n.language === "ge" ? wine.brand?.ge : wine.brand?.en}
           </p>
           <hr />
           <p className="my-2">${wine.price}</p>

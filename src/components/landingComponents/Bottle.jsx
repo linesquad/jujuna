@@ -16,7 +16,7 @@ function Bottle() {
   const { t } = useTranslation();
   const darkMode = useSelector(getMode);
   const { data: wines, isLoading, isError, error } = useWines();
-  console.log(wines);
+  // console.log(wines);
 
   if (isLoading) return <Spinner />;
 
