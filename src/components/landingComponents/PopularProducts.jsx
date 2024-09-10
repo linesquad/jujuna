@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import WineCard from "../wineComponents/WineCard";
-// import useWines from "../../hooks/useWines";
 import { Navigation } from "swiper/modules";
 import { SwiperSlide, Swiper } from "swiper/react";
 import "swiper/css";
