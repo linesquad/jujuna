@@ -1,6 +1,8 @@
+const URL = "http://localhost:8001";
+
 const fetchCocktails = async () => {
   try {
-    const res = await fetch("http://localhost:8001/cocktails");
+    const res = await fetch(`${URL}/cocktails`);
     const data = await res.json();
 
     return data;
@@ -13,7 +15,7 @@ export default fetchCocktails;
 
 export const fetchCocktailsId = async (id) => {
   try {
-    const res = await fetch(`http://localhost:8001/cocktail/${id}`);
+    const res = await fetch(`${URL}/cocktail/${id}`);
     const data = await res.json();
     return data;
   } catch (error) {

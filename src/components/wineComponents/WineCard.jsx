@@ -19,7 +19,7 @@ export default function WineCard({ wine }) {
     <Link to={`/wines/${wine._id}`} onClick={handleClick}>
       <div className="flex items-center mb-14 max-w-[300px]">
         <img
-          src="/images/bottle.png"
+          src={wine.url}
           alt="wine-bottle"
           className="small:w-[100px] w-[150px]"
         />

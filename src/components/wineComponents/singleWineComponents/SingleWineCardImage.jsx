@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
 
-function SingleWineCardImage() {
+function SingleWineCardImage({ wine }) {
   const darkMode = useSelector(getMode);
 
   return (
@@ -14,7 +14,7 @@ function SingleWineCardImage() {
         }`}
       ></div>
       <img
-        src="/images/winebottle.png"
+        src={wine.url}
         alt="winebottle"
         className="w-60 md:w-80 lg:w-96 z-10"
       />

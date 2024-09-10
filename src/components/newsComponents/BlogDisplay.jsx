@@ -1,29 +1,29 @@
 import BlogWrapper from "./BlogWrapper";
 import BlogDisplayItems from "./BlogDisplayItems";
 import Spinner from "../Spinner";
-import { useEffect, useState } from "react";
-import { usePaginatedBlogs } from "../../hooks/useBlogs";
+import useBlogs from "../../hooks/useBlogs";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 
 const BlogDisplay = () => {
-  const [page, setPage] = useState(1);
-  const [lastPage, setLastPage] = useState(null);
+  // const [page, setPage] = useState(1);
+  // const [lastPage, setLastPage] = useState(null);
   const darkMode = useSelector(getMode);
+  const { data: peginatedBlogs, isLoading, isError, error } = useBlogs();
 
-  const {
-    data: paginatedBlogs = [],
-    isLoading,
-    isError,
-    error,
-  } = usePaginatedBlogs(page, 3);
+  // const {
+  //   data: paginatedBlogs = [],
+  //   isLoading,
+  //   isError,
+  //   error,
+  // } = usePaginatedBlogs(page, 3);
 
-  useEffect(() => {
-    if (isLoading === false && paginatedBlogs.length === 0) {
-      setPage((prev) => prev - 1);
-      setLastPage(page);
-    }
-  }, [isLoading, paginatedBlogs, page, lastPage]);
+  // useEffect(() => {
+  //   if (isLoading === false && paginatedBlogs.length === 0) {
+  //     setPage((prev) => prev - 1);
+  //     setLastPage(page);
+  //   }
+  // }, [isLoading, paginatedBlogs, page, lastPage]);
 
   if (isLoading) {
     return (
@@ -52,11 +52,11 @@ const BlogDisplay = () => {
           Latest news
         </h2>
         <div className="flex flex-wrap justify-center gap-4 lg:w-full lg:flex-nowrap lg:justify-between lg:flex-col pt-5">
-          {paginatedBlogs.map((item, index) => (
+          {peginatedBlogs.map((item, index) => (
             <BlogDisplayItems item={item} index={index} key={item.id} />
           ))}
         </div>
-        <div className="flex justify-center mt-4">
+        {/* <div className="flex justify-center mt-4">
           <button
             className="bg-purple-500 text-white p-2 m-2 rounded-lg"
             onClick={() => setPage((prev) => Math.max(prev - 1, 1))} // Ensure page doesn't go below 1
@@ -71,7 +71,7 @@ const BlogDisplay = () => {
           >
             Next
           </button>
-        </div>
+        </div> */}
       </BlogWrapper>
     </div>
   );
