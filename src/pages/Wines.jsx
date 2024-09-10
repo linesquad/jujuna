@@ -27,22 +27,7 @@ const Wines = () => {
 
   if (isLoading) return <Spinner />;
 
-  async function getData() {
-    const url = "http://localhost:8001/wines";
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
-
-      const json = await response.json();
-      console.log(json);
-    } catch (error) {
-      console.error(error.message);
-    }
-  }
-
-  getData();
+  console.log("nugo");
 
   return (
     <div
@@ -66,7 +51,7 @@ const Wines = () => {
 
           <div className="tiny:-ml-6 grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 relative mb-24 justify-items-center w-full">
             {paginatedWines?.map((wine) => (
-              <WineCard key={wine.id} wine={wine} />
+              <WineCard key={wine._id} wine={wine} />
             ))}
           </div>
         </div>

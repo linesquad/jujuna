@@ -9,7 +9,6 @@ function SignUp() {
 
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
-  console.log(errors);
 
   async function onSubmit(data) {
     console.log(data);
