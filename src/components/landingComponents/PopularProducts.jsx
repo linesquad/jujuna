@@ -37,7 +37,6 @@ export default function PopularProducts() {
 
   return (
     <div className="mt-20 relative">
-      {/* <WineCard key={products[0]._id} wine={products[0]} /> */}
       <Wrapper>
         <h2 className="text-[#848282] text-[24px]">გაყიდვადი პროდუქტები</h2>
         <hr className="border border-[#D9D9D9] mt-2" />
