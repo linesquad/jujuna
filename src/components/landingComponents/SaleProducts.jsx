@@ -4,9 +4,11 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import SingleSaleProduct from "./SingleSaleProduct";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { useDiscountProducts } from "../../hooks/useDiscountProducts";
 
 function SaleProducts() {
   const swiperRef = useRef(null);
+  const { data: discontProducts } = useDiscountProducts();
 
   return (
     <div>
@@ -39,7 +41,7 @@ function SaleProducts() {
                 swiperRef.current = swiper;
               }}
               breakpoints={{
-                320: {
+                350: {
                   slidesPerView: 2,
                   spaceBetween: 30,
                 },
@@ -53,21 +55,13 @@ function SaleProducts() {
                 },
               }}
             >
-              <SwiperSlide>
-                <SingleSaleProduct />
-              </SwiperSlide>
-              <SwiperSlide>
-                <SingleSaleProduct />
-              </SwiperSlide>
-              <SwiperSlide>
-                <SingleSaleProduct />
-              </SwiperSlide>
-              <SwiperSlide>
-                <SingleSaleProduct />
-              </SwiperSlide>
-              <SwiperSlide>
-                <SingleSaleProduct />
-              </SwiperSlide>
+              {discontProducts?.map((item) => {
+                return (
+                  <SwiperSlide key={item._id}>
+                    <SingleSaleProduct item={item} />
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
           </div>
         </div>

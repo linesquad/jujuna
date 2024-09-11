@@ -2,19 +2,23 @@ import { FaStar } from "react-icons/fa";
 import cocktail from "/images/cocktail1.png";
 import { FaHeart } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
-function SingleSaleProduct() {
+function SingleSaleProduct({ item }) {
+  const { i18n } = useTranslation();
   return (
     <div className="xl:w-[280px] lg:w-[240px] md:w-[200px]  pt-[4px] pb-[15px] px-[12px] relative">
       <div className="xl:w-[120px] lg:w-[100px] xl:h-[175px] lg:h-[150px] mx-auto">
         <img
-          src={cocktail}
+          src={item?.url}
           alt="product"
           className="w-full h-full object-cover rounded-md"
         />
       </div>
       <p className="text-[12px] md:text-[20px] text-center mt-[20px]">
-        ტვიში - თეთრი მშრალი
+        {i18n.language === "ge"
+          ? item.titleTranslations.ge
+          : item.titleTranslations.en}
       </p>
 
       <div className="mt-[13px] flex items-center gap-[22px]">
@@ -30,7 +34,7 @@ function SingleSaleProduct() {
           <p className="text-[#008E28] text-[12px] md:text-[16px] ">
             გაყიდვაშია
           </p>
-          <p className="text-[12px] md:text-[22px]">45.00 ₾</p>
+          <p className="text-[12px] md:text-[22px]">{item.price} ₾</p>
         </div>
 
         <div className="flex items-center gap-[6px] border-[1px] border-[#eaeaea] rounded-[20px] p-[2px]">
@@ -56,7 +60,7 @@ function SingleSaleProduct() {
             color="#FC0909"
           />
           <p className="absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%] text-[#fff] lg:text-[16px] xl:text-[20px]">
-            50%
+            {item.discount}%
           </p>
         </div>
       </div>
