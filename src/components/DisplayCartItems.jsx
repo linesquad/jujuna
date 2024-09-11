@@ -1,20 +1,29 @@
 import { useTranslation } from "react-i18next";
 import { RiDeleteBin7Line } from "react-icons/ri";
-import { useDispatch } from "react-redux";
-import {
-  decreaseQuantity,
-  increaseQuantity,
-  removeFromCart,
-} from "../features/cartSlice";
+// import { useDispatch } from "react-redux";
+
+// -------- comentar --------------
+// import {
+//   decreaseQuantity,
+//   increaseQuantity,
+//   removeFromCart,
+// } from "../features/cartSlice";
+// --------------------------------
+
 // import { useNavigate } from "react-router-dom";
 
-const DisplayCartItems = ({ items, onNavigateToDetails }) => {
+// onNavigateToDetails prop
+const DisplayCartItems = ({ items }) => {
   const { i18n } = useTranslation();
-  const dispatch = useDispatch();
 
-  const handleRemoveItem = (itemId) => {
-    dispatch(removeFromCart({ id: itemId }));
-  };
+  if (!items || items.length === 0) {
+    return <p>No items in the cart.</p>;
+  } // add this check
+  // const dispatch = useDispatch();
+
+  // const handleRemoveItem = (itemId) => {
+  //   dispatch(removeFromCart({ id: itemId }));
+  // };
 
   return (
     <>
@@ -27,12 +36,12 @@ const DisplayCartItems = ({ items, onNavigateToDetails }) => {
               src={item.image}
               alt={i18n.language === "en" ? item.name.en : item.name.ge}
               className="max-w-16 max-h-24 object-cover mr-4 rounded-md cursor-pointer"
-              onClick={() => onNavigateToDetails(item)}
+              // onClick={() => onNavigateToDetails(item)}
             />
             <div className="flex flex-col justify-between h-full gap-4">
               <h3
                 className="text-base w-[200px] break-words cursor-pointer"
-                onClick={() => onNavigateToDetails(item)}
+                // onClick={() => onNavigateToDetails(item)}
               >
                 {i18n.language === "en" ? item.name.en : item.name.ge}
               </h3>
@@ -41,19 +50,19 @@ const DisplayCartItems = ({ items, onNavigateToDetails }) => {
             <div className="flex flex-col items-end gap-6 w-full px-2 py-1">
               <RiDeleteBin7Line
                 size={20}
-                onClick={() => handleRemoveItem(item.id)}
+                // onClick={() => handleRemoveItem(item.id)}
               />
               <div className="w-[97px] h-[35px] border rounded-full border-[#8F8F8F] px-5 py-1 flex gap-4">
                 <button
                   className="cursor-pointer"
-                  onClick={() => dispatch(decreaseQuantity({ id: item.id }))}
+                  // onClick={() => dispatch(decreaseQuantity({ id: item.id }))}
                 >
                   -
                 </button>
                 <span>{item.quantity}</span>
                 <button
                   className="cursor-pointer"
-                  onClick={() => dispatch(increaseQuantity({ id: item.id }))}
+                  // onClick={() => dispatch(increaseQuantity({ id: item.id }))}
                 >
                   +
                 </button>

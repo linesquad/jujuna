@@ -27,8 +27,6 @@ const Wines = () => {
 
   if (isLoading) return <Spinner />;
 
-  console.log("nugo");
-
   return (
     <div
       className={`${darkMode ? "bg-[#12151C] text-[#fff]" : "bg-[#fff]"} p-4`}

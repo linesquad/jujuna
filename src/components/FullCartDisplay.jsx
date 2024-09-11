@@ -2,13 +2,13 @@ import { useTranslation } from "react-i18next";
 import { FaTimes } from "react-icons/fa";
 import { useRef, useEffect } from "react";
 import { RiDeleteBin7Line } from "react-icons/ri";
-import { useDispatch } from "react-redux";
-import { decreaseQuantity, increaseQuantity } from "../features/cartSlice";
+// import { useDispatch } from "react-redux";
+// import { decreaseQuantity, increaseQuantity } from "../features/cartSlice";
 
-const FullCartDisplay = ({ isOpen, onClose, title, items }) => {
+const FullCartDisplay = ({ isOpen, onClose, title, items = [] }) => {
   const { i18n } = useTranslation();
   const modalRef = useRef(null);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -22,6 +22,10 @@ const FullCartDisplay = ({ isOpen, onClose, title, items }) => {
   }, [onClose]);
 
   if (!isOpen) return null;
+
+  // if (!items || items.length === 0) {
+  //   return <p>No items in the cart.</p>;
+  // } // add this check
 
   return (
     <div className="fixed inset-0 z-50 lg:flex lg:pt-[110px]">
@@ -78,18 +82,18 @@ const FullCartDisplay = ({ isOpen, onClose, title, items }) => {
                     <div className="w-[80px] h-[35px] border rounded-full border-[#8F8F8F] px-2 py-1 flex gap-4">
                       <button
                         className="cursor-pointer"
-                        onClick={() =>
-                          dispatch(decreaseQuantity({ id: item.id }))
-                        }
+                        // onClick={() =>
+                        //   dispatch(decreaseQuantity({ id: item.id }))
+                        // }
                       >
                         -
                       </button>
                       <span>{item.quantity}</span>
                       <button
                         className="cursor-pointer"
-                        onClick={() =>
-                          dispatch(increaseQuantity({ id: item.id }))
-                        }
+                        // onClick={() =>
+                        //   dispatch(increaseQuantity({ id: item.id }))
+                        // }
                       >
                         +
                       </button>

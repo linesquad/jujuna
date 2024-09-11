@@ -13,7 +13,7 @@ import { FaHeart } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import ModalCart from "../../ModalCart";
 import { useEffect, useRef, useState } from "react";
-import { cartItems } from "../../../features/cartSlice";
+// import { cartItems } from "../../../features/cartSlice";
 import { useTranslation } from "react-i18next";
 import FullCartDisplay from "../../FullCartDisplay";
 
@@ -21,7 +21,7 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
   const open = useSelector(getIsOpen);
   const darkMode = useSelector(getMode);
   const [modalOpen, setModalOpen] = useState(false);
-  const items = useSelector(cartItems);
+  // const items = useSelector(cartItems);
   const { t } = useTranslation();
   const [viewCart, setViewCart] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
@@ -123,14 +123,14 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
         onClose={toggleModal}
         title={t("cartSlicer.myCart")}
         checkAllProductsText={t("cartSlicer.checkCard")}
-        items={items}
+        // items={items}
         onView={toggleViewCart}
       />
       <FullCartDisplay
         isOpen={viewCart}
         onClose={closeAllModals}
         title={t("cartSlicer.myCart")}
-        items={items}
+        // items={items}
       />
     </div>
   );
