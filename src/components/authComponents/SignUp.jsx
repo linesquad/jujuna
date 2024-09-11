@@ -2,16 +2,18 @@ import { useTranslation } from "react-i18next";
 import OneSignupInput from "./OneSignupInput";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useRegister } from "../../hooks/useRegister";
 
 function SignUp() {
   const { t } = useTranslation();
   const [isRemembered, setIsRemembered] = useState(false);
+  const { mutate: registerUser } = useRegister();
 
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
 
   async function onSubmit(data) {
-    console.log(data);
+    registerUser(data);
   }
 
   return (

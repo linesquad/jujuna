@@ -2,9 +2,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { useLogin } from "../../hooks/useLogin";
 
 const SignIn = () => {
   const { i18n } = useTranslation();
+  const { mutate: login } = useLogin();
 
   const {
     register,
@@ -14,7 +16,7 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   async function onSubmit(data) {
-    console.log(data);
+    login(data);
   }
 
   return (
