@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// აქ იქმნება ინსტანსი სადაც გაწერილი გვექნება ჩვენი ურლ და ჰედერის ფორმა
+// შევქმენი აქსიონი ინსტანსი
 const axiosInstance = axios.create({
   baseURL: "http://localhost:8001",
   headers: {
@@ -8,13 +8,21 @@ const axiosInstance = axios.create({
   },
 });
 
-// აქ ვაკავშირებთ ტოკენს და ჩვენს ჰედერს
+// ინტერსეფტორი რო დავამატო ტოკენები
 axiosInstance.interceptors.request.use(
   (config) => {
     const accessToken = localStorage.getItem("accessToken");
+    const refreshToken = localStorage.getItem("refreshToken");
+
     if (accessToken) {
       config.headers["Authorization"] = `Bearer ${accessToken}`;
     }
+
+    // გავუგზავნოთ ორივე
+    if (refreshToken) {
+      config.headers["x-refresh"] = refreshToken;
+    }
+
     return config;
   },
   (error) => {
@@ -22,7 +30,7 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-// აქ ვჰენდლავთ ჩვენს რეფრეშს
+// დავჰენდლოთ ერორი
 axiosInstance.interceptors.response.use(
   (response) => {
     return response;
@@ -31,35 +39,31 @@ axiosInstance.interceptors.response.use(
     const originalRequest = error.config;
     const refreshToken = localStorage.getItem("refreshToken");
 
-    // ვნახულობთ ვადა აქვს თუ არა გასული ტოკენს
     if (
       error.response &&
       error.response.status === 401 &&
       refreshToken &&
       !originalRequest._retry
     ) {
-      originalRequest._retry = true; // აქ ეს არის გარანტია რო არ ცავილუპებით
+      originalRequest._retry = true; // ერთი ლუპისაც
 
       try {
-        // ჩავარეფრეშეთ ჩვენი ტოკუნიები
-        const { data } = await axios.post("/refresh-token", { refreshToken });
-        localStorage.setItem("accessToken", data.accessToken);
-        localStorage.setItem("refreshToken", data.refreshToken);
-
-        // ჩავყარეთ ჩვენი ტოკენები და ცავარექვესტეთ
-        originalRequest.headers["Authorization"] = `Bearer ${data.accessToken}`;
-        return axiosInstance(originalRequest);
+        // თავიდან ვაგზავნით
+        originalRequest.headers["x-refresh"] = refreshToken;
+        return axiosInstance(originalRequest); // დავარაქვესტოთ
       } catch (refreshError) {
         console.error(
-          "Refresh token is invalid or expired. Logging out.",
+          "Failed to handle the refresh token. Logging out.",
           refreshError
         );
         localStorage.removeItem("accessToken");
         localStorage.removeItem("refreshToken");
-        window.location.href = "/login"; // აქ გავუშვით მაწონზე რიჩარდმა დავაი ნახუიო
+        window.location.href = "/login";
+        // დადავამისამართოთ;
         return Promise.reject(refreshError);
       }
     }
+
     return Promise.reject(error);
   }
 );
