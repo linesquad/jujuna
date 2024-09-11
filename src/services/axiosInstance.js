@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// შევქმენი აქსიონი ინსტანსი
+// შევქმენი ინსტანსი
 const axiosInstance = axios.create({
   baseURL: "http://localhost:8001",
   headers: {
@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
   },
 });
 
-// ინტერსეფტორი რო დავამატო ტოკენები
+// რექვესთზე შევინახე ტოკენები
 axiosInstance.interceptors.request.use(
   (config) => {
     const accessToken = localStorage.getItem("accessToken");
@@ -18,7 +18,6 @@ axiosInstance.interceptors.request.use(
       config.headers["Authorization"] = `Bearer ${accessToken}`;
     }
 
-    // გავუგზავნოთ ორივე
     if (refreshToken) {
       config.headers["x-refresh"] = refreshToken;
     }
@@ -30,38 +29,30 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-// დავჰენდლოთ ერორი
 axiosInstance.interceptors.response.use(
   (response) => {
+    // თუ დაგვიბრუნდა
+    const newAccessToken = response.headers["x-new-access-token"];
+    const newRefreshToken = response.headers["x-new-refresh-token"];
+
+    if (newAccessToken) {
+      localStorage.setItem("accessToken", newAccessToken);
+    }
+
+    if (newRefreshToken) {
+      localStorage.setItem("refreshToken", newRefreshToken);
+    }
+
     return response;
   },
-  async (error) => {
-    const originalRequest = error.config;
-    const refreshToken = localStorage.getItem("refreshToken");
+  (error) => {
+    // შევამოწმოდ თუ ამას გვიბრუნებს ზნაჩიტ არავალიდურია
+    if (error.response && error.response.status === 403 && error.config) {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
 
-    if (
-      error.response &&
-      error.response.status === 401 &&
-      refreshToken &&
-      !originalRequest._retry
-    ) {
-      originalRequest._retry = true; // ერთი ლუპისაც
-
-      try {
-        // თავიდან ვაგზავნით
-        originalRequest.headers["x-refresh"] = refreshToken;
-        return axiosInstance(originalRequest); // დავარაქვესტოთ
-      } catch (refreshError) {
-        console.error(
-          "Failed to handle the refresh token. Logging out.",
-          refreshError
-        );
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
-        window.location.href = "/login";
-        // დადავამისამართოთ;
-        return Promise.reject(refreshError);
-      }
+      // გადავამისამართე
+      window.location.href = "/login";
     }
 
     return Promise.reject(error);
