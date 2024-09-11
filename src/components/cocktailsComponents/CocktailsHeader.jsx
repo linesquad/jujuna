@@ -3,9 +3,15 @@ import rightArrow from "/images/rightArrow.svg";
 import cocktailsFilter from "/images/cocktailsFillter.svg";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
+import { useTranslation } from "react-i18next";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import CocktailsSidebar from "./CocktailsSidebar";
 
-function CocktailsHeader({ setIsFillterOpen }) {
+function CocktailsHeader({ sortValue, setSortValue }) {
+  const [isFillterOpen, setIsFillterOpen] = useState(false);
   const darkMode = useSelector(getMode);
+  const { t } = useTranslation();
   return (
     <Wrapper>
       <div className="pt-[26px] pl-[16px] relative">
@@ -14,9 +20,9 @@ function CocktailsHeader({ setIsFillterOpen }) {
             darkMode ? "text-color-primary" : ""
           }`}
         >
-          <p>საწყისი გვერდი</p>
+          <p>{t("cocktails.cocktailsHeader.p1")}</p>
           <img src={rightArrow} alt="right-arrow" />
-          <p>კოქტეილები</p>
+          <p>{t("cocktails.cocktailsHeader.p2")}</p>
         </div>
         <img
           src={cocktailsFilter}
@@ -24,6 +30,37 @@ function CocktailsHeader({ setIsFillterOpen }) {
           className="mt-[25px] md:hidden"
           onClick={() => setIsFillterOpen((fillter) => !fillter)}
         />
+        <AnimatePresence>
+          {isFillterOpen && (
+            <motion.div
+              variants={{
+                open: {
+                  x: "0%",
+                  transition: {
+                    type: "spring",
+                  },
+                },
+                closed: {
+                  x: "-150%",
+                  transition: {
+                    type: "spring",
+                  },
+                },
+              }}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              className={`absolute top-[120px] z-10 ${
+                darkMode ? "bg-[#000]" : "bg-[#fff]"
+              }  h-[300px] md:hidden rounded-md`}
+            >
+              <CocktailsSidebar
+                setSortValue={setSortValue}
+                sortValue={sortValue}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </Wrapper>
   );

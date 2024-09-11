@@ -1,43 +1,64 @@
-import heart from "/images/heart.svg";
-import cart from "/images/cart.svg";
-import { useSelector } from "react-redux";
+import { FaShoppingCart, FaHeart } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { addToCart } from "../../features/cartSlice";
+import { useState } from "react";
 
 function CocktailCard({ item }) {
-  const { image, name, price } = item;
+  const [showCart, setShowCart] = useState(false);
+  const navigate = useNavigate();
+  const { url: image, titleTranslations, price, _id } = item;
   const darkMode = useSelector(getMode);
+  const { i18n } = useTranslation();
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    dispatch(addToCart(item));
+  };
+
   return (
-    <div
-      className={`w-full max-w-[180px] md:w-[200px] md:max-w-[200px] lg:max-w-[220px] lg:w-[220px] xl:max-w-[260px] xl:w-[260px] m-auto  bg-[#fff]/30 flex flex-col pt-[6px] pr-[12px] pb-[33px] pl-[3px] md:pb-[50px] md:px-[10px] lg:pb-[70px] rounded-[11px] cursor-pointer`}
-    >
-      <div className="w-[18px] h-[18px] md:w-[30px] md:h-[30px] rounded-[50%] bg-[#613994] flex justify-center items-center self-end ">
-        <img src={heart} alt="heart" className="md:w-[14px] md:h-[14px]" />
-      </div>
-      <div className="py-[9px] px-[4px] flex gap-[10px] border-b-[1px] border-[#d9d9d9]">
+    <div>
+      <div
+        className={`max-w-[210px] md:max-w-none md:w-[210px] xl:w-[230px] border-[1px]  h-[280px]  cursor-pointer ${
+          showCart ? " border-purple-600" : "border-transparent"
+        }  rounded-[15px] py-[10px] px-[40px] xl:px-[50px] relative`}
+        onClick={() => navigate(`/cocktails/${_id}`)}
+        onMouseEnter={() => setShowCart(true)}
+        onMouseLeave={() => setShowCart(false)}
+      >
         <img
           src={image}
           alt="cocktail"
-          className="w-[60px] h-[120px] md:w-[80px] object-cover rounded-md"
+          className="w-full h-[180px] object-cover rounded-md"
         />
-        <p
-          className={` ${
+        <div
+          className={`text-center ${
             darkMode ? "text-color-primary" : "text-color-black"
-          } text-[12px] md:text-[14px]`}
+          } flex flex-col mt-[5px]`}
         >
-          {name.ge}
-        </p>
-      </div>
-      <div className="flex justify-between mt-[10px] md:mt-[18px]">
-        <p
-          className={`${
-            darkMode ? "text-color-primary" : "text-color-black"
-          } text-[12px] md:text-[14px]`}
-        >
-          {price} ₾
-        </p>
-        <div className="w-[31px] h-[14px] md:w-[50px] md:h-[24px] rounded-[33px] bg-[#613994] flex justify-center items-center">
-          <img src={cart} alt="cart" className="md:w-[18px] md:h-[18px]" />
+          <p>
+            {i18n.language === "ge"
+              ? titleTranslations.ge.split(" ")[0] + " ..."
+              : titleTranslations.en}
+          </p>
+          <p>{price} gel</p>
         </div>
+        {showCart && (
+          <div className="flex flex-col gap-[10px] absolute top-2 right-2">
+            <div
+              className="p-1 rounded-md border-[1px] border-purple-600"
+              onClick={handleAddToCart}
+            >
+              <FaShoppingCart size={18} color="#9333ea" />
+            </div>
+            <div className="p-1 rounded-md border-[1px] border-purple-600">
+              <FaHeart size={18} color="#9333ea" />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

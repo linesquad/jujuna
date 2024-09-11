@@ -1,14 +1,24 @@
-import supabase from "./supabase";
+const URL = "http://localhost:8001";
 
 const fetchCocktails = async () => {
-  let { data, error } = await supabase.from("cocktail").select("*");
+  try {
+    const res = await fetch(`${URL}/cocktails`);
+    const data = await res.json();
 
-  if (error) {
-    console.error(error);
-    throw new Error("Blog could not be loaded");
+    return data;
+  } catch (error) {
+    console.log(error.message);
   }
-
-  return data;
 };
 
 export default fetchCocktails;
+
+export const fetchCocktailsId = async (id) => {
+  try {
+    const res = await fetch(`${URL}/cocktail/${id}`);
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};

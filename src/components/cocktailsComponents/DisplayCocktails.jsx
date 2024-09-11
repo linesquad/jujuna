@@ -1,53 +1,48 @@
-import { useSelector } from "react-redux";
 import useCocktails from "../../hooks/useCocktails";
 import Wrapper from "../Wrapper";
 import CocktailCard from "./CocktailCard";
-import CocktailsPegination from "./CocktailsPegination";
-import CocktailsSidebar from "./CocktailsSidebar";
-import { AnimatePresence, motion } from "framer-motion";
-import { getMode } from "../../features/darkModeSlice";
+import Pegination from "../Pegination";
+import Spinner from "../../components/Spinner";
+import { useEffect, useState } from "react";
 
-function DisplayCocktails({ isFillterOpen }) {
-  const { data: cocktails } = useCocktails();
-  const darkMode = useSelector(getMode);
+function DisplayCocktails({ sortValue }) {
+  const { data: cocktails, isLoading, isError, error } = useCocktails();
+  const [sortedCocktails, setSortedCocktails] = useState([]);
+  const [paginatedCocktails, setPeginatedCocktails] = useState([]);
+
+  useEffect(() => {
+    if (sortValue === "Default" || sortValue === "ნაგულისხმევი") {
+      setSortedCocktails(cocktails);
+    } else if (sortValue === "Price" || sortValue === "ფასი") {
+      const sorted = [...cocktails].sort((a, b) => a.price - b.price);
+      setSortedCocktails(sorted);
+    } else if (sortValue === "Size" || sortValue === "ზომა") {
+      const sorted = [...cocktails].sort((a, b) => a.size - b.size);
+      setSortedCocktails(sorted);
+    }
+  }, [cocktails, sortValue]);
+
+  if (isLoading) return <Spinner />;
+
+  if (isError)
+    return (
+      <h2 className="md:text-[22px] lg:text-[26px] text-center text-red-700">
+        {error.message}
+      </h2>
+    );
+
   return (
     <Wrapper>
-      <div className="grid gap-[16px] grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr] m-auto relative">
-        {cocktails?.map((item) => {
-          return <CocktailCard key={item.id} item={item} />;
+      <div className="grid gap-[16px] small:grid-cols-[1fr] grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr] m-auto relative min-h-[300px] md:min-h-[600px]">
+        {paginatedCocktails?.map((item) => {
+          return <CocktailCard key={item._id} item={item} />;
         })}
-        <AnimatePresence>
-          {isFillterOpen && (
-            <motion.div
-              variants={{
-                open: {
-                  x: "0%",
-                  transition: {
-                    type: "spring",
-                    bounce: 0.09,
-                  },
-                },
-                closed: {
-                  x: "-100%",
-                  transition: {
-                    type: "spring",
-                    bounce: 0.09,
-                  },
-                },
-              }}
-              initial="closed"
-              animate="open"
-              exit="closed"
-              className={`absolute top-0 ${
-                darkMode ? "bg-[#000]" : "bg-[#fff]"
-              }  h-[300px] md:hidden rounded-md`}
-            >
-              <CocktailsSidebar />
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
-      <CocktailsPegination />
+      <Pegination
+        itemsArray={sortedCocktails}
+        itemsPerPage={3}
+        setPeginatedItems={setPeginatedCocktails}
+      />
     </Wrapper>
   );
 }
