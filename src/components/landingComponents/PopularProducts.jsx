@@ -10,6 +10,7 @@ import SingleProduct from "./SingleProduct";
 
 export default function PopularProducts() {
   const swiperRef = useRef(null);
+
   const { data: popularProducts } = usePopularProducts();
 
   return (
@@ -18,7 +19,7 @@ export default function PopularProducts() {
         <div className="mt-[100px]">
           <div className="flex items-center justify-between pl-[50px] pb-[12px] border-b-[1px] border-[#D9D9D9]">
             <h2 className="text-[16px] md:text-[22px] lg:text-[32px] text-[#848282]">
-              გაყიდვადი პროდუქტები
+              ფასდაკლებული პროდუქტები
             </h2>
 
             <div className="hidden lg:flex items-center gap-[4px]">
@@ -42,6 +43,7 @@ export default function PopularProducts() {
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
               }}
+              speed={1000}
               breakpoints={{
                 350: {
                   slidesPerView: 2,
