@@ -30,8 +30,7 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
   useEffect(() => {
     const handleScroll = () => {
       if (navRef.current) {
-        const offsetTop = navRef.current.offsetTop;
-        setIsFixed(window.scrollY > offsetTop);
+        setIsFixed(window.scrollY > 58);
       }
     };
 
@@ -93,7 +92,7 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
               </div>
               <Logo />
 
-              <div className="hidden w-full md:w-[470px] lg:w-[650px]  md:block text-center text-bold gap-10">
+              <div className="hidden w-full md:w-[350px] lg:w-[450px]  md:block text-center text-bold gap-10">
                 <NavLinks />
               </div>
               <div className="flex items-center gap-[15px]">
