@@ -1,11 +1,6 @@
-const URL = "http://localhost:8001";
+import axiosInstance from "./axiosInstance";
 
 export const fetchDiscountProducts = async () => {
-  try {
-    const res = await fetch(`${URL}/discount`);
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.log(error.message);
-  }
+  const res = await axiosInstance.get("/discount");
+  return res.data;
 };
