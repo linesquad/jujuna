@@ -15,6 +15,8 @@ export default function WineCard({ wine }) {
     window.scrollTo(0, 0);
   };
 
+  console.log(wine);
+
   return (
     <Link to={`/wines/${wine._id}`} onClick={handleClick}>
       <div className="flex items-center mb-14 max-w-[300px]">

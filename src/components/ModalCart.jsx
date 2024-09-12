@@ -3,8 +3,8 @@ import { FaTimes } from "react-icons/fa";
 import Wrapper from "./Wrapper";
 import { useTranslation } from "react-i18next";
 import DisplayCartItems from "./DisplayCartItems";
-import { useSelector } from "react-redux";
-import { totalPrice } from "../features/cartSlice";
+// import { useSelector } from "react-redux";
+// import { totalPrice } from "../features/cartSlice";
 import { useNavigate } from "react-router-dom";
 
 const ModalCart = ({
@@ -18,7 +18,7 @@ const ModalCart = ({
   const modalRef = useRef(null);
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const totalItemsPrice = useSelector(totalPrice);
+  // const totalItemsPrice = useSelector(totalPrice);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -75,7 +75,7 @@ const ModalCart = ({
             <hr />
             <div className="flex justify-between items-center px-5 pt-2 pb-7">
               <h2 className="text-lg font-bold">{t("cartSlicer.total")}</h2>
-              <h2 className="text-[22px] font-semibold">{`$${totalItemsPrice}`}</h2>
+              {/* <h2 className="text-[22px] font-semibold">{`$${totalItemsPrice}`}</h2> */}
             </div>
             <div className="flex justify-center">
               <button
