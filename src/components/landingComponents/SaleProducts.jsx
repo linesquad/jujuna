@@ -18,8 +18,6 @@ function SaleProducts() {
       if (swiperRef.current) {
         const totalSlides = swiperRef.current.slides?.length;
         const currentIndex = swiperRef.current.realIndex;
-        console.log(totalSlides);
-        console.log(currentIndex);
 
         if (currentIndex === totalSlides - 4) {
           swiperRef.current.slideTo(0);
