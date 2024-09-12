@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import Wrapper from "../Wrapper";
 import { getMode } from "../../features/darkModeSlice";
-import useWines from "../../hooks/useWines";
+import { useWines } from "../../hooks/useWines";
 import Spinner from "../Spinner";
 
 import { Swiper, SwiperSlide } from "swiper/react";

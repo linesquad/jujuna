@@ -5,6 +5,7 @@ const axiosInstance = axios.create({
   baseURL: "http://localhost:8001",
   headers: {
     "Content-Type": "application/json",
+    "Cache-Control": "no-cache",
   },
 });
 

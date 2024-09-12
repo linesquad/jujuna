@@ -7,7 +7,7 @@ i18n
   .use(initReactI18next)
   .init({
     debug: true,
-    lng: localStorage.getItem("lng") || "ge",
+    // lng: localStorage.getItem("lng") || "ge",
     resources: {
       ge: {
         translation: {

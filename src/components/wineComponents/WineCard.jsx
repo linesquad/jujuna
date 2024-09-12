@@ -2,10 +2,12 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import { Link } from "react-router-dom";
+import { useAddToCart } from "../../hooks/useAddToCart";
 
-export default function WineCard({ wine, onAddToCart }) {
+export default function WineCard({ wine }) {
   const { i18n, t } = useTranslation();
   const darkMode = useSelector(getMode);
+  const { mutate: addToCart } = useAddToCart();
 
   if (!wine) {
     return null;
@@ -15,12 +17,10 @@ export default function WineCard({ wine, onAddToCart }) {
     window.scrollTo(0, 0);
   };
 
-  // console.log(wine);
-
   const handleAddToCart = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    onAddToCart({
+    addToCart({
       productId: wine._id,
       title:
         i18n.language === "ge"
@@ -29,6 +29,7 @@ export default function WineCard({ wine, onAddToCart }) {
       image: wine.url,
       price: wine.price,
       unit: 1,
+      productType: "wine",
     });
   };
 

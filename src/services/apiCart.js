@@ -7,7 +7,14 @@ export const addToCart = async (credentials) => {
     image: credentials.image,
     price: credentials.price,
     unit: credentials.unit,
+    productType: credentials.productType,
   });
+
+  return data;
+};
+
+export const getCartItems = async () => {
+  const { data } = await axiosInstance.get(`/cart-item`);
 
   return data;
 };

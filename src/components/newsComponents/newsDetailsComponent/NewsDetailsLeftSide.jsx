@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useBlogId } from "../../../hooks/useBlogs";
-import { parseISO, format } from "date-fns";
+// import { parseISO, format } from "date-fns";
 import { getMode } from "../../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";
 import NewsStar from "./NewsStar";
@@ -33,9 +33,9 @@ const NewsDetailsLeftSide = () => {
 
   const descArray = desc.split("*");
 
-  const isoDateString = data.created_at;
-  const date = parseISO(isoDateString);
-  const formattedDate = format(date, "dd/MM/yyyy");
+  // const isoDateString = data.created_at;
+  // const date = parseISO(isoDateString);
+  // const formattedDate = format(date, "dd/MM/yyyy");
   return (
     <div className="lg:col-span-2">
       <div className="flex flex-col gap-1 sm:gap-[5px] md:gap-[6px] lg:gap-2">
@@ -51,7 +51,7 @@ const NewsDetailsLeftSide = () => {
           <p
             className={`text-base sm:text-[19px] md:text-[22px] lg:text-2xl text-[#ADACAC]`}
           >
-            {formattedDate}
+            {/* {formattedDate} */}19-19-19
           </p>
           <p
             className={`text-base sm:text-[19px] md:text-[22px] lg:text-2xl text-[#ADACAC]`}

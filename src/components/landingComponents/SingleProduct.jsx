@@ -10,6 +10,7 @@ function SingleProduct({ item }) {
   const [cartHover, setCartHover] = useState(false);
   const darkMode = useSelector(getMode);
   const { i18n } = useTranslation();
+  console.log("single nugo product");
   return (
     <div className="xl:w-[280px] lg:w-[240px] md:w-[200px]  pt-[4px] pb-[15px] px-[12px] relative mx-auto">
       <div className="xl:w-[120px] lg:w-[100px] xl:h-[175px] lg:h-[150px] mx-auto">
