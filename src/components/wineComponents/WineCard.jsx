@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import { Link } from "react-router-dom";
 
-export default function WineCard({ wine }) {
+export default function WineCard({ wine, onAddToCart }) {
   const { i18n, t } = useTranslation();
   const darkMode = useSelector(getMode);
 
@@ -15,7 +15,22 @@ export default function WineCard({ wine }) {
     window.scrollTo(0, 0);
   };
 
-  console.log(wine);
+  // console.log(wine);
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    onAddToCart({
+      productId: wine._id,
+      title:
+        i18n.language === "ge"
+          ? wine.titleTranslations.ge
+          : wine.titleTranslations.en,
+      image: wine.url,
+      price: wine.price,
+      unit: 1,
+    });
+  };
 
   return (
     <Link to={`/wines/${wine._id}`} onClick={handleClick}>
@@ -41,10 +56,7 @@ export default function WineCard({ wine }) {
 
           <div className="flex gap-2 mt-4">
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-              }}
+              onClick={handleAddToCart}
               className={`small:text-xs small:gap-1 small:px-2 flex items-center gap-2 rounded-full px-3 p-1 ${
                 darkMode ? "bg-[#58387F]" : "bg-[#1E122E] text-white"
               }`}

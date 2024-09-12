@@ -13,15 +13,7 @@ import NewsDetails from "./components/newsComponents/NewsDetails";
 import CocktailDetails from "./pages/CocktailDetails";
 import UserPage from "./pages/UserPage";
 
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
-
 function App() {
-  const cart = useSelector((state) => state.cart);
-  useEffect(() => {
-    console.log("Cart state:", cart); // Log the cart state whenever it updates
-  }, [cart]);
-
   return (
     <Routes>
       <Route element={<AppLayout />}>
