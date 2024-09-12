@@ -12,8 +12,8 @@ import MobileWineFilter from "../components/wineComponents/MobileWineFilter";
 import MobileFilterContainer from "../components/wineComponents/MobileFilterContainer";
 import WineCard from "../components/wineComponents/WineCard";
 
-import { useAddToCart, useGetCartItems } from "../hooks/useAddToCart";
-
+import { useAddToCart } from "../hooks/useAddToCart";
+// useGetCartItems;
 const Wines = () => {
   const darkMode = useSelector(getMode);
 
@@ -24,7 +24,7 @@ const Wines = () => {
   const winesPerPage = 6;
 
   const { mutate: addToCart } = useAddToCart();
-  const { data: getCartItems } = useGetCartItems();
+  // const { data: getCartItems } = useGetCartItems();
 
   useEffect(() => {
     setPaginatedWines(wines?.slice(0, winesPerPage));
@@ -32,15 +32,15 @@ const Wines = () => {
 
   if (isLoading) return <Spinner />;
 
-  const handelClick = () => {
-    console.log(getCartItems);
-  };
+  // const handelClick = () => {
+  //   console.log(getCartItems);
+  // };
 
   return (
     <div
       className={`${darkMode ? "bg-[#12151C] text-[#fff]" : "bg-[#fff]"} p-4`}
     >
-      <button onClick={() => handelClick()}>nugo</button>
+      {/* <button onClick={() => handelClick()}>nugo</button> */}
       <Wrapper>
         <div className="text-[#78808C] mb-16 pt-10">
           <Link to={"/"}>{t("winePage.navHomePage")} </Link>
@@ -68,7 +68,7 @@ const Wines = () => {
                     title: wine.titleTranslations.ge,
                     image: wine.image,
                     price: wine.price,
-                    unit: 1,
+                    unit: 10,
                   })
                 }
               />
