@@ -15,12 +15,6 @@ function CockTails() {
     t("cocktails.cocktailsSidebar.default")
   );
 
-  // useEffect(() => {
-  //   window.pageYOffset = 0;
-  // }, []);
-
-  console.log("nugo stringi koktaili");
-
   return (
     <div className={`${darkMode ? "bg-[#12151C]" : "bg-[#fff]"}`}>
       <CocktailsHeader

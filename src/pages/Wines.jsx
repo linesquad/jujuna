@@ -11,7 +11,7 @@ import MobileWineFilter from "../components/wineComponents/MobileWineFilter";
 import MobileFilterContainer from "../components/wineComponents/MobileFilterContainer";
 import WineCard from "../components/wineComponents/WineCard";
 
-const Wines = () => {
+const Wines = memo(() => {
   const darkMode = useSelector(getMode);
 
   const { t } = useTranslation();
@@ -47,13 +47,7 @@ const Wines = () => {
           </div>
         </div>
 
-        <div>
-          {/* <Pegination
-            itemsArray={wines}
-            itemsPerPage={winesPerPage}
-            setPeginatedItems={setPaginatedWines}
-          /> */}
-        </div>
+        <div></div>
       </Wrapper>
       {isError && (
         <div className="text-center bg-purple-700 p-2 mb-0 w-full">
@@ -62,6 +56,8 @@ const Wines = () => {
       )}
     </div>
   );
-};
+});
 
-export default memo(Wines);
+Wines.displayName = "Wines";
+
+export default Wines;

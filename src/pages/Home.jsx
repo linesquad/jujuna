@@ -12,7 +12,6 @@ import SaleProducts from "../components/landingComponents/SaleProducts";
 
 const Home = () => {
   const darkMode = useSelector(getMode);
-  console.log("nugo lendingi");
   return (
     <div>
       <div className={`${darkMode ? "bg-[#12151C]" : "bg-[#fff]"}`}>

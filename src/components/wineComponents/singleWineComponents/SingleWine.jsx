@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { useWineById } from "../../../hooks/useWines";
 import Spinner from "../../Spinner";
 import SinglWineCard from "./SingleWineCard";
 import { useSelector } from "react-redux";
@@ -7,6 +6,7 @@ import { getMode } from "../../../features/darkModeSlice";
 import SingleWineReviews from "./SingleWineReviews";
 import SkeletonWineCard from "./SkeletonWineCard";
 import Bottle from "../../landingComponents/Bottle";
+import { useWineById } from "../../../hooks/useWine";
 
 function SingleWine() {
   const { id } = useParams();

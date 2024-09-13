@@ -2,45 +2,12 @@ import axiosInstance from "./axiosInstance";
 
 export const fetchWines = async () => {
   const { data } = await axiosInstance.get(`/wines`);
-
+  console.log("api of wines");
   return data;
 };
 
 export const fetchWineById = async (id) => {
   const { data } = await axiosInstance.get(`/wine/${id}`);
-
+  console.log("api of single wine");
   return data;
 };
-
-// const URL = "http://localhost:8001";
-// // const URL = import.meta.env.SERVER_URL;
-
-// const fetchWines = async () => {
-//   try {
-//     const response = await fetch(`${URL}/wines`);
-//     if (!response.ok) {
-//       throw new Error(`Response status: ${response.status}`);
-//     }
-
-//     const data = await response.json();
-//     return data;
-//   } catch (error) {
-//     console.error(error.message);
-//   }
-// };
-
-// export const fetchWineById = async (id) => {
-//   try {
-//     const response = await fetch(`${URL}/wine/${id}`);
-//     if (!response.ok) {
-//       throw new Error(`Response status: ${response.status}`);
-//     }
-
-//     const data = await response.json();
-//     return data;
-//   } catch (error) {
-//     console.error(error.message);
-//   }
-// };
-
-// export default fetchWines;

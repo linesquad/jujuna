@@ -1,5 +1,6 @@
 import { RiDeleteBin7Line } from "react-icons/ri";
-import { useAddToCart, useGetCartItems } from "../hooks/useAddToCart";
+import { useAddToCart } from "../hooks/useAddToCart";
+import { useGetCartItems } from "../hooks/useGetCartItems";
 
 const DisplayCartItems = () => {
   const { data: cartItems, isError, isLoading, error } = useGetCartItems();

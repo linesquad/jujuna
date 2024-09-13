@@ -1,17 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchCocktails } from "../services/apiCocktails";
+import { fetchCocktailsId } from "../services/apiCocktails";
 
-const useCocktails = () => {
+export const useCocktailId = (id) => {
   const { isLoading, data, isError, error } = useQuery({
-    queryKey: ["cocktail"],
-    queryFn: fetchCocktails,
+    queryKey: ["cocktailId", id],
+    queryFn: () => fetchCocktailsId(id),
 
     refetchOnWindowFocus: false,
     staleTime: 60000,
     cacheTime: 300000,
   });
-  console.log("cocktails hook");
+  console.log("cocktails");
   return { isLoading, data, isError, error };
 };
-
-export default useCocktails;
