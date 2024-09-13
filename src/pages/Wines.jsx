@@ -9,8 +9,13 @@ import { useTranslation } from "react-i18next";
 import MobileWineFilter from "../components/wineComponents/MobileWineFilter";
 import MobileFilterContainer from "../components/wineComponents/MobileFilterContainer";
 import WineCard from "../components/wineComponents/WineCard";
+<<<<<<< HEAD
 import { useWinesCategory } from "../hooks/useWinesCategory";
 import ProductsFilter from "../components/wineComponents/ProductsFilter";
+=======
+import LayoutChanger from "../components/LayoutChanger/LayoutChanger";
+import { wineLayoutOptions } from "../components/LayoutChanger/layoutOptions";
+>>>>>>> c5afb07 (create:LayoutChanger component and files for this)
 
 const Wines = memo(() => {
   const darkMode = useSelector(getMode);
@@ -20,6 +25,12 @@ const Wines = memo(() => {
   const [showFilter, setShowFilter] = useState(false);
   const { data: winesCategory } = useWinesCategory();
   console.log(winesCategory);
+
+  const [layout, setLayout] = useState("default");
+
+  const handleLayoutChange = (newLayout) => {
+    setLayout(newLayout);
+  };
 
   if (isLoading) return <Spinner />;
 
@@ -33,11 +44,19 @@ const Wines = memo(() => {
           <span>/ {t("winePage.navProducts")}</span>
         </div>
 
-        <div className="relative">
+        <div className="relative flex justify-between lg:justify-end">
           <MobileWineFilter setShowFilter={setShowFilter} />
           {showFilter && (
             <MobileFilterContainer setShowFilter={setShowFilter} />
           )}
+
+          <LayoutChanger
+            layouts={wineLayoutOptions}
+            onLayoutChange={handleLayoutChange}
+            activeClass="border-2 border-purple-500"
+            defaultClass="text-gray-500"
+            iconSize={30}
+          />
         </div>
 
         <div className="flex">
@@ -53,8 +72,6 @@ const Wines = memo(() => {
             ))}
           </div>
         </div>
-
-        <div></div>
       </Wrapper>
       {isError && (
         <div className="text-center bg-purple-700 p-2 mb-0 w-full">
