@@ -1,16 +1,19 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addToCart } from "../services/apiCart";
 
 export const useAddToCart = () => {
-  const mutate = useMutation({
+  const queryClient = useQueryClient();
+  const { mutate, isPending } = useMutation({
     mutationFn: addToCart,
     onSuccess: () => {
       console.log("warmatebit daemata");
+      queryClient.invalidateQueries({
+        queryKey: ["cartItems"],
+      });
     },
     onError: (err) => {
       console.log("ver daemata", err);
     },
   });
-
-  return mutate;
+  return { mutate, isPending };
 };

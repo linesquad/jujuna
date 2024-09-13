@@ -31,7 +31,7 @@ function Bottle() {
     <div
       className={`${
         darkMode ? "bg-[#12151C] text-color-primary" : "bg-white"
-      } pt-20`}
+      } pt-4`}
     >
       <Wrapper>
         <h1 className="text-center text-[40px] mb-[5px] md:text-[50px] lg:text-[64px]">

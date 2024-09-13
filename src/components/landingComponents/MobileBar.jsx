@@ -15,7 +15,7 @@ function MobileBar() {
   return (
     <div className="bg-[#A37ABF]">
       <Wrapper>
-        <div className="mb-36">
+        <div className="mb-20 mt-20">
           <div
             className={`relative p-6 sm:pl-20 lg:pl-36 ${
               !darkMode && "text-white"

@@ -4,7 +4,7 @@ import { useGetCartItems } from "../hooks/useGetCartItems";
 
 const DisplayCartItems = () => {
   const { data: cartItems, isError, isLoading, error } = useGetCartItems();
-  const { mutate: updateCart } = useAddToCart();
+  const { mutate: updateCart, isPending } = useAddToCart();
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -59,15 +59,17 @@ const DisplayCartItems = () => {
               <button
                 className="cursor-pointer"
                 onClick={() => handleDecrease(cartItem)}
+                disabled={isPending}
               >
-                -
+                {isPending ? "X" : "-"}
               </button>
               <span>{cartItem.unit}</span>
               <button
                 className="cursor-pointer"
                 onClick={() => handleIncrease(cartItem)}
+                disabled={isPending}
               >
-                +
+                {isPending ? "X" : "+"}
               </button>
             </div>
           </div>
