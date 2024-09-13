@@ -3,7 +3,7 @@ import Wrapper from "../components/Wrapper";
 import { useSelector } from "react-redux";
 import { getMode } from "../features/darkModeSlice";
 import { useWines } from "../hooks/useWines";
-import { useState } from "react";
+import { memo, useState } from "react";
 import Spinner from "../components/Spinner";
 import { useTranslation } from "react-i18next";
 import WineFilter from "../components/wineComponents/WineFilter";
@@ -11,26 +11,14 @@ import MobileWineFilter from "../components/wineComponents/MobileWineFilter";
 import MobileFilterContainer from "../components/wineComponents/MobileFilterContainer";
 import WineCard from "../components/wineComponents/WineCard";
 
-// import { useAddToCart } from "../hooks/useAddToCart";
-
 const Wines = () => {
   const darkMode = useSelector(getMode);
 
   const { t } = useTranslation();
   const { data: wines, isLoading, isError, error } = useWines();
   const [showFilter, setShowFilter] = useState(false);
-  // const [paginatedWines, setPaginatedWines] = useState([]);
-  // const winesPerPage = 6;
-
-  // const { mutate: addToCart } = useAddToCart();
-
-  // useEffect(() => {
-  //   setPaginatedWines(wines?.slice(0, winesPerPage));
-  // }, [wines]);
 
   if (isLoading) return <Spinner />;
-
-  console.log("ghvino nugo stringi");
 
   return (
     <div
@@ -54,19 +42,7 @@ const Wines = () => {
 
           <div className="tiny:-ml-6 grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 relative mb-24 justify-items-center w-full">
             {wines?.map((wine) => (
-              <WineCard
-                key={wine._id}
-                wine={wine}
-                // onAddToCart={() =>
-                //   addToCart({
-                //     productId: wine._id,
-                //     title: wine.titleTranslations.ge,
-                //     image: wine.image,
-                //     price: wine.price,
-                //     unit: 10,
-                //   })
-                // }
-              />
+              <WineCard key={wine._id} wine={wine} />
             ))}
           </div>
         </div>
@@ -88,4 +64,4 @@ const Wines = () => {
   );
 };
 
-export default Wines;
+export default memo(Wines);

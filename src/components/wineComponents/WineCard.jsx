@@ -20,6 +20,7 @@ export default function WineCard({ wine }) {
   const handleAddToCart = (e) => {
     e.stopPropagation();
     e.preventDefault();
+
     addToCart({
       productId: wine._id,
       title:
@@ -42,7 +43,6 @@ export default function WineCard({ wine }) {
           className="small:w-[100px] w-[150px]"
         />
         <div className="small:text-sm small:-ml-4 -ml-8">
-          {/* <p>{i18n.language === "ge" ? wine.name.ge : wine.name.en}</p> */}
           <p>
             {i18n.language === "ge"
               ? wine.titleTranslations.ge

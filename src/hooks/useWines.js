@@ -5,10 +5,9 @@ export const useWines = (type) => {
   const { isLoading, data, isError, error } = useQuery({
     queryKey: ["wine"],
     queryFn: () => fetchWines(type),
+    staleTime: 1000 * 60 * 5, // Data will be considered fresh for 5 minutes
+    cacheTime: 1000 * 60 * 10, // Cache data for 10 minutes
     refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-    // refetchOnMount: false,
-    staleTime: 0,
   });
 
   return { isLoading, data, isError, error };

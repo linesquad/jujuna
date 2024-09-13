@@ -3,22 +3,16 @@ import { FaTimes } from "react-icons/fa";
 import Wrapper from "./Wrapper";
 import { useTranslation } from "react-i18next";
 import DisplayCartItems from "./DisplayCartItems";
-// import { useSelector } from "react-redux";
-// import { totalPrice } from "../features/cartSlice";
-import { useNavigate } from "react-router-dom";
 
 const ModalCart = ({
   isOpen,
   onClose,
   title,
   checkAllProductsText,
-  items,
   onView,
 }) => {
   const modalRef = useRef(null);
   const { t } = useTranslation();
-  const navigate = useNavigate();
-  // const totalItemsPrice = useSelector(totalPrice);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -32,15 +26,6 @@ const ModalCart = ({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [onClose]);
-
-  const handleNavigateToDetails = (item) => {
-    onClose();
-    if (item.age) {
-      navigate(`/wines/${item.id}`);
-    } else {
-      navigate(`/cocktails/${item.id}`);
-    }
-  };
 
   const handleClickCartView = () => {
     onView();
@@ -68,8 +53,8 @@ const ModalCart = ({
             <hr />
             <div className="px-5 h-[123px] overflow-y-scroll w-full">
               <DisplayCartItems
-                items={items}
-                onNavigateToDetails={handleNavigateToDetails}
+              // items={items}
+              // onNavigateToDetails={handleNavigateToDetails}
               />
             </div>
             <hr />
