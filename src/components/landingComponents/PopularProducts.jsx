@@ -7,6 +7,7 @@ import Wrapper from "../Wrapper";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import usePopularProducts from "../../hooks/usePopularProducts";
 import SingleProduct from "./SingleProduct";
+import { Autoplay } from "swiper/modules";
 
 export default function PopularProducts() {
   const swiperRef = useRef(null);
@@ -19,7 +20,7 @@ export default function PopularProducts() {
         <div className="mt-[100px]">
           <div className="flex items-center justify-between pl-[50px] pb-[12px] border-b-[1px] border-[#D9D9D9]">
             <h2 className="text-[16px] md:text-[22px] lg:text-[32px] text-[#848282]">
-              ფასდაკლებული პროდუქტები
+              პოპულარული პროდუქტები
             </h2>
 
             <div className="hidden lg:flex items-center gap-[4px]">
@@ -44,6 +45,12 @@ export default function PopularProducts() {
                 swiperRef.current = swiper;
               }}
               speed={1000}
+              modules={[Autoplay]}
+              autoplay={{
+                delay: 2000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
               breakpoints={{
                 350: {
                   slidesPerView: 2,

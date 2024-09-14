@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useDiscountProducts } from "../../hooks/useDiscountProducts";
 import SingleProduct from "./SingleProduct";
+import { Autoplay } from "swiper/modules";
 
 function SaleProducts() {
   const swiperRef = useRef(null);
@@ -42,6 +43,12 @@ function SaleProducts() {
                 swiperRef.current = swiper;
               }}
               speed={1000}
+              modules={[Autoplay]}
+              autoplay={{
+                delay: 2000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
               breakpoints={{
                 350: {
                   slidesPerView: 2,

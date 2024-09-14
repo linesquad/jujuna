@@ -6,11 +6,11 @@ import { useWines } from "../hooks/useWines";
 import { memo, useState } from "react";
 import Spinner from "../components/Spinner";
 import { useTranslation } from "react-i18next";
-import WineFilter from "../components/wineComponents/WineFilter";
 import MobileWineFilter from "../components/wineComponents/MobileWineFilter";
 import MobileFilterContainer from "../components/wineComponents/MobileFilterContainer";
 import WineCard from "../components/wineComponents/WineCard";
 import { useWinesCategory } from "../hooks/useWinesCategory";
+import ProductsFilter from "../components/wineComponents/ProductsFilter";
 
 const Wines = memo(() => {
   const darkMode = useSelector(getMode);
@@ -41,7 +41,7 @@ const Wines = memo(() => {
         </div>
 
         <div className="flex">
-          <WineFilter
+          <ProductsFilter
             minValue={10}
             maxValue={1000}
             categories={winesCategory}

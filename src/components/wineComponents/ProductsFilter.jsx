@@ -3,7 +3,7 @@ import ReactSlider from "react-slider";
 import FilterItem from "./FilterItem";
 import { useTranslation } from "react-i18next";
 
-export default function WineFilter({ minValue, maxValue, categories }) {
+export default function ProductsFilter({ minValue, maxValue, categories }) {
   const [sliderValues, setSliderValues] = useState([]);
   const { i18n } = useTranslation();
 
