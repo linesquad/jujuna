@@ -10,7 +10,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import WineCard from "../wineComponents/WineCard";
+
+import WineCard from "../wineComponents/wineCardComponents/WineCard";
 
 function Bottle() {
   const { t } = useTranslation();

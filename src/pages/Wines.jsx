@@ -6,16 +6,14 @@ import { useWines } from "../hooks/useWines";
 import { memo, useState } from "react";
 import Spinner from "../components/Spinner";
 import { useTranslation } from "react-i18next";
+import WineFilter from "../components/wineComponents/WineFilter";
 import MobileWineFilter from "../components/wineComponents/MobileWineFilter";
 import MobileFilterContainer from "../components/wineComponents/MobileFilterContainer";
-import WineCard from "../components/wineComponents/WineCard";
-<<<<<<< HEAD
-import { useWinesCategory } from "../hooks/useWinesCategory";
-import ProductsFilter from "../components/wineComponents/ProductsFilter";
-=======
 import LayoutChanger from "../components/LayoutChanger/LayoutChanger";
 import { wineLayoutOptions } from "../components/LayoutChanger/layoutOptions";
->>>>>>> c5afb07 (create:LayoutChanger component and files for this)
+import WineCard from "../components/wineComponents/wineCardComponents/WineCard";
+import ListWineCard from "../components/wineComponents/wineCardComponents/ListWineCard";
+import ColWineCard from "../components/wineComponents/wineCardComponents/ColWineCard";
 
 const Wines = memo(() => {
   const darkMode = useSelector(getMode);
@@ -23,8 +21,6 @@ const Wines = memo(() => {
   const { t } = useTranslation();
   const { data: wines, isLoading, isError, error } = useWines();
   const [showFilter, setShowFilter] = useState(false);
-  const { data: winesCategory } = useWinesCategory();
-  console.log(winesCategory);
 
   const [layout, setLayout] = useState("default");
 
@@ -37,11 +33,9 @@ const Wines = memo(() => {
   const layoutStyles = {
     default:
       "tiny:-ml-6 grid gap-4  grid-cols-1 md:grid-cols-2 xl:grid-cols-3 relative  justify-items-center ",
-    list: "flex flex-col gap-4 ",
-    col: "",
+    list: "flex flex-col ",
+    col: "flex flex-col ",
   };
-
-  console.log(layout);
 
   return (
     <div
@@ -69,18 +63,18 @@ const Wines = memo(() => {
         </div>
 
         <div className="flex">
-          <ProductsFilter
-            minValue={10}
-            maxValue={1000}
-            categories={winesCategory}
-          />
+          <WineFilter />
 
-          <div className={`w-full mb-24 ${layoutStyles[layout]}  `}>
+          <div className={`w-full mb-24 ${layoutStyles[layout]}`}>
             {wines?.map((wine) => (
               <>
                 {layout === "default" && (
                   <WineCard key={wine._id} wine={wine} />
                 )}
+                {layout === "list" && (
+                  <ListWineCard key={wine._id} wine={wine} />
+                )}
+                {layout === "col" && <ColWineCard key={wine._id} wine={wine} />}
               </>
             ))}
           </div>

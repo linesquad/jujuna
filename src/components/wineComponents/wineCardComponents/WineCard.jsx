@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { useWineCard } from "../../hooks/useWineCard";
-import i18n from "../../i18n";
+import { useWineCard } from "../../../hooks/useWineCard";
+import i18n from "../../../i18n";
 
-export default function DefaultWineCard({ wine }) {
+export default function WineCard({ wine }) {
   const { darkMode, t, handleClick, handleAddToCart, wineNotAvailable } =
     useWineCard(wine);
 
