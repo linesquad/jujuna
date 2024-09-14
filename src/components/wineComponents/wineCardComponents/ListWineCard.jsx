@@ -43,13 +43,21 @@ const ListWineCard = ({ wine }) => {
 
       <div className="flex w-[20%] pl-5 border-l-[1px] border-color-[#d9d6d3] ">
         <div className="flex flex-col">
-          <p className="text-black text-[28px] font-semibold">
+          <p
+            className={`${
+              darkMode ? "white" : "text-black"
+            } text-[28px] font-semibold  `}
+          >
             ${parseFloat(wine.price).toFixed(2)}
           </p>
 
           <span className="text-[#008E28] mb-3">გაყიდვაშია</span>
 
-          <div className="flex gap-[14px] justify-center  bg-[#EDECEC] rounded-[39px] py-[6px] px-[9.5px] mb-[18px]">
+          <div
+            className={`flex gap-[14px] justify-center  ${
+              darkMode ? "bg-[#5D5D5D]" : "bg-[#EDECEC]"
+            } rounded-[39px] py-[6px] px-[9.5px] mb-[18px]`}
+          >
             <button
               onClick={decrement}
               className="w-8 h-8 bg-white rounded-full text-black px-4 py-2 text-center flex justify-center items-center"
@@ -106,8 +114,5 @@ const ListWineCard = ({ wine }) => {
     </div>
   );
 };
-
-{
-}
 
 export default ListWineCard;
