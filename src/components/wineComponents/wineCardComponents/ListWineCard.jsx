@@ -41,7 +41,7 @@ const ListWineCard = ({ wine }) => {
         </div>
       </Link>
 
-      <div className="flex w-[20%] pl-5 border-l-[1px] border-color-[#d9d6d3]">
+      <div className="flex w-[20%] pl-5 border-l-[1px] border-color-[#d9d6d3] ">
         <div className="flex flex-col">
           <p className="text-black text-[28px] font-semibold">
             ${parseFloat(wine.price).toFixed(2)}

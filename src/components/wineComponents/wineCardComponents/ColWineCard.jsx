@@ -5,7 +5,7 @@ import i18n from "../../../i18n";
 import { useState } from "react";
 
 const ColWineCard = ({ wine }) => {
-  const { darkMode, t, handleClick, handleAddToCart, wineNotAvailable } =
+  const { darkMode, handleClick, handleAddToCart, wineNotAvailable } =
     useWineCard(wine);
 
   const [count, setCount] = useState(0);
@@ -84,7 +84,7 @@ const ColWineCard = ({ wine }) => {
       </div>
 
       {/* Marjvena */}
-      <div className="flex items-center gap-16 width-[20%] justify-start">
+      <div className="flex items-center gap-16 w-[30%] justify-start">
         <div className="flex gap-[14px] justify-center  bg-[#EDECEC] rounded-[39px] py-[6px] px-[9.5px] ">
           <button
             onClick={decrement}
@@ -103,7 +103,6 @@ const ColWineCard = ({ wine }) => {
           </button>
         </div>
         <p className="text-black text-[28px] font-semibold">
-          {" "}
           ${parseFloat(wine.price).toFixed(2)}
         </p>
       </div>
