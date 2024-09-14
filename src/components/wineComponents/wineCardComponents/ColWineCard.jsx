@@ -18,9 +18,9 @@ const ColWineCard = ({ wine }) => {
   }
 
   return (
-    <div className="flex items-stretch  justify-between  w-full py-6 px-7 border-y-[0.5px] border-[rgba(62, 62, 62, 0.70)] ">
+    <div className="flex   justify-between  w-full py-6 px-7 border-y-[0.5px] border-[rgba(62, 62, 62, 0.70)] ">
       {/* Marcxena */}
-      <div className="flex">
+      <div className="flex width-[80%]">
         <div className="flex gap-3 items-center">
           <button
             onClick={(e) => {
@@ -84,7 +84,7 @@ const ColWineCard = ({ wine }) => {
       </div>
 
       {/* Marjvena */}
-      <div className="flex items-center gap-16">
+      <div className="flex items-center gap-16 width-[20%] justify-start">
         <div className="flex gap-[14px] justify-center  bg-[#EDECEC] rounded-[39px] py-[6px] px-[9.5px] ">
           <button
             onClick={decrement}
@@ -102,7 +102,10 @@ const ColWineCard = ({ wine }) => {
             +
           </button>
         </div>
-        <p className="text-black text-[28px] font-semibold">${wine.price}</p>
+        <p className="text-black text-[28px] font-semibold">
+          {" "}
+          ${parseFloat(wine.price).toFixed(2)}
+        </p>
       </div>
     </div>
   );
