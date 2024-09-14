@@ -2,22 +2,24 @@ import OneNews from "../../landingComponents/LandingBlog";
 import { SwiperSlide } from "swiper/react";
 import { FreeMode, Mousewheel, Navigation, Pagination } from "swiper/modules";
 import { Swiper } from "swiper/react";
-import useBlogs from "../../../hooks/useBlogs";
+// import useBlogs from "../../../hooks/useBlogs";
 import SkeletonDiv from "../../SkeletonDiv";
 import { useRef } from "react";
 import { RiArrowDownWideLine, RiArrowUpWideLine } from "react-icons/ri";
 import { useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
 import { useParams } from "react-router-dom";
+import useFetchAllBlogs from "../../../services/useFetchAllBlogs";
 
 const NewsDetailsRightSide = () => {
   const darkMode = useSelector(getMode);
-  const { data: blogNews, isLoading, error } = useBlogs();
+  const { data: blogNews, isLoading, error } = useFetchAllBlogs();
   const swiperRef = useRef(null);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const { id } = useParams();
-  console.log(id);
+
+  console.log(blogNews);
 
   if (isLoading || !blogNews || blogNews.length === 0) {
     return (
@@ -101,13 +103,13 @@ const NewsDetailsRightSide = () => {
         modules={[FreeMode, Pagination, Mousewheel, Navigation]}
       >
         {blogNews
-          .filter((item) => String(item.id) !== String(id)) // Convert both IDs to strings
+          .filter((item) => String(item._id) !== String(id)) // Convert both IDs to strings
           .map((item, index) => (
-            <SwiperSlide key={item.id}>
+            <SwiperSlide key={item._id}>
               <OneNews
-                id={item.id}
+                id={item._id}
                 image={item.image}
-                description={item.description}
+                description={item.text}
                 title={item.title}
                 bgColor={`${index % 2 === 0 ? "bg-gray-500" : "bg-black"}`}
                 type={"primary"}
