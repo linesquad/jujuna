@@ -10,6 +10,7 @@ import WineFilter from "../components/wineComponents/WineFilter";
 import MobileWineFilter from "../components/wineComponents/MobileWineFilter";
 import MobileFilterContainer from "../components/wineComponents/MobileFilterContainer";
 import WineCard from "../components/wineComponents/WineCard";
+import { useWinesCategory } from "../hooks/useWinesCategory";
 
 const Wines = memo(() => {
   const darkMode = useSelector(getMode);
@@ -17,6 +18,8 @@ const Wines = memo(() => {
   const { t } = useTranslation();
   const { data: wines, isLoading, isError, error } = useWines();
   const [showFilter, setShowFilter] = useState(false);
+  const { data: winesCategory } = useWinesCategory();
+  console.log(winesCategory);
 
   if (isLoading) return <Spinner />;
 
@@ -38,7 +41,11 @@ const Wines = memo(() => {
         </div>
 
         <div className="flex">
-          <WineFilter />
+          <WineFilter
+            minValue={10}
+            maxValue={1000}
+            categories={winesCategory}
+          />
 
           <div className="tiny:-ml-6 grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 relative mb-24 justify-items-center w-full">
             {wines?.map((wine) => (

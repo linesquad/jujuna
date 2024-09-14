@@ -1,11 +1,11 @@
 import { useState } from "react";
 import ReactSlider from "react-slider";
 import FilterItem from "./FilterItem";
+import { useTranslation } from "react-i18next";
 
-const categories = ["მშრალი", "ტკბილი"];
-
-export default function WineFilter() {
+export default function WineFilter({ minValue, maxValue, categories }) {
   const [sliderValues, setSliderValues] = useState([]);
+  const { i18n } = useTranslation();
 
   return (
     <div className="hidden lg:block h-96 w-[200px]">
@@ -16,7 +16,7 @@ export default function WineFilter() {
         <div className="flex items-center gap-[6px]">
           <input
             type="text"
-            defaultValue={10}
+            defaultValue={minValue}
             value={sliderValues[0]}
             className="h-[30px] w-[60px] pl-[10px] border border-[#eaeaea] rounded-[6px]"
           />
@@ -25,7 +25,7 @@ export default function WineFilter() {
         <div className="flex items-center gap-[6px]">
           <input
             type="text"
-            defaultValue={1000}
+            defaultValue={maxValue}
             value={sliderValues[1]}
             className="h-[30px] w-[60px] pl-[10px] border border-[#eaeaea] rounded-[6px]"
           />
@@ -37,15 +37,26 @@ export default function WineFilter() {
           className="horizontal-slider "
           thumbClassName="example-thumb"
           trackClassName="example-track"
-          defaultValue={[10, 1000]}
-          max={1000}
-          min={10}
+          defaultValue={[minValue, maxValue]}
+          max={maxValue}
+          min={minValue}
           onChange={(value) => setSliderValues(value)}
         />
       </div>
       <div className="mt-[90px] flex flex-col gap-[21px]">
-        <FilterItem title="ტიპი" categories={categories} />
-        <FilterItem title="ფერი" categories={categories} />
+        {categories?.map((item) => {
+          return (
+            <FilterItem
+              key={item._id}
+              title={
+                i18n.language === "ge"
+                  ? item.titleTranslations.ge
+                  : item.titleTranslations.en
+              }
+              subCategories={item.subCategories}
+            />
+          );
+        })}
       </div>
     </div>
   );

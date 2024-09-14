@@ -26,6 +26,7 @@
   .horizontal-slider .example-track {
     top: 20px;
     height: 5px;
+    border-radius: 10px;
   }
 
   .example-track.example-track-0 {

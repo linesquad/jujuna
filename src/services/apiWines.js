@@ -11,3 +11,8 @@ export const fetchWineById = async (id) => {
   console.log("api of single wine");
   return data;
 };
+
+export const fetchWineCategories = async () => {
+  const { data } = await axiosInstance.get("/wine-categories");
+  return data;
+};

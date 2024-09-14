@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
-export default function FilterItem({ title, mobile, categories }) {
+export default function FilterItem({ title, mobile, subCategories }) {
   const [isOpen, setIsOpen] = useState(false);
+  const { i18n } = useTranslation();
 
   return (
     <div>
@@ -19,8 +21,17 @@ export default function FilterItem({ title, mobile, categories }) {
       </button>
       {isOpen && (
         <div className="pl-4 pt-2 flex flex-col gap-[17px]">
-          {categories?.map((item, index) => {
-            return <span key={index}>{item}</span>;
+          {subCategories?.map((item, index) => {
+            return (
+              <div key={index} className="flex items-center gap-[12px]">
+                <div className="w-[22px] h-[22px] rounded-md border border-[#E9EBEC] flex justify-center items-center"></div>
+                <span className="w-full">
+                  {i18n.language === "ge"
+                    ? item.titleTranslations.ge
+                    : item.titleTranslations.en}
+                </span>
+              </div>
+            );
           })}
         </div>
       )}
