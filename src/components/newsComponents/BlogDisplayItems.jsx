@@ -2,10 +2,13 @@ import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+// import { useGetBlogsById } from "../../hooks/useGetBlogsById";
 
 const BlogDisplayItems = ({ item, index }) => {
   const mode = useSelector(getMode);
   const { t } = useTranslation();
+
+  console.log(item._id);
 
   return (
     <div
@@ -36,7 +39,7 @@ const BlogDisplayItems = ({ item, index }) => {
         <p className={`pt-2 ${mode ? "text-white" : "text-black"} text-base`}>
           {item.text.length > 170 ? item.text.slice(0, 170) + "..." : item.text}
         </p>
-        <Link to={`/news/${item.id}`}>
+        <Link to={`/news/${item._id}`}>
           <button
             className={`${
               mode ? "bg-[#58387F]" : "bg-[#000]"

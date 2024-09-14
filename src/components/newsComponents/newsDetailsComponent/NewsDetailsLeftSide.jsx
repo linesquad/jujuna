@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { useBlogId } from "../../../hooks/useBlogs";
+// import { useBlogId } from "../../../hooks/useBlogs";
 // import { parseISO, format } from "date-fns";
 import { getMode } from "../../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";
@@ -8,14 +8,16 @@ import NewsShare from "./NewsShare";
 import { useParams } from "react-router-dom";
 import ComentarNews from "./ComentarNews";
 import NewsDetailsWriteComment from "./NewsDetailsWriteComment";
+import { useGetBlogsById } from "../../../hooks/useGetBlogsById";
 import NewsDetailsLeftSkeleton from "./NewsDetailsLeftSkeleton";
 
 const NewsDetailsLeftSide = () => {
   const { id } = useParams();
   const mode = useSelector(getMode);
   const { t, i18n } = useTranslation();
-  const { data, isLoading, isError, error } = useBlogId(id);
-
+  // const { data, isLoading, isError, error } = useBlogId(id);
+  const { data, isLoading, isError, error } = useGetBlogsById(id);
+  console.log(data);
   if (isLoading) {
     return <NewsDetailsLeftSkeleton />;
   }
@@ -28,14 +30,12 @@ const NewsDetailsLeftSide = () => {
     );
   }
 
-  const desc =
-    i18n.language === "ge" ? data.description.ge : data.description.en;
+  const desc = data.text;
+
+  // i18n.language === "ge" ? data.description.ge : data.description.en;
 
   const descArray = desc.split("*");
 
-  // const isoDateString = data.created_at;
-  // const date = parseISO(isoDateString);
-  // const formattedDate = format(date, "dd/MM/yyyy");
   return (
     <div className="lg:col-span-2">
       <div className="flex flex-col gap-1 sm:gap-[5px] md:gap-[6px] lg:gap-2">
@@ -44,7 +44,7 @@ const NewsDetailsLeftSide = () => {
             mode ? "text-white" : "text-black"
           } text-2xl sm:text-[28px] md:text-[32px] lg:text-4xl`}
         >
-          {i18n.language === "ge" ? data.title.ge : data.title.en}
+          {/* {i18n.language === "ge" ? data.title.ge : data.title.en} */}
         </h1>
 
         <div className="flex gap-4 sm:gap-5 md:gap-6 lg:gap-7">
@@ -56,7 +56,7 @@ const NewsDetailsLeftSide = () => {
           <p
             className={`text-base sm:text-[19px] md:text-[22px] lg:text-2xl text-[#ADACAC]`}
           >
-            {i18n.language === "ge" ? data.author.ge : data.author.en}
+            {/* {i18n.language === "ge" ? data.author.ge : data.author.en} */}
           </p>
         </div>
       </div>

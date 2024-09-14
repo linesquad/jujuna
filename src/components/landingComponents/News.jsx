@@ -4,14 +4,15 @@ import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import { FreeMode, Pagination } from "swiper/modules";
 import Wrapper from "../Wrapper";
-import { useLatestBlogs } from "../../hooks/useLatestItems";
 import OneNews from "./LandingBlog";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
+import { useLatestBlogs } from "../../hooks/useLastestBlogs";
 
 const News = () => {
   const { data: blogNews, isLoading, error } = useLatestBlogs();
+  console.log(blogNews);
   const { i18n } = useTranslation();
   const darkMode = useSelector(getMode);
 
@@ -53,12 +54,12 @@ const News = () => {
         modules={[FreeMode, Pagination]}
       >
         {blogNews.map((item, index) => (
-          <SwiperSlide key={item.id}>
+          <SwiperSlide key={item._id}>
             <OneNews
               image={item.image}
-              description={item.description}
+              description={item.text}
               title={item.title}
-              id={item.id}
+              id={item._id}
               bgColor={`${index % 2 === 0 ? "bg-gray-500" : "bg-black"}`}
               type={"primary"}
             />
