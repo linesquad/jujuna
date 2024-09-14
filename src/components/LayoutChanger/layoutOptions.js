@@ -12,7 +12,7 @@ export const wineLayoutOptions = [
     icon: FiList,
   },
   {
-    name: "mixed",
+    name: "col",
     icon: FaAlignJustify,
   },
 ];

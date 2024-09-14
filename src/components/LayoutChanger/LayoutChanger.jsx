@@ -16,7 +16,7 @@ const LayoutChanger = ({
   };
 
   return (
-    <div className="flex space-x-4">
+    <div className="flex space-x-4 mb-2.5">
       {layouts.map((layout) => (
         <button
           key={layout.name}

@@ -34,6 +34,15 @@ const Wines = memo(() => {
 
   if (isLoading) return <Spinner />;
 
+  const layoutStyles = {
+    default:
+      "tiny:-ml-6 grid gap-4  grid-cols-1 md:grid-cols-2 xl:grid-cols-3 relative  justify-items-center ",
+    list: "flex flex-col gap-4 ",
+    col: "",
+  };
+
+  console.log(layout);
+
   return (
     <div
       className={`${darkMode ? "bg-[#12151C] text-[#fff]" : "bg-[#fff]"} p-4`}
@@ -66,9 +75,13 @@ const Wines = memo(() => {
             categories={winesCategory}
           />
 
-          <div className="tiny:-ml-6 grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 relative mb-24 justify-items-center w-full">
+          <div className={`w-full mb-24 ${layoutStyles[layout]}  `}>
             {wines?.map((wine) => (
-              <WineCard key={wine._id} wine={wine} />
+              <>
+                {layout === "default" && (
+                  <WineCard key={wine._id} wine={wine} />
+                )}
+              </>
             ))}
           </div>
         </div>

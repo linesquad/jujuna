@@ -1,38 +1,12 @@
-import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
-import { getMode } from "../../features/darkModeSlice";
 import { Link } from "react-router-dom";
-import { useAddToCart } from "../../hooks/useAddToCart";
+import { useWineCard } from "../../hooks/useWineCard";
+import i18n from "../../i18n";
 
-export default function WineCard({ wine }) {
-  const { i18n, t } = useTranslation();
-  const darkMode = useSelector(getMode);
-  const { mutate: addToCart } = useAddToCart();
+export default function DefaultWineCard({ wine }) {
+  const { darkMode, t, handleClick, handleAddToCart, wineNotAvailable } =
+    useWineCard(wine);
 
-  if (!wine) {
-    return null;
-  }
-
-  const handleClick = () => {
-    window.scrollTo(0, 0);
-  };
-
-  const handleAddToCart = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-
-    addToCart({
-      productId: wine._id,
-      title:
-        i18n.language === "ge"
-          ? wine.titleTranslations.ge
-          : wine.titleTranslations.en,
-      image: wine.url,
-      price: wine.price,
-      unit: 1,
-      productType: "wine",
-    });
-  };
+  if (wineNotAvailable) return null;
 
   return (
     <Link to={`/wines/${wine._id}`} onClick={handleClick}>
