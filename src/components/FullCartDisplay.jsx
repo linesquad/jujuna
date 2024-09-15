@@ -62,15 +62,18 @@ const FullCartDisplay = ({ isOpen, onClose, title }) => {
 
       <div
         ref={modalRef}
-        className="relative ml-auto w-[350px] h-full bg-white shadow-xl rounded-lg flex flex-col"
+        className="relative ml-auto h-full bg-white shadow-xl rounded-lg flex flex-col
+        tiny:w-[200px] smaller:w-[250px] w-[350px]"
       >
         <div className="flex justify-between items-center p-5 border-b border-gray-200">
-          <h2 className="text-xl font-bold text-gray-800">{title}</h2>
+          <h2 className="text-xl font-bold text-gray-800 tiny:text-base smaller:text-lg">
+            {title}
+          </h2>
           <button
             className="text-gray-600 hover:text-gray-800"
             onClick={onClose}
           >
-            <FaTimes size={20} />
+            <FaTimes className="tiny:text-[18px] smaller:text-[19px] text-[20px]" />
           </button>
         </div>
 
@@ -81,24 +84,37 @@ const FullCartDisplay = ({ isOpen, onClose, title }) => {
             cartItems.map((item) => (
               <div
                 key={item._id}
-                className="flex items-center py-4 border-b border-gray-200"
+                className="flex items-center py-4 border-b border-gray-200 tiny:flex-col smaller:flex-col"
               >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  // alt={i18n.language === "en" ? item.name.en : item.name.ge}
-                  className="w-[80px] h-[120px] object-cover mr-3 rounded-md cursor-pointer"
-                />
-                <div className="flex flex-col flex-grow justify-between gap-2">
-                  <h3 className="text-base break-words w-[120px] cursor-pointer">
-                    {/* {i18n.language === "en" ? item.name.en : item.name.ge} */}
-                    {item.title}
-                  </h3>
-                  <p className="font-semibold text-[22px]">${item.price}</p>
+                <div className="flex items-center">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    // alt={i18n.language === "en" ? item.name.en : item.name.ge}
+                    className="w-[80px] h-[120px] object-cover mr-3 rounded-md cursor-pointer
+                  tiny:w-[40px] tiny:h-[80px] smaller:w-[60ox] smaller:h-auto"
+                  />
+                  <div className="flex flex-col flex-grow justify-between gap-2">
+                    <h3
+                      className="text-base break-words w-[120px] cursor-pointer
+                  tiny:text-xs smaller:text-sm"
+                    >
+                      {/* {i18n.language === "en" ? item.name.en : item.name.ge} */}
+                      {item.title}
+                    </h3>
+                    <p className="font-semibold text-[22px] tiny:text-lg smaller:text-xl">
+                      ${item.price}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="">
-                  <div className="flex flex-col items-end gap-6 w-full px-2 py-1">
+                <div className="w-full">
+                  <div
+                    className="flex flex-col items-end gap-6 w-full px-2 py-1 
+                    tiny:flex-row-reverse tiny:items-center tiny:pt-3
+                  tiny:justify-around
+                  smaller:flex-row-reverse smaller:items-center smaller:pt-4 smaller:justify-around"
+                  >
                     <RiDeleteBin7Line
                       size={20}
                       onClick={() => handleDelete(item)}
