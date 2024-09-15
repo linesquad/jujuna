@@ -3,8 +3,9 @@ import { useWineCard } from "../../../hooks/useWineCard";
 import i18n from "../../../i18n";
 
 export default function WineCard({ wine }) {
+  const count = 1;
   const { darkMode, t, handleClick, handleAddToCart, wineNotAvailable } =
-    useWineCard(wine);
+    useWineCard(wine, count);
 
   if (wineNotAvailable) return null;
 

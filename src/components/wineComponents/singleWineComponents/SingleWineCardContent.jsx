@@ -9,7 +9,6 @@ import CartQuantity from "./CartQuantity";
 function SingleWineCardContent({ wine }) {
   const { i18n } = useTranslation();
   const darkMode = useSelector(getMode);
-  console.log(wine);
 
   return (
     <div className="tiny:p-1 flex flex-col items-start max-w-full lg:max-w-[600px]">
@@ -24,10 +23,6 @@ function SingleWineCardContent({ wine }) {
           <p className="hidden lg:block font-medium text-backgroundColor-purpleMid lg:text-[48px] mt-4">
             {wine.price}₾
           </p>
-          {/* <SingleWineInfo
-            title={i18n.language === "ge" ? "ღვინო" : "Wine"}
-            value={i18n.language === "ge" ? wine.color.ge : wine.color.en}
-          /> */}
           <SingleWineInfo
             title={i18n.language === "ge" ? "ტექნოლოგია" : "Technology"}
             value={

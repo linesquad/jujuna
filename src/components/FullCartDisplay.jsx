@@ -1,11 +1,15 @@
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 import { FaTimes } from "react-icons/fa";
 import { useRef, useEffect } from "react";
 import { RiDeleteBin7Line } from "react-icons/ri";
+import { useGetCartItems } from "../hooks/useGetCartItems";
+import { useAddToCart } from "../hooks/useAddToCart";
 
-const FullCartDisplay = ({ isOpen, onClose, title, items = [] }) => {
-  const { i18n } = useTranslation();
+const FullCartDisplay = ({ isOpen, onClose, title }) => {
+  // const { i18n } = useTranslation();
   const modalRef = useRef(null);
+  const { data: cartItems, isError, isLoading, error } = useGetCartItems();
+  const { mutate: updateCart, isPending } = useAddToCart();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -20,8 +24,37 @@ const FullCartDisplay = ({ isOpen, onClose, title, items = [] }) => {
 
   if (!isOpen) return null;
 
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>{error.message}</p>;
+  }
+
+  const handleDecrease = (item) => {
+    updateCart({
+      ...item,
+      unit: item.unit - 1,
+    });
+  };
+
+  const handleIncrease = (item) => {
+    updateCart({
+      ...item,
+      unit: item.unit + 1,
+    });
+  };
+
+  const handleDelete = (item) => {
+    updateCart({
+      ...item,
+      unit: 0,
+    });
+  };
+
   return (
-    <div className="fixed inset-0 z-50 lg:flex lg:pt-[110px]">
+    <div className="fixed inset-0 z-50 lg:flex ">
       <div
         className="absolute inset-0 bg-black bg-opacity-50"
         onClick={onClose}
@@ -42,33 +75,50 @@ const FullCartDisplay = ({ isOpen, onClose, title, items = [] }) => {
         </div>
 
         <div className="flex-1 p-5 overflow-y-scroll">
-          {items.length === 0 ? (
+          {cartItems.length === 0 ? (
             <p className="text-center text-gray-500">Your cart is empty.</p>
           ) : (
-            items.map((item) => (
+            cartItems.map((item) => (
               <div
-                key={item.id}
+                key={item._id}
                 className="flex items-center py-4 border-b border-gray-200"
               >
                 <img
                   src={item.image}
-                  alt={i18n.language === "en" ? item.name.en : item.name.ge}
+                  alt={item.title}
+                  // alt={i18n.language === "en" ? item.name.en : item.name.ge}
                   className="w-[80px] h-[120px] object-cover mr-3 rounded-md cursor-pointer"
                 />
                 <div className="flex flex-col flex-grow justify-between gap-2">
                   <h3 className="text-base break-words w-[120px] cursor-pointer">
-                    {i18n.language === "en" ? item.name.en : item.name.ge}
+                    {/* {i18n.language === "en" ? item.name.en : item.name.ge} */}
+                    {item.title}
                   </h3>
                   <p className="font-semibold text-[22px]">${item.price}</p>
                 </div>
 
                 <div className="">
                   <div className="flex flex-col items-end gap-6 w-full px-2 py-1">
-                    <RiDeleteBin7Line size={20} />
+                    <RiDeleteBin7Line
+                      size={20}
+                      onClick={() => handleDelete(item)}
+                    />
                     <div className="w-[80px] h-[35px] border rounded-full border-[#8F8F8F] px-2 py-1 flex gap-4">
-                      <button className="cursor-pointer">-</button>
-                      <span>{item.quantity}</span>
-                      <button className="cursor-pointer">+</button>
+                      <button
+                        className="cursor-pointer"
+                        onClick={() => handleDecrease(item)}
+                        disabled={isPending}
+                      >
+                        {isPending ? "X" : "-"}
+                      </button>
+                      <span>{item.unit}</span>
+                      <button
+                        className="cursor-pointer"
+                        onClick={() => handleIncrease(item)}
+                        disabled={isPending}
+                      >
+                        {isPending ? "X" : "+"}
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -77,14 +127,14 @@ const FullCartDisplay = ({ isOpen, onClose, title, items = [] }) => {
           )}
         </div>
 
-        {items.length > 0 && (
+        {cartItems.length > 0 && (
           <div className="p-5 border-t border-gray-200 bg-gray-50">
             <div className="flex justify-between items-center">
               <p className="text-lg font-semibold text-gray-700">Total:</p>
               <p className="text-lg font-bold text-gray-800">
                 $
-                {items.reduce(
-                  (total, item) => total + item.price * item.quantity,
+                {cartItems.reduce(
+                  (total, item) => total + item.price * item.unit,
                   0
                 )}
               </p>

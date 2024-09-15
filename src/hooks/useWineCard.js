@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { getMode } from "../features/darkModeSlice";
 import { useAddToCart } from "./useAddToCart";
 
-export function useWineCard(wine) {
+export function useWineCard(wine, count) {
   const { i18n, t } = useTranslation();
   const darkMode = useSelector(getMode);
   const { mutate: addToCart } = useAddToCart();
@@ -28,7 +28,7 @@ export function useWineCard(wine) {
           : wine.titleTranslations.en,
       image: wine.url,
       price: wine.price,
-      unit: 1,
+      unit: count,
       productType: "wine",
     });
   };

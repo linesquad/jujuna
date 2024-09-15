@@ -11,17 +11,13 @@ import { FaSearch } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
-import ModalCart from "../../ModalCart";
 import { useEffect, useRef, useState } from "react";
-// import { cartItems } from "../../../features/cartSlice";
 import { useTranslation } from "react-i18next";
 import FullCartDisplay from "../../FullCartDisplay";
 
 const CloseBurger = ({ setIsAuthModalOpen }) => {
   const open = useSelector(getIsOpen);
   const darkMode = useSelector(getMode);
-  const [modalOpen, setModalOpen] = useState(false);
-  // const items = useSelector(cartItems);
   const { t } = useTranslation();
   const [viewCart, setViewCart] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
@@ -40,17 +36,11 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
     };
   }, []);
 
-  const toggleModal = () => {
-    setModalOpen((prev) => !prev);
-  };
-
   const closeAllModals = () => {
-    setModalOpen(false);
     setViewCart(false);
   };
 
   const toggleViewCart = () => {
-    setModalOpen(false);
     setViewCart(true);
   };
 
@@ -101,7 +91,7 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
                   <FaShoppingCart
                     color={`${darkMode ? "#fff" : "#000"}`}
                     size={20}
-                    onClick={toggleModal}
+                    onClick={toggleViewCart}
                   />
                   <FaHeart color={`${darkMode ? "#fff" : "#000"}`} size={20} />
                   <div className="h-[27px] border-[1px] bprder-[#fff]"></div>
@@ -117,19 +107,10 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
           </div>
         </Wrapper>
       </div>
-      <ModalCart
-        isOpen={modalOpen}
-        onClose={toggleModal}
-        title={t("cartSlicer.myCart")}
-        checkAllProductsText={t("cartSlicer.checkCard")}
-        // items={items}
-        onView={toggleViewCart}
-      />
       <FullCartDisplay
         isOpen={viewCart}
         onClose={closeAllModals}
         title={t("cartSlicer.myCart")}
-        // items={items}
       />
     </div>
   );

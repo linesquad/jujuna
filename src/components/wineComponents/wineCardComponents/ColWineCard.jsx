@@ -5,13 +5,14 @@ import i18n from "../../../i18n";
 import { useState } from "react";
 
 const ColWineCard = ({ wine }) => {
+  const [count, setCount] = useState(1);
   const { darkMode, handleClick, handleAddToCart, wineNotAvailable } =
-    useWineCard(wine);
-
-  const [count, setCount] = useState(0);
+    useWineCard(wine, count);
 
   const increment = () => setCount(count + 1);
-  const decrement = () => setCount(count - 1);
+  const decrement = () => {
+    if (count > 1) setCount(count - 1);
+  };
 
   if (wineNotAvailable) {
     return null;

@@ -5,11 +5,40 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import { useState } from "react";
+import { useAddToCart } from "../../hooks/useAddToCart";
 
 function SingleProduct({ item }) {
+  const [count, setCount] = useState(1);
   const [cartHover, setCartHover] = useState(false);
   const darkMode = useSelector(getMode);
   const { i18n } = useTranslation();
+
+  const { mutate: addToCart } = useAddToCart();
+
+  const handleAddToCart = () => {
+    addToCart({
+      productId: item._id,
+      title:
+        i18n.language === "ge"
+          ? item.titleTranslations.ge
+          : item.titleTranslations.en,
+      image: item.url,
+      price: item.price,
+      unit: count,
+      productType: "singleProduct",
+    });
+  };
+
+  const increment = () => setCount(count + 1);
+  const decrement = () => {
+    if (count > 1) setCount(count - 1);
+  };
+
+  const handleCartMouseLeave = () => {
+    setCartHover(false);
+    setCount(1);
+  };
+
   return (
     <div className="xl:w-[280px] lg:w-[240px] md:w-[200px]  pt-[4px] pb-[15px] px-[12px] relative mx-auto">
       <div className="xl:w-[120px] lg:w-[100px] xl:h-[175px] lg:h-[150px] mx-auto">
@@ -63,24 +92,30 @@ function SingleProduct({ item }) {
 
         <div
           className="flex items-center gap-[6px] border-[1px] border-[#eaeaea] rounded-[20px] p-[2px]"
-          onMouseLeave={() => setCartHover(false)}
+          onMouseLeave={() => handleCartMouseLeave()}
         >
           {cartHover && (
             <div className="hidden xl:flex items-center gap-[6px]">
-              <span className="w-[20px] h-[20px] flex justify-center items-center bg-[#eaeaea] rounded-[50%] pb-[3px] cursor-pointer">
+              <button
+                className="w-[20px] h-[20px] flex justify-center items-center bg-[#eaeaea] rounded-[50%] pb-[3px] cursor-pointer"
+                onClick={increment}
+              >
                 +
-              </span>
-              <p>1</p>
-              <span className="w-[20px] h-[20px] flex justify-center items-center bg-[#eaeaea] rounded-[50%] pb-[3px] cursor-pointer">
+              </button>
+              <p>{count}</p>
+              <button
+                className="w-[20px] h-[20px] flex justify-center items-center bg-[#eaeaea] rounded-[50%] pb-[3px] cursor-pointer"
+                onClick={decrement}
+              >
                 -
-              </span>
+              </button>
             </div>
           )}
           <div
             className="w-[36px] h-[36px] bg-[#BB8DF580] rounded-[50%] flex items-center justify-center cursor-pointer"
             onMouseEnter={() => setCartHover(true)}
           >
-            <FaShoppingCart color="#FFFFFF" />
+            <FaShoppingCart color="#FFFFFF" onClick={handleAddToCart} />
           </div>
         </div>
       </div>
