@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react";
 import { RiDeleteBin7Line } from "react-icons/ri";
 import { useGetCartItems } from "../hooks/useGetCartItems";
 import { useAddToCart } from "../hooks/useAddToCart";
+import { motion } from "framer-motion";
 
 const FullCartDisplay = ({ isOpen, onClose, title }) => {
   // const { i18n } = useTranslation();
@@ -53,6 +54,12 @@ const FullCartDisplay = ({ isOpen, onClose, title }) => {
     });
   };
 
+  const variants = {
+    hidden: { x: "100%" },
+    visible: { x: 0 },
+    exit: { x: "100%" },
+  };
+
   return (
     <div className="fixed inset-0 z-50 lg:flex ">
       <div
@@ -60,8 +67,13 @@ const FullCartDisplay = ({ isOpen, onClose, title }) => {
         onClick={onClose}
       ></div>
 
-      <div
+      <motion.div
         ref={modalRef}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={variants}
+        transition={{ type: "tween", duration: 0.5 }}
         className="relative ml-auto h-full bg-white shadow-xl rounded-lg flex flex-col
         tiny:w-[200px] smaller:w-[250px] w-[350px]"
       >
@@ -157,7 +169,7 @@ const FullCartDisplay = ({ isOpen, onClose, title }) => {
             </div>
           </div>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 };
