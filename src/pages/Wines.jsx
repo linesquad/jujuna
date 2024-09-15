@@ -6,7 +6,7 @@ import { useWines } from "../hooks/useWines";
 import { memo, useState } from "react";
 import Spinner from "../components/Spinner";
 import { useTranslation } from "react-i18next";
-import WineFilter from "../components/wineComponents/WineFilter";
+// import WineFilter from "../components/wineComponents/WineFilter";
 import MobileWineFilter from "../components/wineComponents/MobileWineFilter";
 import MobileFilterContainer from "../components/wineComponents/MobileFilterContainer";
 import LayoutChanger from "../components/LayoutChanger/LayoutChanger";
@@ -14,14 +14,16 @@ import { wineLayoutOptions } from "../components/LayoutChanger/layoutOptions";
 import WineCard from "../components/wineComponents/wineCardComponents/WineCard";
 import ListWineCard from "../components/wineComponents/wineCardComponents/ListWineCard";
 import ColWineCard from "../components/wineComponents/wineCardComponents/ColWineCard";
+import ProductsFilter from "../components/wineComponents/ProductsFilter";
+import { useWinesCategory } from "../hooks/useWinesCategory";
 
 const Wines = memo(() => {
   const darkMode = useSelector(getMode);
+  const { data: wineCategories } = useWinesCategory();
 
   const { t } = useTranslation();
   const { data: wines, isLoading, isError, error } = useWines();
   const [showFilter, setShowFilter] = useState(false);
-
   const [layout, setLayout] = useState("default");
 
   const handleLayoutChange = (newLayout) => {
@@ -63,7 +65,11 @@ const Wines = memo(() => {
         </div>
 
         <div className="flex">
-          <WineFilter />
+          <ProductsFilter
+            minValue={10}
+            maxValue={1000}
+            categories={wineCategories}
+          />
 
           <div className={`w-full mb-24 ${layoutStyles[layout]}`}>
             {wines?.map((wine) => (
