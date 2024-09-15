@@ -85,9 +85,8 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
               <div className="hidden w-full md:w-[350px] lg:w-[450px]  md:block text-center text-bold gap-10">
                 <NavLinks />
               </div>
-              <div className="flex items-center gap-[15px]">
-                <FaSearch color={`${darkMode ? "#fff" : "#000"}`} size={20} />
-                <div className="hidden lg:flex items-center gap-[15px]">
+              <div className="flex items-center gap-[10px] sm:gap-[12px] md:gap-[13.5px] lg:gap-[15px]">
+                <div className="flex items-center gap-[10px] sm:gap-[12px] md:gap-[13.5px] lg:gap-[15px]">
                   <FaShoppingCart
                     color={`${darkMode ? "#fff" : "#000"}`}
                     size={20}
