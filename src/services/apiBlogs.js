@@ -1,24 +1,24 @@
 const URL = "http://localhost:8001";
 
 import axios from "axios";
-import supabase from "./supabase";
+import axiosInstance from "./axiosInstance";
 
-export const paginationBlogs = async (page, limit = 3) => {
-  const start = (page - 1) * limit;
-  const end = start + limit - 1;
+// export const paginationBlogs = async (page, limit = 3) => {
+//   const start = (page - 1) * limit;
+//   const end = start + limit - 1;
 
-  let { data, error } = await supabase
-    .from("blog")
-    .select("*")
-    .range(start, end);
+//   let { data, error } = await supabase
+//     .from("blog")
+//     .select("*")
+//     .range(start, end);
 
-  if (error) {
-    console.error("Error blog pagination:", error);
-    throw new Error("Failed to paginate blogs");
-  }
+//   if (error) {
+//     console.error("Error blog pagination:", error);
+//     throw new Error("Failed to paginate blogs");
+//   }
 
-  return data;
-};
+//   return data;
+// };
 
 export const getBlogsById = async (blogId) => {
   try {
@@ -33,8 +33,7 @@ export const getBlogsById = async (blogId) => {
 
 const fetchBlogs = async () => {
   try {
-    const res = await fetch(`${URL}/blogs`);
-    const data = await res.json();
+    const { data } = await axiosInstance.get("/blogs");
     return data;
   } catch (error) {
     console.log(error.message);

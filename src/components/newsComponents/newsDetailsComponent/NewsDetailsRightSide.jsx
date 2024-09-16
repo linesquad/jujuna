@@ -93,7 +93,6 @@ const NewsDetailsRightSide = () => {
           swiper.navigation.init();
           swiper.navigation.update();
         }}
-        freeMode={true}
         mousewheel={true}
         pagination={{
           clickable: true,

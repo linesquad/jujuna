@@ -8,7 +8,7 @@ export const useGetCartItems = () => {
     onSuccess: () => {
       console.log("warmatebit wamoigho");
     },
-    staleTime: 3000 * 60,
+    // staleTime: 3000 * 60,
   });
 
   return { data, isLoading, error, isError };

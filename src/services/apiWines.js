@@ -2,7 +2,6 @@ import axiosInstance from "./axiosInstance";
 
 export const fetchWines = async () => {
   const { data } = await axiosInstance.get(`/wines`);
-  console.log("api of wines");
   return data;
 };
 
@@ -20,5 +19,13 @@ export const fetchWineCategories = async () => {
 export const fetchWinesByCategory = async (id) => {
   if (id.length === 0) return;
   const { data } = await axiosInstance.get(`/category/${id}`);
+  return data;
+};
+
+export const fetchWinesByPriceRange = async (minPrice, maxPrice) => {
+  const { data } = await axiosInstance.get(
+    `/price-range?minPrice=${minPrice}&maxPrice=${maxPrice}&isWine=true`
+  );
+
   return data;
 };

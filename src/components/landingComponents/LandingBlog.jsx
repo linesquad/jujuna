@@ -35,7 +35,7 @@ function OneNews({ image, title, description, id }) {
               darkMode ? "text-color-primary" : "text-color-black"
             }`}
           >
-            {title}
+            {title.slice(0, 20) + "..."}
           </h2>
           <p
             className={`mt-[10px] pr-[20px] h-[100px] ${

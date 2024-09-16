@@ -3,7 +3,7 @@ import Wrapper from "../components/Wrapper";
 import { useSelector } from "react-redux";
 import { getMode } from "../features/darkModeSlice";
 import { useWines, useWinesByCategory } from "../hooks/useWines";
-import { memo, useState } from "react";
+import React, { memo, useState } from "react";
 import Spinner from "../components/Spinner";
 import { useTranslation } from "react-i18next";
 import MobileWineFilter from "../components/wineComponents/MobileWineFilter";
@@ -76,8 +76,8 @@ const Wines = memo(() => {
             categoryId={categoryId}
           />
 
-          {categoryId.length !== 0 && categoryLoading ? (
-            <div className="min-h-[100vh] mb-24 min-w-[400px] mx-auto flex justify-center items-center">
+          {categoryLoading && categoryId.length === 0 ? (
+            <div className="w-full min-h-[100vh] flex justify-center items-center">
               <Spinner />
             </div>
           ) : (
@@ -85,17 +85,11 @@ const Wines = memo(() => {
               className={`w-full min-h-[100vh] mb-24 ${layoutStyles[layout]}`}
             >
               {winesForMap?.map((wine) => (
-                <>
-                  {layout === "default" && (
-                    <WineCard key={wine._id} wine={wine} />
-                  )}
-                  {layout === "list" && (
-                    <ListWineCard key={wine._id} wine={wine} />
-                  )}
-                  {layout === "col" && (
-                    <ColWineCard key={wine._id} wine={wine} />
-                  )}
-                </>
+                <React.Fragment key={wine._id}>
+                  {layout === "default" && <WineCard wine={wine} />}
+                  {layout === "list" && <ListWineCard wine={wine} />}
+                  {layout === "col" && <ColWineCard wine={wine} />}
+                </React.Fragment>
               ))}
             </div>
           )}

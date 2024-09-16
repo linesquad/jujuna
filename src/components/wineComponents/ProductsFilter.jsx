@@ -16,8 +16,25 @@ export default function ProductsFilter({
   return (
     <div className="hidden lg:block h-96 w-[200px]">
       <p className="text-[#78808C] text-[14px]">ფილტრი</p>
-      <p className="text-[18px] mt-[24px] text-[#141516] font-medium">ფასი</p>
 
+      <div className="mt-[30px] flex flex-col gap-[21px]">
+        {categories?.map((item) => {
+          return (
+            <FilterItem
+              key={item._id}
+              title={
+                i18n.language === "ge"
+                  ? item.titleTranslations.ge
+                  : item.titleTranslations.en
+              }
+              subCategories={item.subCategories}
+              setCategoryId={setCategoryId}
+              categoryId={categoryId}
+            />
+          );
+        })}
+      </div>
+      <p className="text-[18px] mt-[24px] text-[#141516] font-medium">ფასი</p>
       <div className="mt-[20px] flex items-center justify-between">
         <div className="flex items-center gap-[6px]">
           <input
@@ -48,23 +65,6 @@ export default function ProductsFilter({
           min={minValue}
           onChange={(value) => setSliderValues(value)}
         />
-      </div>
-      <div className="mt-[90px] flex flex-col gap-[21px]">
-        {categories?.map((item) => {
-          return (
-            <FilterItem
-              key={item._id}
-              title={
-                i18n.language === "ge"
-                  ? item.titleTranslations.ge
-                  : item.titleTranslations.en
-              }
-              subCategories={item.subCategories}
-              setCategoryId={setCategoryId}
-              categoryId={categoryId}
-            />
-          );
-        })}
       </div>
     </div>
   );
