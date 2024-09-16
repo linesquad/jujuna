@@ -2,11 +2,10 @@ import { Link } from "react-router-dom";
 import Wrapper from "../components/Wrapper";
 import { useSelector } from "react-redux";
 import { getMode } from "../features/darkModeSlice";
-import { useWines } from "../hooks/useWines";
+import { useWines, useWinesByCategory } from "../hooks/useWines";
 import { memo, useState } from "react";
 import Spinner from "../components/Spinner";
 import { useTranslation } from "react-i18next";
-// import WineFilter from "../components/wineComponents/WineFilter";
 import MobileWineFilter from "../components/wineComponents/MobileWineFilter";
 import MobileFilterContainer from "../components/wineComponents/MobileFilterContainer";
 import LayoutChanger from "../components/LayoutChanger/LayoutChanger";
@@ -18,13 +17,17 @@ import ProductsFilter from "../components/wineComponents/ProductsFilter";
 import { useWinesCategory } from "../hooks/useWinesCategory";
 
 const Wines = memo(() => {
-  const darkMode = useSelector(getMode);
-  const { data: wineCategories } = useWinesCategory();
-
-  const { t } = useTranslation();
-  const { data: wines, isLoading, isError, error } = useWines();
   const [showFilter, setShowFilter] = useState(false);
   const [layout, setLayout] = useState("default");
+  const [categoryId, setCategoryId] = useState("");
+  const { data: wines, isLoading, isError, error } = useWines();
+  const { data: winesCategory, isLoading: categoryLoading } =
+    useWinesByCategory(categoryId);
+  const { data: wineCategories } = useWinesCategory();
+  const darkMode = useSelector(getMode);
+  const { t } = useTranslation();
+
+  const winesForMap = winesCategory?.products || wines;
 
   const handleLayoutChange = (newLayout) => {
     setLayout(newLayout);
@@ -64,26 +67,37 @@ const Wines = memo(() => {
           />
         </div>
 
-        <div className="flex">
+        <div className="flex items-start">
           <ProductsFilter
             minValue={10}
             maxValue={1000}
             categories={wineCategories}
+            setCategoryId={setCategoryId}
           />
 
-          <div className={`w-full mb-24 ${layoutStyles[layout]}`}>
-            {wines?.map((wine) => (
-              <>
-                {layout === "default" && (
-                  <WineCard key={wine._id} wine={wine} />
-                )}
-                {layout === "list" && (
-                  <ListWineCard key={wine._id} wine={wine} />
-                )}
-                {layout === "col" && <ColWineCard key={wine._id} wine={wine} />}
-              </>
-            ))}
-          </div>
+          {categoryId.length !== 0 && categoryLoading ? (
+            <div className="min-h-[100vh] min-w-full flex justify-center items-center">
+              <Spinner />
+            </div>
+          ) : (
+            <div
+              className={`w-full min-h-[100vh] mb-24 ${layoutStyles[layout]}`}
+            >
+              {winesForMap?.map((wine) => (
+                <>
+                  {layout === "default" && (
+                    <WineCard key={wine._id} wine={wine} />
+                  )}
+                  {layout === "list" && (
+                    <ListWineCard key={wine._id} wine={wine} />
+                  )}
+                  {layout === "col" && (
+                    <ColWineCard key={wine._id} wine={wine} />
+                  )}
+                </>
+              ))}
+            </div>
+          )}
         </div>
       </Wrapper>
       {isError && (

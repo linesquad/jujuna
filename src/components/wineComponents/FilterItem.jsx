@@ -1,10 +1,14 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import OneSubcategory from "./OneSubcategory";
 
-export default function FilterItem({ title, mobile, subCategories }) {
+export default function FilterItem({
+  title,
+  mobile,
+  subCategories,
+  setCategoryId,
+}) {
   const [isOpen, setIsOpen] = useState(false);
-  const { i18n } = useTranslation();
 
   return (
     <div>
@@ -23,14 +27,11 @@ export default function FilterItem({ title, mobile, subCategories }) {
         <div className="pl-4 pt-2 flex flex-col gap-[17px]">
           {subCategories?.map((item, index) => {
             return (
-              <div key={index} className="flex items-center gap-[12px]">
-                <div className="w-[22px] h-[22px] rounded-md border border-[#E9EBEC] flex justify-center items-center"></div>
-                <span className="w-full">
-                  {i18n.language === "ge"
-                    ? item.titleTranslations.ge
-                    : item.titleTranslations.en}
-                </span>
-              </div>
+              <OneSubcategory
+                key={index}
+                item={item}
+                setCategoryId={setCategoryId}
+              />
             );
           })}
         </div>

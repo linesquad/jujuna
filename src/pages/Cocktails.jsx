@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 import CocktailsHeader from "../components/cocktailsComponents/CocktailsHeader";
-import CocktailsSidebar from "../components/cocktailsComponents/CocktailsSidebar";
 import DisplayCocktails from "../components/cocktailsComponents/DisplayCocktails";
 import Wrapper from "../components/Wrapper";
 import { getMode } from "../features/darkModeSlice";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import ProductsFilter from "../components/wineComponents/ProductsFilter";
 
 function CockTails() {
   const darkMode = useSelector(getMode);
@@ -25,10 +25,7 @@ function CockTails() {
       <Wrapper>
         <div className="flex items-start gap-[40px] mt-[23px] md:mt-[40px] lg:mt-[60px] px-[14px] md:px-[0px] py-[15px]">
           <div className="hidden md:block">
-            <CocktailsSidebar
-              setSortValue={setSortValue}
-              sortValue={sortValue}
-            />
+            <ProductsFilter minValue={10} maxValue={1000} />
           </div>
           <DisplayCocktails
             isFillterOpen={isFillterOpen}

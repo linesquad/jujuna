@@ -16,3 +16,9 @@ export const fetchWineCategories = async () => {
   const { data } = await axiosInstance.get("/wine-categories");
   return data;
 };
+
+export const fetchWinesByCategory = async (id) => {
+  if (id.length === 0) return;
+  const { data } = await axiosInstance.get(`/category/${id}`);
+  return data;
+};

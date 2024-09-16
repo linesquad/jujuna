@@ -3,7 +3,12 @@ import ReactSlider from "react-slider";
 import FilterItem from "./FilterItem";
 import { useTranslation } from "react-i18next";
 
-export default function ProductsFilter({ minValue, maxValue, categories }) {
+export default function ProductsFilter({
+  minValue,
+  maxValue,
+  categories,
+  setCategoryId,
+}) {
   const [sliderValues, setSliderValues] = useState([]);
   const { i18n } = useTranslation();
 
@@ -54,6 +59,7 @@ export default function ProductsFilter({ minValue, maxValue, categories }) {
                   : item.titleTranslations.en
               }
               subCategories={item.subCategories}
+              setCategoryId={setCategoryId}
             />
           );
         })}

@@ -42,7 +42,7 @@ function OneNews({ image, title, description, id }) {
               darkMode ? "text-color-primary" : "text-color-black"
             }`}
           >
-            {description}
+            {description.slice(0, 90) + "..."}
           </p>
         </div>
         <div className="flex justify-center w-[200px] mx-auto">
