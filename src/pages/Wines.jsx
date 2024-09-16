@@ -73,10 +73,11 @@ const Wines = memo(() => {
             maxValue={1000}
             categories={wineCategories}
             setCategoryId={setCategoryId}
+            categoryId={categoryId}
           />
 
           {categoryId.length !== 0 && categoryLoading ? (
-            <div className="min-h-[100vh] min-w-full flex justify-center items-center">
+            <div className="min-h-[100vh] mb-24 min-w-[400px] mx-auto flex justify-center items-center">
               <Spinner />
             </div>
           ) : (

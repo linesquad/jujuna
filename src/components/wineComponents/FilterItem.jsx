@@ -7,6 +7,7 @@ export default function FilterItem({
   mobile,
   subCategories,
   setCategoryId,
+  categoryId,
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,6 +32,7 @@ export default function FilterItem({
                 key={index}
                 item={item}
                 setCategoryId={setCategoryId}
+                categoryId={categoryId}
               />
             );
           })}

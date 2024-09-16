@@ -8,6 +8,7 @@ export default function ProductsFilter({
   maxValue,
   categories,
   setCategoryId,
+  categoryId,
 }) {
   const [sliderValues, setSliderValues] = useState([]);
   const { i18n } = useTranslation();
@@ -60,6 +61,7 @@ export default function ProductsFilter({
               }
               subCategories={item.subCategories}
               setCategoryId={setCategoryId}
+              categoryId={categoryId}
             />
           );
         })}

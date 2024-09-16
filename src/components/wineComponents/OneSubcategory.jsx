@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-function OneSubcategory({ item, setCategoryId }) {
+function OneSubcategory({ item, setCategoryId, categoryId }) {
   const { i18n } = useTranslation();
 
   const handleCheckboxChange = (e) => {
@@ -17,6 +17,7 @@ function OneSubcategory({ item, setCategoryId }) {
       <input
         type="checkbox"
         className="w-[22px] h-[22px] rounded-md border border-[#E9EBEC] flex justify-center items-center cursor-pointer"
+        checked={categoryId === item._id}
         onChange={handleCheckboxChange}
       />
       <span className="w-full">
