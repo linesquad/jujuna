@@ -76,7 +76,7 @@ const Wines = memo(() => {
             categoryId={categoryId}
           />
 
-          {categoryLoading && categoryId.length === 0 ? (
+          {categoryLoading && categoryId.length !== 0 ? (
             <div className="w-full min-h-[100vh] flex justify-center items-center">
               <Spinner />
             </div>
