@@ -2,7 +2,6 @@ import axiosInstance from "./axiosInstance";
 
 export const fetchWines = async () => {
   const { data } = await axiosInstance.get(`/wines`);
-  console.log("api of wines");
   return data;
 };
 

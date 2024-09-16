@@ -5,12 +5,35 @@ import { RiDeleteBin7Line } from "react-icons/ri";
 import { useGetCartItems } from "../hooks/useGetCartItems";
 import { useAddToCart } from "../hooks/useAddToCart";
 import { motion } from "framer-motion";
+import { useQueryClient } from "@tanstack/react-query";
 
-const FullCartDisplay = ({ isOpen, onClose, title }) => {
-  // const { i18n } = useTranslation();
+const FullCartDisplay = ({ onClose, title }) => {
   const modalRef = useRef(null);
   const { data: cartItems, isError, isLoading, error } = useGetCartItems();
   const { mutate: updateCart, isPending } = useAddToCart();
+  const queryClient = useQueryClient();
+
+  const itemInCache = (itemId, unit, method) => {
+    const data = queryClient.getQueryData(["cartItems"]);
+
+    if (data) {
+      const updatedData = data.map((item) => {
+        return item.productId.toString() === itemId.toString()
+          ? {
+              ...item,
+              unit:
+                method === "plus"
+                  ? unit + 1
+                  : method === "minus"
+                  ? unit - 1
+                  : 0,
+            }
+          : item;
+      });
+      console.log(updatedData);
+      queryClient.setQueryData(["cartItems"], updatedData);
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -22,8 +45,6 @@ const FullCartDisplay = ({ isOpen, onClose, title }) => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onClose]);
-
-  if (!isOpen) return null;
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -38,6 +59,9 @@ const FullCartDisplay = ({ isOpen, onClose, title }) => {
       ...item,
       unit: item.unit - 1,
     });
+    if (isError) return;
+
+    itemInCache(item.productId, item.unit, "minus");
   };
 
   const handleIncrease = (item) => {
@@ -45,6 +69,7 @@ const FullCartDisplay = ({ isOpen, onClose, title }) => {
       ...item,
       unit: item.unit + 1,
     });
+    itemInCache(item.productId, item.unit, "plus");
   };
 
   const handleDelete = (item) => {
@@ -52,6 +77,7 @@ const FullCartDisplay = ({ isOpen, onClose, title }) => {
       ...item,
       unit: 0,
     });
+    itemInCache(item.productId, item.unit, "delete");
   };
 
   const variants = {
@@ -100,8 +126,8 @@ const FullCartDisplay = ({ isOpen, onClose, title }) => {
               >
                 <div className="flex items-center">
                   <img
-                    src={item.image}
-                    alt={item.title}
+                    src={item?.image}
+                    alt={item?.title}
                     // alt={i18n.language === "en" ? item.name.en : item.name.ge}
                     className="w-[80px] h-[120px] object-cover mr-3 rounded-md cursor-pointer
                   tiny:w-[40px] tiny:h-[80px] smaller:w-[60ox] smaller:h-auto"

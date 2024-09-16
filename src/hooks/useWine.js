@@ -9,6 +9,6 @@ export const useWineById = (id) => {
     staleTime: 60000,
     cacheTime: 300000,
   });
-  console.log("single wine", id);
+
   return { isLoading, data, isError, error };
 };

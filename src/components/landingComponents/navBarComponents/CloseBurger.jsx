@@ -106,11 +106,12 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
           </div>
         </Wrapper>
       </div>
-      <FullCartDisplay
-        isOpen={viewCart}
-        onClose={closeAllModals}
-        title={t("cartSlicer.myCart")}
-      />
+      {viewCart && (
+        <FullCartDisplay
+          onClose={closeAllModals}
+          title={t("cartSlicer.myCart")}
+        />
+      )}
     </div>
   );
 };

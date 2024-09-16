@@ -1,17 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";
-import { addToCart } from "../../../features/cartSlice";
 import { CiHeart } from "react-icons/ci";
 
-function SingleWineCardAddButtons({ wine }) {
+function SingleWineCardAddButtons() {
   const { t, i18n } = useTranslation();
   const darkMode = useSelector(getMode);
-  const dispatch = useDispatch();
-
-  const handleAddToCart = () => {
-    dispatch(addToCart(wine));
-  };
 
   return (
     <div className="tiny:max-w-[200px] smaller:max-w-[240px] flex tiny:gap-2 gap-4 mt-6">
@@ -21,7 +15,6 @@ function SingleWineCardAddButtons({ wine }) {
             ? "pl-10 pr-10 small:px-1 smallExtra:px-5 md:!px-10 md:!w-auto"
             : "tiny:!px-8"
         } lg:w-96 ${darkMode ? "bg-[#58387F]" : "bg-[#1E122E]"}`}
-        onClick={handleAddToCart}
       >
         {t("winePage.singleWine.cart")}
       </button>

@@ -3,7 +3,7 @@ import Wrapper from "../components/Wrapper";
 import { useSelector } from "react-redux";
 import { getMode } from "../features/darkModeSlice";
 import { useWines } from "../hooks/useWines";
-import { memo, useState } from "react";
+import React, { memo, useState } from "react";
 import Spinner from "../components/Spinner";
 import { useTranslation } from "react-i18next";
 // import WineFilter from "../components/wineComponents/WineFilter";
@@ -73,15 +73,11 @@ const Wines = memo(() => {
 
           <div className={`w-full mb-24 ${layoutStyles[layout]}`}>
             {wines?.map((wine) => (
-              <>
-                {layout === "default" && (
-                  <WineCard key={wine._id} wine={wine} />
-                )}
-                {layout === "list" && (
-                  <ListWineCard key={wine._id} wine={wine} />
-                )}
-                {layout === "col" && <ColWineCard key={wine._id} wine={wine} />}
-              </>
+              <React.Fragment key={wine._id}>
+                {layout === "default" && <WineCard wine={wine} />}
+                {layout === "list" && <ListWineCard wine={wine} />}
+                {layout === "col" && <ColWineCard wine={wine} />}
+              </React.Fragment>
             ))}
           </div>
         </div>
