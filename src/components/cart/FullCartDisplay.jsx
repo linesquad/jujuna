@@ -11,7 +11,7 @@ import {
   handleDelete,
   handleIncrease,
   itemInCache,
-} from "./cartUtils";
+} from "../../features/cartUtils";
 import MemoizedCartHeader from "./CartHeader";
 import MemoizedCheckoutButton from "./CheckoutButton";
 
