@@ -13,7 +13,7 @@ import { FaHeart } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import FullCartDisplay from "../../FullCartDisplay";
+import FullCartDisplay from "../../cart/FullCartDisplay";
 
 const CloseBurger = ({ setIsAuthModalOpen }) => {
   const open = useSelector(getIsOpen);

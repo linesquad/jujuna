@@ -14,7 +14,6 @@ function SingleProduct({ item }) {
   const { i18n } = useTranslation();
 
   const { mutate: addToCart } = useAddToCart();
-  console.log(item);
 
   const handleAddToCart = () => {
     addToCart({

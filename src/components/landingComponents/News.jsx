@@ -12,7 +12,6 @@ import { useLatestBlogs } from "../../hooks/useLastestBlogs";
 
 const News = () => {
   const { data: blogNews, isLoading, error } = useLatestBlogs();
-  console.log(blogNews);
   const { i18n } = useTranslation();
   const darkMode = useSelector(getMode);
 

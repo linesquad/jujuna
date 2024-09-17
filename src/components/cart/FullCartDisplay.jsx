@@ -2,8 +2,8 @@
 import { FaTimes } from "react-icons/fa";
 import { useRef, useEffect } from "react";
 import { RiDeleteBin7Line } from "react-icons/ri";
-import { useGetCartItems } from "../hooks/useGetCartItems";
-import { useAddToCart } from "../hooks/useAddToCart";
+import { useGetCartItems } from "../../hooks/useGetCartItems";
+import { useAddToCart } from "../../hooks/useAddToCart";
 import { motion } from "framer-motion";
 import { useQueryClient } from "@tanstack/react-query";
 
@@ -17,19 +17,21 @@ const FullCartDisplay = ({ onClose, title }) => {
     const data = queryClient.getQueryData(["cartItems"]);
 
     if (data) {
-      const updatedData = data.map((item) => {
-        return item.productId.toString() === itemId.toString()
-          ? {
-              ...item,
-              unit:
-                method === "plus"
-                  ? unit + 1
-                  : method === "minus"
-                  ? unit - 1
-                  : 0,
-            }
-          : item;
-      });
+      const updatedData = data
+        .map((item) => {
+          return item.productId.toString() === itemId.toString()
+            ? {
+                ...item,
+                unit:
+                  method === "plus"
+                    ? unit + 1
+                    : method === "minus"
+                    ? unit - 1
+                    : 0,
+              }
+            : item;
+        })
+        .filter((item) => item.unit > 0);
       console.log(updatedData);
       queryClient.setQueryData(["cartItems"], updatedData);
     }
@@ -55,13 +57,19 @@ const FullCartDisplay = ({ onClose, title }) => {
   }
 
   const handleDecrease = (item) => {
-    updateCart({
-      ...item,
-      unit: item.unit - 1,
-    });
-    if (isError) return;
+    const newUnit = item.unit - 1;
 
-    itemInCache(item.productId, item.unit, "minus");
+    if (newUnit === 0) {
+      handleDelete(item);
+    } else {
+      updateCart({
+        ...item,
+        unit: item.unit - 1,
+      });
+      if (isError) return;
+
+      itemInCache(item.productId, item.unit, "minus");
+    }
   };
 
   const handleIncrease = (item) => {
@@ -183,15 +191,27 @@ const FullCartDisplay = ({ onClose, title }) => {
 
         {cartItems.length > 0 && (
           <div className="p-5 border-t border-gray-200 bg-gray-50">
-            <div className="flex justify-between items-center">
-              <p className="text-lg font-semibold text-gray-700">Total:</p>
-              <p className="text-lg font-bold text-gray-800">
+            <div className="flex justify-around items-center">
+              <p className="text-lg font-semibold text-gray-700 max-w-[44px]">
+                Total:
+              </p>
+              <p className="text-lg font-bold text-gray-800 max-w-[300px]">
                 $
                 {cartItems.reduce(
                   (total, item) => total + item.price * item.unit,
                   0
                 )}
               </p>
+            </div>
+          </div>
+        )}
+
+        {cartItems.length > 0 && (
+          <div className="p-5 border-gray-200 bg-gray-50">
+            <div className="flex justify-center items-center">
+              <button className="bg-black text-white px-20 py-2 rounded cursor-pointer">
+                Check Out
+              </button>
             </div>
           </div>
         )}

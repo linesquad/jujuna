@@ -7,6 +7,5 @@ export const useLatestBlogs = () => {
     queryFn: fetchLatestBlogs,
     staleTime: 3000 * 60,
   });
-  console.log(data);
   return { isLoading, data, isError, error };
 };
