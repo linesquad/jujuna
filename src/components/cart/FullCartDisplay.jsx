@@ -1,11 +1,13 @@
 // import { useTranslation } from "react-i18next";
-import { FaTimes } from "react-icons/fa";
 import { useRef, useEffect } from "react";
-import { RiDeleteBin7Line } from "react-icons/ri";
 import { useGetCartItems } from "../../hooks/useGetCartItems";
 import { useAddToCart } from "../../hooks/useAddToCart";
 import { motion } from "framer-motion";
 import { useQueryClient } from "@tanstack/react-query";
+import CartHeader from "./CartHeader";
+import CheckoutButton from "./CheckoutButton";
+import TotalSummary from "./TotalSummary";
+import CartItem from "./CartItem";
 
 const FullCartDisplay = ({ onClose, title }) => {
   const modalRef = useRef(null);
@@ -111,110 +113,26 @@ const FullCartDisplay = ({ onClose, title }) => {
         className="relative ml-auto h-full bg-white shadow-xl rounded-lg flex flex-col
         tiny:w-[200px] smaller:w-[250px] w-[350px]"
       >
-        <div className="flex justify-between items-center p-5 border-b border-gray-200">
-          <h2 className="text-xl font-bold text-gray-800 tiny:text-base smaller:text-lg">
-            {title}
-          </h2>
-          <button
-            className="text-gray-600 hover:text-gray-800"
-            onClick={onClose}
-          >
-            <FaTimes className="tiny:text-[18px] smaller:text-[19px] text-[20px]" />
-          </button>
-        </div>
+        <CartHeader onClose={onClose} title={title} />
 
         <div className="flex-1 p-5 overflow-y-scroll">
           {cartItems.length === 0 ? (
             <p className="text-center text-gray-500">Your cart is empty.</p>
           ) : (
             cartItems.map((item) => (
-              <div
+              <CartItem
                 key={item._id}
-                className="flex items-center py-4 border-b border-gray-200 tiny:flex-col smaller:flex-col"
-              >
-                <div className="flex items-center">
-                  <img
-                    src={item?.image}
-                    alt={item?.title}
-                    // alt={i18n.language === "en" ? item.name.en : item.name.ge}
-                    className="w-[80px] h-[120px] object-cover mr-3 rounded-md cursor-pointer
-                  tiny:w-[40px] tiny:h-[80px] smaller:w-[60ox] smaller:h-auto"
-                  />
-                  <div className="flex flex-col flex-grow justify-between gap-2">
-                    <h3
-                      className="text-base break-words w-[120px] cursor-pointer
-                  tiny:text-xs smaller:text-sm"
-                    >
-                      {/* {i18n.language === "en" ? item.name.en : item.name.ge} */}
-                      {item.title}
-                    </h3>
-                    <p className="font-semibold text-[22px] tiny:text-lg smaller:text-xl">
-                      ${item.price}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="w-full">
-                  <div
-                    className="flex flex-col items-end gap-6 w-full px-2 py-1 
-                    tiny:flex-row-reverse tiny:items-center tiny:pt-3
-                  tiny:justify-around
-                  smaller:flex-row-reverse smaller:items-center smaller:pt-4 smaller:justify-around"
-                  >
-                    <RiDeleteBin7Line
-                      size={20}
-                      onClick={() => handleDelete(item)}
-                    />
-                    <div className="w-[80px] h-[35px] border rounded-full border-[#8F8F8F] px-2 py-1 flex gap-4">
-                      <button
-                        className="cursor-pointer"
-                        onClick={() => handleDecrease(item)}
-                        disabled={isPending}
-                      >
-                        {isPending ? "X" : "-"}
-                      </button>
-                      <span>{item.unit}</span>
-                      <button
-                        className="cursor-pointer"
-                        onClick={() => handleIncrease(item)}
-                        disabled={isPending}
-                      >
-                        {isPending ? "X" : "+"}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                item={item}
+                handleDecrease={handleDecrease}
+                handleIncrease={handleIncrease}
+                handleDelete={handleDelete}
+                isPending={isPending}
+              />
             ))
           )}
         </div>
-
-        {cartItems.length > 0 && (
-          <div className="p-5 border-t border-gray-200 bg-gray-50">
-            <div className="flex justify-around items-center">
-              <p className="text-lg font-semibold text-gray-700 max-w-[44px]">
-                Total:
-              </p>
-              <p className="text-lg font-bold text-gray-800 max-w-[300px]">
-                $
-                {cartItems.reduce(
-                  (total, item) => total + item.price * item.unit,
-                  0
-                )}
-              </p>
-            </div>
-          </div>
-        )}
-
-        {cartItems.length > 0 && (
-          <div className="p-5 border-gray-200 bg-gray-50">
-            <div className="flex justify-center items-center">
-              <button className="bg-black text-white px-20 py-2 rounded cursor-pointer">
-                Check Out
-              </button>
-            </div>
-          </div>
-        )}
+        {cartItems.length > 0 && <TotalSummary cartItems={cartItems} />}
+        {cartItems.length > 0 && <CheckoutButton />}
       </motion.div>
     </div>
   );
