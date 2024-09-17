@@ -8,36 +8,18 @@ import CartHeader from "./CartHeader";
 import CheckoutButton from "./CheckoutButton";
 import TotalSummary from "./TotalSummary";
 import CartItem from "./CartItem";
+import {
+  handleDecrease,
+  handleDelete,
+  handleIncrease,
+  itemInCache,
+} from "./cartUtils";
 
 const FullCartDisplay = ({ onClose, title }) => {
   const modalRef = useRef(null);
   const { data: cartItems, isError, isLoading, error } = useGetCartItems();
   const { mutate: updateCart, isPending } = useAddToCart();
   const queryClient = useQueryClient();
-
-  const itemInCache = (itemId, unit, method) => {
-    const data = queryClient.getQueryData(["cartItems"]);
-
-    if (data) {
-      const updatedData = data
-        .map((item) => {
-          return item.productId.toString() === itemId.toString()
-            ? {
-                ...item,
-                unit:
-                  method === "plus"
-                    ? unit + 1
-                    : method === "minus"
-                    ? unit - 1
-                    : 0,
-              }
-            : item;
-        })
-        .filter((item) => item.unit > 0);
-      console.log(updatedData);
-      queryClient.setQueryData(["cartItems"], updatedData);
-    }
-  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -57,38 +39,6 @@ const FullCartDisplay = ({ onClose, title }) => {
   if (isError) {
     return <p>{error.message}</p>;
   }
-
-  const handleDecrease = (item) => {
-    const newUnit = item.unit - 1;
-
-    if (newUnit === 0) {
-      handleDelete(item);
-    } else {
-      updateCart({
-        ...item,
-        unit: item.unit - 1,
-      });
-      if (isError) return;
-
-      itemInCache(item.productId, item.unit, "minus");
-    }
-  };
-
-  const handleIncrease = (item) => {
-    updateCart({
-      ...item,
-      unit: item.unit + 1,
-    });
-    itemInCache(item.productId, item.unit, "plus");
-  };
-
-  const handleDelete = (item) => {
-    updateCart({
-      ...item,
-      unit: 0,
-    });
-    itemInCache(item.productId, item.unit, "delete");
-  };
 
   const variants = {
     hidden: { x: "100%" },
@@ -123,9 +73,21 @@ const FullCartDisplay = ({ onClose, title }) => {
               <CartItem
                 key={item._id}
                 item={item}
-                handleDecrease={handleDecrease}
-                handleIncrease={handleIncrease}
-                handleDelete={handleDelete}
+                handleDecrease={() =>
+                  handleDecrease(
+                    item,
+                    updateCart,
+                    itemInCache,
+                    queryClient,
+                    isError
+                  )
+                }
+                handleIncrease={() =>
+                  handleIncrease(item, updateCart, itemInCache, queryClient)
+                }
+                handleDelete={() =>
+                  handleDelete(item, updateCart, itemInCache, queryClient)
+                }
                 isPending={isPending}
               />
             ))
