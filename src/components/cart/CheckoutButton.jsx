@@ -1,3 +1,5 @@
+import React from "react";
+
 const CheckoutButton = () => {
   return (
     <div className="p-5 border-gray-200 bg-gray-50">
@@ -10,4 +12,5 @@ const CheckoutButton = () => {
   );
 };
 
-export default CheckoutButton;
+const MemoizedCheckoutButton = React.memo(CheckoutButton);
+export default MemoizedCheckoutButton;

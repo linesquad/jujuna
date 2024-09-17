@@ -48,7 +48,7 @@ const CartItem = ({
               onClick={() => handleDecrease(item)}
               disabled={isPending}
             >
-              {isPending ? "X" : "-"}
+              -
             </button>
             <span>{item.unit}</span>
             <button
@@ -56,7 +56,7 @@ const CartItem = ({
               onClick={() => handleIncrease(item)}
               disabled={isPending}
             >
-              {isPending ? "X" : "+"}
+              +
             </button>
           </div>
         </div>

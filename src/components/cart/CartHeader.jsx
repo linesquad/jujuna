@@ -1,3 +1,4 @@
+import React from "react";
 import { FaTimes } from "react-icons/fa";
 
 const CartHeader = ({ title, onClose }) => {
@@ -13,4 +14,6 @@ const CartHeader = ({ title, onClose }) => {
   );
 };
 
-export default CartHeader;
+const MemoizedCartHeader = React.memo(CartHeader);
+
+export default MemoizedCartHeader;

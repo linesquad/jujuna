@@ -36,7 +36,7 @@ export const handleDecrease = (
   } else {
     updateCart({
       ...item,
-      unit: item.unit - 1,
+      unit: newUnit,
     });
     if (isError) return;
 

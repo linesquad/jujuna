@@ -4,8 +4,6 @@ import { useGetCartItems } from "../../hooks/useGetCartItems";
 import { useAddToCart } from "../../hooks/useAddToCart";
 import { motion } from "framer-motion";
 import { useQueryClient } from "@tanstack/react-query";
-import CartHeader from "./CartHeader";
-import CheckoutButton from "./CheckoutButton";
 import TotalSummary from "./TotalSummary";
 import CartItem from "./CartItem";
 import {
@@ -14,6 +12,8 @@ import {
   handleIncrease,
   itemInCache,
 } from "./cartUtils";
+import MemoizedCartHeader from "./CartHeader";
+import MemoizedCheckoutButton from "./CheckoutButton";
 
 const FullCartDisplay = ({ onClose, title }) => {
   const modalRef = useRef(null);
@@ -63,38 +63,39 @@ const FullCartDisplay = ({ onClose, title }) => {
         className="relative ml-auto h-full bg-white shadow-xl rounded-lg flex flex-col
         tiny:w-[200px] smaller:w-[250px] w-[350px]"
       >
-        <CartHeader onClose={onClose} title={title} />
+        <MemoizedCartHeader onClose={onClose} title={title} />
 
         <div className="flex-1 p-5 overflow-y-scroll">
           {cartItems.length === 0 ? (
             <p className="text-center text-gray-500">Your cart is empty.</p>
           ) : (
             cartItems.map((item) => (
-              <CartItem
-                key={item._id}
-                item={item}
-                handleDecrease={() =>
-                  handleDecrease(
-                    item,
-                    updateCart,
-                    itemInCache,
-                    queryClient,
-                    isError
-                  )
-                }
-                handleIncrease={() =>
-                  handleIncrease(item, updateCart, itemInCache, queryClient)
-                }
-                handleDelete={() =>
-                  handleDelete(item, updateCart, itemInCache, queryClient)
-                }
-                isPending={isPending}
-              />
+              <div key={item._id}>
+                <CartItem
+                  item={item}
+                  handleDecrease={(item) =>
+                    handleDecrease(
+                      item,
+                      updateCart,
+                      itemInCache,
+                      queryClient,
+                      isError
+                    )
+                  }
+                  handleIncrease={() =>
+                    handleIncrease(item, updateCart, itemInCache, queryClient)
+                  }
+                  handleDelete={() =>
+                    handleDelete(item, updateCart, itemInCache, queryClient)
+                  }
+                  isPending={isPending}
+                />
+              </div>
             ))
           )}
         </div>
         {cartItems.length > 0 && <TotalSummary cartItems={cartItems} />}
-        {cartItems.length > 0 && <CheckoutButton />}
+        {cartItems.length > 0 && <MemoizedCheckoutButton />}
       </motion.div>
     </div>
   );
