@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 const LayoutChanger = ({
   layouts,
@@ -7,12 +7,13 @@ const LayoutChanger = ({
   iconSize = 30,
   buttonSize = 40,
 }) => {
+  const { categoryId } = useParams();
   return (
     <div className="flex space-x-4 mb-2.5">
       {layouts.map((layout) => (
         <NavLink
           key={layout.name}
-          to={`/wines/${layout.name}`}
+          to={`/wines/${layout.name}/${categoryId}`}
           className={({ isActive }) =>
             `flex items-center justify-center transition ${
               isActive ? activeClass : defaultClass

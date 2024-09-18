@@ -16,11 +16,8 @@ export default function MobileWineFilter({ setShowFilter }) {
           : "bg-[#ECEEEF] text-black"
       }`}
     >
-      {darkMode ? (
-        <LuFilter />
-      ) : (
-        <img src="images/filterIcon.svg" alt="filter" />
-      )}
+      <LuFilter />
+
       <span>{t("winePage.filter")}</span>
     </div>
   );

@@ -24,8 +24,15 @@ function App() {
         <Route path="/news" element={<News />} />
         <Route path="/news/:id" element={<NewsDetails />} />
         <Route path="/wines" element={<Wines />}>
-          <Route path="/wines" element={<Navigate to="/wines/default" />} />
-          <Route path="/wines:layoutName" element={<DisplayWines />} />
+          <Route
+            path="/wines"
+            element={<Navigate to="/wines/default/allWines" />}
+          />
+
+          <Route
+            path="/wines/:layoutName/:categoryId"
+            element={<DisplayWines />}
+          />
         </Route>
 
         <Route path="orders" element={<Orders />} />

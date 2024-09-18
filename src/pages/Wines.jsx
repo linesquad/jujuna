@@ -2,9 +2,8 @@ import { Link, Outlet } from "react-router-dom";
 import Wrapper from "../components/Wrapper";
 import { useSelector } from "react-redux";
 import { getMode } from "../features/darkModeSlice";
-import { useWines, useWinesByCategory } from "../hooks/useWines";
+import { useWines } from "../hooks/useWines";
 import { memo, useState } from "react";
-import Spinner from "../components/Spinner";
 import { useTranslation } from "react-i18next";
 import MobileWineFilter from "../components/wineComponents/MobileWineFilter";
 import MobileFilterContainer from "../components/wineComponents/MobileFilterContainer";
@@ -16,13 +15,11 @@ import { useWinesCategory } from "../hooks/useWinesCategory";
 const Wines = memo(() => {
   const [showFilter, setShowFilter] = useState(false);
   const [categoryId, setCategoryId] = useState("");
-  const { isLoading, isError, error } = useWines();
-  const { isLoading: categoryLoading } = useWinesByCategory(categoryId);
+  const { isError, error } = useWines();
+
   const { data: wineCategories } = useWinesCategory();
   const darkMode = useSelector(getMode);
   const { t } = useTranslation();
-
-  if (isLoading) return <Spinner />;
 
   return (
     <div
@@ -56,14 +53,7 @@ const Wines = memo(() => {
             setCategoryId={setCategoryId}
             categoryId={categoryId}
           />
-
-          {categoryLoading ? (
-            <div className="w-full min-h-[100vh] flex justify-center items-center">
-              <Spinner />
-            </div>
-          ) : (
-            <Outlet />
-          )}
+          <Outlet />
         </div>
       </Wrapper>
       {isError && (

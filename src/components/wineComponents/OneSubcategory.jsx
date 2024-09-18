@@ -1,14 +1,20 @@
 import { useTranslation } from "react-i18next";
+import { useNavigate, useParams } from "react-router-dom";
 
-function OneSubcategory({ item, setCategoryId, categoryId }) {
+function OneSubcategory({ item, setCategoryId }) {
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
+
+  const { layoutName: layout, categoryId } = useParams();
 
   const handleCheckboxChange = (e) => {
     console.log(e.target.checked);
     if (e.target.checked) {
       setCategoryId(item._id);
+      navigate(`/wines/${layout}/${item._id}`);
     } else {
       setCategoryId("");
+      navigate(`/wines/${layout}/allWines`);
     }
   };
 
