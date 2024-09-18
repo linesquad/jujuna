@@ -57,7 +57,7 @@ const ColWineCard = ({ wine }) => {
 
         <div className="flex">
           <Link
-            to={`/wines/${wine._id}`}
+            to={`/wine/${wine._id}`}
             onClick={handleClick}
             className="flex gap-5 "
           >

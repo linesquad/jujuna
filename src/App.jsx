@@ -1,5 +1,5 @@
 import "./index.css";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import Cocktails from "./pages/Cocktails";
@@ -12,6 +12,7 @@ import WineDetails from "./components/wineComponents/singleWineComponents/Single
 import NewsDetails from "./components/newsComponents/NewsDetails";
 import CocktailDetails from "./pages/CocktailDetails";
 import UserPage from "./pages/UserPage";
+import DisplayWines from "./components/wineComponents/DisplayWines";
 
 function App() {
   return (
@@ -20,12 +21,15 @@ function App() {
         <Route index element={<Home />} />
         <Route path="about" element={<AboutUs />} />
         <Route path="cocktail" element={<Cocktails />} />
-        <Route path="news" element={<News />} />
-        <Route path="news/:id" element={<NewsDetails />} />
-        <Route path="wines" element={<Wines />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/news/:id" element={<NewsDetails />} />
+        <Route path="/wines" element={<Wines />}>
+          <Route path="/wines" element={<Navigate to="/wines/default" />} />
+          <Route path="/wines:layoutName" element={<DisplayWines />} />
+        </Route>
 
         <Route path="orders" element={<Orders />} />
-        <Route path="/wines/:id" element={<WineDetails />} />
+        <Route path="/wine/:id" element={<WineDetails />} />
         <Route path="/cocktails/:id" element={<CocktailDetails />} />
         <Route path="/userPage" element={<UserPage />} />
       </Route>

@@ -24,7 +24,7 @@ const ListWineCard = ({ wine }) => {
   return (
     <div className="flex items-stretch  justify-between  w-full py-6 px-7 border-y-[0.5px] border-[rgba(62, 62, 62, 0.70)] ">
       <Link
-        to={`/wines/${wine._id}`}
+        to={`/wine/${wine._id}`}
         onClick={handleClick}
         className="flex items-start gap-4 flex-2 w-[80%]"
       >
