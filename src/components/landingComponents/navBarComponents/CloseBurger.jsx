@@ -13,13 +13,15 @@ import { FaHeart } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import FullCartDisplay from "../../cart/FullCartDisplay";
+import FullCartDisplay from "../../cart&wishlist/cart/FullCartDisplay";
+import FullWishListDisplay from "../../cart&wishlist/wishlist/FullWishListDisplay";
 
 const CloseBurger = ({ setIsAuthModalOpen }) => {
   const open = useSelector(getIsOpen);
   const darkMode = useSelector(getMode);
   const { t } = useTranslation();
   const [viewCart, setViewCart] = useState(false);
+  const [seeWishList, setSeeWishList] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const navRef = useRef(null);
 
@@ -38,10 +40,15 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
 
   const closeAllModals = () => {
     setViewCart(false);
+    setSeeWishList(false);
   };
 
   const toggleViewCart = () => {
     setViewCart(true);
+  };
+
+  const toggleSeeWishList = () => {
+    setSeeWishList(true);
   };
 
   return (
@@ -92,7 +99,11 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
                     size={20}
                     onClick={toggleViewCart}
                   />
-                  <FaHeart color={`${darkMode ? "#fff" : "#000"}`} size={20} />
+                  <FaHeart
+                    color={`${darkMode ? "#fff" : "#000"}`}
+                    size={20}
+                    onClick={toggleSeeWishList}
+                  />
                   <div className="h-[27px] border-[1px] bprder-[#fff]"></div>
                 </div>
                 <FaUser
@@ -111,6 +122,9 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
           onClose={closeAllModals}
           title={t("cartSlicer.myCart")}
         />
+      )}
+      {seeWishList && (
+        <FullWishListDisplay onClose={closeAllModals} title={"ფავორიტები"} />
       )}
     </div>
   );

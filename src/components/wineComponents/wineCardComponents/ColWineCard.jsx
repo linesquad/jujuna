@@ -6,8 +6,13 @@ import { useState } from "react";
 
 const ColWineCard = ({ wine }) => {
   const [count, setCount] = useState(1);
-  const { darkMode, handleClick, handleAddToCart, wineNotAvailable } =
-    useWineCard(wine, count);
+  const {
+    darkMode,
+    handleClick,
+    handleAddToCart,
+    wineNotAvailable,
+    handleAddToWishList,
+  } = useWineCard(wine, count);
 
   const increment = () => setCount(count + 1);
   const decrement = () => {
@@ -24,10 +29,7 @@ const ColWineCard = ({ wine }) => {
       <div className="flex width-[80%]">
         <div className="flex gap-3 items-center">
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              e.preventDefault();
-            }}
+            onClick={handleAddToWishList}
             className={`border rounded-full bg-[#EDECEC] p-3 w-10 h-10 flex items-center justify-center `}
           >
             <svg

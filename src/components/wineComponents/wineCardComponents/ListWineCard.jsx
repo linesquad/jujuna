@@ -5,8 +5,14 @@ import { useState } from "react";
 
 const ListWineCard = ({ wine }) => {
   const [count, setCount] = useState(1);
-  const { darkMode, t, handleClick, handleAddToCart, wineNotAvailable } =
-    useWineCard(wine, count);
+  const {
+    darkMode,
+    t,
+    handleClick,
+    handleAddToCart,
+    wineNotAvailable,
+    handleAddToWishList,
+  } = useWineCard(wine, count);
 
   const increment = () => setCount(count + 1);
   const decrement = () => {
@@ -90,10 +96,7 @@ const ListWineCard = ({ wine }) => {
 
         <div className="">
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              e.preventDefault();
-            }}
+            onClick={handleAddToWishList}
             className={`border ${
               darkMode ? "border-white" : "border-[#724AA4]"
             } rounded-full p-2`}

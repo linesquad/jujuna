@@ -1,7 +1,7 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
 
-const CartHeader = ({ title, onClose }) => {
+const ReusableHeader = ({ title, onClose }) => {
   return (
     <div className="flex justify-between items-center p-5 border-b border-gray-200">
       <h2 className="text-xl font-bold text-gray-800 tiny:text-base smaller:text-lg">
@@ -14,6 +14,6 @@ const CartHeader = ({ title, onClose }) => {
   );
 };
 
-const MemoizedCartHeader = React.memo(CartHeader);
+const MemoizedReusableHeader = React.memo(ReusableHeader);
 
-export default MemoizedCartHeader;
+export default MemoizedReusableHeader;

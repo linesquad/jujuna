@@ -4,8 +4,14 @@ import i18n from "../../../i18n";
 
 export default function WineCard({ wine }) {
   const count = 1;
-  const { darkMode, t, handleClick, handleAddToCart, wineNotAvailable } =
-    useWineCard(wine, count);
+  const {
+    darkMode,
+    t,
+    handleClick,
+    handleAddToCart,
+    wineNotAvailable,
+    handleAddToWishList,
+  } = useWineCard(wine, count);
 
   if (wineNotAvailable) return null;
 
@@ -42,10 +48,7 @@ export default function WineCard({ wine }) {
             </button>
 
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-              }}
+              onClick={handleAddToWishList}
               className={`border ${
                 darkMode ? "border-white" : "border-[#724AA4]"
               } rounded-full p-2`}

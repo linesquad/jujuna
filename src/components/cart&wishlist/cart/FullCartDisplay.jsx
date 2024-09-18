@@ -1,7 +1,7 @@
 // import { useTranslation } from "react-i18next";
 import { useRef, useEffect } from "react";
-import { useGetCartItems } from "../../hooks/useGetCartItems";
-import { useAddToCart } from "../../hooks/useAddToCart";
+import { useGetCartItems } from "../../../hooks/useGetCartItems";
+import { useAddToCart } from "../../../hooks/useAddToCart";
 import { motion } from "framer-motion";
 import { useQueryClient } from "@tanstack/react-query";
 import TotalSummary from "./TotalSummary";
@@ -11,16 +11,15 @@ import {
   handleDelete,
   handleIncrease,
   itemInCache,
-} from "../../features/cartUtils";
-import MemoizedCartHeader from "./CartHeader";
+} from "../../../features/cartUtils";
 import MemoizedCheckoutButton from "./CheckoutButton";
+import MemoizedReusableHeader from "../ReusableHeader";
 
 const FullCartDisplay = ({ onClose, title }) => {
   const modalRef = useRef(null);
   const { data: cartItems, isError, isLoading, error } = useGetCartItems();
   const { mutate: updateCart, isPending } = useAddToCart();
   const queryClient = useQueryClient();
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
@@ -63,7 +62,7 @@ const FullCartDisplay = ({ onClose, title }) => {
         className="relative ml-auto h-full bg-white shadow-xl rounded-lg flex flex-col
         tiny:w-[200px] smaller:w-[250px] w-[350px]"
       >
-        <MemoizedCartHeader onClose={onClose} title={title} />
+        <MemoizedReusableHeader onClose={onClose} title={title} />
 
         <div className="flex-1 p-5 overflow-y-scroll">
           {cartItems.length === 0 ? (
