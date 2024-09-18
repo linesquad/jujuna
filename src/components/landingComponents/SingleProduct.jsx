@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import { useState } from "react";
 import { useAddToCart } from "../../hooks/useAddToCart";
+import useAddToWishList from "../../hooks/useAddToWishList";
 
 function SingleProduct({ item }) {
   const [count, setCount] = useState(1);
@@ -14,6 +15,7 @@ function SingleProduct({ item }) {
   const { i18n } = useTranslation();
 
   const { mutate: addToCart } = useAddToCart();
+  const { mutate: addToWishList } = useAddToWishList();
 
   const handleAddToCart = () => {
     addToCart({
@@ -25,6 +27,19 @@ function SingleProduct({ item }) {
       image: item.url,
       price: item.price,
       unit: count,
+      productType: "singleProduct",
+    });
+  };
+
+  const handleAddToWishList = () => {
+    addToWishList({
+      productId: item._id,
+      title:
+        i18n.language === "ge"
+          ? item.titleTranslations.ge
+          : item.titleTranslations.en,
+      image: item.url,
+      price: item.price,
       productType: "singleProduct",
     });
   };
@@ -134,7 +149,10 @@ function SingleProduct({ item }) {
         </div>
       )}
 
-      <div className="absolute top-[5px] right-[24px] cursor-pointer">
+      <div
+        className="absolute top-[5px] right-[24px] cursor-pointer"
+        onClick={handleAddToWishList}
+      >
         <div className="w-[36px] h-[36px] rounded-[50%] bg-[#D9D9D9] flex justify-center items-center">
           <FaHeart color="#FFFFFF" size={25} />
         </div>

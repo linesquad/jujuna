@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { addToWishList } from "../services/apiWishList";
 
-export const useAddToWishList = () => {
+const useAddToWishList = () => {
   const { mutate, isPending, data } = useMutation({
     mutationFn: addToWishList,
     onSuccess: () => {
@@ -14,3 +14,5 @@ export const useAddToWishList = () => {
 
   return { mutate, isPending, data };
 };
+
+export default useAddToWishList;

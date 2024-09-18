@@ -28,7 +28,7 @@ const WishListItem = ({ item }) => {
       </div>
 
       <div className="w-full">
-        <div className="">
+        <div className="cursor-pointer">
           <RiDeleteBin7Line size={20} />
         </div>
       </div>
