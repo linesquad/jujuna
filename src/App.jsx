@@ -13,6 +13,7 @@ import NewsDetails from "./components/newsComponents/NewsDetails";
 import CocktailDetails from "./pages/CocktailDetails";
 import UserPage from "./pages/UserPage";
 import DisplayWines from "./components/wineComponents/DisplayWines";
+import Checkout from "./pages/Checkout";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path="/cocktails/:id" element={<CocktailDetails />} />
         <Route path="/userPage" element={<UserPage />} />
       </Route>
+      <Route path="checkout" element={<Checkout />} />
 
       <Route path="*" element={<PageNotFound />} />
     </Routes>

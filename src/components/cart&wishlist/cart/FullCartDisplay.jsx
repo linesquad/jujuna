@@ -94,7 +94,7 @@ const FullCartDisplay = ({ onClose, title }) => {
           )}
         </div>
         {cartItems.length > 0 && <TotalSummary cartItems={cartItems} />}
-        {cartItems.length > 0 && <MemoizedCheckoutButton />}
+        {cartItems.length > 0 && <MemoizedCheckoutButton onClose={onClose} />}
       </motion.div>
     </div>
   );
