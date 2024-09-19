@@ -60,7 +60,7 @@ const FullCartDisplay = ({ onClose, title }) => {
         variants={variants}
         transition={{ type: "tween", duration: 0.5 }}
         className="relative ml-auto h-full bg-white shadow-xl rounded-lg flex flex-col
-        tiny:w-[200px] smaller:w-[250px] w-[350px]"
+        tiny:w-full smaller:w-full w-[350px]"
       >
         <MemoizedReusableHeader onClose={onClose} title={title} />
 

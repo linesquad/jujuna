@@ -11,7 +11,7 @@ const FullWishListDisplay = ({ onClose, title }) => {
     isLoading,
     error,
   } = useGetWishListItems();
-  console.log(wishListItems);
+  // console.log(wishListItems.length);
   const modalRef = useRef(null);
 
   useEffect(() => {
@@ -52,7 +52,8 @@ const FullWishListDisplay = ({ onClose, title }) => {
         variants={variants}
         transition={{ type: "tween", duration: 0.5 }}
         className="relative ml-auto h-full bg-white shadow-xl rounded-lg flex flex-col
-        tiny:w-[200px] smaller:w-[250px] w-[350px]"
+        tiny:w-full 
+        smaller:w-full w-[350px]"
       >
         <MemoizedReusableHeader onClose={onClose} title={title} />
         <div className="flex-1 p-5 overflow-y-scroll">
@@ -60,7 +61,7 @@ const FullWishListDisplay = ({ onClose, title }) => {
             <p className="text-center text-gray-500">Your wishlist is empty.</p>
           ) : (
             wishListItems.map((item) => (
-              <div key={item._id}>
+              <div key={item.productId}>
                 <WishListItem item={item} />
               </div>
             ))
