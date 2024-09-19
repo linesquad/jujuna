@@ -11,6 +11,7 @@ import LayoutChanger from "../components/LayoutChanger/LayoutChanger";
 import { wineLayoutOptions } from "../components/LayoutChanger/layoutOptions";
 import ProductsFilter from "../components/wineComponents/ProductsFilter";
 import { useWinesCategory } from "../hooks/useWinesCategory";
+import { AnimatePresence } from "framer-motion";
 
 const Wines = memo(() => {
   const [showFilter, setShowFilter] = useState(false);
@@ -33,18 +34,20 @@ const Wines = memo(() => {
 
         <div className="relative flex justify-between lg:justify-end">
           <MobileWineFilter setShowFilter={setShowFilter} />
-          {showFilter && (
-            <div>
-              <MobileFilterContainer
-                setShowFilter={setShowFilter}
-                minValue={10}
-                maxValue={1000}
-                categories={wineCategories}
-                setCategoryId={setCategoryId}
-                categoryId={categoryId}
-              />
-            </div>
-          )}
+          <AnimatePresence>
+            {showFilter && (
+              <div>
+                <MobileFilterContainer
+                  setShowFilter={setShowFilter}
+                  minValue={10}
+                  maxValue={1000}
+                  categories={wineCategories}
+                  setCategoryId={setCategoryId}
+                  categoryId={categoryId}
+                />
+              </div>
+            )}
+          </AnimatePresence>
 
           <LayoutChanger
             layouts={wineLayoutOptions}

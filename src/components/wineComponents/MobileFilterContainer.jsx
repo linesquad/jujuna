@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import { useEffect, useRef } from "react";
 import ProductsFilter from "./ProductsFilter";
+import { motion } from "framer-motion";
 
 export default function MobileFilterContainer({
   setShowFilter,
@@ -32,7 +33,24 @@ export default function MobileFilterContainer({
   }, [setShowFilter]);
 
   return (
-    <div
+    <motion.div
+      variants={{
+        open: {
+          x: "0%",
+          transition: {
+            type: "spring",
+          },
+        },
+        closed: {
+          x: "-150%",
+          transition: {
+            type: "spring",
+          },
+        },
+      }}
+      initial="closed"
+      animate="open"
+      exit="closed"
       ref={containerRef}
       className={`${
         darkMode
@@ -47,6 +65,6 @@ export default function MobileFilterContainer({
         setCategoryId={setCategoryId}
         categoryId={categoryId}
       />
-    </div>
+    </motion.div>
   );
 }
