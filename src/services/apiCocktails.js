@@ -1,3 +1,5 @@
+import axiosInstance from "./axiosInstance";
+
 const URL = "http://localhost:8001";
 
 export const fetchCocktails = async () => {
@@ -20,4 +22,9 @@ export const fetchCocktailsId = async (id) => {
   } catch (error) {
     console.log(error.message);
   }
+};
+
+export const fetchCocktailsCategoriesTitle = async () => {
+  const { data } = await axiosInstance.get("/cocktail-categories");
+  return data;
 };

@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
 
-function OneSubcategory({ item, setCategoryId }) {
+function OneSubcategory({ item, setCategoryId, pageUrl }) {
   const { i18n } = useTranslation();
   const navigate = useNavigate();
 
@@ -11,10 +11,10 @@ function OneSubcategory({ item, setCategoryId }) {
     console.log(e.target.checked);
     if (e.target.checked) {
       setCategoryId(item._id);
-      navigate(`/wines/${layout}/${item._id}`);
+      navigate(`/${pageUrl}/${layout}/${item._id}`);
     } else {
       setCategoryId("");
-      navigate(`/wines/${layout}/allWines`);
+      navigate(`/${pageUrl}/${layout}/allWines`);
     }
   };
 

@@ -20,7 +20,7 @@ function App() {
       <Route element={<AppLayout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<AboutUs />} />
-        <Route path="cocktail" element={<Cocktails />} />
+        <Route path="/cocktail" element={<Cocktails />} />
         <Route path="/news" element={<News />} />
         <Route path="/news/:id" element={<NewsDetails />} />
         <Route path="/wines" element={<Wines />}>
@@ -28,13 +28,11 @@ function App() {
             path="/wines"
             element={<Navigate to="/wines/default/allWines" />}
           />
-
           <Route
             path="/wines/:layoutName/:categoryId"
             element={<DisplayWines />}
           />
         </Route>
-
         <Route path="orders" element={<Orders />} />
         <Route path="/wine/:id" element={<WineDetails />} />
         <Route path="/cocktails/:id" element={<CocktailDetails />} />

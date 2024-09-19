@@ -9,6 +9,7 @@ export default function ProductsFilter({
   categories,
   setCategoryId,
   categoryId,
+  pageUrl,
 }) {
   const [sliderValues, setSliderValues] = useState([]);
   const { i18n } = useTranslation();
@@ -30,6 +31,7 @@ export default function ProductsFilter({
               subCategories={item.subCategories}
               setCategoryId={setCategoryId}
               categoryId={categoryId}
+              pageUrl={pageUrl}
             />
           );
         })}

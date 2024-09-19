@@ -8,6 +8,7 @@ export default function FilterItem({
   subCategories,
   setCategoryId,
   categoryId,
+  pageUrl,
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,6 +34,7 @@ export default function FilterItem({
                 item={item}
                 setCategoryId={setCategoryId}
                 categoryId={categoryId}
+                pageUrl={pageUrl}
               />
             );
           })}

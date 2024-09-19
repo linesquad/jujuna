@@ -11,6 +11,7 @@ export default function MobileFilterContainer({
   categories,
   setCategoryId,
   categoryId,
+  pageUrl,
 }) {
   const darkMode = useSelector(getMode);
   const containerRef = useRef(null);
@@ -64,6 +65,7 @@ export default function MobileFilterContainer({
         categories={categories}
         setCategoryId={setCategoryId}
         categoryId={categoryId}
+        pageUrl={pageUrl}
       />
     </motion.div>
   );

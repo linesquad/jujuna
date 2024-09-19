@@ -34,7 +34,7 @@ function DisplayWines() {
       className={`w-full lg:min-h-[100vh] items-start mb-24 ${layoutStyles[layout]}`}
     >
       {fillterWines?.map((wine) => (
-        <div className="flex flex-col items-start" key={wine._id}>
+        <div className="flex flex-col items-start w-full" key={wine._id}>
           {layout === "default" && <WineCard wine={wine} />}
           {layout === "list" && <ListWineCard wine={wine} />}
           {layout === "col" && <ColWineCard wine={wine} />}

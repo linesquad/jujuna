@@ -6,9 +6,9 @@ import { getMode } from "../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import CocktailsSidebar from "./CocktailsSidebar";
+import ProductsFilter from "../wineComponents/ProductsFilter";
 
-function CocktailsHeader({ sortValue, setSortValue }) {
+function CocktailsHeader() {
   const [isFillterOpen, setIsFillterOpen] = useState(false);
   const darkMode = useSelector(getMode);
   const { t } = useTranslation();
@@ -52,12 +52,9 @@ function CocktailsHeader({ sortValue, setSortValue }) {
               exit="closed"
               className={`absolute top-[120px] z-10 ${
                 darkMode ? "bg-[#000]" : "bg-[#fff]"
-              }  h-[300px] md:hidden rounded-md`}
+              }   md:hidden rounded-md`}
             >
-              <CocktailsSidebar
-                setSortValue={setSortValue}
-                sortValue={sortValue}
-              />
+              <ProductsFilter minValue={10} maxValue={1000} />
             </motion.div>
           )}
         </AnimatePresence>

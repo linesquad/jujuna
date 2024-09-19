@@ -44,6 +44,7 @@ const Wines = memo(() => {
                   categories={wineCategories}
                   setCategoryId={setCategoryId}
                   categoryId={categoryId}
+                  pageUrl="wines"
                 />
               </div>
             )}
@@ -65,6 +66,7 @@ const Wines = memo(() => {
               categories={wineCategories}
               setCategoryId={setCategoryId}
               categoryId={categoryId}
+              pageUrl="wines"
             />
           </div>
           <Outlet />
