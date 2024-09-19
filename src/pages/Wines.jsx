@@ -34,7 +34,16 @@ const Wines = memo(() => {
         <div className="relative flex justify-between lg:justify-end">
           <MobileWineFilter setShowFilter={setShowFilter} />
           {showFilter && (
-            <MobileFilterContainer setShowFilter={setShowFilter} />
+            <div>
+              <MobileFilterContainer
+                setShowFilter={setShowFilter}
+                minValue={10}
+                maxValue={1000}
+                categories={wineCategories}
+                setCategoryId={setCategoryId}
+                categoryId={categoryId}
+              />
+            </div>
           )}
 
           <LayoutChanger
@@ -46,13 +55,15 @@ const Wines = memo(() => {
         </div>
 
         <div className="flex items-start">
-          <ProductsFilter
-            minValue={10}
-            maxValue={1000}
-            categories={wineCategories}
-            setCategoryId={setCategoryId}
-            categoryId={categoryId}
-          />
+          <div className="hidden lg:block">
+            <ProductsFilter
+              minValue={10}
+              maxValue={1000}
+              categories={wineCategories}
+              setCategoryId={setCategoryId}
+              categoryId={categoryId}
+            />
+          </div>
           <Outlet />
         </div>
       </Wrapper>

@@ -1,4 +1,3 @@
-import React from "react";
 import { useWines } from "../../hooks/useWines";
 import { useParams } from "react-router-dom";
 import WineCard from "./wineCardComponents/WineCard";
@@ -32,14 +31,14 @@ function DisplayWines() {
 
   return (
     <div
-      className={`w-full min-h-[100vh] items-start mb-24 ${layoutStyles[layout]}`}
+      className={`w-full lg:min-h-[100vh] items-start mb-24 ${layoutStyles[layout]}`}
     >
       {fillterWines?.map((wine) => (
-        <React.Fragment key={wine._id}>
+        <div className="flex flex-col items-start" key={wine._id}>
           {layout === "default" && <WineCard wine={wine} />}
           {layout === "list" && <ListWineCard wine={wine} />}
           {layout === "col" && <ColWineCard wine={wine} />}
-        </React.Fragment>
+        </div>
       ))}
     </div>
   );

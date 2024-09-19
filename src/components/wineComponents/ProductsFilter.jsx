@@ -14,7 +14,7 @@ export default function ProductsFilter({
   const { i18n } = useTranslation();
 
   return (
-    <div className="hidden lg:block h-96 w-[200px]">
+    <div className="h-[500px] px-[60px] py-[15px] lg:p-0 lg:block lg:h-96 lg:w-[200px]">
       <p className="text-[#78808C] text-[14px]">ფილტრი</p>
 
       <div className="mt-[30px] flex flex-col gap-[21px]">
