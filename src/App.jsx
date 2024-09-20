@@ -13,6 +13,7 @@ import NewsDetails from "./components/newsComponents/NewsDetails";
 import CocktailDetails from "./pages/CocktailDetails";
 import UserPage from "./pages/UserPage";
 import DisplayWines from "./components/wineComponents/DisplayWines";
+import DisplayCocktails from "./components/cocktailsComponents/DisplayCocktails";
 
 function App() {
   return (
@@ -20,7 +21,16 @@ function App() {
       <Route element={<AppLayout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<AboutUs />} />
-        <Route path="/cocktail" element={<Cocktails />} />
+        <Route path="/cocktail" element={<Cocktails />}>
+          <Route
+            path="/cocktail"
+            element={<Navigate to="/cocktail/default/allCocktail" />}
+          />
+          <Route
+            path="/cocktail/:layoutName/:categoryId"
+            element={<DisplayCocktails />}
+          />
+        </Route>
         <Route path="/news" element={<News />} />
         <Route path="/news/:id" element={<NewsDetails />} />
         <Route path="/wines" element={<Wines />}>
@@ -38,7 +48,6 @@ function App() {
         <Route path="/cocktails/:id" element={<CocktailDetails />} />
         <Route path="/userPage" element={<UserPage />} />
       </Route>
-
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

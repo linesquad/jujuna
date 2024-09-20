@@ -14,7 +14,7 @@ function OneSubcategory({ item, setCategoryId, pageUrl }) {
       navigate(`/${pageUrl}/${layout}/${item._id}`);
     } else {
       setCategoryId("");
-      navigate(`/${pageUrl}/${layout}/allWines`);
+      navigate(`/${pageUrl}/${layout}/all${pageUrl}`);
     }
   };
 

@@ -17,7 +17,7 @@ export const fetchWineCategories = async () => {
 };
 
 export const fetchWinesByCategory = async (id) => {
-  if (id === "allWines" || id.length === 0) return;
+  if (id.toLowerCase() === "allwines" || id.length === 0) return;
   const { data } = await axiosInstance.get(`/category/${id}`);
   return data;
 };

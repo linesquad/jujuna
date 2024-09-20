@@ -28,3 +28,9 @@ export const fetchCocktailsCategoriesTitle = async () => {
   const { data } = await axiosInstance.get("/cocktail-categories");
   return data;
 };
+
+export const fetchCocktailsByCategories = async (id) => {
+  if (id.toLowerCase() === "allcocktail" || id.length === 0) return;
+  const { data } = await axiosInstance.get(`/category/${id}`);
+  return data;
+};
