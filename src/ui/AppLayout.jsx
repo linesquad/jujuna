@@ -6,14 +6,21 @@ import { useState } from "react";
 
 const AppLayout = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const accesToken = localStorage.getItem("accessToken");
+  const refreshToken = localStorage.getItem("refreshToken");
   return (
     <div>
-      <Header setIsAuthModalOpen={setIsAuthModalOpen} />
+      <Header
+        setIsAuthModalOpen={setIsAuthModalOpen}
+        isAuthModalOpen={isAuthModalOpen}
+      />
       <main>
         <Outlet />
       </main>
       <Footer />
-      {isAuthModalOpen && <Auth setIsAuthModalOpen={setIsAuthModalOpen} />}
+      {isAuthModalOpen && !accesToken && !refreshToken && (
+        <Auth setIsAuthModalOpen={setIsAuthModalOpen} />
+      )}
     </div>
   );
 };

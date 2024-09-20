@@ -6,7 +6,7 @@ import OpenBurger from "../components/landingComponents/navBarComponents/OpenBur
 import useWindowSize from "../hooks/useWindowSize";
 import { AnimatePresence } from "framer-motion";
 
-const Header = ({ setIsAuthModalOpen }) => {
+const Header = ({ setIsAuthModalOpen, isAuthModalOpen }) => {
   const open = useSelector(getIsOpen);
   const dispatch = useDispatch();
 
@@ -32,7 +32,10 @@ const Header = ({ setIsAuthModalOpen }) => {
 
   return (
     <div className="top-0 w-full z-40 header">
-      <CloseBurger setIsAuthModalOpen={setIsAuthModalOpen} />
+      <CloseBurger
+        setIsAuthModalOpen={setIsAuthModalOpen}
+        isAuthModalOpen={isAuthModalOpen}
+      />
       <AnimatePresence>{open && <OpenBurger />}</AnimatePresence>
     </div>
   );

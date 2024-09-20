@@ -15,15 +15,28 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import FullCartDisplay from "../../cart&wishlist/cart/FullCartDisplay";
 import FullWishListDisplay from "../../cart&wishlist/wishlist/FullWishListDisplay";
+import { FaSignOutAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 
-const CloseBurger = ({ setIsAuthModalOpen }) => {
+const CloseBurger = ({ setIsAuthModalOpen, isAuthModalOpen }) => {
   const open = useSelector(getIsOpen);
   const darkMode = useSelector(getMode);
   const { t } = useTranslation();
   const [viewCart, setViewCart] = useState(false);
   const [seeWishList, setSeeWishList] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
+  const [hover, setHover] = useState("");
   const navRef = useRef(null);
+  const navigate = useNavigate();
+
+  const accesToken = localStorage.getItem("accessToken");
+  const refreshToken = localStorage.getItem("refreshToken");
+
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -106,12 +119,64 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
                   />
                   <div className="h-[27px] border-[1px] bprder-[#fff]"></div>
                 </div>
-                <FaUser
-                  color={`${darkMode ? "#fff" : "#000"}`}
-                  size={20}
-                  onClick={() => setIsAuthModalOpen(true)}
-                  cursor="pointer"
-                />
+                <div className="relative">
+                  <FaUser
+                    color={`${darkMode ? "#fff" : "#000"}`}
+                    size={20}
+                    onClick={() => setIsAuthModalOpen((isOpen) => !isOpen)}
+                    cursor="pointer"
+                  />
+                  <AnimatePresence>
+                    {isAuthModalOpen && accesToken && refreshToken && (
+                      <motion.div
+                        className="absolute top-10 left-[-200px] lg:left-[-100px] bg-[#eaeaea] flex w-[220px] h-[60px] p-[10px] justify-between rounded-[20px]"
+                        variants={{
+                          open: { scale: 1 },
+                          closed: { scale: 0.1 },
+                        }}
+                        initial="closed"
+                        animate="open"
+                        exit="closed"
+                        transition={{
+                          type: "spring",
+                          stiffness: 200,
+                          damping: 20,
+                        }}
+                      >
+                        <div
+                          className="flex flex-col justify-center items-center cursor-pointer  w-[100px]"
+                          onMouseLeave={() => setHover("")}
+                          onClick={() => {
+                            handleLogout();
+                            setIsAuthModalOpen(false);
+                          }}
+                        >
+                          <FaSignOutAlt
+                            onMouseEnter={() => setHover("logOut")}
+                            color="red"
+                          />
+                          {hover === "logOut" && (
+                            <p className="text-red-700">logout</p>
+                          )}
+                        </div>
+                        <div
+                          className="flex flex-col justify-center items-center cursor-pointer  w-[100px]"
+                          onMouseLeave={() => setHover("")}
+                          onClick={() => {
+                            navigate("/userPage");
+                            setIsAuthModalOpen(false);
+                          }}
+                        >
+                          <FaUser
+                            onMouseEnter={() => setHover("userPage")}
+                            color="black"
+                          />
+                          {hover === "userPage" && <p>User Page</p>}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
             </nav>
           </div>
