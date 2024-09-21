@@ -7,7 +7,6 @@ import News from "./pages/News";
 import Wines from "./pages/Wines";
 import AppLayout from "./ui/AppLayout";
 import PageNotFound from "./pages/PageNotFound";
-import { Orders } from "./pages/Orders";
 import WineDetails from "./components/wineComponents/singleWineComponents/SingleWine";
 import NewsDetails from "./components/newsComponents/NewsDetails";
 import CocktailDetails from "./pages/CocktailDetails";
@@ -36,7 +35,6 @@ function App() {
           />
         </Route>
 
-        <Route path="orders" element={<Orders />} />
         <Route path="/wine/:id" element={<WineDetails />} />
         <Route path="/cocktails/:id" element={<CocktailDetails />} />
         <Route path="/userPage" element={<UserPage />} />

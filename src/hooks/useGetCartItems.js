@@ -9,6 +9,7 @@ export const useGetCartItems = () => {
       console.log("warmatebit wamoigho");
     },
     // staleTime: 3000 * 60,
+    refetchOnWindowFocus: false,
   });
 
   return { data, isLoading, error, isError };

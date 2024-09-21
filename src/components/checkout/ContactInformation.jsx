@@ -1,9 +1,21 @@
 import { DevTool } from "@hookform/devtools";
 import PaymentMethod from "./PaymentMethod";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
-// useRef
+import { useEffect, useState } from "react";
+import useCreateOrder from "../../hooks/useCreateOrder";
+import { useGetCartItems } from "../../hooks/useGetCartItems";
+import ModalPayMentSuccesfull from "./ModalPayMentSuccesfull";
 const ContactInformation = () => {
+  const { mutate: createOrder, data: orderData } = useCreateOrder();
+  const { data } = useGetCartItems();
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const totalPrice = data.reduce(
+    (total, item) => total + item.unit * item.price,
+    0
+  );
+
   const form = useForm({
     defaultValues: {
       city: "",
@@ -13,17 +25,23 @@ const ContactInformation = () => {
     },
   });
   const { register, control, handleSubmit, formState, reset } = form;
-  //   setValue
   const { errors, isSubmitSuccessful } = formState;
-  //   isSubmitting,
   useEffect(() => {
     if (isSubmitSuccessful) reset();
   }, [isSubmitSuccessful, reset]);
 
-  //   const formRef = useRef(null);
-
   const onSubmit = (data) => {
-    console.log(data); // You can handle the form data here
+    createOrder({
+      postalCode: data.postalCode,
+      city: data.city,
+      state: data.state,
+      country: data.country,
+      currentAddress: data.currentAddress,
+      note: data.note,
+      totalAmount: totalPrice,
+    });
+
+    setIsModalVisible(true);
   };
 
   return (
@@ -175,6 +193,32 @@ const ContactInformation = () => {
       <div className="pt-4">
         <PaymentMethod />
       </div>
+
+      {isModalVisible && (
+        <ModalPayMentSuccesfull totalPrice={totalPrice} orderData={orderData} />
+      )}
+
+      {/* {isLoading && <div>Loading...</div>}
+      {isSuccess && data && (
+        <ModalPayMentSuccesfull totalPrice={totalPrice} orderData={orderData} />
+      )}
+      {error && <div>Error: {error.message}</div>} */}
+      {/* {isModalVisible && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+          <div className="bg-white p-5 rounded-lg shadow-lg">
+            <h2 className="text-xl font-bold mb-4">Order Submitted</h2>
+            <p>Your order has been placed successfully!</p>
+            <div className="flex justify-end pt-4">
+              <button
+                className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+                // onClick={closeModal}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )} */}
     </div>
   );
 };
