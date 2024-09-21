@@ -32,13 +32,15 @@ const Wines = memo(() => {
           <span>/ {t("winePage.navProducts")}</span>
         </div>
 
-        <div className="relative flex justify-between lg:justify-end">
+        <div className="flex justify-between lg:justify-end">
           <MobileWineFilter setShowFilter={setShowFilter} />
+
           <AnimatePresence>
             {showFilter && (
-              <div>
+              <div className="w-full">
                 <MobileFilterContainer
                   setShowFilter={setShowFilter}
+                  showFilter={showFilter}
                   minValue={10}
                   maxValue={1000}
                   categories={wineCategories}

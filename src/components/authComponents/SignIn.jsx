@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { useLogin } from "../../hooks/useLogin";
 
-const SignIn = () => {
+const SignIn = ({ setIsAuthModalOpen }) => {
   const { i18n } = useTranslation();
   const { mutate: login } = useLogin();
 
@@ -16,6 +16,7 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   async function onSubmit(data) {
+    setIsAuthModalOpen(false);
     login(data);
   }
 

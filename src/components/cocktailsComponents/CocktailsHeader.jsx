@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import ProductsFilter from "../wineComponents/ProductsFilter";
 
-function CocktailsHeader() {
+function CocktailsHeader({ categories, categoryId, setCategoryId, pageUrl }) {
   const [isFillterOpen, setIsFillterOpen] = useState(false);
   const darkMode = useSelector(getMode);
   const { t } = useTranslation();
@@ -54,7 +54,14 @@ function CocktailsHeader() {
                 darkMode ? "bg-[#000]" : "bg-[#fff]"
               }   md:hidden rounded-md`}
             >
-              <ProductsFilter minValue={10} maxValue={1000} />
+              <ProductsFilter
+                minValue={10}
+                maxValue={1000}
+                categories={categories}
+                categoryId={categoryId}
+                setCategoryId={setCategoryId}
+                pageUrl={pageUrl}
+              />
             </motion.div>
           )}
         </AnimatePresence>

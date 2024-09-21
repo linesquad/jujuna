@@ -55,7 +55,7 @@ function Auth({ setIsAuthModalOpen }) {
                 {t("auth.reg")}
               </p>
             </div>
-            {isSignIn && <SignIn />}
+            {isSignIn && <SignIn setIsAuthModalOpen={setIsAuthModalOpen} />}
             {!isSignIn && <SignUp />}
             {/* <GoogleSignIn /> */}
           </div>

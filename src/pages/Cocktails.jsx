@@ -21,7 +21,14 @@ function CockTails() {
 
   return (
     <div className={`${darkMode ? "bg-[#12151C]" : "bg-[#fff]"}`}>
-      <CocktailsHeader setSortValue={setSortValue} sortValue={sortValue} />
+      <CocktailsHeader
+        setSortValue={setSortValue}
+        sortValue={sortValue}
+        categories={categoryTitles}
+        categoryId={categoryId}
+        setCategoryId={setCategoryId}
+        pageUrl="cocktail"
+      />
       <Wrapper>
         <div className="flex items-start gap-[40px] mt-[23px] md:mt-[40px] lg:mt-[60px] px-[14px] md:px-[0px] py-[15px]">
           <div className="hidden md:block">
