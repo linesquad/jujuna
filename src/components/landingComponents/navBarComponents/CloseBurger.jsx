@@ -147,6 +147,20 @@ const CloseBurger = ({ setIsAuthModalOpen, isAuthModalOpen }) => {
                           className="flex flex-col justify-center items-center cursor-pointer  w-[100px]"
                           onMouseLeave={() => setHover("")}
                           onClick={() => {
+                            navigate("/userPage");
+                            setIsAuthModalOpen(false);
+                          }}
+                        >
+                          <FaUser
+                            onMouseEnter={() => setHover("userPage")}
+                            color="black"
+                          />
+                          {hover === "userPage" && <p>User Page</p>}
+                        </div>
+                        <div
+                          className="flex flex-col justify-center items-center cursor-pointer  w-[100px]"
+                          onMouseLeave={() => setHover("")}
+                          onClick={() => {
                             handleLogout();
                             setIsAuthModalOpen(false);
                           }}
@@ -158,20 +172,6 @@ const CloseBurger = ({ setIsAuthModalOpen, isAuthModalOpen }) => {
                           {hover === "logOut" && (
                             <p className="text-red-700">logout</p>
                           )}
-                        </div>
-                        <div
-                          className="flex flex-col justify-center items-center cursor-pointer  w-[100px]"
-                          onMouseLeave={() => setHover("")}
-                          onClick={() => {
-                            navigate("/userPage");
-                            setIsAuthModalOpen(false);
-                          }}
-                        >
-                          <FaUser
-                            onMouseEnter={() => setHover("userPage")}
-                            color="black"
-                          />
-                          {hover === "userPage" && <p>User Page</p>}
                         </div>
                       </motion.div>
                     )}
