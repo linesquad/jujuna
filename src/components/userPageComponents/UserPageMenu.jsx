@@ -41,11 +41,11 @@ function UserPageMenu() {
   ];
 
   return (
-    <div>
+    <div className="w-full h-screen mt-[30px] md:mt-[0px]">
       <h2 className="text-[30px] text-[#222528] font-semibold ml-[24px]">
         My account
       </h2>
-      <div className="mt-[20px] w-[302px] h-[700px] pt-[32px] pb-[30px] [box-shadow:1px_1px_14px_0px_rgba(126,_135,_143,_0.2)] rounded-[16px] flex flex-col gap-[8px]">
+      <div className="mt-[20px] w-full md:w-[302px] h-[700px] pt-[32px] pb-[30px] md:[box-shadow:1px_1px_14px_0px_rgba(126,_135,_143,_0.2)] rounded-[16px] flex flex-col gap-[8px]">
         {menuItems.map((item) => {
           return (
             <OneMenuItem
@@ -56,7 +56,7 @@ function UserPageMenu() {
             />
           );
         })}
-        <div className="mt-auto flex items-center gap-[14px] ml-[24px] cursor-pointer">
+        <div className="mt-[30px] md:mt-auto flex items-center gap-[14px] ml-[24px] cursor-pointer">
           <FaDoorOpen color="#724AA4" size={25} />
           <p className="text-[#222528] font-medium">Log Out</p>
         </div>
