@@ -1,21 +1,26 @@
-import supabase from "./supabase";
+import axiosInstance from "./axiosInstance";
 
-const apiOrders = async (orderId) => {
-  let { data, error } = await supabase
-    .from("orderItems")
-    .select(
-      `
-            orderId,
-            quantity,
-            secondProductId (id, created_at, color, price, alco, ingredients, name, image),
-            productId (id, name, price, created_at, color, age, size, image, brand, alco)
-        `
-    )
-    .eq("orderId", orderId);
+export const createOrder = async (credentials) => {
+  const { data } = await axiosInstance.post("/create-order", {
+    totalAmount: credentials.totalAmount,
+    postalCode: credentials.postalCode,
+    city: credentials.city,
+    state: credentials.state,
+    country: credentials.country,
+    currentAddress: credentials.currentAddress,
+    note: credentials.note,
+  });
 
-  if (error) throw new Error("chemi yle gafecha");
-
-  return { data, error };
+  return data;
 };
 
-export default apiOrders;
+export const getOrderById = async (orderId) => {
+  try {
+    const { data } = await axiosInstance.get(`/order/${orderId}`);
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching order details:", error);
+    throw error;
+  }
+};

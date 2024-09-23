@@ -7,7 +7,6 @@ import News from "./pages/News";
 import Wines from "./pages/Wines";
 import AppLayout from "./ui/AppLayout";
 import PageNotFound from "./pages/PageNotFound";
-import { Orders } from "./pages/Orders";
 import WineDetails from "./components/wineComponents/singleWineComponents/SingleWine";
 import NewsDetails from "./components/newsComponents/NewsDetails";
 import CocktailDetails from "./pages/CocktailDetails";
@@ -48,7 +47,8 @@ function App() {
             element={<DisplayWines />}
           />
         </Route>
-        <Route path="orders" element={<Orders />} />
+
+        {/* <Route path="orders" element={<Orders />} /> */}
         <Route path="/wine/:id" element={<WineDetails />} />
         <Route path="/cocktails/:id" element={<CocktailDetails />} />
         <Route path="/userPage" element={<UserPage />}>
@@ -63,6 +63,7 @@ function App() {
           <Route path="/userPage/settings" element={<UserSettings />} />
         </Route>
       </Route>
+
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
