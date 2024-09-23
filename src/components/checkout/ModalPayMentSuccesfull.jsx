@@ -2,8 +2,9 @@ import { IoMdClose } from "react-icons/io";
 import { MdDone } from "react-icons/md";
 import ModalInfo from "./ModalInfo";
 import useCreateOrder from "../../hooks/useCreateOrder";
+import { Link } from "react-router-dom";
 
-const ModalPayMentSuccesfull = ({ totalPrice, orderData }) => {
+const ModalPayMentSuccesfull = ({ orderData, handleCloseModal }) => {
   const { isLoading } = useCreateOrder();
 
   if (isLoading || !orderData) {
@@ -27,7 +28,7 @@ const ModalPayMentSuccesfull = ({ totalPrice, orderData }) => {
           <h1 className="text-[26px] font-bold text-[#474747]">
             Payment Success!
           </h1>
-          <h1 className="text-[40px] font-semibold text-[#121212]">{`$${totalPrice}`}</h1>
+          <h1 className="text-[40px] font-semibold text-[#121212]">{`$${orderData.totalAmount}`}</h1>
         </div>
 
         <hr className="mt-14 pb-6" />
@@ -39,9 +40,11 @@ const ModalPayMentSuccesfull = ({ totalPrice, orderData }) => {
           <ModalInfo title="Customer Country" info={orderData.country} />
         </div>
         <div>
-          <h1 className="text-xl font-bold pt-12 pb-20 text-center">
-            Thank you!
-          </h1>
+          <Link to="/checkout/info" onClick={handleCloseModal}>
+            <h1 className="text-xl font-bold pt-12 pb-20 text-center">
+              Thank you!
+            </h1>
+          </Link>
         </div>
       </div>
     </div>

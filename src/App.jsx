@@ -13,6 +13,7 @@ import CocktailDetails from "./pages/CocktailDetails";
 import UserPage from "./pages/UserPage";
 import DisplayWines from "./components/wineComponents/DisplayWines";
 import Checkout from "./pages/Checkout";
+import DisplayCheckoutInfo from "./components/checkout/DisplayCheckoutInfo";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path="/userPage" element={<UserPage />} />
       </Route>
       <Route path="checkout" element={<Checkout />} />
+      <Route path="/checkout/info" element={<DisplayCheckoutInfo />} />
 
       <Route path="*" element={<PageNotFound />} />
     </Routes>
