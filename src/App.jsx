@@ -40,8 +40,8 @@ function App() {
         <Route path="/cocktails/:id" element={<CocktailDetails />} />
         <Route path="/userPage" element={<UserPage />} />
       </Route>
-      <Route path="checkout" element={<Checkout />} />
-      <Route path="/checkout/info" element={<DisplayCheckoutInfo />} />
+      <Route path="order" element={<Checkout />} />
+      <Route path="/order/:id" element={<DisplayCheckoutInfo />} />
 
       <Route path="*" element={<PageNotFound />} />
     </Routes>

@@ -13,3 +13,14 @@ export const createOrder = async (credentials) => {
 
   return data;
 };
+
+export const getOrderById = async (orderId) => {
+  try {
+    const { data } = await axiosInstance.get(`/order/${orderId}`);
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching order details:", error);
+    throw error;
+  }
+};

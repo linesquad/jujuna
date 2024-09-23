@@ -40,7 +40,7 @@ const ModalPayMentSuccesfull = ({ orderData, handleCloseModal }) => {
           <ModalInfo title="Customer Country" info={orderData.country} />
         </div>
         <div>
-          <Link to="/checkout/info" onClick={handleCloseModal}>
+          <Link to={`/order/${orderData._id}`} onClick={handleCloseModal}>
             <h1 className="text-xl font-bold pt-12 pb-20 text-center">
               Thank you!
             </h1>
