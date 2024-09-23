@@ -129,7 +129,7 @@ const CloseBurger = ({ setIsAuthModalOpen, isAuthModalOpen }) => {
                   <AnimatePresence>
                     {isAuthModalOpen && accesToken && refreshToken && (
                       <motion.div
-                        className="absolute top-10 left-[-200px] lg:left-[-100px] bg-[#eaeaea] flex w-[220px] h-[60px] p-[10px] justify-between rounded-[20px]"
+                        className="absolute top-10 left-[-200px] lg:left-[-100px] bg-[#eaeaea] flex w-[220px] h-[60px] p-[10px] justify-between rounded-[20px] z-[150]"
                         variants={{
                           open: { scale: 1 },
                           closed: { scale: 0 },

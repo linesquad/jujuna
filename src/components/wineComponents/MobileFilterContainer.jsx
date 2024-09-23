@@ -76,7 +76,7 @@ export default function MobileFilterContainer({
         darkMode
           ? "bg-[#12151C] text-white border border-white"
           : "bg-white text-black "
-      } z-[150]   fixed top-0 left-0 w-full h-screen max-w-[400px] shadow-[2px_5px_15px_2px_rgba(0,0,0,0.1)] rounded-xl lg:hidden`}
+      } z-[150]   fixed top-0 left-0 w-full h-screen  shadow-[2px_5px_15px_2px_rgba(0,0,0,0.1)] lg:hidden`}
     >
       <div className="p-[15px]">
         <FaTimes onClick={() => setShowFilter(false)} />

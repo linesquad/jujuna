@@ -14,6 +14,11 @@ import CocktailDetails from "./pages/CocktailDetails";
 import UserPage from "./pages/UserPage";
 import DisplayWines from "./components/wineComponents/DisplayWines";
 import DisplayCocktails from "./components/cocktailsComponents/DisplayCocktails";
+import UserDashboard from "./pages/UserDashboard";
+import UserOrders from "./pages/UserOrders";
+import UserAddress from "./pages/UserAddress";
+import UserReviews from "./pages/UserReviews";
+import UserSettings from "./pages/UserSettings";
 
 function App() {
   return (
@@ -46,7 +51,17 @@ function App() {
         <Route path="orders" element={<Orders />} />
         <Route path="/wine/:id" element={<WineDetails />} />
         <Route path="/cocktails/:id" element={<CocktailDetails />} />
-        <Route path="/userPage" element={<UserPage />} />
+        <Route path="/userPage" element={<UserPage />}>
+          <Route
+            path="/userPage"
+            element={<Navigate to="/userPage/dashboard" />}
+          />
+          <Route path="/userPage/dashboard" element={<UserDashboard />} />
+          <Route path="/userPage/orders" element={<UserOrders />} />
+          <Route path="/userPage/address" element={<UserAddress />} />
+          <Route path="/userPage/reviews" element={<UserReviews />} />
+          <Route path="/userPage/settings" element={<UserSettings />} />
+        </Route>
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>

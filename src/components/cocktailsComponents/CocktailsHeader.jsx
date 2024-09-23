@@ -55,9 +55,9 @@ function CocktailsHeader({ categories, categoryId, setCategoryId, pageUrl }) {
               initial="closed"
               animate="open"
               exit="closed"
-              className={`fixed top-0 w-[100%] h-screen z-[150] ${
+              className={`fixed top-0 right-0 w-[100%] h-screen z-[150] ${
                 darkMode ? "bg-[#000]" : "bg-[#fff]"
-              }   md:hidden rounded-md`}
+              }   md:hidden `}
             >
               <div className="p-[15px]">
                 <FaTimes onClick={() => setIsFillterOpen(false)} />
