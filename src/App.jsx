@@ -18,6 +18,8 @@ import UserOrders from "./pages/UserOrders";
 import UserAddress from "./pages/UserAddress";
 import UserReviews from "./pages/UserReviews";
 import UserSettings from "./pages/UserSettings";
+import DisplayCheckoutInfo from "./components/checkout/DisplayCheckoutInfo";
+import Checkout from "./pages/Checkout";
 
 function App() {
   return (
@@ -48,7 +50,6 @@ function App() {
           />
         </Route>
 
-        {/* <Route path="orders" element={<Orders />} /> */}
         <Route path="/wine/:id" element={<WineDetails />} />
         <Route path="/cocktails/:id" element={<CocktailDetails />} />
         <Route path="/userPage" element={<UserPage />}>
@@ -63,6 +64,8 @@ function App() {
           <Route path="/userPage/settings" element={<UserSettings />} />
         </Route>
       </Route>
+      <Route path="order" element={<Checkout />} />
+      <Route path="/order/:id" element={<DisplayCheckoutInfo />} />
 
       <Route path="*" element={<PageNotFound />} />
     </Routes>

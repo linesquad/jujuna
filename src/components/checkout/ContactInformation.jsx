@@ -1,13 +1,15 @@
 import { DevTool } from "@hookform/devtools";
-import PaymentMethod from "./PaymentMethod";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import useCreateOrder from "../../hooks/useCreateOrder";
 import { useGetCartItems } from "../../hooks/useGetCartItems";
 import ModalPayMentSuccesfull from "./ModalPayMentSuccesfull";
+import BackAndTotal from "./BackAndTotal";
+import { useNavigate } from "react-router-dom";
 const ContactInformation = () => {
   const { mutate: createOrder, data: orderData } = useCreateOrder();
   const { data } = useGetCartItems();
+  const navigate = useNavigate();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -15,6 +17,10 @@ const ContactInformation = () => {
     (total, item) => total + item.unit * item.price,
     0
   );
+
+  const handleBackToPage = () => {
+    navigate(-1);
+  };
 
   const handleCloseModal = () => {
     setIsModalVisible(false);
@@ -49,21 +55,35 @@ const ContactInformation = () => {
   };
 
   return (
-    <div className="w-full pr-5">
-      <h1 className="text-lg font-bold pb-3 pt-5">Contact Information</h1>
+    <div
+      className="w-full tiny:px-2 smaller:px-3 px-3 py-2 sm:px-4 sm:py-3 md:px-5 md:py-4
+    lg:px-6 lg:py-3"
+    >
+      <div
+        className="tiny:py-1 smaller:text-[13px] smaller:pl-3 text-sm pl-3 sm:text-[15px] sm:py-1 sm:pl-4
+      md:text-base md:py-2 md:pl-5 lg:text-[17px] lg:py-3 lg:pl-6"
+      >
+        <h1
+          className="tiny:text-xs tiny:pl-2 tiny:pb-1 tiny:font-medium smaller:font-semibold smaller:pb-[6px]
+        font-semibold pb-2 sm:font-bold sm:pb-[10px] md:pb-3 lg:pb-3"
+        >
+          Contact Information
+        </h1>
+      </div>
+      <hr className="tiny:pb-1 smaller:pb-2 pb-3 sm:pb-[14px] md:pb-4 lg:hidden" />
       <form
-        className="w-full flex flex-col gap-2"
+        className="w-full flex flex-col tiny:gap-1 smaller:gap-[6px] gap-2 sm:gap-[10px] md:gap-3 lg:gap-[14px]"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="w-full pb-3">
+        <div className="w-full tiny:pb-1 smaller:pb-[6px] pb-[10px] sm:pb-3 md:pb-[14px] lg:pb-2">
           <input
             type="text"
             id="city"
             name="city"
-            className={`bg-[#EAEAEA] w-full p-2 pl-3 border  ${
+            className={`bg-[#EAEAEA] w-full tiny:p-1 tiny:pl-1 smaller:p-[6px] smaller:pl-[6px] p-2 pl-2 sm:p-3 sm:pl-3 md:p-4 md:pl-4 lg:p-3 lg:pl-3 border  ${
               errors.city
-                ? "placeholder:text-red-500 border-red-500 focus:outline-none focus:ring-0"
-                : "placeholder:text-[#908F8F] focus:outline-none focus:ring-0"
+                ? "placeholder:text-red-500 border-red-500 focus:outline-none focus:ring-0 tiny:text-[10px] smaller:text-[11px] text-sm"
+                : "placeholder:text-[#908F8F] focus:outline-none focus:ring-0 tiny:text-[10px] smaller:text-[11px] text-xs sm:text-[13px] md:text-sm lg:text-[13px]"
             }`}
             placeholder={errors.city ? errors.city.message : "City"}
             {...register("city", {
@@ -82,8 +102,9 @@ const ContactInformation = () => {
           <select
             name="country"
             id="country"
-            className="bg-[#EAEAEA] w-[50%] p-2 pl-3 placeholder:text-[#908F8F] focus:outline-none focus:ring-0"
-            defaultValue="" // Set the default value here
+            className="bg-[#EAEAEA] w-[50%] tiny:p-1 tiny:pl-1 tiny:text-[10px] placeholder:text-[#908F8F] focus:outline-none focus:ring-0
+            smaller:p-[6px] smaller:pl-[6px] smaller:text-[11px] text-xs p-2 pl-2 sm:p-3 sm:pl-3 sm:text-[13px] md:p-4 md:pl-4 md:text-sm lg:p-3 lg:pl-3 lg:text-[13px]"
+            defaultValue=""
             {...register("country", {
               required: {
                 value: true,
@@ -99,7 +120,8 @@ const ContactInformation = () => {
           <select
             name="state"
             id="state"
-            className="bg-[#EAEAEA] w-[50%] p-2 pl-3 placeholder:text-[#908F8F] focus:outline-none focus:ring-0"
+            className="bg-[#EAEAEA] w-[50%] tiny:p-1 tiny:pl-1 tiny:text-[10px] placeholder:text-[#908F8F] focus:outline-none focus:ring-0
+            smaller:p-[6px] smaller:pl-[6px] smaller:text-[11px] text-xs p-2 pl-2 sm:p-3 sm:pl-3 sm:text-[13px] md:pl-4 md:text-sm md:p-4 lg:p-3 lg:pl-3 lg:text-[13px]"
             defaultValue=""
             {...register("state", {
               required: {
@@ -121,10 +143,10 @@ const ContactInformation = () => {
             type="text"
             id="postalCode"
             name="postalCode"
-            className={`bg-[#EAEAEA] w-full p-2 pl-3 border  ${
+            className={`bg-[#EAEAEA] w-full tiny:p-1 tiny:pl-1 border smaller:p-[6px] smaller:pl-[6px] p-2 pl-2 sm:p-3 sm:pl-3 md:pl-4 md:p-4 lg:p-3 lg:pl-3 ${
               errors.postalCode
-                ? "placeholder:text-red-500 border-red-500 focus:outline-none focus:ring-0"
-                : "placeholder:text-[#908F8F] focus:outline-none focus:ring-0"
+                ? "placeholder:text-red-500 border-red-500 focus:outline-none focus:ring-0 tiny:text-[10px] smaller:text-[11px] text-xs sm:text-[13px] md:text-sm"
+                : "placeholder:text-[#908F8F] focus:outline-none focus:ring-0 tiny:text-[10px] smaller:text-[11px] text-xs sm:text-[13px] md:text-sm lg:text-[13px]"
             }`}
             placeholder={
               errors.postalCode ? errors.postalCode.message : "Postal Code"
@@ -148,10 +170,10 @@ const ContactInformation = () => {
             type="text"
             id="currentAddress"
             name="currentAddress"
-            className={`bg-[#EAEAEA] w-full p-2 pl-3 border  ${
+            className={`bg-[#EAEAEA] w-full tiny:p-1 tiny:pl-1 smaller:p-[6px] smaller:pl-[6px] p-2 pl-2 sm:p-3 sm:pl-3 md:pl-4 md:p-4 lg:p-3 lg:pl-3 border  ${
               errors.currentAddress
-                ? "placeholder:text-red-500 border-red-500 focus:outline-none focus:ring-0"
-                : "placeholder:text-[#908F8F] focus:outline-none focus:ring-0"
+                ? "placeholder:text-red-500 border-red-500 focus:outline-none focus:ring-0 tiny:text-[10px] smaller:text-[11px] text-xs sm:text-[13px] md:text-sm"
+                : "placeholder:text-[#908F8F] focus:outline-none focus:ring-0 tiny:text-[10px] smaller:text-[11px] text-xs sm:text-[13px] md:text-sm lg:text-[13px]"
             }`}
             placeholder={
               errors.currentAddress
@@ -172,7 +194,9 @@ const ContactInformation = () => {
             id="note"
             name="note"
             rows="4"
-            className="bg-[#EAEAEA] w-full p-2 pl-3 placeholder:text-[#908F8F] focus:outline-none focus:ring-0"
+            className="bg-[#EAEAEA] w-full tiny:p-1 tiny:pl-1 placeholder:text-[#908F8F] focus:outline-none focus:ring-0
+            tiny:text-[10px] smaller:p-[6px] smaller:pl-[6px] smaller:text-[11px] text-xs p-2 pl-2 sm:p-3 sm:pl-3 sm:text-[13px]
+            md:pl-4 md:text-sm md:p-4 lg:p-3 lg:pl-3 lg:text-[13px]"
             placeholder="Note"
             style={{ resize: "none" }}
             maxLength={100}
@@ -184,19 +208,24 @@ const ContactInformation = () => {
             })}
           />
         </div>
-
-        <div className="flex justify-end">
-          <div className="bg-[#EAEAEA] px-2 py-2 shadow-md">
-            <button className="" type="submit">
-              Address update
+        <div className="lg:hidden">
+          <BackAndTotal
+            totalPrice={totalPrice}
+            handleBackToPage={handleBackToPage}
+          />
+        </div>
+        <div className="flex justify-end tiny:pb-2 smaller:pb-3 pb-4">
+          <div className="bg-[#EAEAEA] tiny:px-4 smaller:px-5 px-6 sm:px-7 md:px-8 lg:px-9 shadow-md">
+            <button
+              className="tiny:text-[10px] smaller:text-[11px] text-xs sm:text-[13px] md:text-sm lg:text-[15px]"
+              type="submit"
+            >
+              Pay With Cash
             </button>
           </div>
         </div>
       </form>
       <DevTool control={control} />
-      <div className="pt-4">
-        <PaymentMethod />
-      </div>
 
       {isModalVisible && (
         <ModalPayMentSuccesfull

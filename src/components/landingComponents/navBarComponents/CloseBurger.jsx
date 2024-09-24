@@ -111,11 +111,13 @@ const CloseBurger = ({ setIsAuthModalOpen, isAuthModalOpen }) => {
                     color={`${darkMode ? "#fff" : "#000"}`}
                     size={20}
                     onClick={toggleViewCart}
+                    className="cursor-pointer"
                   />
                   <FaHeart
                     color={`${darkMode ? "#fff" : "#000"}`}
                     size={20}
                     onClick={toggleSeeWishList}
+                    className="cursor-pointer"
                   />
                   <div className="h-[27px] border-[1px] bprder-[#fff]"></div>
                 </div>
