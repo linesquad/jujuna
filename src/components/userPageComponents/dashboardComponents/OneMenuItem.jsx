@@ -1,8 +1,16 @@
 import { NavLink } from "react-router-dom";
 
-function OneMenuItem({ title, icon: Icon, path }) {
+function OneMenuItem({ title, icon: Icon, path, setIsMenuOpen }) {
+  const handleCloseMenu = () => {
+    // Check if the screen width is less than 768px (mobile)
+    if (window.innerWidth < 768) {
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
     <NavLink
+      onClick={handleCloseMenu}
       to={path}
       className={({ isActive }) =>
         `border-l-[3px] ${isActive ? "border-[#724AA4]" : "border-transparent"}`

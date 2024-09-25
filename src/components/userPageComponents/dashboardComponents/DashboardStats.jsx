@@ -1,11 +1,11 @@
-import SingleDashboardStat from "./SingleDashboardStat";
 import { FaCoins } from "react-icons/fa";
 import { FaBoxOpen } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
+import SingleDashboardStat from "./SingleDashboardStat";
 
 function DashboardStats() {
   return (
-    <div className="mt-[32px] flex flex-col gap-[12px]">
+    <div className="mt-[32px] flex flex-col gap-[12px] xl:flex-row xl:items-center xl:gap-[24px]">
       <SingleDashboardStat
         icon={FaCoins}
         title="Total Amount"

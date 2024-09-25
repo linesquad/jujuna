@@ -34,7 +34,7 @@ function MobileMenu({ setIsMenuOpen }) {
       >
         <FaTimes />
       </div>
-      <UserPageMenu />
+      <UserPageMenu setIsMenuOpen={setIsMenuOpen} />
     </motion.div>
   );
 }

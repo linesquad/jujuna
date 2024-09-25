@@ -1,9 +1,9 @@
 import { Link, Outlet } from "react-router-dom";
-import UserPageMenu from "../components/userPageComponents/UserPageMenu";
+import UserPageMenu from "../components/userPageComponents/dashboardComponents/UserPageMenu";
 import Wrapper from "../components/Wrapper";
 import { FaArrowLeft } from "react-icons/fa";
 import { useState } from "react";
-import MobileMenu from "../components/userPageComponents/MobileMenu";
+import MobileMenu from "../components/userPageComponents/dashboardComponents/MobileMenu";
 import { AnimatePresence } from "framer-motion";
 
 function UserPage() {

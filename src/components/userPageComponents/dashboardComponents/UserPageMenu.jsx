@@ -6,7 +6,7 @@ import { FaStar } from "react-icons/fa";
 import { FaCog } from "react-icons/fa";
 import { FaDoorOpen } from "react-icons/fa";
 
-function UserPageMenu() {
+function UserPageMenu({ setIsMenuOpen }) {
   const menuItems = [
     {
       id: "1",
@@ -53,6 +53,7 @@ function UserPageMenu() {
               title={item.title}
               icon={item.icon}
               path={item.path}
+              setIsMenuOpen={setIsMenuOpen}
             />
           );
         })}
