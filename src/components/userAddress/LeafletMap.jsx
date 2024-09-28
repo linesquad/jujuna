@@ -5,10 +5,12 @@ import { useUrlPosition } from "../../hooks/useUrlPosition";
 import { useGeolocation } from "../../hooks/useGeolocation";
 import useNominatim from "../../hooks/useNominatim";
 import useAddToAddress from "../../hooks/useAddToAddress";
+import AddAddressModal from "./AddAddressModal";
 
-const LeafletMap = () => {
+const LeafletMap = ({ setShowMap }) => {
   const [mapPosition, setMapPosition] = useState([41.8354, 44.7215]);
   const [showAddAddress, setShowAddAddress] = useState(false);
+  const [addressModal, setAddressModal] = useState(false);
   const { mutate: addAddress } = useAddToAddress();
   const {
     isLoading: isLoadingPosition,
@@ -30,7 +32,7 @@ const LeafletMap = () => {
     if (mapLat && mapLng) {
       setMapPosition([parseFloat(mapLat), parseFloat(mapLng)]);
     }
-  }, [mapLat, mapLng, address]);
+  }, [mapLat, mapLng]);
 
   useEffect(() => {
     if (geolocationPosition && mapRef.current) {
@@ -56,8 +58,20 @@ const LeafletMap = () => {
     });
   };
 
+  const closeAddressModal = () => {
+    handleCloseEverything();
+  };
+
+  const handleCloseEverything = () => {
+    setAddressModal(false);
+    setShowAddAddress(false);
+    setShowMap(false);
+
+    navigate(`/userPage/address`);
+  };
+
   const handleAddAddress = () => {
-    alert(address);
+    setAddressModal(true);
     handleAddToAddress();
   };
 
@@ -98,6 +112,10 @@ const LeafletMap = () => {
           >
             Add Address
           </button>
+        )}
+
+        {addressModal && (
+          <AddAddressModal address={address} onClose={closeAddressModal} />
         )}
       </div>
     </div>

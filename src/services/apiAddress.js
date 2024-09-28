@@ -11,3 +11,8 @@ export const addAddress = async (credentials) => {
 
   return data;
 };
+
+export const getAddress = async () => {
+  const { data } = await axiosInstance.get(`/customer-address`);
+  return data;
+};
