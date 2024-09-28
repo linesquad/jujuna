@@ -21,6 +21,7 @@ import UserSettings from "./pages/UserSettings";
 import DisplayCheckoutInfo from "./components/checkout/DisplayCheckoutInfo";
 import Checkout from "./pages/Checkout";
 import DisplayOrders from "./components/userPageComponents/ordersComponents/DisplayOrders";
+import DisplayReviews from "./components/userPageComponents/reviewsComponents/DisplayReviews";
 
 function App() {
   return (
@@ -67,7 +68,16 @@ function App() {
             <Route path="/userPage/orders/:order" element={<DisplayOrders />} />
           </Route>
           <Route path="/userPage/address" element={<UserAddress />} />
-          <Route path="/userPage/reviews" element={<UserReviews />} />
+          <Route path="/userPage/reviews" element={<UserReviews />}>
+            <Route
+              path="/userPage/reviews"
+              element={<Navigate to="/userPage/reviews/rating" />}
+            />
+            <Route
+              path="/userPage/reviews/:feedback"
+              element={<DisplayReviews />}
+            />
+          </Route>
           <Route path="/userPage/settings" element={<UserSettings />} />
         </Route>
       </Route>
