@@ -22,7 +22,7 @@ const AddAddres = () => {
           <button className="">Add addres</button>
         </div>
       </div>
-      {showMap && <LeafletMap />}
+      {showMap && <LeafletMap setShowMap={setShowMap} />}
 
       <div className="pt-3 ">
         <div className="p-4 bg-white rounded-md border flex justify-between items-center">
