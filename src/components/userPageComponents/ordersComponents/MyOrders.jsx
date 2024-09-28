@@ -1,86 +1,29 @@
-import { useState } from "react";
-import SingleOrder from "./SingleOrder";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 
 function MyOrders() {
-  const [orderPage, setOrderPage] = useState("current");
+  const { order: orderPage } = useParams();
+  const navigate = useNavigate();
   return (
-    <div className="px-[16px] pt-[13px] bg-[#fff] mt-[32px] pb-[140px]">
+    <div className="px-[16px] pt-[13px] bg-[#fff] mt-[32px] pb-[140px] xl:rounded-[16px]">
       <div className="flex items-start gap-[48px]">
         <p
-          className={`text-[22px] text-[#222528] font-medium pb-[13px] ${
+          className={`text-[22px] text-[#222528] font-medium pb-[13px] cursor-pointer ${
             orderPage === "current" ? " border-b-[3px] border-b-[#724AA4]" : ""
           }`}
-          onClick={() => setOrderPage("current")}
+          onClick={() => navigate("/userPage/orders/current")}
         >
           Current orders
         </p>
         <p
-          className={`text-[22px] text-[#222528] font-medium pb-[13px] ${
+          className={`text-[22px] text-[#222528] font-medium pb-[13px] cursor-pointer ${
             orderPage === "history" ? "border-b-[3px] border-b-[#724AA4]" : ""
           } `}
-          onClick={() => setOrderPage("history")}
+          onClick={() => navigate("/userPage/orders/history")}
         >
           History
         </p>
       </div>
-      <div className="mt-[20px]">
-        {orderPage === "current" && (
-          <div className="flex flex-col gap-[20px]">
-            <SingleOrder
-              orderId="145685"
-              price={540}
-              date="24/10/2024"
-              status="Current"
-            />
-            <SingleOrder
-              orderId="145685"
-              price={540}
-              date="24/10/2024"
-              status="Current"
-            />
-            <SingleOrder
-              orderId="145685"
-              price={540}
-              date="24/10/2024"
-              status="Current"
-            />
-            <SingleOrder
-              orderId="145685"
-              price={540}
-              date="24/10/2024"
-              status="Current"
-            />
-          </div>
-        )}
-        {orderPage === "history" && (
-          <div className="flex flex-col gap-[20px]">
-            <SingleOrder
-              orderId="145685"
-              price={540}
-              date="24/10/2024"
-              status="Current"
-            />
-            <SingleOrder
-              orderId="145685"
-              price={540}
-              date="24/10/2024"
-              status="Current"
-            />
-            <SingleOrder
-              orderId="145685"
-              price={540}
-              date="24/10/2024"
-              status="Cancelled"
-            />
-            <SingleOrder
-              orderId="145685"
-              price={540}
-              date="24/10/2024"
-              status="completed"
-            />
-          </div>
-        )}
-      </div>
+      <Outlet />
     </div>
   );
 }

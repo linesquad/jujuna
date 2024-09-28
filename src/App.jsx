@@ -20,6 +20,7 @@ import UserReviews from "./pages/UserReviews";
 import UserSettings from "./pages/UserSettings";
 import DisplayCheckoutInfo from "./components/checkout/DisplayCheckoutInfo";
 import Checkout from "./pages/Checkout";
+import DisplayOrders from "./components/userPageComponents/ordersComponents/DisplayOrders";
 
 function App() {
   return (
@@ -58,7 +59,13 @@ function App() {
             element={<Navigate to="/userPage/dashboard" />}
           />
           <Route path="/userPage/dashboard" element={<UserDashboard />} />
-          <Route path="/userPage/orders" element={<UserOrders />} />
+          <Route path="/userPage/orders" element={<UserOrders />}>
+            <Route
+              path="/userPage/orders"
+              element={<Navigate to="/userPage/orders/current" />}
+            />
+            <Route path="/userPage/orders/:order" element={<DisplayOrders />} />
+          </Route>
           <Route path="/userPage/address" element={<UserAddress />} />
           <Route path="/userPage/reviews" element={<UserReviews />} />
           <Route path="/userPage/settings" element={<UserSettings />} />
