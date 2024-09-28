@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { FaMapMarkerAlt, FaPlus } from "react-icons/fa";
+import { FaEdit, FaMapMarkerAlt, FaPlus } from "react-icons/fa";
 import LeafletMap from "./LeafletMap";
 import useGetAddress from "../../hooks/useGetAddress";
+import { MdDelete } from "react-icons/md";
 
 const AddAddres = () => {
   const [showMap, setShowMap] = useState(false);
@@ -40,7 +41,10 @@ const AddAddres = () => {
                 <p className="text-sm text-[#3A4043]">{data.state}</p>
               </div>
             </div>
-            <div>...</div>
+            <div className="cursor-pointer flex flex-col gap-2 items-center justify-center">
+              <FaEdit size={20} />
+              <MdDelete size={20} />
+            </div>
           </div>
         </div>
       ) : isLoading ? (

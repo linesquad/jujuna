@@ -5,9 +5,9 @@ const useGetAddress = () => {
   const { data, isError, error, isLoading } = useQuery({
     queryFn: getAddress,
     queryKey: ["userAddress"],
-    staleTime: 0,
-    refetchOnWindowFocus: true,
-    refetchOnReconnect: true,
+    // staleTime: 0,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
   });
 
   return { isLoading, isError, error, data };
