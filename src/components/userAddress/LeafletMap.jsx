@@ -39,7 +39,7 @@ const LeafletMap = ({ setShowMap }) => {
       const { lat, lng } = geolocationPosition;
       setMapPosition([lat, lng]);
       mapRef.current.setView([lat, lng], 13);
-      navigate(`/userPage/address?lat=${lat}&lng=${lng}`); // Navigate to lat/lng URL
+      navigate(`/userPage/address?lat=${lat}&lng=${lng}`);
       setShowAddAddress(true);
     }
   }, [geolocationPosition, navigate]);
@@ -67,7 +67,6 @@ const LeafletMap = ({ setShowMap }) => {
     setShowAddAddress(false);
     setShowMap(false);
 
-    // Navigate to the address URL without lat/lng parameters
     navigate(`/userPage/address`);
   };
 
