@@ -3,10 +3,12 @@ import { FaEdit, FaMapMarkerAlt, FaPlus } from "react-icons/fa";
 import LeafletMap from "./LeafletMap";
 import useGetAddress from "../../hooks/useGetAddress";
 import { MdDelete } from "react-icons/md";
+import useDeleteAddress from "../../hooks/useDeleteAddress";
 
 const AddAddres = () => {
   const [showMap, setShowMap] = useState(false);
-  const { data, isError, error, isLoading } = useGetAddress();
+  const { data, isError, error, isLoading, refetch } = useGetAddress();
+  const deleteAddress = useDeleteAddress();
 
   const handleToggleMap = () => {
     setShowMap((prev) => !prev);
@@ -25,7 +27,9 @@ const AddAddres = () => {
           <button className="">Add addres</button>
         </div>
       </div>
-      {showMap && <LeafletMap setShowMap={setShowMap} />}
+      {showMap && (
+        <LeafletMap setShowMap={setShowMap} refetchAddresses={refetch} />
+      )}
 
       {data ? (
         <div className="pt-3 ">
@@ -43,7 +47,7 @@ const AddAddres = () => {
             </div>
             <div className="cursor-pointer flex flex-col gap-2 items-center justify-center">
               <FaEdit size={20} />
-              <MdDelete size={20} />
+              <MdDelete size={20} onClick={deleteAddress} />
             </div>
           </div>
         </div>

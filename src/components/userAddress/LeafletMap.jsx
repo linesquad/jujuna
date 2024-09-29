@@ -7,7 +7,7 @@ import useNominatim from "../../hooks/useNominatim";
 import useAddToAddress from "../../hooks/useAddToAddress";
 import AddAddressModal from "./AddAddressModal";
 
-const LeafletMap = ({ setShowMap }) => {
+const LeafletMap = ({ setShowMap, refetchAddresses }) => {
   const [mapPosition, setMapPosition] = useState([41.8354, 44.7215]);
   const [showAddAddress, setShowAddAddress] = useState(false);
   const [addressModal, setAddressModal] = useState(false);
@@ -59,6 +59,7 @@ const LeafletMap = ({ setShowMap }) => {
   };
 
   const closeAddressModal = () => {
+    refetchAddresses();
     handleCloseEverything();
   };
 

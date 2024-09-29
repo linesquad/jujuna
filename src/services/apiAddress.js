@@ -16,3 +16,8 @@ export const getAddress = async () => {
   const { data } = await axiosInstance.get(`/customer-address`);
   return data;
 };
+
+export const removeAddress = async () => {
+  const { data } = await axiosInstance.delete(`/remove-address`);
+  return data;
+};
