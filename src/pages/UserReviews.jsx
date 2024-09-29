@@ -8,8 +8,8 @@ function UserReviews() {
       <h2 className="text-[#222528] text-[22px] font-medium pl-[16px]">
         My Review
       </h2>
-      <div className="bg-[#fff] px-[16px] pt-[13px] mt-[32px] pb-[100px]">
-        <div className="flex items-start gap-[48px]">
+      <div className="bg-[#fff]  pt-[13px] mt-[32px] pb-[100px]">
+        <div className="flex items-start gap-[48px] px-[16px]">
           <p
             className={`text-[18px] text-[#222528] font-medium pb-[13px] cursor-pointer ${
               feedback === "rating" ? "border-b-[3px] border-b-[#724AA4]" : ""

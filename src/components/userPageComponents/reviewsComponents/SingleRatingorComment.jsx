@@ -14,7 +14,7 @@ function SingleRatingorComment({
 }) {
   const { feedback } = useParams();
   return (
-    <div className="pb-[20px] border-b-[1px] border-b-[#ECEDEE]">
+    <div className="pb-[20px] border-b-[1px] border-b-[#ECEDEE] px-[16px]">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-[10px]">
           <img
@@ -48,7 +48,7 @@ function SingleRatingorComment({
         </p>
       )}
 
-      <div className="flex items-center gap-[10px] mt-[16px]">
+      <div className="flex items-center gap-[10px] mt-[16px] xl:w-[184px]">
         <div className="w-[48px] h-[54px] bg-[#F5F5F5] rounded-[4px] flex justify-center items-center">
           <img src={bottle} alt="product" className="w-[26px] h-[39px]" />
         </div>
