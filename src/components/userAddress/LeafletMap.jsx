@@ -6,11 +6,13 @@ import { useGeolocation } from "../../hooks/useGeolocation";
 import useNominatim from "../../hooks/useNominatim";
 import useAddToAddress from "../../hooks/useAddToAddress";
 import AddAddressModal from "./AddAddressModal";
+import MapClickHandler from "../../features/mapUtils";
 
 const LeafletMap = ({ setShowMap, refetchAddresses }) => {
   const [mapPosition, setMapPosition] = useState([41.8354, 44.7215]);
   const [showAddAddress, setShowAddAddress] = useState(false);
   const [addressModal, setAddressModal] = useState(false);
+  const [markerPosition, setMarkerPosition] = useState(null);
   const { mutate: addAddress } = useAddToAddress();
   const {
     isLoading: isLoadingPosition,
@@ -89,7 +91,14 @@ const LeafletMap = ({ setShowMap, refetchAddresses }) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={mapPosition}>
+
+        <MapClickHandler
+          setMarkerPosition={setMarkerPosition}
+          setMapPosition={setMapPosition}
+          setShowAddAddress={setShowAddAddress}
+        />
+
+        <Marker position={mapPosition || markerPosition}>
           <Popup>{address}</Popup>
         </Marker>
       </MapContainer>

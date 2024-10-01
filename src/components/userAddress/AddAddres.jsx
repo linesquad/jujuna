@@ -46,7 +46,7 @@ const AddAddres = () => {
               </div>
             </div>
             <div className="cursor-pointer flex flex-col gap-2 items-center justify-center">
-              <FaEdit size={20} />
+              <FaEdit size={20} onClick={handleToggleMap} />
               <MdDelete size={20} onClick={deleteAddress} />
             </div>
           </div>
