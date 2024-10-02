@@ -19,7 +19,7 @@ function SingleOrder({ orderId, price, date, status }) {
                 ? "#E8B11A"
                 : status === "Cancelled"
                 ? "#E81A1A"
-                : status === "completed"
+                : status === "Complete"
                 ? "#4FD82C"
                 : "",
           }}

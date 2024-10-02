@@ -71,7 +71,7 @@ function OrderHistory() {
         </div>
       </div>
       <div className="mt-[32px] md:w-[300px] lg:w-full">
-        <Line data={data} options={options} />;
+        <Line data={data} options={options} />
       </div>
     </div>
   );

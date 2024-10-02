@@ -24,3 +24,12 @@ export const getOrderById = async (orderId) => {
     throw error;
   }
 };
+
+export const getOrders = async () => {
+  try {
+    const { data } = await axiosInstance.get(`/customer-orders`);
+    return data;
+  } catch (error) {
+    console.error(error.message);
+  }
+};
