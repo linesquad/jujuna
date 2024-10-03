@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchReviews } from "../services/apiReviews";
+import { fetchTotalAmount } from "../services/apiTotalAmount";
 
-export const useReviews = () => {
+export const useTotalAmount = () => {
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["reviews"],
-    queryFn: fetchReviews,
+    queryKey: ["totalAmounts"],
+    queryFn: fetchTotalAmount,
     staleTime: 0,
     refetchOnWindowFocus: false,
   });

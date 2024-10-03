@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchReviews } from "../services/apiReviews";
+import { fetchMostPurchasedProducts } from "../services/apiMostPurchased";
 
-export const useReviews = () => {
+export const useMostPurchasedProducts = () => {
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["reviews"],
-    queryFn: fetchReviews,
+    queryKey: ["mostPurchased"],
+    queryFn: fetchMostPurchasedProducts,
     staleTime: 0,
     refetchOnWindowFocus: false,
   });

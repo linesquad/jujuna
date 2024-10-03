@@ -1,9 +1,8 @@
 import axiosInstance from "./axiosInstance";
 
-export const fetchReviews = async () => {
+export const fetchTotalAmount = async () => {
   try {
-    const { data } = await axiosInstance.get("/customer-feedback");
-
+    const { data } = await axiosInstance.get("/total-spend");
     return data;
   } catch (error) {
     console.error(error.message);

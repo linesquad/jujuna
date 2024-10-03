@@ -10,6 +10,8 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { useMostPurchasedProducts } from "../../../hooks/useMotsPurchasedProducts";
+import { useEffect, useState } from "react";
 
 // Register components for Chart.js
 ChartJS.register(
@@ -22,16 +24,35 @@ ChartJS.register(
 );
 
 function MostPurchased() {
+  const [labels, setLabels] = useState([]);
+  const [orderCount, setOrderCount] = useState([]);
+  const { data: mostPurchasedProducts } = useMostPurchasedProducts();
+  console.log(mostPurchasedProducts);
+
+  useEffect(() => {
+    for (let i = 0; i < mostPurchasedProducts?.length; i++) {
+      setLabels((label) => [
+        ...label,
+        mostPurchasedProducts[i].titleTranslations.en,
+      ]);
+      setOrderCount((orderCount) => [
+        ...orderCount,
+        mostPurchasedProducts[i].orderCount,
+      ]);
+    }
+
+    return () => {
+      setLabels([]);
+      setOrderCount([]);
+    };
+  }, [mostPurchasedProducts]);
+
   const data = {
-    labels: [
-      "Masuda’s Vineyard Carneros",
-      "Masuda’s Vineyard Carneros",
-      "Masuda’s Vineyard Carneros",
-    ],
+    labels,
     datasets: [
       {
         label: "Sales",
-        data: [200, 150, 100],
+        data: orderCount,
         backgroundColor: "rgba(54, 162, 235, 0.6)",
       },
     ],

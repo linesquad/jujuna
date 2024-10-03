@@ -6,6 +6,7 @@ export const useOrders = () => {
     queryKey: ["orders"],
     queryFn: getOrders,
     staleTime: 0,
+    refetchOnWindowFocus: false,
   });
 
   return { data, isLoading, isError, error };
