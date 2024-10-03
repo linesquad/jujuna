@@ -23,7 +23,6 @@ function UserSettings() {
         </div>
         <OneInfoField title="Name" description="Abcd Abcd" />
         <OneInfoField title="Phone Number" description="555 55 55 55" />
-        <OneInfoField title="Password" description="**********" />
       </div>
     </div>
   );
