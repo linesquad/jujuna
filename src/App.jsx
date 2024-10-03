@@ -22,6 +22,7 @@ import DisplayCheckoutInfo from "./components/checkout/DisplayCheckoutInfo";
 import Checkout from "./pages/Checkout";
 import DisplayOrders from "./components/userPageComponents/ordersComponents/DisplayOrders";
 import DisplayReviews from "./components/userPageComponents/reviewsComponents/DisplayReviews";
+import UserOrderDetails from "./pages/UserOrderDetails";
 
 function App() {
   return (
@@ -67,6 +68,10 @@ function App() {
             />
             <Route path="/userPage/orders/:order" element={<DisplayOrders />} />
           </Route>
+          <Route
+            path="/userPage/order/:orderId"
+            element={<UserOrderDetails />}
+          />
           <Route path="/userPage/address" element={<UserAddress />} />
           <Route path="/userPage/reviews" element={<UserReviews />}>
             <Route
