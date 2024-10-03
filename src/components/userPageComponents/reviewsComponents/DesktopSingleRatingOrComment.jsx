@@ -15,7 +15,7 @@ function DesktopSingleRatingOrComment({ date, rating, productName, comment }) {
         </p>
       </div>
       <p className="w-[78px] text-center text-[14px] text-[#5D6264]">{date}</p>
-      <p className="w-[300px] flex justify-center items-center">
+      <div className="w-[300px] flex justify-center items-center">
         {feedback === "rating" ? (
           <div className="flex items-center gap-[8px] mt-[12px]">
             <div className="flex gap-[4px] ">
@@ -34,7 +34,7 @@ function DesktopSingleRatingOrComment({ date, rating, productName, comment }) {
             {comment.slice(0, 50) + "..."}
           </p>
         )}
-      </p>
+      </div>
       <div></div>
     </div>
   );
