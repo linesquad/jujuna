@@ -16,8 +16,8 @@ const NewsDetailsLeftSide = () => {
   const mode = useSelector(getMode);
   const { t, i18n } = useTranslation();
   // const { data, isLoading, isError, error } = useBlogId(id);
-  const { data, isLoading, isError, error } = useGetBlogsById(id);
-  console.log(data);
+  const { data: blog, isLoading, isError, error } = useGetBlogsById(id);
+  console.log(blog);
   if (isLoading) {
     return <NewsDetailsLeftSkeleton />;
   }
@@ -30,7 +30,7 @@ const NewsDetailsLeftSide = () => {
     );
   }
 
-  const desc = data.text;
+  const desc = blog.text;
 
   // i18n.language === "ge" ? data.description.ge : data.description.en;
 
@@ -62,8 +62,8 @@ const NewsDetailsLeftSide = () => {
       </div>
       <div className="py-7 sm:py-8 md:py-9 lg:py-10 flex justify-start sm:pr-20 w-full">
         <img
-          src={data.image}
-          alt={i18n.language === "ge" ? data.title.ge : data.title.en}
+          src={blog.image}
+          alt={i18n.language === "ge" ? blog.title.ge : blog.title.en}
           className="max-w-[350px] tiny:max-w-[207px] smaller:max-w-[280px] sm:max-w-[370px] md:max-w-[450px] lg:max-w-[500px] xl:max-w-[600px]"
         />
       </div>
@@ -97,7 +97,7 @@ const NewsDetailsLeftSide = () => {
       </div>
       <div className="flex flex-col">
         <div className=" sm:pt-[95px] md:pt-[90px] lg:pt-[85px] pb-16 order-2 sm:order-1">
-          <ComentarNews />
+          <ComentarNews blog={blog} />
         </div>
         <div className="pt-[100px]  sm:pt-0 order-1 sm:order-2">
           <NewsDetailsWriteComment />
