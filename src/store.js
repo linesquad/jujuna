@@ -3,6 +3,7 @@ import darkModeReducer from "./features/darkModeSlice";
 import burgerMenuReducer from "./features/burgerMenuSlice";
 import cartReducer from "./features/cartSlice";
 import addressReducer from "./features/addressSlice";
+import authReducer from "./features/authSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     burgerMenu: burgerMenuReducer,
     cart: cartReducer,
     address: addressReducer,
+    auth: authReducer,
   },
 });

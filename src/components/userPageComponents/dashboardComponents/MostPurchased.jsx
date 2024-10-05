@@ -92,7 +92,7 @@ function MostPurchased() {
         </div>
       </div>
       <div className="mt-[32px] md:w-[300px] lg:w-full">
-        <Bar data={data} options={options} />;
+        <Bar data={data} options={options} />
       </div>
     </div>
   );

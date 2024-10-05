@@ -4,15 +4,21 @@ import { FaTimes } from "react-icons/fa";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { closeAuthModal } from "../../features/authSlice";
 
-function Auth({ setIsAuthModalOpen }) {
+function Auth() {
   const { t } = useTranslation();
   const [isSignIn, setIsSignIn] = useState(true);
+  const dispatch = useDispatch();
+  const isAuthModalOpen = useSelector((state) => state.auth.isAuthModalOpen);
 
   return (
     <div
-      className="fixed top-0 right-0 left-0 bottom-0 z-[100] bg-[#000]/90"
-      onClick={() => setIsAuthModalOpen(false)}
+      className={`fixed top-0 right-0 left-0 bottom-0 z-[100] bg-[#000]/90 ${
+        !isAuthModalOpen ? "hidden" : ""
+      }`}
+      onClick={() => dispatch(closeAuthModal())}
     >
       <motion.div
         variants={{
@@ -29,7 +35,7 @@ function Auth({ setIsAuthModalOpen }) {
         <>
           <div
             className="self-end w-[30px] h-[30px] bg-[#EAE7E7] rounded-[50%] flex justify-center items-center cursor-pointer"
-            onClick={() => setIsAuthModalOpen(false)}
+            onClick={() => dispatch(closeAuthModal())}
           >
             <FaTimes />
           </div>
@@ -55,8 +61,8 @@ function Auth({ setIsAuthModalOpen }) {
                 {t("auth.reg")}
               </p>
             </div>
-            {isSignIn && <SignIn setIsAuthModalOpen={setIsAuthModalOpen} />}
-            {!isSignIn && <SignUp />}
+            {isSignIn && <SignIn />}{" "}
+            {!isSignIn && <SignUp setIsSignIn={setIsSignIn} />}
             {/* <GoogleSignIn /> */}
           </div>
         </>

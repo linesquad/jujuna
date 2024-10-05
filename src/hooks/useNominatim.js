@@ -38,8 +38,9 @@ const useNominatim = (latitude, longitude) => {
       const suburbComponent = data.address?.suburb || "";
       setSuburb(suburbComponent);
 
-      const roadComponent = data.address?.road || "";
+      const roadComponent = data.address?.road || "not found";
       setRoad(roadComponent);
+      console.log(data);
     } catch (error) {
       setError(error.message);
     } finally {

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRegister } from "../../hooks/useRegister";
 
-function SignUp() {
+function SignUp({ setIsSignIn }) {
   const { t } = useTranslation();
   const [isRemembered, setIsRemembered] = useState(false);
   const { mutate: registerUser } = useRegister();
@@ -14,6 +14,7 @@ function SignUp() {
 
   async function onSubmit(data) {
     registerUser(data);
+    setIsSignIn(true);
   }
 
   return (

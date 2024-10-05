@@ -1,4 +1,6 @@
 import axios from "axios";
+import { store } from "../store";
+import { openAuthModal } from "../features/authSlice";
 
 // შევქმენი ინსტანსი
 const axiosInstance = axios.create({
@@ -51,9 +53,10 @@ axiosInstance.interceptors.response.use(
     if (error.response && error.response.status === 403 && error.config) {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");
-
       // გადავამისამართე
-      window.location.href = "/login";
+      // window.location.href = "/";
+      // მოდალის გახსნა
+      store.dispatch(openAuthModal());
     }
 
     return Promise.reject(error);

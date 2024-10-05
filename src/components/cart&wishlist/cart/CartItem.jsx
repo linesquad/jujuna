@@ -23,12 +23,12 @@ const CartItem = ({
         <div className="flex flex-col flex-grow justify-between gap-2">
           <h3
             className="text-base break-words w-[120px] cursor-pointer
-                  tiny:text-xs smaller:text-sm"
+                  tiny:text-xs smaller:text-sm text-[#000]"
           >
             {/* {i18n.language === "en" ? item.name.en : item.name.ge} */}
             {item.title}
           </h3>
-          <p className="font-semibold text-[22px] tiny:text-lg smaller:text-xl">
+          <p className="font-semibold text-[22px] tiny:text-lg smaller:text-xl text-[#000]">
             ${item.price}
           </p>
         </div>
@@ -41,8 +41,13 @@ const CartItem = ({
                   tiny:justify-around
                   smaller:flex-row-reverse smaller:items-center smaller:pt-4 smaller:justify-around"
         >
-          <RiDeleteBin7Line size={20} onClick={() => handleDelete(item)} />
-          <div className="w-[80px] h-[35px] border rounded-full border-[#8F8F8F] px-2 py-1 flex gap-4">
+          <RiDeleteBin7Line
+            size={20}
+            onClick={() => handleDelete(item)}
+            color="red"
+            cursor="pointer"
+          />
+          <div className="w-[80px] h-[35px] border rounded-full border-[#8F8F8F] px-2 py-1 flex gap-4 text-[#000]">
             <button
               className="cursor-pointer"
               onClick={() => handleDecrease(item)}

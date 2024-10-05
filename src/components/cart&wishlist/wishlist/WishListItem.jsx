@@ -28,7 +28,7 @@ const WishListItem = ({ item }) => {
     <div
       key={item._id}
       className="flex items-center py-4 border-b border-gray-200 gap-10
-      tiny:flex-row tiny:gap-5 smaller:flex-row smaller:gap-8"
+      tiny:flex-row tiny:gap-5 smaller:flex-row smaller:gap-8 text-[#000]"
     >
       <div className="flex items-center">
         <img
