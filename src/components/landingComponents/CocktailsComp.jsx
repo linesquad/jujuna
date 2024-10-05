@@ -18,7 +18,7 @@ function CocktailsComp() {
   const darkMode = useSelector(getMode);
 
   return (
-    <div className={`pt-20 ${darkMode ? "bg-[#12151C]" : "bg-white"} md:py-36`}>
+    <div className={`pt-20 ${darkMode ? "bg-[#12151C]" : "bg-white"} md:py-20`}>
       <Wrapper>
         <div>
           <h2

@@ -2,18 +2,21 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import Auth from "../components/authComponents/Auth";
-import { useState } from "react";
+
+import { useSelector } from "react-redux";
 
 const AppLayout = () => {
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const isAuthModalOpen = useSelector((state) => state.auth.isAuthModalOpen);
+  const accesToken = localStorage.getItem("accessToken");
+  const refreshToken = localStorage.getItem("refreshToken");
   return (
     <div>
-      <Header setIsAuthModalOpen={setIsAuthModalOpen} />
+      <Header />
       <main>
         <Outlet />
       </main>
       <Footer />
-      {isAuthModalOpen && <Auth setIsAuthModalOpen={setIsAuthModalOpen} />}
+      {isAuthModalOpen && !accesToken && !refreshToken && <Auth />}
     </div>
   );
 };

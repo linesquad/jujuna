@@ -1,33 +1,26 @@
-import Pegination from "../components/Pegination";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Wrapper from "../components/Wrapper";
 import { useSelector } from "react-redux";
 import { getMode } from "../features/darkModeSlice";
-import useWines from "../hooks/useWines";
-import { useEffect, useState } from "react";
-import Spinner from "../components/Spinner";
+import { useWines } from "../hooks/useWines";
+import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import WineFilter from "../components/wineComponents/WineFilter";
 import MobileWineFilter from "../components/wineComponents/MobileWineFilter";
 import MobileFilterContainer from "../components/wineComponents/MobileFilterContainer";
-import WineCard from "../components/wineComponents/WineCard";
+import LayoutChanger from "../components/LayoutChanger/LayoutChanger";
+import { wineLayoutOptions } from "../components/LayoutChanger/layoutOptions";
+import ProductsFilter from "../components/wineComponents/ProductsFilter";
+import { useWinesCategory } from "../hooks/useWinesCategory";
+import { AnimatePresence } from "framer-motion";
 
-const Wines = () => {
-  const darkMode = useSelector(getMode);
-
-  const { t } = useTranslation();
-  const { data: wines, isLoading, isError, error } = useWines();
+const Wines = memo(() => {
   const [showFilter, setShowFilter] = useState(false);
-  const [paginatedWines, setPaginatedWines] = useState([]);
-  const winesPerPage = 6;
+  const [categoryId, setCategoryId] = useState("");
+  const { isError, error } = useWines();
 
-  useEffect(() => {
-    setPaginatedWines(wines?.slice(0, winesPerPage));
-  }, [wines]);
-
-  if (isLoading) return <Spinner />;
-
-  console.log("nugo");
+  const { data: wineCategories } = useWinesCategory();
+  const darkMode = useSelector(getMode);
+  const { t } = useTranslation();
 
   return (
     <div
@@ -39,29 +32,46 @@ const Wines = () => {
           <span>/ {t("winePage.navProducts")}</span>
         </div>
 
-        <div className="relative">
+        <div className="flex justify-between lg:justify-end">
           <MobileWineFilter setShowFilter={setShowFilter} />
-          {showFilter && (
-            <MobileFilterContainer setShowFilter={setShowFilter} />
-          )}
-        </div>
 
-        <div className="flex">
-          <WineFilter />
+          <AnimatePresence>
+            {showFilter && (
+              <div className="w-full">
+                <MobileFilterContainer
+                  setShowFilter={setShowFilter}
+                  showFilter={showFilter}
+                  minValue={10}
+                  maxValue={1000}
+                  categories={wineCategories}
+                  setCategoryId={setCategoryId}
+                  categoryId={categoryId}
+                  pageUrl="wines"
+                />
+              </div>
+            )}
+          </AnimatePresence>
 
-          <div className="tiny:-ml-6 grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 relative mb-24 justify-items-center w-full">
-            {paginatedWines?.map((wine) => (
-              <WineCard key={wine._id} wine={wine} />
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <Pegination
-            itemsArray={wines}
-            itemsPerPage={winesPerPage}
-            setPeginatedItems={setPaginatedWines}
+          <LayoutChanger
+            layouts={wineLayoutOptions}
+            activeClass="border-2 border-purple-500"
+            defaultClass="text-gray-500"
+            iconSize={30}
           />
+        </div>
+
+        <div className="flex items-start">
+          <div className="hidden lg:block">
+            <ProductsFilter
+              minValue={10}
+              maxValue={1000}
+              categories={wineCategories}
+              setCategoryId={setCategoryId}
+              categoryId={categoryId}
+              pageUrl="wines"
+            />
+          </div>
+          <Outlet />
         </div>
       </Wrapper>
       {isError && (
@@ -71,6 +81,8 @@ const Wines = () => {
       )}
     </div>
   );
-};
+});
+
+Wines.displayName = "Wines";
 
 export default Wines;

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { useBlogId } from "../../../hooks/useBlogs";
-import { parseISO, format } from "date-fns";
+// import { useBlogId } from "../../../hooks/useBlogs";
+// import { parseISO, format } from "date-fns";
 import { getMode } from "../../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";
 import NewsStar from "./NewsStar";
@@ -8,14 +8,16 @@ import NewsShare from "./NewsShare";
 import { useParams } from "react-router-dom";
 import ComentarNews from "./ComentarNews";
 import NewsDetailsWriteComment from "./NewsDetailsWriteComment";
+import { useGetBlogsById } from "../../../hooks/useGetBlogsById";
 import NewsDetailsLeftSkeleton from "./NewsDetailsLeftSkeleton";
 
 const NewsDetailsLeftSide = () => {
   const { id } = useParams();
   const mode = useSelector(getMode);
   const { t, i18n } = useTranslation();
-  const { data, isLoading, isError, error } = useBlogId(id);
-
+  // const { data, isLoading, isError, error } = useBlogId(id);
+  const { data: blog, isLoading, isError, error } = useGetBlogsById(id);
+  console.log(blog);
   if (isLoading) {
     return <NewsDetailsLeftSkeleton />;
   }
@@ -28,14 +30,12 @@ const NewsDetailsLeftSide = () => {
     );
   }
 
-  const desc =
-    i18n.language === "ge" ? data.description.ge : data.description.en;
+  const desc = blog.text;
+
+  // i18n.language === "ge" ? data.description.ge : data.description.en;
 
   const descArray = desc.split("*");
 
-  const isoDateString = data.created_at;
-  const date = parseISO(isoDateString);
-  const formattedDate = format(date, "dd/MM/yyyy");
   return (
     <div className="lg:col-span-2">
       <div className="flex flex-col gap-1 sm:gap-[5px] md:gap-[6px] lg:gap-2">
@@ -44,26 +44,26 @@ const NewsDetailsLeftSide = () => {
             mode ? "text-white" : "text-black"
           } text-2xl sm:text-[28px] md:text-[32px] lg:text-4xl`}
         >
-          {i18n.language === "ge" ? data.title.ge : data.title.en}
+          {/* {i18n.language === "ge" ? data.title.ge : data.title.en} */}
         </h1>
 
         <div className="flex gap-4 sm:gap-5 md:gap-6 lg:gap-7">
           <p
             className={`text-base sm:text-[19px] md:text-[22px] lg:text-2xl text-[#ADACAC]`}
           >
-            {formattedDate}
+            {/* {formattedDate} */}19-19-19
           </p>
           <p
             className={`text-base sm:text-[19px] md:text-[22px] lg:text-2xl text-[#ADACAC]`}
           >
-            {i18n.language === "ge" ? data.author.ge : data.author.en}
+            {/* {i18n.language === "ge" ? data.author.ge : data.author.en} */}
           </p>
         </div>
       </div>
       <div className="py-7 sm:py-8 md:py-9 lg:py-10 flex justify-start sm:pr-20 w-full">
         <img
-          src={data.image}
-          alt={i18n.language === "ge" ? data.title.ge : data.title.en}
+          src={blog.image}
+          alt={i18n.language === "ge" ? blog.title.ge : blog.title.en}
           className="max-w-[350px] tiny:max-w-[207px] smaller:max-w-[280px] sm:max-w-[370px] md:max-w-[450px] lg:max-w-[500px] xl:max-w-[600px]"
         />
       </div>
@@ -97,7 +97,7 @@ const NewsDetailsLeftSide = () => {
       </div>
       <div className="flex flex-col">
         <div className=" sm:pt-[95px] md:pt-[90px] lg:pt-[85px] pb-16 order-2 sm:order-1">
-          <ComentarNews />
+          <ComentarNews blog={blog} />
         </div>
         <div className="pt-[100px]  sm:pt-0 order-1 sm:order-2">
           <NewsDetailsWriteComment />

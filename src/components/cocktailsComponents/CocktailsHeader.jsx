@@ -6,9 +6,10 @@ import { getMode } from "../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import CocktailsSidebar from "./CocktailsSidebar";
+import ProductsFilter from "../wineComponents/ProductsFilter";
+import { FaTimes } from "react-icons/fa";
 
-function CocktailsHeader({ sortValue, setSortValue }) {
+function CocktailsHeader({ categories, categoryId, setCategoryId, pageUrl }) {
   const [isFillterOpen, setIsFillterOpen] = useState(false);
   const darkMode = useSelector(getMode);
   const { t } = useTranslation();
@@ -38,25 +39,36 @@ function CocktailsHeader({ sortValue, setSortValue }) {
                   x: "0%",
                   transition: {
                     type: "spring",
+                    stiffness: 100,
+                    damping: 20,
                   },
                 },
                 closed: {
                   x: "-150%",
                   transition: {
                     type: "spring",
+                    stiffness: 100,
+                    damping: 20,
                   },
                 },
               }}
               initial="closed"
               animate="open"
               exit="closed"
-              className={`absolute top-[120px] z-10 ${
+              className={`fixed top-0 right-0 w-[100%] h-screen z-[150] ${
                 darkMode ? "bg-[#000]" : "bg-[#fff]"
-              }  h-[300px] md:hidden rounded-md`}
+              }   md:hidden `}
             >
-              <CocktailsSidebar
-                setSortValue={setSortValue}
-                sortValue={sortValue}
+              <div className="p-[15px]">
+                <FaTimes onClick={() => setIsFillterOpen(false)} />
+              </div>
+              <ProductsFilter
+                minValue={10}
+                maxValue={1000}
+                categories={categories}
+                categoryId={categoryId}
+                setCategoryId={setCategoryId}
+                pageUrl={pageUrl}
               />
             </motion.div>
           )}

@@ -1,10 +1,12 @@
 import { FaShoppingCart, FaHeart } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { addToCart } from "../../features/cartSlice";
+// import { addToCart } from "../../features/cartSlice";
 import { useState } from "react";
+import { useAddToCart } from "../../hooks/useAddToCart";
+import useAddToWishList from "../../hooks/useAddToWishList";
 
 function CocktailCard({ item }) {
   const [showCart, setShowCart] = useState(false);
@@ -12,11 +14,37 @@ function CocktailCard({ item }) {
   const { url: image, titleTranslations, price, _id } = item;
   const darkMode = useSelector(getMode);
   const { i18n } = useTranslation();
-  const dispatch = useDispatch();
+
+  const { mutate: addToCart } = useAddToCart();
+  const { mutate: addToWishList } = useAddToWishList();
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
-    dispatch(addToCart(item));
+    addToCart({
+      productId: item._id,
+      title:
+        i18n.language === "ge"
+          ? item.titleTranslations.ge
+          : item.titleTranslations.en,
+      image: item.url,
+      price: item.price,
+      unit: 1,
+      productType: "cocktail",
+    });
+  };
+
+  const handleAddToWishList = (e) => {
+    e.stopPropagation();
+    addToWishList({
+      productId: item._id,
+      title:
+        i18n.language === "ge"
+          ? item.titleTranslations.ge
+          : item.titleTranslations.en,
+      image: item.url,
+      price: item.price,
+      productType: "cocktail",
+    });
   };
 
   return (
@@ -52,9 +80,16 @@ function CocktailCard({ item }) {
               className="p-1 rounded-md border-[1px] border-purple-600"
               onClick={handleAddToCart}
             >
-              <FaShoppingCart size={18} color="#9333ea" />
+              <FaShoppingCart
+                size={18}
+                color="#9333ea"
+                onClick={console.log("nugo")}
+              />
             </div>
-            <div className="p-1 rounded-md border-[1px] border-purple-600">
+            <div
+              className="p-1 rounded-md border-[1px] border-purple-600"
+              onClick={handleAddToWishList}
+            >
               <FaHeart size={18} color="#9333ea" />
             </div>
           </div>

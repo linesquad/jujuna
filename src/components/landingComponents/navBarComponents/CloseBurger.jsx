@@ -4,34 +4,50 @@ import NavLinks from "./NavLinks";
 import LanguageChanger from "./LanguageChanger";
 import ThemeChanger from "../../ThemeChanger";
 import BurgerNav from "./BurgerNav";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux"; // Import useDispatch
 import { getIsOpen } from "../../../features/burgerMenuSlice";
 import { getMode } from "../../../features/darkModeSlice";
-import { FaSearch } from "react-icons/fa";
-import { FaUser } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
-import { FaShoppingCart } from "react-icons/fa";
-import ModalCart from "../../ModalCart";
+import {
+  FaSearch,
+  FaUser,
+  FaHeart,
+  FaShoppingCart,
+  FaSignOutAlt,
+} from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
-import { cartItems } from "../../../features/cartSlice";
 import { useTranslation } from "react-i18next";
-import FullCartDisplay from "../../FullCartDisplay";
+import FullCartDisplay from "../../cart&wishlist/cart/FullCartDisplay";
+import FullWishListDisplay from "../../cart&wishlist/wishlist/FullWishListDisplay";
+import { useNavigate } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { closeAuthModal, openAuthModal } from "../../../features/authSlice";
 
-const CloseBurger = ({ setIsAuthModalOpen }) => {
+const CloseBurger = () => {
   const open = useSelector(getIsOpen);
   const darkMode = useSelector(getMode);
-  const [modalOpen, setModalOpen] = useState(false);
-  const items = useSelector(cartItems);
+  const isAuthModalOpen = useSelector((state) => state.auth.isAuthModalOpen); // Get the modal state from Redux
+  const dispatch = useDispatch(); // Initialize dispatch
   const { t } = useTranslation();
   const [viewCart, setViewCart] = useState(false);
+  const [seeWishList, setSeeWishList] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
+  const [hover, setHover] = useState("");
   const navRef = useRef(null);
+  const navigate = useNavigate();
+
+  const accesToken = localStorage.getItem("accessToken");
+  const refreshToken = localStorage.getItem("refreshToken");
+
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    dispatch(closeAuthModal());
+  };
 
   useEffect(() => {
     const handleScroll = () => {
       if (navRef.current) {
-        const offsetTop = navRef.current.offsetTop;
-        setIsFixed(window.scrollY > offsetTop);
+        setIsFixed(window.scrollY > 58);
       }
     };
 
@@ -41,22 +57,21 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
     };
   }, []);
 
-  const toggleModal = () => {
-    setModalOpen((prev) => !prev);
-  };
-
   const closeAllModals = () => {
-    setModalOpen(false);
     setViewCart(false);
+    setSeeWishList(false);
   };
 
   const toggleViewCart = () => {
-    setModalOpen(false);
     setViewCart(true);
   };
 
+  const toggleSeeWishList = () => {
+    setSeeWishList(true);
+  };
+
   return (
-    <div className={`top-0 w-full  "text-white z-40 header"`}>
+    <div className={`top-0 w-full text-white z-40 header`}>
       <div className="bg-[#000] w-full hidden md:block">
         <Wrapper>
           <div className="px-[17px] py-[8px] md:px-0 flex items-center justify-between">
@@ -79,7 +94,7 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
               ? "bg-black"
               : "bg-[#fff]"
             : isFixed
-            ? " bg-opacity-70 backdrop-blur-md"
+            ? "bg-opacity-70 backdrop-blur-md"
             : ""
         } ${darkMode ? "bg-[#12151C]" : "bg-[#fff]"} ${
           isFixed ? "fixed top-0 left-0 right-0 z-50" : ""
@@ -93,45 +108,99 @@ const CloseBurger = ({ setIsAuthModalOpen }) => {
               </div>
               <Logo />
 
-              <div className="hidden w-full md:w-[470px] lg:w-[650px]  md:block text-center text-bold gap-10">
+              <div className="hidden w-full md:w-[350px] lg:w-[450px] md:block text-center text-bold gap-10">
                 <NavLinks />
               </div>
-              <div className="flex items-center gap-[15px]">
-                <FaSearch color={`${darkMode ? "#fff" : "#000"}`} size={20} />
-                <div className="hidden lg:flex items-center gap-[15px]">
+              <div className="flex items-center gap-[10px] sm:gap-[12px] md:gap-[13.5px] lg:gap-[15px]">
+                <div className="flex items-center gap-[10px] sm:gap-[12px] md:gap-[13.5px] lg:gap-[15px]">
                   <FaShoppingCart
                     color={`${darkMode ? "#fff" : "#000"}`}
                     size={20}
-                    onClick={toggleModal}
+                    onClick={toggleViewCart}
+                    className="cursor-pointer"
                   />
-                  <FaHeart color={`${darkMode ? "#fff" : "#000"}`} size={20} />
-                  <div className="h-[27px] border-[1px] bprder-[#fff]"></div>
+                  <FaHeart
+                    color={`${darkMode ? "#fff" : "#000"}`}
+                    size={20}
+                    onClick={toggleSeeWishList}
+                    className="cursor-pointer"
+                  />
+                  <div className="h-[27px] border-[1px] border-[#fff]"></div>
                 </div>
-                <FaUser
-                  color={`${darkMode ? "#fff" : "#000"}`}
-                  size={20}
-                  onClick={() => setIsAuthModalOpen(true)}
-                  cursor="pointer"
-                />
+                <div className="relative">
+                  <FaUser
+                    color={`${darkMode ? "#fff" : "#000"}`}
+                    size={20}
+                    onClick={() => {
+                      dispatch(openAuthModal()); // Open the modal if tokens are not available
+                    }}
+                    cursor="pointer"
+                  />
+                  <AnimatePresence>
+                    {isAuthModalOpen && accesToken && refreshToken && (
+                      <motion.div
+                        className="absolute top-10 left-[-200px] lg:left-[-100px] bg-[#eaeaea] flex w-[220px] h-[60px] p-[10px] justify-between rounded-[20px] z-[150]"
+                        variants={{
+                          open: { scale: 1 },
+                          closed: { scale: 0 },
+                        }}
+                        initial="closed"
+                        animate="open"
+                        exit="closed"
+                        transition={{
+                          type: "spring",
+                          stiffness: 200,
+                          damping: 20,
+                        }}
+                      >
+                        <div
+                          className="flex flex-col justify-center items-center cursor-pointer w-[100px]"
+                          onMouseLeave={() => setHover("")}
+                          onClick={() => {
+                            navigate("/userPage");
+                            dispatch(closeAuthModal()); // Close modal if navigating
+                          }}
+                        >
+                          <FaUser
+                            onMouseEnter={() => setHover("userPage")}
+                            color="black"
+                          />
+                          {hover === "userPage" && <p>User Page</p>}
+                        </div>
+                        <div
+                          className="flex flex-col justify-center items-center cursor-pointer w-[100px]"
+                          onMouseLeave={() => setHover("")}
+                          onClick={() => {
+                            handleLogout();
+                            dispatch(closeAuthModal()); // Close modal on logout
+                          }}
+                        >
+                          <FaSignOutAlt
+                            onMouseEnter={() => setHover("logOut")}
+                            color="red"
+                          />
+                          {hover === "logOut" && (
+                            <p className="text-red-700">logout</p>
+                          )}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
             </nav>
           </div>
         </Wrapper>
       </div>
-      <ModalCart
-        isOpen={modalOpen}
-        onClose={toggleModal}
-        title={t("cartSlicer.myCart")}
-        checkAllProductsText={t("cartSlicer.checkCard")}
-        items={items}
-        onView={toggleViewCart}
-      />
-      <FullCartDisplay
-        isOpen={viewCart}
-        onClose={closeAllModals}
-        title={t("cartSlicer.myCart")}
-        items={items}
-      />
+      {viewCart && (
+        <FullCartDisplay
+          onClose={closeAllModals}
+          title={t("cartSlicer.myCart")}
+        />
+      )}
+      {seeWishList && (
+        <FullWishListDisplay onClose={closeAllModals} title={"ფავორიტები"} />
+      )}
     </div>
   );
 };

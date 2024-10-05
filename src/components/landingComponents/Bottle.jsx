@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import Wrapper from "../Wrapper";
 import { getMode } from "../../features/darkModeSlice";
-import useWines from "../../hooks/useWines";
+import { useWines } from "../../hooks/useWines";
 import Spinner from "../Spinner";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,7 +10,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import WineCard from "../wineComponents/WineCard";
+
+import WineCard from "../wineComponents/wineCardComponents/WineCard";
 
 function Bottle() {
   const { t } = useTranslation();
@@ -31,7 +32,7 @@ function Bottle() {
     <div
       className={`${
         darkMode ? "bg-[#12151C] text-color-primary" : "bg-white"
-      } pt-20`}
+      } pt-4`}
     >
       <Wrapper>
         <h1 className="text-center text-[40px] mb-[5px] md:text-[50px] lg:text-[64px]">

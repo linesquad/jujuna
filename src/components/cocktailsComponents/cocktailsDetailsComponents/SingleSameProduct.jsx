@@ -7,7 +7,7 @@ function SingleSameProduct({ item }) {
   const { i18n } = useTranslation();
   const navigate = useNavigate();
   const darkMode = useSelector(getMode);
-  console.log(item);
+  // console.log(item);
   return (
     <div
       className="flex flex-col items-center justify-center"

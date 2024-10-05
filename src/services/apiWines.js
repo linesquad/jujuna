@@ -1,32 +1,31 @@
-const URL = "http://localhost:8001";
-// const URL = import.meta.env.SERVER_URL;
+import axiosInstance from "./axiosInstance";
 
-const fetchWines = async () => {
-  try {
-    const response = await fetch(`${URL}/wines`);
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error.message);
-  }
+export const fetchWines = async () => {
+  const { data } = await axiosInstance.get(`/wines`);
+  return data;
 };
 
 export const fetchWineById = async (id) => {
-  try {
-    const response = await fetch(`${URL}/wine/${id}`);
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error.message);
-  }
+  const { data } = await axiosInstance.get(`/wine/${id}`);
+  console.log("api of single wine");
+  return data;
 };
 
-export default fetchWines;
+export const fetchWineCategories = async () => {
+  const { data } = await axiosInstance.get("/wine-categories");
+  return data;
+};
+
+export const fetchWinesByCategory = async (id) => {
+  if (id.toLowerCase() === "allwines" || id.length === 0) return;
+  const { data } = await axiosInstance.get(`/category/${id}`);
+  return data;
+};
+
+export const fetchWinesByPriceRange = async (minPrice, maxPrice) => {
+  const { data } = await axiosInstance.get(
+    `/price-range?minPrice=${minPrice}&maxPrice=${maxPrice}&isWine=true`
+  );
+
+  return data;
+};

@@ -3,11 +3,13 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
 import { IoIosHeart, IoMdHeartEmpty } from "react-icons/io";
+import { useFindCustomer } from "../../../hooks/useFindCustomer";
 
-const ComentarNews = () => {
+const ComentarNews = ({ blog }) => {
   const { t } = useTranslation();
   const [hearts, setHearts] = useState(Array(5).fill(false));
   const darkMode = useSelector(getMode);
+  const { data: customer } = useFindCustomer();
 
   const handleToggle = (index) => {
     setHearts((prevHearts) =>
@@ -27,7 +29,7 @@ const ComentarNews = () => {
       >
         {t("newsDetails.newestComentar")}
       </h1>
-      {[...Array(5)].map((_, index) => (
+      {blog?.comments.map((item, index) => (
         <div
           key={index}
           className={`flex flex-col mb-4 p-3 border rounded-[20px] ${
@@ -48,10 +50,10 @@ const ComentarNews = () => {
                   className="tiny:text-[12px] smaller:text-[12px] text-base sm:text-[17px] md:text-lg
                   tiny:max-w-[80px] lg:max-w-[400px]"
                 >
-                  გმადლობთ კარგი მომსახურებისთვის
+                  {item.comment}
                 </p>
                 <p className="text-sm sm:text-[15px] lg:text-base">
-                  example@gmail.com
+                  {customer?.email}
                 </p>
                 <p className="hidden  sm:block sm:text-xs lg:text-sm">
                   12/08/2024

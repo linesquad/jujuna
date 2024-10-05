@@ -5,13 +5,15 @@ import Button from "../Button";
 import { useNavigate } from "react-router-dom";
 
 function OneNews({ image, title, description, id }) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+  // i18n
   const darkMode = useSelector(getMode);
   const navigate = useNavigate();
 
-  const currentTitle = i18n.language === "en" ? title.en : title.ge;
-  const currentDescription =
-    i18n.language === "en" ? description.en : description.ge;
+  // const currentTitle = title;
+  // const currentDescription = description;
+
+  // console.log(title);
 
   return (
     <div className={`mx-[10px] `}>
@@ -33,18 +35,14 @@ function OneNews({ image, title, description, id }) {
               darkMode ? "text-color-primary" : "text-color-black"
             }`}
           >
-            {currentTitle.length > 17
-              ? currentTitle.split(" ").slice(0, 1).join(" ") + "..."
-              : currentTitle}
+            {title.slice(0, 20) + "..."}
           </h2>
           <p
             className={`mt-[10px] pr-[20px] h-[100px] ${
               darkMode ? "text-color-primary" : "text-color-black"
             }`}
           >
-            {currentDescription.split(" ").length > 6
-              ? currentDescription.split(" ").slice(0, 6).join(" ") + "..."
-              : currentDescription}
+            {description.slice(0, 90) + "..."}
           </p>
         </div>
         <div className="flex justify-center w-[200px] mx-auto">

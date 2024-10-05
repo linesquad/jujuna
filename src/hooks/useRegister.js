@@ -1,18 +1,19 @@
 import { useMutation } from "@tanstack/react-query";
 import { registerUser } from "../services/apiRegister";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { openAuthModal } from "../features/authSlice";
 
 export const useRegister = () => {
-  const navigate = useNavigate();
-  const mutate = useMutation({
+  const dispatch = useDispatch();
+  const { mutate, data } = useMutation({
     mutationFn: registerUser,
     onSuccess: () => {
-      navigate("signup");
+      dispatch(openAuthModal());
     },
     onError: (err) => {
       console.log("reg err", err);
     },
   });
 
-  return mutate;
+  return { mutate, data };
 };

@@ -1,14 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import apiOrders from "../services/apiOrders";
+import { getOrders } from "../services/apiOrders";
 
-const useOrders = (orderId) => {
-  const { isLoading, data, isError, error } = useQuery({
-    queryKey: ["order"],
-    queryFn: () => apiOrders(orderId),
+export const useOrders = () => {
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["orders"],
+    queryFn: getOrders,
     staleTime: 0,
+    refetchOnWindowFocus: false,
   });
 
-  return { isLoading, data, isError, error };
+  return { data, isLoading, isError, error };
 };
-
-export default useOrders;

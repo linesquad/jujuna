@@ -2,10 +2,22 @@ import { useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";
 import Button from "../../Button";
+import { useAddComment } from "../../../hooks/useAddComment";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const NewsDetailsWriteComment = () => {
+  const { id } = useParams();
+  const [comment, setComment] = useState("");
   const darkMode = useSelector(getMode);
   const { t } = useTranslation();
+  const { mutate } = useAddComment();
+
+  const handleSend = () => {
+    mutate({ blogId: id, comment: comment });
+    setComment("");
+  };
+
   return (
     <div className="pb-20">
       <div className="pb-3">
@@ -32,10 +44,14 @@ const NewsDetailsWriteComment = () => {
           md:text-[19px] lg:text-[25px] p-4
           focus:outline-none
           h-[88px] sm:h-[124px] md:h-[160px] lg:h-[196px]`}
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
         ></textarea>
       </div>
       <div className="flex justify-end pt-4 w-[124px]">
-        <Button type={"primary"}>გაგზავნა</Button>
+        <Button type={"primary"} onClick={handleSend}>
+          გაგზავნა
+        </Button>
       </div>
     </div>
   );

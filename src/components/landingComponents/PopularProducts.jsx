@@ -1,96 +1,79 @@
-import { useEffect, useRef, useState } from "react";
-import WineCard from "../wineComponents/WineCard";
-import { Navigation } from "swiper/modules";
-import { SwiperSlide, Swiper } from "swiper/react";
+import { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 import "swiper/css";
 import "swiper/css/pagination";
 import Wrapper from "../Wrapper";
-import { BiSolidRightArrow, BiSolidLeftArrow } from "react-icons/bi";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import usePopularProducts from "../../hooks/usePopularProducts";
+import SingleProduct from "./SingleProduct";
+import { Autoplay } from "swiper/modules";
 
 export default function PopularProducts() {
-  const [products, setProducts] = useState([]);
   const swiperRef = useRef(null);
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
 
-  useEffect(() => {
-    const getPopularWines = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:8001/popular-products?page=1&isWine=true"
-        );
-        if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setProducts(data);
-        console.log(data);
-      } catch (error) {
-        console.error(error.message);
-      }
-    };
-
-    getPopularWines();
-  }, []);
-  console.log(products);
+  const { data: popularProducts } = usePopularProducts();
 
   return (
-    <div className="mt-20 relative">
+    <div>
       <Wrapper>
-        <h2 className="text-[#848282] text-[24px]">გაყიდვადი პროდუქტები</h2>
-        <hr className="border border-[#D9D9D9] mt-2" />
-        <div className="mt-10 ">
-          <Swiper
-            breakpoints={{
-              320: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-              },
-              650: {
-                slidesPerView: 2,
-              },
-              1024: {
-                slidesPerView: 3,
-              },
-            }}
-            spaceBetween={10}
-            navigation={{
-              prevEl: prevRef.current,
-              nextEl: nextRef.current,
-            }}
-            onBeforeInit={(swiper) => {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-              swiper.navigation.init();
-              swiper.navigation.update();
-            }}
-            modules={[Navigation]}
-          >
-            {products?.map((product) => (
-              <SwiperSlide key={product._id}>
-                {/* <div className="flex"> */}
-                <WineCard key={product._id} wine={product} />
-                {/* </div> */}
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          <div ref={prevRef} className=" absolute top-0 right-[185px]">
-            <div className="swiper-button-prev opacity-0"></div>
-            <div className="text-[#DCC6FA] border-2 rounded-xl border-[#DCC6FA] p-1">
-              <BiSolidLeftArrow
-                onClick={() => swiperRef.current.swiper.slidePrev()}
-              />
+        <div className="mt-[100px]">
+          <div className="flex items-center justify-between pl-[50px] pb-[12px] border-b-[1px] border-[#D9D9D9]">
+            <h2 className="text-[16px] md:text-[22px] lg:text-[32px] text-[#848282]">
+              პოპულარული პროდუქტები
+            </h2>
+
+            <div className="hidden lg:flex items-center gap-[4px]">
+              <div
+                className="w-[36px] h-[36px] border-[1px] border-[#BB8DF580] rounded-[50%] flex justify-center items-center cursor-pointer"
+                onClick={() => swiperRef.current.slidePrev()}
+              >
+                <FaArrowLeft color="#DCC6FA" />
+              </div>
+
+              <div
+                className="w-[36px] h-[36px] border-[1px] border-[#BB8DF580] rounded-[50%] flex justify-center items-center cursor-pointer"
+                onClick={() => swiperRef.current.slideNext()}
+              >
+                <FaArrowRight color="#DCC6FA" />
+              </div>
             </div>
           </div>
-
-          <div ref={nextRef} className=" absolute top-0 right-[150px]">
-            <div className="swiper-button-next opacity-0"></div>
-            <div className="text-[#DCC6FA] border-2 rounded-xl border-[#DCC6FA] p-1">
-              <BiSolidRightArrow
-                onClick={() => swiperRef.current.swiper.slideNext()}
-              />
-            </div>
+          <div className="mt-[32px] flex">
+            <Swiper
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+              speed={1000}
+              modules={[Autoplay]}
+              autoplay={{
+                delay: 2000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+              breakpoints={{
+                350: {
+                  slidesPerView: 2,
+                  spaceBetween: 30,
+                },
+                700: {
+                  slidesPerView: 3,
+                  spaceBetween: 40,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 40,
+                },
+              }}
+            >
+              {popularProducts?.map((item) => {
+                return (
+                  <SwiperSlide key={item._id}>
+                    <SingleProduct item={item} />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
           </div>
         </div>
       </Wrapper>

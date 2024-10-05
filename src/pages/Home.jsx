@@ -8,6 +8,7 @@ import MobileBar from "../components/landingComponents/MobileBar";
 import News from "../components/landingComponents/News";
 import { getMode } from "../features/darkModeSlice";
 import PopularProducts from "../components/landingComponents/PopularProducts";
+import SaleProducts from "../components/landingComponents/SaleProducts";
 
 const Home = () => {
   const darkMode = useSelector(getMode);
@@ -15,12 +16,13 @@ const Home = () => {
     <div>
       <div className={`${darkMode ? "bg-[#12151C]" : "bg-[#fff]"}`}>
         <Hero />
+        <SaleProducts />
         <PopularProducts />
-        <AboutUsComp />
-        <News />
-        <Bottle />
         <CocktailsComp />
+        <Bottle />
         <MobileBar />
+        <News />
+        <AboutUsComp />
         <Connect />
       </div>
     </div>

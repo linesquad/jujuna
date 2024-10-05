@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { useLogin } from "../../hooks/useLogin";
+import { useDispatch } from "react-redux";
+import { closeAuthModal } from "../../features/authSlice";
 
 const SignIn = () => {
   const { i18n } = useTranslation();
@@ -14,8 +16,10 @@ const SignIn = () => {
     formState: { errors },
   } = useForm();
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
 
   async function onSubmit(data) {
+    dispatch(closeAuthModal());
     login(data);
   }
 

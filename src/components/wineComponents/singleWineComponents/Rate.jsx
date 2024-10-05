@@ -23,9 +23,9 @@ function Rate() {
     return (
       <div className="tiny:m-0 tiny:p-1 smaller:m-0 smaller:p-1 mr-2 border-2 border-purple-800 p-2 rounded">
         {filled ? (
-          <IoIosStar className="tiny:w-5 tiny:w-5 smaller:w-6 smaller:w-6 w-9 h-9 text-purple-800" />
+          <IoIosStar className="tiny:w-5 smaller:w-6 w-9 h-9 text-purple-800" />
         ) : (
-          <IoIosStarOutline className="tiny:w-5 tiny:w-5 smaller:w-6 smaller:w-6 w-9 h-9 text-purple-800" />
+          <IoIosStarOutline className=" tiny:w-5 smaller:w-6 w-9 h-9 text-purple-800" />
         )}
       </div>
     );
