@@ -1,21 +1,6 @@
 import axios from "axios";
 import supabase from "./supabase";
-const URL = "http://localhost:8001";
-
-// export const fetchLatestBlogs = async () => {
-//   let { data, error } = await supabase
-//     .from("blog")
-//     .select("*")
-//     .order("created_at", { ascending: false })
-//     .limit(3);
-
-//   if (error) {
-//     console.error(error);
-//     throw new Error("Blog could not be loaded");
-//   }
-
-//   return data;
-// };
+const URL = "https://jujuna-d95aafb94bb9.herokuapp.com";
 
 export const fetchLatestCocktails = async () => {
   let { data, error } = await supabase
