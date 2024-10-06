@@ -1,6 +1,6 @@
 import axiosInstance from "./axiosInstance";
 
-const URL = process.env.REACT_APP_URL;
+const URL = "https://jujuna-d95aafb94bb9.herokuapp.com/";
 
 export const fetchCocktails = async () => {
   try {
