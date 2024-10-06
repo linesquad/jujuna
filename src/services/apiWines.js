@@ -1,28 +1,31 @@
-import supabase from "./supabase";
+import axiosInstance from "./axiosInstance";
 
-const fetchWines = async () => {
-  let { data, error } = await supabase.from("wine").select("*");
-
-  if (error) {
-    console.error(error);
-    throw new Error("Blog could not be loaded");
-  }
-
+export const fetchWines = async () => {
+  const { data } = await axiosInstance.get(`/wines`);
   return data;
 };
 
 export const fetchWineById = async (id) => {
-  const { data, error } = await supabase
-    .from("wine")
-    .select("*")
-    .eq("id", id)
-    .single();
-
-  if (error) {
-    console.error("Error fetching wine:", error);
-    throw new Error("Failed to fetch wine");
-  }
+  const { data } = await axiosInstance.get(`/wine/${id}`);
+  console.log("api of single wine");
   return data;
 };
 
-export default fetchWines;
+export const fetchWineCategories = async () => {
+  const { data } = await axiosInstance.get("/wine-categories");
+  return data;
+};
+
+export const fetchWinesByCategory = async (id) => {
+  if (id.toLowerCase() === "allwines" || id.length === 0) return;
+  const { data } = await axiosInstance.get(`/category/${id}`);
+  return data;
+};
+
+export const fetchWinesByPriceRange = async (minPrice, maxPrice) => {
+  const { data } = await axiosInstance.get(
+    `/price-range?minPrice=${minPrice}&maxPrice=${maxPrice}&isWine=true`
+  );
+
+  return data;
+};

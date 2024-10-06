@@ -1,28 +1,22 @@
 import useCocktails from "../../hooks/useCocktails";
 import Wrapper from "../Wrapper";
 import CocktailCard from "./CocktailCard";
-import Pegination from "../Pegination";
 import Spinner from "../../components/Spinner";
-import { useEffect, useState } from "react";
+import { useCocktailsByCategories } from "../../hooks/useCocktailsByCategories";
+import { useParams } from "react-router-dom";
 
-function DisplayCocktails({ sortValue }) {
+function DisplayCocktails() {
+  const { categoryId } = useParams();
+  console.log(categoryId);
   const { data: cocktails, isLoading, isError, error } = useCocktails();
-  const [sortedCocktails, setSortedCocktails] = useState([]);
-  const [paginatedCocktails, setPeginatedCocktails] = useState([]);
+  const { data: cocktailsCategories, isLoading: categoryLoading } =
+    useCocktailsByCategories(categoryId);
 
-  useEffect(() => {
-    if (sortValue === "Default" || sortValue === "ნაგულისხმევი") {
-      setSortedCocktails(cocktails);
-    } else if (sortValue === "Price" || sortValue === "ფასი") {
-      const sorted = [...cocktails].sort((a, b) => a.price - b.price);
-      setSortedCocktails(sorted);
-    } else if (sortValue === "Size" || sortValue === "ზომა") {
-      const sorted = [...cocktails].sort((a, b) => a.size - b.size);
-      setSortedCocktails(sorted);
-    }
-  }, [cocktails, sortValue]);
+  console.log(cocktailsCategories);
 
-  if (isLoading) return <Spinner />;
+  if (isLoading || categoryLoading) return <Spinner />;
+
+  const fillteredCocktails = cocktailsCategories?.products || cocktails;
 
   if (isError)
     return (
@@ -33,16 +27,11 @@ function DisplayCocktails({ sortValue }) {
 
   return (
     <Wrapper>
-      <div className="grid gap-[16px] tiny:grid-cols-[1fr] grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr] m-auto relative min-h-[300px] md:min-h-[600px]">
-        {paginatedCocktails?.map((item) => {
-          return <CocktailCard key={item.id} item={item} />;
+      <div className="grid gap-[16px] small:grid-cols-[1fr] grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr] m-auto relative min-h-[300px] md:min-h-[600px]">
+        {fillteredCocktails?.map((item) => {
+          return <CocktailCard key={item._id} item={item} />;
         })}
       </div>
-      <Pegination
-        itemsArray={sortedCocktails}
-        itemsPerPage={3}
-        setPeginatedItems={setPeginatedCocktails}
-      />
     </Wrapper>
   );
 }

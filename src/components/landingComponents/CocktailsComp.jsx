@@ -9,16 +9,23 @@ import { useLatestCocktails } from "../../hooks/useLatestItems";
 import Wrapper from "../Wrapper";
 import { Pagination } from "swiper/modules";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { getMode } from "../../features/darkModeSlice";
 
 function CocktailsComp() {
   const { data: cocktails } = useLatestCocktails();
   const { i18n } = useTranslation();
+  const darkMode = useSelector(getMode);
 
   return (
-    <div className="bg-gray-500 md:py-[30px]">
+    <div className={`pt-20 ${darkMode ? "bg-[#12151C]" : "bg-white"} md:py-20`}>
       <Wrapper>
         <div>
-          <h2 className="text-color-black text-[40px] ml-[27px] mb-[5px] font-tommaso md:ml-[0px] md:text-[50px] lg:text-[64px]">
+          <h2
+            className={`${
+              darkMode ? "text-color-primary" : "text-black"
+            } text-center text-[40px] mb-8 font-tommaso md:text-[50px] lg:text-[64px]`}
+          >
             {i18n.language === "en" ? "Cocktails" : "კოქტეილი"}
           </h2>
           <div className="md:hidden">
@@ -34,7 +41,7 @@ function CocktailsComp() {
               {cocktails?.map((item, index) => {
                 return (
                   <SwiperSlide key={item.id}>
-                    <div>
+                    <div className="mb-20">
                       <OneCocktail
                         title={
                           i18n.language === "en" ? item.name.en : item.name.ge
@@ -46,6 +53,7 @@ function CocktailsComp() {
                             : item.ingredients.ge
                         }
                         size={index === 0 ? "big" : "small"}
+                        isSwiper={true}
                       />
                     </div>
                   </SwiperSlide>
@@ -66,6 +74,8 @@ function CocktailsComp() {
                       : item.ingredients.ge
                   }
                   size={index === 0 ? "big" : "small"}
+                  position={index === 2 && "right"}
+                  id={item.id}
                 />
               );
             })}

@@ -1,29 +1,36 @@
-import supabase from "./supabase";
+import axiosInstance from "./axiosInstance";
 
-const fetchCocktails = async () => {
-  let { data, error } = await supabase.from("cocktail").select("*");
+const URL = "http://localhost:8001";
 
-  if (error) {
-    console.error(error);
-    throw new Error("Blog could not be loaded");
+export const fetchCocktails = async () => {
+  try {
+    const res = await fetch(`${URL}/cocktails`);
+    const data = await res.json();
+    console.log("cocktails data fetch", data);
+    return data;
+  } catch (error) {
+    console.log(error.message);
   }
+};
 
+export const fetchCocktailsId = async (id) => {
+  try {
+    const res = await fetch(`${URL}/cocktail/${id}`);
+    const data = await res.json();
+    console.log("cocktails");
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const fetchCocktailsCategoriesTitle = async () => {
+  const { data } = await axiosInstance.get("/cocktail-categories");
   return data;
 };
 
-export default fetchCocktails;
-
-export const fetchCocktailsId = async (id) => {
-  let { data, error } = await supabase
-    .from("cocktail")
-    .select("*")
-    .eq("id", id)
-    .single();
-
-  if (error) {
-    console.error("Error fetching Cocktails: ", error);
-    throw new Error("Failed to fetch Cocktails");
-  }
-
+export const fetchCocktailsByCategories = async (id) => {
+  if (id.toLowerCase() === "allcocktail" || id.length === 0) return;
+  const { data } = await axiosInstance.get(`/category/${id}`);
   return data;
 };

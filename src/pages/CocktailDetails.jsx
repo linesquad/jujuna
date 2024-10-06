@@ -1,18 +1,17 @@
-import SingleProductSkeleton from "../components/cocktailsComponents/cocktailsDetailsComponents/skeletonLoaderComponents/SingleProductSkeleton";
 import CocktailsDetailsHeader from "../components/cocktailsComponents/cocktailsDetailsComponents/CocktailsDetailsHeader";
-import { useCocktailId } from "../hooks/useCocktails";
 import CocktailDetailsCard from "../components/cocktailsComponents/cocktailsDetailsComponents/CocktailDetailsCard";
-import SingleCocktailProduct from "../components/cocktailsComponents/cocktailsDetailsComponents/SingleCocktailProduct";
 import SameCocktails from "../components/cocktailsComponents/cocktailsDetailsComponents/SameCocktails";
 import { useSelector } from "react-redux";
 import { getMode } from "../features/darkModeSlice";
 import { useParams } from "react-router-dom";
 import SkeletonForMobile from "../components/cocktailsComponents/cocktailsDetailsComponents/skeletonLoaderComponents/SkeletonForMobile";
+import { useCocktailId } from "../hooks/useCocktail";
 
 function CocktailDetails() {
   const { id } = useParams();
   const darkMode = useSelector(getMode);
   const { data: cocktail, isLoading, isError, error } = useCocktailId(id);
+  console.log(id);
 
   if (isError)
     return (
@@ -22,8 +21,8 @@ function CocktailDetails() {
     );
 
   return (
-    <div className={`${darkMode ? "bg-[#55426E]" : "bg-[#eaeaea]"}`}>
-      <div className="md:hidden px-[20px]">
+    <div className={`${darkMode ? "bg-[#12151C]" : "bg-[#fff]"}`}>
+      <div className="px-[20px]">
         {isLoading ? (
           <SkeletonForMobile />
         ) : (
@@ -31,13 +30,6 @@ function CocktailDetails() {
             <CocktailsDetailsHeader item={cocktail} />
             <CocktailDetailsCard item={cocktail} />
           </>
-        )}
-      </div>
-      <div className="hidden md:block">
-        {isLoading ? (
-          <SingleProductSkeleton />
-        ) : (
-          <SingleCocktailProduct cocktail={cocktail} />
         )}
       </div>
       <SameCocktails />

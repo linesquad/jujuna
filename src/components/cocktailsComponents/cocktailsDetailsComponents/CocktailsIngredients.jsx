@@ -1,12 +1,19 @@
 import { useTranslation } from "react-i18next";
 import OneCocktailIngredient from "./OneCocktailIngredient";
 import heart from "/images/heart.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
+import { addToCart } from "../../../features/cartSlice";
 
 function CocktailsIngredients({ cocktail }) {
   const { t, i18n } = useTranslation();
   const darkMode = useSelector(getMode);
+
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(cocktail));
+  };
 
   return (
     <div
@@ -27,7 +34,10 @@ function CocktailsIngredients({ cocktail }) {
             className="w-[20px] h-[19px] lg:w-[24px] lg:h-[23px]"
           />
         </button>
-        <button className="w-full h-[28px] lg:h-[49px] bg-[#613994] rounded-[50px] flex items-center justify-center text-[12px] lg:text-[16px] text-color-primary">
+        <button
+          className="w-full h-[28px] lg:h-[49px] bg-[#613994] rounded-[50px] flex items-center justify-center text-[12px] lg:text-[16px] text-color-primary"
+          onClick={handleAddToCart}
+        >
           {t("cocktails.cocktailDetails.cart")}
         </button>
       </div>

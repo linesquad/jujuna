@@ -1,10 +1,19 @@
 import BlogWrapper from "./BlogWrapper";
-import useBlogs from "../../hooks/useBlogs";
 import BlogDisplayItems from "./BlogDisplayItems";
 import Spinner from "../Spinner";
+// import useBlogs from "../../hooks/useBlogs";
+import { useSelector } from "react-redux";
+import { getMode } from "../../features/darkModeSlice";
+import useFetchAllBlogs from "../../services/useFetchAllBlogs";
 
 const BlogDisplay = () => {
-  const { data: allBlogs = [], isLoading, isError, error } = useBlogs();
+  const darkMode = useSelector(getMode);
+  const {
+    data: peginatedBlogs,
+    isLoading,
+    isError,
+    error,
+  } = useFetchAllBlogs();
 
   if (isLoading) {
     return (
@@ -25,9 +34,16 @@ const BlogDisplay = () => {
   return (
     <div className="w-full">
       <BlogWrapper>
+        <h2
+          className={`text-[36px] md:text-center md:py-[80px] ${
+            darkMode ? "text-[#fff]" : "text-[#000]"
+          }`}
+        >
+          Latest news
+        </h2>
         <div className="flex flex-wrap justify-center gap-4 lg:w-full lg:flex-nowrap lg:justify-between lg:flex-col pt-5">
-          {allBlogs.map((item, index) => (
-            <BlogDisplayItems item={item} index={index} key={item.id} />
+          {peginatedBlogs.map((item, index) => (
+            <BlogDisplayItems item={item} index={index} key={item._id} />
           ))}
         </div>
       </BlogWrapper>

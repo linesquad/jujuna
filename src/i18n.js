@@ -14,6 +14,7 @@ i18n
           navbar: {
             about: "ჩვენზე",
             cocktail: "კოქტეილი",
+            bottle: "ბოთლი",
             wines: "ღვინო",
             news: "სიახლეები",
             enter: "შესვლა",
@@ -50,13 +51,16 @@ i18n
               heading: "ღვინო არც ისე წყნარი და არც ბოლომდე ცქრიალაა",
               description:
                 "მას ადრეულ რთველზე მიღებული რქაწითელითა და მწვანეთი ვამზადებთ, ამიტომაც სახასიათო სიმჟავე აქვს. მეორადი დუღილისგან კი ბუნებრივ მსუბუქ გაზს იძენს.",
+              buyBtn: "შეძენა",
+              collectionBtn: "სრული კოლექცია",
+              littleDesc: "ბუნების ნამუშევარი, ტრადიციებით დახვეწილი",
             },
             aboutUs: {
               title: "ჩვენ შესახებ",
               paragraph1:
-                "ჟუჟუნა ძალიან მშრალი და მომჟავო ღვინო 2017 წელს შეიქმნა.",
+                "ქორფა ჟუჟუნა უუუამრავ კაფე-ბარში შეგხვდება და შენთვის საყვარელ კოქტეილებს ააცქრიალებს. ცივი და ჩქრიალა ჟუჟუ კოქტეილში პირდაპირ ონკანიდან ეშვება.",
               paragraph2:
-                "ბევრი ფიქრისა და ღვინის მრავალწლიანი სიყვარულის შემდეგ, კომპანია, ჩვენივე სახსრებით, 6-მა მეგობარმა დავაარსეთ. ჩვენი მთავარი მიზანი, დალევის კულტურის განსხვავებული გამოცდილების შექმნა და აქამდე არარსებული თანამდეროვე ღვინის თანამედროვე კულტურაში პოპულარიზაცია იყო.",
+                "ჩამოსასხმელი ჟუჟუნა კაფე-ბარებს მრავალჯერადი გამოყენების კეგებში მიეწოდება და დამატებით შეფუთვას არ საჭიროებს, რის გამოც გარემოსთან განსაკუთრებით მეგობრობს და არც მის დაბინძურებას იწვევს. ",
               paragraph3:
                 "ჩამოსასხმელი ჟუჟუნა საქართველოს უამრავ კაფე-ბარს მალევე დაუმეგობრდა და 2020 წელს ბოთლის ფორმითაც შეავსო მაღაზიათა ქსელი, რაც ასეთ მოკლე დროში, ჩვენთვის, მნიშვნელოვანი სიახლეა",
               paragraph4:
@@ -82,6 +86,7 @@ i18n
               contactDetails: {
                 location: "წალკა, რუსთაველის 25, ქვემო ქართლი, საქართველო",
               },
+              button: "შეიტყვეთ მეტი",
             },
             bottle: {
               title: "ბოთლი",
@@ -95,13 +100,18 @@ i18n
               naturalWay: "ბუნებრივი გზა",
               naturalWayQuantity: "2.5 ბარი",
               price: "4.5₾",
+              addToCart: "დამატება",
+              fullCollectionBtn: "სრული კოლექცია",
+            },
+            cocktails: {
+              buyBtn: "შეძენა",
             },
             mobileBar: {
               title: "მობილური ბარი",
               heading: "გავჩნდებით ყველგან, სადაც ისურვებ",
               paragraph:
                 "ჟუჟუნას ბარი მოგაგნებს ყველგან, სადაც იქნები. თან მოიყვანს ბარმენს,  ქორფა ჟუჟუნას მაცივარს დააა შენი სტუმრების ჩაჟუჟუნებაზე უუამრავი კოქტეილით იზრუნებს.",
-              moreBtn: "გაიგე მეტი",
+              moreBtn: "შეიტყვეთ მეტი",
             },
           },
           cocktails: {
@@ -150,6 +160,8 @@ i18n
             },
           },
           winePage: {
+            navHomePage: "მთავარი",
+            navProducts: "პროდუქტები",
             list: {
               li1: "ყველა",
               li2: "წითელი",
@@ -157,7 +169,7 @@ i18n
               li4: "საჩუქრები",
             },
             title: "ჩვენი პროდუქცია",
-            filter: "გაფილტრვა",
+            filter: "ფილტრი",
             options: {
               price: "ფასი",
             },
@@ -182,6 +194,7 @@ i18n
                 paragraph: "შეფასებისთვის საჭიროა ვერიფიკაცია მეილით",
               },
               relatedWines: {
+                bottle: "ბოთლი",
                 title: "მსგავსი ღვინოები",
                 details: "დეტალურად",
                 cart: "კალათში დამატება",
@@ -189,6 +202,7 @@ i18n
             },
           },
           enter: {
+            back: "უკან",
             register: "რეგისტრაცია",
             auth: "ავტორიზაცია",
             signin: {
@@ -262,6 +276,28 @@ i18n
             passwordError: "პაროლის შეყვანა აუცილებელია",
             numberPattern: "გთხოვთ შეიყვანოთ სწორი ნომერი",
           },
+          cartSlicer: {
+            total: "სულ:",
+            myCart: "ჩემი კალათა",
+            noItems: "კალათაში არაფერიაა.",
+            checkCard: "კალათის ნახვა",
+          },
+          auth: {
+            header: "შექმენით ანგარიში",
+            auth: "ავტორიზაცია",
+            reg: "რეგისტრაცია",
+            email: "მეილი",
+            fullName: "სახელი, გვარი",
+            mobile: "მობილური",
+            password: "პაროლი",
+            repeatPassword: "გაიმეორე პაროლი",
+            emailError: "მეილი აუცილებელია",
+            fullnameError: "სახელი და გვარი აუცილებელია",
+            mobileError: "ტელეფონი აუცილებელია",
+            passwordError: "პაროლი აუცილებელია",
+            emailPattern: "მეილი უნდა მთავრდებოდეს .com-ით",
+            mobilePattern: "დაშვებულია მხოლოდ ციფრები",
+          },
         },
       },
       en: {
@@ -270,6 +306,7 @@ i18n
             about: "About Us",
             cocktail: "Cocktail",
             wines: "Wine",
+            bottle: "Bottle",
             news: "News",
             enter: "Enter",
           },
@@ -305,13 +342,16 @@ i18n
               heading: "The wine is neither still nor fully sparkling",
               description:
                 "We prepare it with Rkatsiteli and green grapes obtained in the early harvest, that's why it has a characteristic acidity. Natural light gas is obtained from secondary fermentation.",
+              buyBtn: "Buy",
+              collectionBtn: "Full collection",
+              littleDesc: "A work of nature, refined by tradition",
             },
             aboutUs: {
               title: "About us",
               paragraph1:
-                "Zhuzhuna very dry and sour wine was created in 2017.",
+                "Korfa Zhuzhuna can be found in many cafes and bars and will make your favorite cocktails. Cold and sparkling juju are poured from each other's taps in a cocktail.",
               paragraph2:
-                "After much thought and many years of love for wine, 6 friends founded the company with our own funds. Our main goal was to create a different experience of drinking culture and to popularize previously non-existent contemporary wine in modern culture.",
+                "Bottling Zhuzhuna is supplied to cafes and bars in reusable kegs and does not require additional packaging, which is why it is particularly friendly to the environment and does not cause pollution.",
               paragraph3:
                 "Bottling Zhuzhuna soon became friends with many cafes and bars in Georgia, and in 2020 it also filled the chain of stores in the form of a bottle, which is an important news for us in such a short period of time.",
               paragraph4:
@@ -337,6 +377,7 @@ i18n
               contactDetails: {
                 location: "25 Rustaveli Street, Tsalka, Kvemo Kartli, Georgia",
               },
+              button: "Learn More",
             },
             bottle: {
               title: "Bottle",
@@ -350,6 +391,11 @@ i18n
               naturalWay: "The natural way",
               naturalWayQuantity: "2.5 ???",
               price: "GEL 4.5",
+              addToCart: "Add to cart",
+              fullCollectionBtn: "Full Collection",
+            },
+            cocktails: {
+              buyBtn: "Buy",
             },
             mobileBar: {
               title: "Mobile Bar",
@@ -405,6 +451,8 @@ i18n
             },
           },
           winePage: {
+            navHomePage: "Home",
+            navProducts: "Products",
             list: {
               li1: "All Wines",
               li2: "Red Wine",
@@ -438,6 +486,7 @@ i18n
                   "Adding a review will require a valid email for verification",
               },
               relatedWines: {
+                bottle: "Bottle",
                 title: "BROWSE RELATED WINES",
                 details: "View details",
                 cart: "Add To Cart",
@@ -445,6 +494,7 @@ i18n
             },
           },
           enter: {
+            back: "Back",
             register: "Register",
             auth: "Authorization",
             signin: {
@@ -517,6 +567,28 @@ i18n
             addressError: "Address is required",
             passwordError: "Password is required",
             numberPattern: "Please enter a valid number",
+          },
+          cartSlicer: {
+            total: "total:",
+            myCart: "My cart",
+            noItems: "No items in the cart.",
+            checkCard: "View Cart",
+          },
+          auth: {
+            header: "Create Account",
+            auth: "Sign In",
+            reg: "Sign Up",
+            email: "Email",
+            fullName: "FullName",
+            mobile: "Phone",
+            password: "Password",
+            repeatPassword: "Repeat Password",
+            emailError: "Email is required",
+            fullnameError: "Fullname is required",
+            mobileError: "Mobile is required",
+            passwordError: "Password is required",
+            emailPattern: "Email must end with .com",
+            mobilePattern: "Only numbers are allowed",
           },
         },
       },

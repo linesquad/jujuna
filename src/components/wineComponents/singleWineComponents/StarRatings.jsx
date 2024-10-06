@@ -2,10 +2,10 @@ import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
 import Wrapper from "../../Wrapper";
 import { useTranslation } from "react-i18next";
 
-const StarRatings = () => {
+const StarRatings = ({ wine }) => {
   const { t } = useTranslation();
-  const rating = 1.5;
-  const total = 72;
+  const rating = wine.avgRate.toFixed(2);
+  const total = wine.lenRate;
   const renderStars = () => {
     const stars = [];
 

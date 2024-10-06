@@ -6,11 +6,12 @@ import { RiInformation2Fill } from "react-icons/ri";
 import { FaCocktail } from "react-icons/fa";
 import { PiWineFill } from "react-icons/pi";
 import { RiNewspaperLine } from "react-icons/ri";
-import { IoEnterOutline } from "react-icons/io5";
+import { getMode } from "../../../features/darkModeSlice";
 
 const NavLinks = () => {
   const { t } = useTranslation();
   const open = useSelector(getIsOpen);
+  const darkMode = useSelector(getMode);
 
   const dispatch = useDispatch();
 
@@ -20,10 +21,9 @@ const NavLinks = () => {
 
   const navbarItems = [
     { name: "about", id: "1", path: "/about", icon: RiInformation2Fill },
-    { name: "cocktail", id: "2", path: "/cocktail", icon: FaCocktail },
-    { name: "wines", id: "3", path: "/wines", icon: PiWineFill },
     { name: "news", id: "5", path: "/news", icon: RiNewspaperLine },
-    { name: "enter", id: "4", path: "/enter/register", icon: IoEnterOutline },
+    { name: "bottle", id: "3", path: "/wines", icon: PiWineFill },
+    { name: "cocktail", id: "2", path: "/cocktail", icon: FaCocktail },
   ];
 
   return (
@@ -31,7 +31,7 @@ const NavLinks = () => {
       className={`${
         open
           ? "flex flex-col gap-5 text-start text-2xl text-white"
-          : "hidden text-base md:text-sm lg:text-base md:flex gap-0 md:gap-5 lg:gap-10 text-white"
+          : "hidden text-base md:text-sm lg:text-base md:flex gap-0 md:gap-5 lg:gap-10 text-white items-center"
       }`}
     >
       {navbarItems.map((navbarItem) => (
@@ -44,7 +44,11 @@ const NavLinks = () => {
             }
             onClick={handleClose}
           >
-            <div className="flex items-center gap-2">
+            <div
+              className={`flex items-center gap-2 ${
+                darkMode ? "text-color-primary" : "text-color-black"
+              }`}
+            >
               <navbarItem.icon />
               {t(`navbar.${navbarItem.name}`)}
             </div>

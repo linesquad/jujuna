@@ -14,7 +14,9 @@ function CocktailsSidebar({ setSortValue, sortValue }) {
   return (
     <div
       className={`w-[250px] lg:w-[305px] h-full ${
-        darkMode ? "bg-[#55426E]/30" : "bg-[#fff]/30"
+        darkMode
+          ? "bg-[#55426E]/30 md:bg-transparent"
+          : "bg-[#fff]/30 md:bg-transparent"
       }  rounded-[15px]  pt-[50px] pr-[25px] pl-[19px] pb-[45px] z-10`}
     >
       <div className="flex flex-col gap-[35px]">

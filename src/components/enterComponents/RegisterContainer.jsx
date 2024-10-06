@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
-import supabase from "../../services/supabase";
 
 function RegisterContainer() {
   const { t } = useTranslation();
@@ -20,26 +19,13 @@ function RegisterContainer() {
 
   const password = watch("password");
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     console.log("Form data:", data);
-
-    // warning !!!
-    await supabase.auth.signUp({
-      email: data.email,
-      password: data.password,
-      options: {
-        data: {
-          full_name: data.username,
-        },
-      },
-    });
-    // warning !!!
-
     reset();
     navigate("/enter/signin");
   };
   return (
-    <div className="max-h-[600px] rounded-tl-[20px] rounded-tr-[20px] lg:rounded-[20px] bg-white p-12 lg:p-16 pt-16 w-full smaller:min-w-[350px] smallExtra:min-w-[435px] max-w-[467px] lg:w-[467px]">
+    <div className="max-h-[580px] rounded-tl-[20px] rounded-tr-[20px] lg:rounded-[20px] bg-white p-12 lg:p-16 pt-16 w-full max-w-[467px] md:w-[467px] lg:w-[467px]">
       <div className="space-y-4 mb-6">
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
@@ -111,7 +97,7 @@ function RegisterContainer() {
 
           <button
             type="submit"
-            className="w-full py-2 mt-4 bg-purple-900 text-white rounded-3xl"
+            className="w-full py-2 mt-4 bg-purple-900 text-white rounded-3xl smaller:px-20 smallExtra:px-28"
           >
             {t("enter.signup.signupBtn")}
           </button>

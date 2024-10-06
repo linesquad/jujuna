@@ -3,14 +3,11 @@ import { DevTool } from "@hookform/devtools";
 import { useForm } from "react-hook-form";
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
-import { getMode } from "../../../features/darkModeSlice";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ConnectForm = () => {
-  const darkMode = useSelector(getMode);
   const form = useForm({
     defaultValues: {
       mobile: "",
@@ -48,17 +45,17 @@ const ConnectForm = () => {
   };
 
   return (
-    <div>
+    <div className="pt-[30px] px-[15px] max-w-[500px] mx-auto lg:mx-0 md:w-[500px] lg:max-w-none lg:w-[550px] lg:px-0">
       <form
-        className="space-y-4 flex flex-col gap-3 md:gap-2"
+        className="bg-[#fff] pt-[13px] px-[21px] pb-[20px] rounded-[22px] flex flex-col gap-[11px]"
         onSubmit={handleSubmit(onSubmit)}
         noValidate
         ref={formRef}
       >
-        <div className="mb-5 h-[70px]">
+        <div className="">
           <label
             htmlFor="mobile"
-            className="block text-md font-medium text-color-primary mb-1"
+            className="block text-[18px] font-medium  mb-1"
           >
             {t(`connectForm.tel`)}
           </label>
@@ -67,8 +64,8 @@ const ConnectForm = () => {
             type="tel"
             id="mobile"
             placeholder={t(`connectForm.enterPhoneNumber`)}
-            className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-buttonColor-primary 
-                ${darkMode ? "bg-black text-white border-none" : ""} `}
+            className={`w-full mt-[3px] h-[40px] px-[15px] pl-[12px] border focus:outline-none focus:ring-2 focus:ring-buttonColor-primary border-[#000000]  rounded-[10px]
+                `}
             {...register("mobile", {
               required: {
                 value: true,
@@ -80,16 +77,13 @@ const ConnectForm = () => {
               },
             })}
           />
-          <p className="text-red-500 text-base mt-1 font-bold bg-backgroundColor-purpleMid inline-block rounded">
+          <p className="text-red-500 text-base font-bold inline-block rounded">
             {errors.mobile?.message}
           </p>
         </div>
 
-        <div className="mb-5 h-[80px]">
-          <label
-            htmlFor="email"
-            className="block text-md font-medium text-color-primary mb-1"
-          >
+        <div className="">
+          <label htmlFor="email" className="block text-md font-medium  mb-1">
             {t(`connectForm.mail`)}
           </label>
           <input
@@ -97,8 +91,8 @@ const ConnectForm = () => {
             type="email"
             id="email"
             placeholder={t(`connectForm.enterEmail`)}
-            className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-buttonColor-primary
-                ${darkMode ? "bg-black text-white border-none" : ""} `}
+            className={`w-full mt-[3px] h-[40px] px-[15px] pl-[12px] border focus:outline-none focus:ring-2 focus:ring-buttonColor-primary border-[#000] rounded-[10px]
+              `}
             {...register("email", {
               required: {
                 value: true,
@@ -110,24 +104,21 @@ const ConnectForm = () => {
               },
             })}
           />
-          <p className="text-red-500 text-base mt-1 font-bold bg-backgroundColor-purpleMid inline-block rounded">
+          <p className="text-red-500 text-base font-bold inline-block rounded">
             {errors.email?.message}
           </p>
         </div>
 
-        <div className="mb-5 h-[210px]">
-          <label
-            htmlFor="message"
-            className="block text-md font-medium text-color-primary mb-1"
-          >
+        <div className="h-[210px]">
+          <label htmlFor="message" className="block text-md font-medium  mb-1">
             {t(`connectForm.message`)}
           </label>
           <textarea
             name="textArea"
             id="textArea"
             placeholder={t(`connectForm.writeMessage`)}
-            className={`w-full p-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-buttonColor-primary resize-none
-                ${darkMode ? "bg-black text-white border-none" : ""}`}
+            className={`w-full h-[100px] pt-[9px] pl-[11px] border rounded-[10px] shadow-sm focus:outline-none focus:ring-2 focus:ring-buttonColor-primary resize-none border-[#000]
+                `}
             rows="5"
             {...register("textArea", {
               required: {
@@ -144,15 +135,14 @@ const ConnectForm = () => {
               },
             })}
           />
-          <p className="text-red-500 text-base mt-1 font-bold bg-backgroundColor-purpleMid inline-block rounded">
+          <p className="text-red-500 text-base font-bold inline-block rounded">
             {errors.textArea?.message}
           </p>
-        </div>
-
-        <div className="flex justify-end small:p-2">
-          <Button type="large" disabled={isSubmitting}>
-            {t(`connectForm.send`)}
-          </Button>
+          <div className="flex justify-end small:p-2 mt-[11px]">
+            <Button type="large" disabled={isSubmitting}>
+              {t(`connectForm.send`)}
+            </Button>
+          </div>
         </div>
       </form>
       <ToastContainer />;

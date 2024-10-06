@@ -19,9 +19,9 @@ function SigninContainer() {
     reset();
   };
   return (
-    <div className="max-h-[600px] rounded-tl-[20px] rounded-tr-[20px] lg:rounded-[20px] bg-white p-14 pb-6 pt-16 w-full max-w-[467px] lg:w-[467px]">
+    <div className="max-h-[580px] rounded-tl-[20px] rounded-tr-[20px] lg:rounded-[20px] bg-white p-14 pb-6 pt-16 w-full max-w-[467px] md:w-[467px] lg:w-[467px]">
       <div className="space-y-4 mb-6 flex flex-col items-center">
-        <button className="w-full py-2 border font-semibold rounded-full">
+        <button className="w-full py-2 border font-semibold rounded-full smaller:px-10 smallExtra:px-16">
           {t("enter.signin.authFB")}
         </button>
         <button className="w-full py-2 border font-semibold rounded-full">

@@ -12,8 +12,12 @@ function SearchResult({ searchCocktail }) {
 
   const filteredCocktails = cocktails.filter(
     (item) =>
-      item.name.ge.toLowerCase().startsWith(searchCocktail.toLowerCase()) ||
-      item.name.en.toLowerCase().startsWith(searchCocktail.toLowerCase())
+      item.titleTranslations.ge
+        .toLowerCase()
+        .startsWith(searchCocktail.toLowerCase()) ||
+      item.titleTranslations.en
+        .toLowerCase()
+        .startsWith(searchCocktail.toLowerCase())
   );
 
   return (
@@ -26,11 +30,11 @@ function SearchResult({ searchCocktail }) {
         return (
           <div
             className="flex items-center gap-[30px] py-[10px] pl-[5px] bg-[#dee2e6]/30 [box-shadow:5px_8px_10px_0px_rgba(0,_0,_0,_0.25)] rounded-md cursor-pointer"
-            key={item.id}
+            key={item._id}
             onClick={() => navigate(`/cocktails/${item.id}`)}
           >
             <img
-              src={item.image}
+              src={item.url}
               alt="cocktail"
               className="w-[40px] h-[40px] object-cover rounded-md"
             />
@@ -39,7 +43,9 @@ function SearchResult({ searchCocktail }) {
                 darkMode ? "text-color-primary" : "text-color-black"
               }`}
             >
-              {i18n.language === "ge" ? item.name.ge : item.name.en}
+              {i18n.language === "ge"
+                ? item.titleTranslations.ge
+                : item.titleTranslations.en}
             </p>
           </div>
         );

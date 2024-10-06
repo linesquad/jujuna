@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Wrapper from "../components/Wrapper";
 import { useTranslation } from "react-i18next";
 import RegisterContainer from "../components/enterComponents/RegisterContainer";
@@ -6,18 +6,17 @@ import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 
 function Register() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   return (
-    <div className="lg:pb-[30px] min-h-screen bg-[#7b5191] overflow-hidden">
+    <div className="lg:pb-[30px] min-h-screen bg-[#7b5191]  overflow-hidden">
       <Wrapper>
-        <div className="flex flex-col items-center justify-center lg:items-end xl:mr-40 pt-10 relative ">
-          <button
-            onClick={() => navigate(-1)}
-            className="hidden lg:flex  text-xl text-white absolute left-0 top-10 items-center"
+        <div className="flex flex-col items-center justify-center lg:items-end xl:mr-40 pt-10 relative">
+          <Link
+            to={"/"}
+            className="hidden lg:flex text-white text-xl text-white absolute left-0 top-10 items-center"
           >
             <MdOutlineKeyboardArrowLeft className="w-12 h-12" />
-            <span>Back</span>
-          </button>
+            <span>{t("enter.back")}</span>
+          </Link>
           <img
             src="/images/banner2PNG.png"
             alt="banner"
@@ -25,13 +24,13 @@ function Register() {
           />
           <div className="flex flex-col items-center">
             <div className="flex flex-col items-center gap-2">
-              <button
-                onClick={() => navigate(-1)}
-                className="flex lg:hidden  text-xl text-white items-center -ml-6"
+              <Link
+                to={"/"}
+                className="flex lg:hidden text-white text-xl text-white items-center -ml-6"
               >
                 <MdOutlineKeyboardArrowLeft className="w-12 h-12" />
                 <span>Back</span>
-              </button>
+              </Link>
               <div className="flex flex-col gap-2 smallExtra:flex-row smallExtra:justify-center smallExtra:space-x-4 mb-8">
                 <Link
                   to={"/enter/register"}

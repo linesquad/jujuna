@@ -4,13 +4,16 @@ import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import { FreeMode, Pagination } from "swiper/modules";
 import Wrapper from "../Wrapper";
-import { useLatestBlogs } from "../../hooks/useLatestItems";
 import OneNews from "./LandingBlog";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { getMode } from "../../features/darkModeSlice";
+import { useLatestBlogs } from "../../hooks/useLastestBlogs";
 
 const News = () => {
   const { data: blogNews, isLoading, error } = useLatestBlogs();
   const { i18n } = useTranslation();
+  const darkMode = useSelector(getMode);
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading blogs: {error.message}</p>;
@@ -18,11 +21,15 @@ const News = () => {
 
   return (
     <Wrapper>
-      <h2 className="text-white text-[40px] ml-[27px] mb-[5px] font-tommaso md:ml-[0px] md:text-[50px] lg:text-[64px]">
+      <h2
+        className={`${
+          darkMode ? "text-white" : "text-color-black"
+        } text-[40px] ml-[27px] mb-[5px] font-tommaso md:ml-[0px] md:text-[50px] lg:text-[64px]`}
+      >
         {i18n.language === "en" ? "News" : "სიახლეები"}
       </h2>
       <Swiper
-        className="w-full h-[650px]"
+        className="w-full h-[580px]"
         breakpoints={{
           320: {
             slidesPerView: 1,
@@ -46,11 +53,12 @@ const News = () => {
         modules={[FreeMode, Pagination]}
       >
         {blogNews.map((item, index) => (
-          <SwiperSlide key={item.id}>
+          <SwiperSlide key={item._id}>
             <OneNews
               image={item.image}
-              description={item.description}
+              description={item.text}
               title={item.title}
+              id={item._id}
               bgColor={`${index % 2 === 0 ? "bg-gray-500" : "bg-black"}`}
               type={"primary"}
             />

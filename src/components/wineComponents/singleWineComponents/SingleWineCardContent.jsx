@@ -1,65 +1,72 @@
-import { useSelector } from "react-redux";
 import Wrapper from "../../Wrapper";
-import { getMode } from "../../../features/darkModeSlice";
 import SingleWineCardAddButtons from "./SingleWineCardAddButtons";
 import { useTranslation } from "react-i18next";
+import SingleWineInfo from "./SingleWineInfo";
+import { useSelector } from "react-redux";
+import { getMode } from "../../../features/darkModeSlice";
+import CartQuantity from "./CartQuantity";
 
 function SingleWineCardContent({ wine }) {
-  const { i18n, t } = useTranslation();
+  const { i18n } = useTranslation();
   const darkMode = useSelector(getMode);
 
-  console.log("from content", wine);
   return (
-    <div className="flex flex-col items-center lg:items-start max-w-full lg:max-w-[600px]">
-      <div className="text-center flex mt-6 lg:text-left">
+    <div className="tiny:p-1 flex flex-col items-start max-w-full lg:max-w-[600px]">
+      <div className="flex mt-6">
         <Wrapper>
-          <h1
-            className={`font-bold text-lg ${
-              darkMode
-                ? "text-wineNavbarColor-textPurple"
-                : "text-buttonColor-primary"
-            }`}
-          >
-            {i18n.language === "ge" ? wine.name.ge : wine.name.en}
+          <h1 className="text-lg md:text-[48px]">
+            {i18n.language === "ge"
+              ? wine.titleTranslations.ge
+              : wine.titleTranslations.en}
           </h1>
-          <p className="font-medium">
-            {i18n.language === "ge" ? wine.brand.ge : wine.brand.en}
+          <hr className="lg:hidden w-full mb-4 mt-2 md:mt-8" />
+          <p className="hidden lg:block font-medium text-backgroundColor-purpleMid lg:text-[48px] mt-4">
+            {wine.price}₾
           </p>
-          <div className="flex gap-4 font-medium justify-center items-center mt-1 lg:justify-start lg:mt-5 lg:mb-5 text-center">
-            <div>
-              <p className={`${i18n.language === "ge" && "tiny:text-xs"}`}>
-                {t("winePage.singleWine.price")}
-              </p>
-              <span className={`${i18n.language === "ge" && "tiny:text-sm"}`}>
-                ${wine.price}
-              </span>
-            </div>
-            <div>
-              <p className={`${i18n.language === "ge" && "tiny:text-xs"}`}>
-                {t("winePage.singleWine.size")}
-              </p>
-              <span className={`${i18n.language === "ge" && "tiny:text-sm"}`}>
-                {wine.size} {i18n.language === "ge" ? "ლ" : "L"}
-              </span>
-            </div>
-            <div>
-              <p className={`${i18n.language === "ge" && "tiny:text-xs"}`}>
-                {t("winePage.singleWine.alco")}
-              </p>
-              <span className={`${i18n.language === "ge" && "tiny:text-sm"}`}>
-                {wine.alco}%
-              </span>
-            </div>
+          <SingleWineInfo
+            title={i18n.language === "ge" ? "ტექნოლოგია" : "Technology"}
+            value={
+              i18n.language === "ge"
+                ? wine.technologyTranslations.ge
+                : wine.technologyTranslations.en
+            }
+          />
+          <SingleWineInfo
+            title={i18n.language === "ge" ? "ყურძნის ჯიში" : "Grape variety"}
+            value={
+              i18n.language === "ge"
+                ? wine.grapeVarietyTranslations.ge
+                : wine.grapeVarietyTranslations.en
+            }
+          />
+          <SingleWineInfo
+            title={i18n.language === "ge" ? "ალკოჰოლი" : "Alcohol"}
+            value={wine.alcohol + "%"}
+          />
+          <SingleWineInfo
+            title={i18n.language === "ge" ? "მოცულობა" : "Volume"}
+            value={i18n.language === "ge" ? "750მლ" : "750 ml"}
+          />
+          <hr className="lg:hidden w-96 small:max-w-[290px] md:w-full my-4" />
+
+          <div className="hidden lg:block mt-16">
+            <CartQuantity />
           </div>
-          <p className="ml-10 mr-10 mt-6 md:mt-10 sm:m-auto sm:max-w-[400px] lg:m-0">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate
-            tempora temporibus aperiam aliquam dolorum, ullam accusamus alias
-            repellendus porro? Quaerat dolorum iusto possimus? Distinctio dicta
-            amet alias illum aut animi!
-          </p>
         </Wrapper>
       </div>
-      <SingleWineCardAddButtons />
+      <div className="flex items-center tiny:gap-2 gap-4 justify-between w-full">
+        <span
+          className={`tiny:text-[16px] tiny:mt-6 lg:hidden ${
+            darkMode ? "text-white" : "text-black"
+          } text-[20px] md:text-[36px] mt-4`}
+        >
+          {wine.price}₾
+        </span>
+        <div>
+          <SingleWineCardAddButtons wine={wine} />
+        </div>
+      </div>
+      <hr className="lg:hidden mt-4 w-full" />
     </div>
   );
 }

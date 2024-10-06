@@ -3,13 +3,13 @@ import RatingBar from "./RatingBar";
 import ReviewComments from "./ReviewComments";
 import StarRatings from "./StarRatings";
 
-const SingleWineReviews = () => {
+const SingleWineReviews = ({ wine }) => {
   return (
-    <div className="flex flex-col mt-20 tiny:w-[200px] tiny:m-auto">
-      <StarRatings />
+    <div className="flex flex-col mt-40 tiny:w-[200px] tiny:m-auto">
+      <StarRatings wine={wine} />
       <RatingBar />
       <Rate />
-      <ReviewComments />
+      <ReviewComments wine={wine} />
     </div>
   );
 };

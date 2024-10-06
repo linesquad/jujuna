@@ -1,44 +1,88 @@
+import { Link, Outlet } from "react-router-dom";
+import Wrapper from "../components/Wrapper";
 import { useSelector } from "react-redux";
 import { getMode } from "../features/darkModeSlice";
-import WineNavbar from "../components/wineComponents/WineNavbar";
-import WineCover from "../components/wineComponents/WineCover";
-import WineCard from "../components/wineComponents/WineCard";
-import WineContent from "../components/wineComponents/WineContent";
-import useWines from "../hooks/useWines";
-import Spinner from "../components/Spinner";
-import Wrapper from "../components/Wrapper";
+import { useWines } from "../hooks/useWines";
+import { memo, useState } from "react";
+import { useTranslation } from "react-i18next";
+import MobileWineFilter from "../components/wineComponents/MobileWineFilter";
+import MobileFilterContainer from "../components/wineComponents/MobileFilterContainer";
+import LayoutChanger from "../components/LayoutChanger/LayoutChanger";
+import { wineLayoutOptions } from "../components/LayoutChanger/layoutOptions";
+import ProductsFilter from "../components/wineComponents/ProductsFilter";
+import { useWinesCategory } from "../hooks/useWinesCategory";
+import { AnimatePresence } from "framer-motion";
 
-const Wines = () => {
+const Wines = memo(() => {
+  const [showFilter, setShowFilter] = useState(false);
+  const [categoryId, setCategoryId] = useState("");
+  const { isError, error } = useWines();
+
+  const { data: wineCategories } = useWinesCategory();
   const darkMode = useSelector(getMode);
-
-  const { data: wines, isLoading, isError, error } = useWines();
+  const { t } = useTranslation();
 
   return (
     <div
-      className={`flex flex-col pb-24  ${
-        darkMode
-          ? "bg-[linear-gradient(249deg,_#A583D1_22.95%,_#724AA4_46.44%,_#1E122E_93.06%)] text-[#fff]"
-          : "bg-wineNavbarColor-light text-dark-black"
-      }`}
+      className={`${darkMode ? "bg-[#12151C] text-[#fff]" : "bg-[#fff]"} p-4`}
     >
-      <WineCover />
-      <WineNavbar />
-      <WineContent />
       <Wrapper>
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 relative mb-24 justify-items-center">
-          {wines?.map((wine) => (
-            <WineCard key={wine.id} wine={wine} />
-          ))}
+        <div className="text-[#78808C] mb-16 pt-10">
+          <Link to={"/"}>{t("winePage.navHomePage")} </Link>
+          <span>/ {t("winePage.navProducts")}</span>
+        </div>
+
+        <div className="flex justify-between lg:justify-end">
+          <MobileWineFilter setShowFilter={setShowFilter} />
+
+          <AnimatePresence>
+            {showFilter && (
+              <div className="w-full">
+                <MobileFilterContainer
+                  setShowFilter={setShowFilter}
+                  showFilter={showFilter}
+                  minValue={10}
+                  maxValue={1000}
+                  categories={wineCategories}
+                  setCategoryId={setCategoryId}
+                  categoryId={categoryId}
+                  pageUrl="wines"
+                />
+              </div>
+            )}
+          </AnimatePresence>
+
+          <LayoutChanger
+            layouts={wineLayoutOptions}
+            activeClass="border-2 border-purple-500"
+            defaultClass="text-gray-500"
+            iconSize={30}
+          />
+        </div>
+
+        <div className="flex items-start">
+          <div className="hidden lg:block">
+            <ProductsFilter
+              minValue={10}
+              maxValue={1000}
+              categories={wineCategories}
+              setCategoryId={setCategoryId}
+              categoryId={categoryId}
+              pageUrl="wines"
+            />
+          </div>
+          <Outlet />
         </div>
       </Wrapper>
-      {isLoading && <Spinner />}
       {isError && (
-        <div className="text-center bg-purple-700 p-2 -mb-24">
-          <p className="text-purple-200 font-bold">{error.message}</p>
+        <div className="text-center bg-purple-700 p-2 mb-0 w-full">
+          <p className="text-white font-bold">{error.message}</p>
         </div>
       )}
     </div>
   );
-};
+});
+
+Wines.displayName = "Wines";
 
 export default Wines;

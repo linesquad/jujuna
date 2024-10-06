@@ -31,7 +31,7 @@ const Header = () => {
   }, [width, dispatch]);
 
   return (
-    <div className="sticky top-0 w-full z-40 header">
+    <div className="top-0 w-full z-40 header">
       <CloseBurger />
       <AnimatePresence>{open && <OpenBurger />}</AnimatePresence>
     </div>
