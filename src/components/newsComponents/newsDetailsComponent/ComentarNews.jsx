@@ -3,13 +3,13 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
 import { IoIosHeart, IoMdHeartEmpty } from "react-icons/io";
-import { useFindCustomer } from "../../../hooks/useFindCustomer";
+// import { useFindCustomer } from "../../../hooks/useFindCustomer";
 
 const ComentarNews = ({ blog }) => {
   const { t } = useTranslation();
   const [hearts, setHearts] = useState(Array(5).fill(false));
   const darkMode = useSelector(getMode);
-  const { data: customer } = useFindCustomer();
+  // const { data: customer } = useFindCustomer();
 
   const handleToggle = (index) => {
     setHearts((prevHearts) =>
@@ -52,9 +52,9 @@ const ComentarNews = ({ blog }) => {
                 >
                   {item.comment}
                 </p>
-                <p className="text-sm sm:text-[15px] lg:text-base">
+                {/* <p className="text-sm sm:text-[15px] lg:text-base">
                   {customer?.email}
-                </p>
+                </p> */}
                 <p className="hidden  sm:block sm:text-xs lg:text-sm">
                   12/08/2024
                 </p>

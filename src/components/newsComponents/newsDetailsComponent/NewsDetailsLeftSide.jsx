@@ -1,6 +1,4 @@
 import { useSelector } from "react-redux";
-// import { useBlogId } from "../../../hooks/useBlogs";
-// import { parseISO, format } from "date-fns";
 import { getMode } from "../../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";
 import NewsStar from "./NewsStar";
@@ -15,9 +13,7 @@ const NewsDetailsLeftSide = () => {
   const { id } = useParams();
   const mode = useSelector(getMode);
   const { t, i18n } = useTranslation();
-  // const { data, isLoading, isError, error } = useBlogId(id);
   const { data: blog, isLoading, isError, error } = useGetBlogsById(id);
-  console.log(blog);
   if (isLoading) {
     return <NewsDetailsLeftSkeleton />;
   }
@@ -32,8 +28,6 @@ const NewsDetailsLeftSide = () => {
 
   const desc = blog.text;
 
-  // i18n.language === "ge" ? data.description.ge : data.description.en;
-
   const descArray = desc.split("*");
 
   return (
@@ -43,15 +37,13 @@ const NewsDetailsLeftSide = () => {
           className={`${
             mode ? "text-white" : "text-black"
           } text-2xl sm:text-[28px] md:text-[32px] lg:text-4xl`}
-        >
-          {/* {i18n.language === "ge" ? data.title.ge : data.title.en} */}
-        </h1>
+        ></h1>
 
         <div className="flex gap-4 sm:gap-5 md:gap-6 lg:gap-7">
           <p
             className={`text-base sm:text-[19px] md:text-[22px] lg:text-2xl text-[#ADACAC]`}
           >
-            {/* {formattedDate} */}19-19-19
+            19-19-19
           </p>
           <p
             className={`text-base sm:text-[19px] md:text-[22px] lg:text-2xl text-[#ADACAC]`}

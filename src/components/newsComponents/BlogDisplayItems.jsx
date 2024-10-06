@@ -2,13 +2,10 @@ import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-// import { useGetBlogsById } from "../../hooks/useGetBlogsById";
 
 const BlogDisplayItems = ({ item, index }) => {
   const mode = useSelector(getMode);
   const { t } = useTranslation();
-
-  console.log(item._id);
 
   return (
     <div

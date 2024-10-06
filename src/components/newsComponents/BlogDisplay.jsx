@@ -1,7 +1,6 @@
 import BlogWrapper from "./BlogWrapper";
 import BlogDisplayItems from "./BlogDisplayItems";
 import Spinner from "../Spinner";
-// import useBlogs from "../../hooks/useBlogs";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import useFetchAllBlogs from "../../services/useFetchAllBlogs";
