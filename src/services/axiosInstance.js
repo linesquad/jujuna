@@ -4,7 +4,7 @@ import { openAuthModal } from "../features/authSlice";
 
 // შევქმენი ინსტანსი
 const axiosInstance = axios.create({
-  baseURL: "https://jujuna-d95aafb94bb9.herokuapp.com/",
+  baseURL: "https://jujuna-d95aafb94bb9.herokuapp.com",
   headers: {
     "Content-Type": "application/json",
     "Cache-Control": "no-cache",

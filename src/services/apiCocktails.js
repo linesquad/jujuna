@@ -1,6 +1,6 @@
 import axiosInstance from "./axiosInstance";
 
-const URL = "https://jujuna-d95aafb94bb9.herokuapp.com/";
+const URL = "https://jujuna-d95aafb94bb9.herokuapp.com";
 
 export const fetchCocktails = async () => {
   try {

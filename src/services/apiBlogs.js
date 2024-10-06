@@ -1,4 +1,4 @@
-const URL = "https://jujuna-d95aafb94bb9.herokuapp.com/";
+const URL = "https://jujuna-d95aafb94bb9.herokuapp.com";
 
 import axios from "axios";
 import axiosInstance from "./axiosInstance";
