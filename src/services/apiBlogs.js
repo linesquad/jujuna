@@ -1,4 +1,4 @@
-const URL = "http://localhost:8001";
+const URL = process.env.REACT_APP_URL;
 
 import axios from "axios";
 import axiosInstance from "./axiosInstance";

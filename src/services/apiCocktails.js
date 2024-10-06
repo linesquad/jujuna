@@ -1,6 +1,6 @@
 import axiosInstance from "./axiosInstance";
 
-const URL = "http://localhost:8001";
+const URL = process.env.REACT_APP_URL;
 
 export const fetchCocktails = async () => {
   try {
