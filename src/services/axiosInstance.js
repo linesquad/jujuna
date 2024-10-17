@@ -1,10 +1,11 @@
 import axios from "axios";
 import { store } from "../store";
 import { openAuthModal } from "../features/authSlice";
+import { run_dev } from "../../config";
 
 // შევქმენი ინსტანსი
 const axiosInstance = axios.create({
-  baseURL: "https://jujuna-d95aafb94bb9.herokuapp.com",
+  baseURL: run_dev,
   headers: {
     "Content-Type": "application/json",
     "Cache-Control": "no-cache",

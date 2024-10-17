@@ -1,10 +1,10 @@
 import axiosInstance from "./axiosInstance";
 
-const URL = "https://jujuna-d95aafb94bb9.herokuapp.com";
+import { run_dev } from "../../config";
 
 export const fetchCocktails = async () => {
   try {
-    const res = await fetch(`${URL}/cocktails`);
+    const res = await fetch(`${run_dev}/cocktails`);
     const data = await res.json();
     console.log("cocktails data fetch", data);
     return data;
@@ -15,7 +15,7 @@ export const fetchCocktails = async () => {
 
 export const fetchCocktailsId = async (id) => {
   try {
-    const res = await fetch(`${URL}/cocktail/${id}`);
+    const res = await fetch(`${run_dev}/cocktail/${id}`);
     const data = await res.json();
     console.log("cocktails");
     return data;
