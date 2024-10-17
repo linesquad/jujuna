@@ -17,7 +17,6 @@ function CockTails() {
   const [categoryId, setCategoryId] = useState("");
   const darkMode = useSelector(getMode);
   const { data: categoryTitles } = useCocktailsCategoriesTitle();
-  console.log(categoryTitles);
 
   return (
     <div className={`${darkMode ? "bg-[#12151C]" : "bg-[#fff]"}`}>

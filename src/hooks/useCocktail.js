@@ -10,6 +10,5 @@ export const useCocktailId = (id) => {
     staleTime: 60000,
     cacheTime: 300000,
   });
-  console.log("cocktails");
   return { isLoading, data, isError, error };
 };

@@ -8,7 +8,6 @@ import { useWinesByCategory } from "../../hooks/useWineCategory";
 
 function DisplayWines() {
   const { layoutName: layout, categoryId } = useParams();
-  console.log(layout);
 
   const { data: wines, isLoading } = useWines();
   const { data: winesCategory, isLoading: categoryLoading } =

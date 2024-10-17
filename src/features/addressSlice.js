@@ -5,8 +5,6 @@ const initialState = {
   address: null,
 };
 
-console.log(initialState);
-
 export const addressSlice = createSlice({
   name: "address",
   initialState,

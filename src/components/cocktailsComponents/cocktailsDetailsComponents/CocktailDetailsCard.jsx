@@ -3,8 +3,6 @@ import Composition from "./Composition";
 import SingleCocktailsCart from "./SingleCocktailsCart";
 
 function CocktailDetailsCard({ item }) {
-  console.log(item);
-
   return (
     <div>
       <Wrapper>

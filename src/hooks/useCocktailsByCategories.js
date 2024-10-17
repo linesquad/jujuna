@@ -8,6 +8,7 @@ export const useCocktailsByCategories = (id) => {
     refetchOnWindowFocus: false,
     staleTime: 60000,
     cacheTime: 300000,
+    enabled: id.toLowerCase() !== "allcocktail" && id.length > 0,
   });
 
   return { data, isLoading, error, isError };

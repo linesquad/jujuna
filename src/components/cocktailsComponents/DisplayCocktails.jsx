@@ -7,12 +7,9 @@ import { useParams } from "react-router-dom";
 
 function DisplayCocktails() {
   const { categoryId } = useParams();
-  console.log(categoryId);
   const { data: cocktails, isLoading, isError, error } = useCocktails();
   const { data: cocktailsCategories, isLoading: categoryLoading } =
     useCocktailsByCategories(categoryId);
-
-  console.log(cocktailsCategories);
 
   if (isLoading || categoryLoading) return <Spinner />;
 

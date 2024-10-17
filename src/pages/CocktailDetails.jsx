@@ -11,7 +11,6 @@ function CocktailDetails() {
   const { id } = useParams();
   const darkMode = useSelector(getMode);
   const { data: cocktail, isLoading, isError, error } = useCocktailId(id);
-  console.log(id);
 
   if (isError)
     return (

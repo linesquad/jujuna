@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 import useAddToWishList from "../../../hooks/useAddToWishList";
 
 function SingleCocktailsCart({ item }) {
-  console.log(item);
   const darkMode = useSelector(getMode);
   const { mutate: addToCart } = useAddToCart();
   const { mutate: addToWishList } = useAddToWishList();

@@ -12,7 +12,6 @@ function SingleWine() {
   const { id } = useParams();
   const { data: wine, isLoading, isError, error } = useWineById(id);
   const darkMode = useSelector(getMode);
-  console.log(wine);
 
   return (
     <div

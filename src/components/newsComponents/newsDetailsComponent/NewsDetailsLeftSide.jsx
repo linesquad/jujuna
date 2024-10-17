@@ -14,7 +14,7 @@ const NewsDetailsLeftSide = () => {
   const mode = useSelector(getMode);
   const { t } = useTranslation();
   const { data: blog, isLoading, isError, error } = useGetBlogsById(id);
-
+  console.log(blog);
   const comments = blog?.commentsRes || [];
 
   if (isLoading) {

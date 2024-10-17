@@ -14,7 +14,6 @@ function UserDetails() {
   const form = useForm();
   const { register, watch, handleSubmit, formState, reset } = form;
   const { errors, isSubmitSuccessful, isSubmitting } = formState;
-  console.log(errors);
 
   const formRef = useRef();
 

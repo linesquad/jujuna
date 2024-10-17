@@ -8,6 +8,7 @@ export const useWinesByCategory = (id) => {
     refetchOnWindowFocus: false,
     staleTime: 60000,
     cacheTime: 300000,
+    enabled: id.toLowerCase() !== "allwines" && id.length > 0,
   });
   return { isLoading, data, isError, error };
 };

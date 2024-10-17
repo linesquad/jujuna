@@ -10,7 +10,6 @@ const useCocktails = () => {
     staleTime: 60000,
     cacheTime: 300000,
   });
-  console.log("cocktails hook");
   return { isLoading, data, isError, error };
 };
 
