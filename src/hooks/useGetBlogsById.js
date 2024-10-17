@@ -7,7 +7,5 @@ export const useGetBlogsById = (blogId) => {
     queryFn: () => getBlogsById(blogId),
     staleTime: 3000 * 60,
   });
-  console.log(data);
-  //   console.log("nugo");
   return { data, isLoading, isError, error };
 };

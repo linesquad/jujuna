@@ -12,8 +12,11 @@ import NewsDetailsLeftSkeleton from "./NewsDetailsLeftSkeleton";
 const NewsDetailsLeftSide = () => {
   const { id } = useParams();
   const mode = useSelector(getMode);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { data: blog, isLoading, isError, error } = useGetBlogsById(id);
+
+  const comments = blog?.commentsRes || [];
+
   if (isLoading) {
     return <NewsDetailsLeftSkeleton />;
   }
@@ -26,7 +29,7 @@ const NewsDetailsLeftSide = () => {
     );
   }
 
-  const desc = blog.text;
+  const desc = blog.blog.text || "";
 
   const descArray = desc.split("*");
 
@@ -48,14 +51,14 @@ const NewsDetailsLeftSide = () => {
           <p
             className={`text-base sm:text-[19px] md:text-[22px] lg:text-2xl text-[#ADACAC]`}
           >
-            {/* {i18n.language === "ge" ? data.author.ge : data.author.en} */}
+            {blog.blog.title}
           </p>
         </div>
       </div>
       <div className="py-7 sm:py-8 md:py-9 lg:py-10 flex justify-start sm:pr-20 w-full">
         <img
-          src={blog.image}
-          alt={i18n.language === "ge" ? blog.title.ge : blog.title.en}
+          src={blog.blog.image}
+          alt={blog.blog.title}
           className="max-w-[350px] tiny:max-w-[207px] smaller:max-w-[280px] sm:max-w-[370px] md:max-w-[450px] lg:max-w-[500px] xl:max-w-[600px]"
         />
       </div>
@@ -68,16 +71,17 @@ const NewsDetailsLeftSide = () => {
         {t("newsDetails.introduction")}
       </h1>
       <div className="pb-11 sm:pb-[45px] md:pb-[46px] lg:pb-12">
-        {descArray.map((items, index) => (
-          <p
-            className={`${
-              mode ? "text-white" : "text-black"
-            } py-1 text-base sm:text-lg md:text-[19px] lg:text-xl`}
-            key={index}
-          >
-            {items}
-          </p>
-        ))}
+        {descArray.length &&
+          descArray.map((items, index) => (
+            <p
+              className={`${
+                mode ? "text-white" : "text-black"
+              } py-1 text-base sm:text-lg md:text-[19px] lg:text-xl`}
+              key={index}
+            >
+              {items}
+            </p>
+          ))}
       </div>
       <div className="flex flex-col gap-5 sm:flex-row sm:justify-between sm:items-center sm:gap-0">
         <div className="order-1 sm:order-2">
@@ -89,7 +93,7 @@ const NewsDetailsLeftSide = () => {
       </div>
       <div className="flex flex-col">
         <div className=" sm:pt-[95px] md:pt-[90px] lg:pt-[85px] pb-16 order-2 sm:order-1">
-          <ComentarNews blog={blog} />
+          <ComentarNews comments={comments} />
         </div>
         <div className="pt-[100px]  sm:pt-0 order-1 sm:order-2">
           <NewsDetailsWriteComment />
