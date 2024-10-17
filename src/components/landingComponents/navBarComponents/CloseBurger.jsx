@@ -25,11 +25,12 @@ import { closeAuthModal, openAuthModal } from "../../../features/authSlice";
 const CloseBurger = () => {
   const open = useSelector(getIsOpen);
   const darkMode = useSelector(getMode);
-  const isAuthModalOpen = useSelector((state) => state.auth.isAuthModalOpen); // Get the modal state from Redux
-  const dispatch = useDispatch(); // Initialize dispatch
+  const isAuthModalOpen = useSelector((state) => state.auth.isAuthModalOpen);
+  const dispatch = useDispatch();
   const { t } = useTranslation();
   const [viewCart, setViewCart] = useState(false);
   const [seeWishList, setSeeWishList] = useState(false);
+  const [isAuthRequired, setIsAuthRequired] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const [hover, setHover] = useState("");
   const navRef = useRef(null);
@@ -63,12 +64,28 @@ const CloseBurger = () => {
   };
 
   const toggleViewCart = () => {
-    setViewCart(true);
+    if (!accesToken && !refreshToken) {
+      dispatch(openAuthModal());
+      setIsAuthRequired(true);
+    } else {
+      setViewCart(true);
+    }
   };
 
   const toggleSeeWishList = () => {
-    setSeeWishList(true);
+    if (!accesToken && !refreshToken) {
+      dispatch(openAuthModal());
+      setIsAuthRequired(true);
+    } else {
+      setSeeWishList(true);
+    }
   };
+
+  useEffect(() => {
+    if (!isAuthModalOpen && isAuthRequired) {
+      setIsAuthRequired(false);
+    }
+  }, [isAuthModalOpen, isAuthRequired]);
 
   return (
     <div className={`top-0 w-full text-white z-40 header`}>
