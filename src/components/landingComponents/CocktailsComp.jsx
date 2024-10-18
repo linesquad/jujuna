@@ -11,11 +11,22 @@ import { Pagination } from "swiper/modules";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
+import ReusableLoading from "../../ui/ReusableLoading";
 
 function CocktailsComp() {
-  const { data: cocktails } = useLatestCocktails();
+  const { data: cocktails, isError, error, isLoading } = useLatestCocktails();
   const { i18n } = useTranslation();
   const darkMode = useSelector(getMode);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center">
+        <ReusableLoading width="150px" height="150px" />;
+      </div>
+    );
+  }
+
+  if (isError) return <p>Error loading cocktail products: {error.message}</p>;
 
   return (
     <div className={`pt-20 ${darkMode ? "bg-[#12151C]" : "bg-white"} md:py-20`}>

@@ -8,11 +8,27 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import usePopularProducts from "../../hooks/usePopularProducts";
 import SingleProduct from "./SingleProduct";
 import { Autoplay } from "swiper/modules";
+import ReusableLoading from "../../ui/ReusableLoading";
 
 export default function PopularProducts() {
   const swiperRef = useRef(null);
 
-  const { data: popularProducts } = usePopularProducts();
+  const {
+    data: popularProducts,
+    isLoading,
+    isError,
+    error,
+  } = usePopularProducts();
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center">
+        <ReusableLoading width="150px" height="150px" />;
+      </div>
+    );
+  }
+
+  if (isError) return <p>Error loading popular products: {error.message}</p>;
 
   return (
     <div>

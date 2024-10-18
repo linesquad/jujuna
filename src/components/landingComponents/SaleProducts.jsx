@@ -6,11 +6,27 @@ import "swiper/css";
 import { useDiscountProducts } from "../../hooks/useDiscountProducts";
 import SingleProduct from "./SingleProduct";
 import { Autoplay } from "swiper/modules";
+import ReusableLoading from "../../ui/ReusableLoading";
 
 function SaleProducts() {
   const swiperRef = useRef(null);
 
-  const { data: discontProducts } = useDiscountProducts();
+  const {
+    data: discontProducts,
+    isLoading,
+    isError,
+    error,
+  } = useDiscountProducts();
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center">
+        <ReusableLoading width="150px" height="150px" />;
+      </div>
+    );
+  }
+
+  if (isError) return <p>Error loading sale products: {error.message}</p>;
 
   return (
     <div>

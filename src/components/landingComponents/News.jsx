@@ -9,14 +9,21 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import { useLatestBlogs } from "../../hooks/useLastestBlogs";
+import ReusableLoading from "../../ui/ReusableLoading";
 
 const News = () => {
-  const { data: blogNews, isLoading, error } = useLatestBlogs();
+  const { data: blogNews, isLoading, error, isError } = useLatestBlogs();
   const { i18n } = useTranslation();
   const darkMode = useSelector(getMode);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error loading blogs: {error.message}</p>;
+  if (isLoading) {
+    return (
+      <div className="flex justify-center">
+        <ReusableLoading width="150px" height="150px" />;
+      </div>
+    );
+  }
+  if (isError) return <p>Error loading blogs: {error.message}</p>;
   if (!blogNews || blogNews.length === 0) return <p>No blog news available.</p>;
 
   return (

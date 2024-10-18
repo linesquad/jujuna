@@ -2,8 +2,7 @@ import { useSelector } from "react-redux";
 import Wrapper from "../Wrapper";
 import { getMode } from "../../features/darkModeSlice";
 import { useWines } from "../../hooks/useWines";
-import Spinner from "../Spinner";
-
+import ReusableLoading from "./../../ui/ReusableLoading";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
@@ -17,9 +16,14 @@ function Bottle() {
   const { t } = useTranslation();
   const darkMode = useSelector(getMode);
   const { data: wines, isLoading, isError, error } = useWines();
-  // console.log(wines);
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) {
+    return (
+      <div className="flex justify-center">
+        <ReusableLoading width="150px" height="150px" />;
+      </div>
+    );
+  }
 
   if (isError)
     return (
