@@ -14,6 +14,7 @@ import {
 } from "../../../features/cartUtils";
 import MemoizedCheckoutButton from "./CheckoutButton";
 import MemoizedReusableHeader from "../ReusableHeader";
+import ReusableLoading from "../../../ui/ReusableLoading";
 
 const FullCartDisplay = ({ onClose, title }) => {
   const modalRef = useRef(null);
@@ -30,14 +31,6 @@ const FullCartDisplay = ({ onClose, title }) => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onClose]);
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  if (isError) {
-    return <p>{error.message}</p>;
-  }
 
   const variants = {
     hidden: { x: "100%" },
@@ -65,7 +58,13 @@ const FullCartDisplay = ({ onClose, title }) => {
         <MemoizedReusableHeader onClose={onClose} title={title} />
 
         <div className="flex-1 p-5 overflow-y-scroll">
-          {cartItems.length === 0 ? (
+          {isLoading ? (
+            <div className="h-full flex  justify-center">
+              <ReusableLoading width="300px" height="300px" />
+            </div>
+          ) : isError ? (
+            <p className="text-center text-red-500">{error.message}</p>
+          ) : cartItems?.length === 0 ? (
             <p className="text-center text-gray-500">Your cart is empty.</p>
           ) : (
             cartItems.map((item) => (
@@ -93,8 +92,12 @@ const FullCartDisplay = ({ onClose, title }) => {
             ))
           )}
         </div>
-        {cartItems.length > 0 && <TotalSummary cartItems={cartItems} />}
-        {cartItems.length > 0 && <MemoizedCheckoutButton onClose={onClose} />}
+        {cartItems && cartItems.length > 0 && (
+          <>
+            <TotalSummary cartItems={cartItems} />
+            <MemoizedCheckoutButton onClose={onClose} />
+          </>
+        )}
       </motion.div>
     </div>
   );
