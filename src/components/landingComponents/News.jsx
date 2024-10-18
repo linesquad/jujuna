@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import { useLatestBlogs } from "../../hooks/useLastestBlogs";
 import ReusableLoading from "../../ui/ReusableLoading";
+import ReusableErrorRobot from "../../ui/ReusableErrorRobot";
 
 const News = () => {
   const { data: blogNews, isLoading, error, isError } = useLatestBlogs();
@@ -23,7 +24,16 @@ const News = () => {
       </div>
     );
   }
-  if (isError) return <p>Error loading blogs: {error.message}</p>;
+  if (isError) {
+    return (
+      <div className="flex justify-center items-center gap-1">
+        <ReusableErrorRobot width="150px" height="150px" />
+        <span className="text-red-600 font-semibold text-lg tiny:text-sm smaller:text-base">
+          {error.message}
+        </span>
+      </div>
+    );
+  }
   if (!blogNews || blogNews.length === 0) return <p>No blog news available.</p>;
 
   return (

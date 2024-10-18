@@ -15,6 +15,7 @@ import {
 import MemoizedCheckoutButton from "./CheckoutButton";
 import MemoizedReusableHeader from "../ReusableHeader";
 import ReusableLoading from "../../../ui/ReusableLoading";
+import ReusableErrorRobot from "../../../ui/ReusableErrorRobot";
 
 const FullCartDisplay = ({ onClose, title }) => {
   const modalRef = useRef(null);
@@ -63,7 +64,12 @@ const FullCartDisplay = ({ onClose, title }) => {
               <ReusableLoading width="300px" height="300px" />
             </div>
           ) : isError ? (
-            <p className="text-center text-red-500">{error.message}</p>
+            <div className="flex justify-center items-center gap-1">
+              <ReusableErrorRobot width="150px" height="150px" />
+              <span className="text-red-600 font-semibold text-lg tiny:text-sm smaller:text-base">
+                {error.message}
+              </span>
+            </div>
           ) : cartItems?.length === 0 ? (
             <p className="text-center text-gray-500">Your cart is empty.</p>
           ) : (

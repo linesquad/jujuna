@@ -7,6 +7,7 @@ import { useDiscountProducts } from "../../hooks/useDiscountProducts";
 import SingleProduct from "./SingleProduct";
 import { Autoplay } from "swiper/modules";
 import ReusableLoading from "../../ui/ReusableLoading";
+import ReusableErrorRobot from "../../ui/ReusableErrorRobot";
 
 function SaleProducts() {
   const swiperRef = useRef(null);
@@ -26,7 +27,16 @@ function SaleProducts() {
     );
   }
 
-  if (isError) return <p>Error loading sale products: {error.message}</p>;
+  if (isError) {
+    return (
+      <div className="flex justify-center items-center gap-1">
+        <ReusableErrorRobot width="150px" height="150px" />
+        <span className="text-red-600 font-semibold text-lg tiny:text-sm smaller:text-base">
+          {error.message}
+        </span>
+      </div>
+    );
+  }
 
   return (
     <div>

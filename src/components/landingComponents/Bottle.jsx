@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import WineCard from "../wineComponents/wineCardComponents/WineCard";
+import ReusableErrorRobot from "../../ui/ReusableErrorRobot";
 
 function Bottle() {
   const { t } = useTranslation();
@@ -25,12 +26,16 @@ function Bottle() {
     );
   }
 
-  if (isError)
+  if (isError) {
     return (
-      <h2 className="md:text-[22px] lg:text-[26px] text-center text-red-700">
-        {error.message}
-      </h2>
+      <div className="flex justify-center items-center gap-1">
+        <ReusableErrorRobot width="150px" height="150px" />
+        <span className="text-red-600 font-semibold text-lg tiny:text-sm smaller:text-base">
+          {error.message}
+        </span>
+      </div>
     );
+  }
 
   return (
     <div

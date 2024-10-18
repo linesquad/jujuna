@@ -4,6 +4,7 @@ import useGetWishListItems from "../../../hooks/useGetWishListItems";
 import MemoizedReusableHeader from "../ReusableHeader";
 import WishListItem from "./WishListItem";
 import ReusableLoading from "../../../ui/ReusableLoading";
+import ReusableErrorRobot from "../../../ui/ReusableErrorRobot";
 
 const FullWishListDisplay = ({ onClose, title }) => {
   const {
@@ -54,7 +55,12 @@ const FullWishListDisplay = ({ onClose, title }) => {
               <ReusableLoading width="300px" height="300px" />
             </div>
           ) : isError ? (
-            <p className="text-center text-red-500">{error.message}</p>
+            <div className="flex justify-center items-center gap-1">
+              <ReusableErrorRobot width="150px" height="150px" />
+              <span className="text-red-600 font-semibold text-lg tiny:text-sm smaller:text-base">
+                {error.message}
+              </span>
+            </div>
           ) : wishListItems?.length === 0 ? (
             <p className="text-center text-gray-500">
               Your wish list is empty.

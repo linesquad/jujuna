@@ -1,9 +1,10 @@
 import BlogWrapper from "./BlogWrapper";
 import BlogDisplayItems from "./BlogDisplayItems";
-import Spinner from "../Spinner";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import useFetchAllBlogs from "../../services/useFetchAllBlogs";
+import ReusableLoading from "../../ui/ReusableLoading";
+import ReusableErrorRobot from "../../ui/ReusableErrorRobot";
 
 const BlogDisplay = () => {
   const darkMode = useSelector(getMode);
@@ -16,16 +17,19 @@ const BlogDisplay = () => {
 
   if (isLoading) {
     return (
-      <div className="pb-2">
-        <Spinner />;
+      <div className="flex justify-center">
+        <ReusableLoading width="150px" height="150px" />;
       </div>
     );
   }
 
   if (isError) {
     return (
-      <div className="text-center bg-purple-700 p-2">
-        <p className="text-purple-200 font-bold">{error.message}</p>
+      <div className="flex justify-center items-center gap-1">
+        <ReusableErrorRobot width="150px" height="150px" />
+        <span className="text-red-600 font-semibold text-lg tiny:text-sm smaller:text-base">
+          {error.message}
+        </span>
       </div>
     );
   }
