@@ -3,6 +3,8 @@ import { useEffect, useRef } from "react";
 import useGetWishListItems from "../../../hooks/useGetWishListItems";
 import MemoizedReusableHeader from "../ReusableHeader";
 import WishListItem from "./WishListItem";
+import ReusableLoading from "../../../ui/ReusableLoading";
+import ReusableErrorRobot from "../../../ui/ReusableErrorRobot";
 
 const FullWishListDisplay = ({ onClose, title }) => {
   const {
@@ -11,7 +13,6 @@ const FullWishListDisplay = ({ onClose, title }) => {
     isLoading,
     error,
   } = useGetWishListItems();
-  // console.log(wishListItems.length);
   const modalRef = useRef(null);
 
   useEffect(() => {
@@ -24,14 +25,6 @@ const FullWishListDisplay = ({ onClose, title }) => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onClose]);
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  if (isError) {
-    return <p>{error.message}</p>;
-  }
 
   const variants = {
     hidden: { x: "100%" },
@@ -57,8 +50,21 @@ const FullWishListDisplay = ({ onClose, title }) => {
       >
         <MemoizedReusableHeader onClose={onClose} title={title} />
         <div className="flex-1 p-5 overflow-y-scroll">
-          {wishListItems.length === 0 ? (
-            <p className="text-center text-gray-500">Your wishlist is empty.</p>
+          {isLoading ? (
+            <div className="h-full flex  justify-center">
+              <ReusableLoading width="300px" height="300px" />
+            </div>
+          ) : isError ? (
+            <div className="flex justify-center items-center gap-1">
+              <ReusableErrorRobot width="150px" height="150px" />
+              <span className="text-red-600 font-semibold text-lg tiny:text-sm smaller:text-base">
+                {error.message}
+              </span>
+            </div>
+          ) : wishListItems?.length === 0 ? (
+            <p className="text-center text-gray-500">
+              Your wish list is empty.
+            </p>
           ) : (
             wishListItems.map((item) => (
               <div key={item.productId}>

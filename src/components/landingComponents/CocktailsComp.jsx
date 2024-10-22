@@ -11,11 +11,32 @@ import { Pagination } from "swiper/modules";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
+import ReusableLoading from "../../ui/ReusableLoading";
+import ReusableErrorRobot from "../../ui/ReusableErrorRobot";
 
 function CocktailsComp() {
-  const { data: cocktails } = useLatestCocktails();
+  const { data: cocktails, isError, error, isLoading } = useLatestCocktails();
   const { i18n } = useTranslation();
   const darkMode = useSelector(getMode);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center">
+        <ReusableLoading width="150px" height="150px" />;
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="flex justify-center items-center gap-1">
+        <ReusableErrorRobot width="150px" height="150px" />
+        <span className="text-red-600 font-semibold text-lg tiny:text-sm smaller:text-base">
+          {error.message}
+        </span>
+      </div>
+    );
+  }
 
   return (
     <div className={`pt-20 ${darkMode ? "bg-[#12151C]" : "bg-white"} md:py-20`}>

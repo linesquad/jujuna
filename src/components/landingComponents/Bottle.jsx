@@ -2,8 +2,7 @@ import { useSelector } from "react-redux";
 import Wrapper from "../Wrapper";
 import { getMode } from "../../features/darkModeSlice";
 import { useWines } from "../../hooks/useWines";
-import Spinner from "../Spinner";
-
+import ReusableLoading from "./../../ui/ReusableLoading";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
@@ -12,21 +11,31 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import WineCard from "../wineComponents/wineCardComponents/WineCard";
+import ReusableErrorRobot from "../../ui/ReusableErrorRobot";
 
 function Bottle() {
   const { t } = useTranslation();
   const darkMode = useSelector(getMode);
   const { data: wines, isLoading, isError, error } = useWines();
-  // console.log(wines);
 
-  if (isLoading) return <Spinner />;
-
-  if (isError)
+  if (isLoading) {
     return (
-      <h2 className="md:text-[22px] lg:text-[26px] text-center text-red-700">
-        {error.message}
-      </h2>
+      <div className="flex justify-center">
+        <ReusableLoading width="150px" height="150px" />;
+      </div>
     );
+  }
+
+  if (isError) {
+    return (
+      <div className="flex justify-center items-center gap-1">
+        <ReusableErrorRobot width="150px" height="150px" />
+        <span className="text-red-600 font-semibold text-lg tiny:text-sm smaller:text-base">
+          {error.message}
+        </span>
+      </div>
+    );
+  }
 
   return (
     <div

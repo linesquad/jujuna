@@ -1,5 +1,4 @@
 import Button from "../../Button";
-import { DevTool } from "@hookform/devtools";
 import { useForm } from "react-hook-form";
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
@@ -15,7 +14,7 @@ const ConnectForm = () => {
       textArea: "",
     },
   });
-  const { register, control, handleSubmit, formState, reset } = form;
+  const { register, handleSubmit, formState, reset } = form;
   const { errors, isSubmitting, isSubmitSuccessful } = formState;
 
   const { t } = useTranslation();
@@ -146,7 +145,6 @@ const ConnectForm = () => {
         </div>
       </form>
       <ToastContainer />;
-      <DevTool control={control} />
     </div>
   );
 };
