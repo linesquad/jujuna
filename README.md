@@ -2,4 +2,4 @@
 
 wine e-commerce shop
 
-    this is startup
+    npm run dev
