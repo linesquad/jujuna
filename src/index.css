@@ -2,16 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply font-arialgeo;
-}
+@layer components {
+  .spinner {
+    margin: 3.2rem auto 1.6rem;
+    width: 60px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid theme("colors.backgroundColor.purpleMid");
+    border-right-color: theme("colors.backgroundColor.backgroundCol");
+    animation: rotate 1s infinite linear;
+  }
 
-.swiper-pagination-fraction,
-.swiper-pagination-custom,
-.swiper-horizontal > .swiper-pagination-bullets,
-.swiper-pagination-bullets.swiper-pagination-horizontal {
-  bottom: var(--swiper-pagination-bottom, 0px);
-  top: var(--swiper-pagination-top, auto);
-  left: 0;
-  width: 100%;
+  .spinner-mini {
+    margin: 0;
+    width: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid theme("colors.backgroundColor.purpleMid");
+    border-right-color: transparent;
+    animation: rotate 1s infinite linear;
+  }
+
+  .horizontal-slider .example-track {
+    top: 20px;
+    height: 5px;
+    border-radius: 10px;
+  }
+
+  .example-track.example-track-0 {
+    background-color: grey;
+  }
+
+  .example-track.example-track-1 {
+    background-color: black;
+  }
+
+  .example-track.example-track-2 {
+    background-color: grey;
+  }
+
+  .horizontal-slider .example-thumb {
+    top: 13px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: white;
+    border: 5px solid black;
+    cursor: pointer;
+  }
+
+  @keyframes rotate {
+    to {
+      transform: rotate(1turn);
+    }
+  }
 }

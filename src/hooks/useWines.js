@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import fetchWines from "../services/apiWines";
+import { fetchWines } from "../services/apiWines";
 
-const useWines = () => {
+export const useWines = () => {
   const { isLoading, data, isError, error } = useQuery({
     queryKey: ["wine"],
     queryFn: fetchWines,
-    staleTime: 0,
-  });
 
+    refetchOnWindowFocus: false,
+    staleTime: 60000,
+    cacheTime: 300000,
+  });
   return { isLoading, data, isError, error };
 };
-
-export default useWines;

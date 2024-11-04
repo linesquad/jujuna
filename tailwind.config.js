@@ -24,6 +24,27 @@ export default {
           },
         },
 
+        wineNavbarColor: {
+          light: "#EAEAEA",
+          dark: "#8A63A2",
+          textPurple: "#491E50",
+          textDark: "#000",
+          textGray: "#908F8F",
+        },
+
+        wineCardColor: {
+          dark: "#583980",
+          light: "#D9D9D9",
+          border: "#C8C5C5",
+          addBtn: "#8862B7",
+          arrowBg: "#33204B",
+        },
+
+        wineDetailsColor: {
+          textColor: "#BB8DF5",
+          textDark: "#000",
+        },
+
         color: {
           primary: "#FFF",
           secondary: "#aea6b7",
@@ -60,9 +81,20 @@ export default {
         },
       },
       screens: {
+        tiny: { max: "300px" },
+        smaller: { min: "301px", max: "410px" },
         small: { max: "410px" },
+        smallExtra: { min: "411px" },
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        ".overflow-hidden": {
+          overflow: "hidden",
+        },
+      });
+    },
+  ],
 };

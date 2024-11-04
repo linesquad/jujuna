@@ -1,0 +1,57 @@
+import { Link } from "react-router-dom";
+import Wrapper from "../components/Wrapper";
+import { useTranslation } from "react-i18next";
+import RegisterContainer from "../components/enterComponents/RegisterContainer";
+import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
+
+function Register() {
+  const { t } = useTranslation();
+  return (
+    <div className="lg:pb-[30px] min-h-screen bg-[#7b5191]  overflow-hidden">
+      <Wrapper>
+        <div className="flex flex-col items-center justify-center lg:items-end xl:mr-40 pt-10 relative">
+          <Link
+            to={"/"}
+            className="hidden lg:flex text-white text-xl text-white absolute left-0 top-10 items-center"
+          >
+            <MdOutlineKeyboardArrowLeft className="w-12 h-12" />
+            <span>{t("enter.back")}</span>
+          </Link>
+          <img
+            src="/images/banner2PNG.png"
+            alt="banner"
+            className="hidden lg:block absolute left-0 -bottom-[106px]"
+          />
+          <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center gap-2">
+              <Link
+                to={"/"}
+                className="flex lg:hidden text-white text-xl text-white items-center -ml-6"
+              >
+                <MdOutlineKeyboardArrowLeft className="w-12 h-12" />
+                <span>Back</span>
+              </Link>
+              <div className="flex flex-col gap-2 smallExtra:flex-row smallExtra:justify-center smallExtra:space-x-4 mb-8">
+                <Link
+                  to={"/enter/register"}
+                  className="font-tommaso tracking-wide text-xl text-center px-6 py-2 bg-purple-300 rounded-full"
+                >
+                  {t("enter.register")}
+                </Link>
+                <Link
+                  to={"/enter/signin"}
+                  className="font-tommaso tracking-wide text-xl px-6 py-2 bg-white rounded-full"
+                >
+                  {t("enter.auth")}
+                </Link>
+              </div>
+            </div>
+
+            <RegisterContainer />
+          </div>
+        </div>
+      </Wrapper>
+    </div>
+  );
+}
+export default Register;
