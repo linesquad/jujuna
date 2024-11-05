@@ -33,6 +33,7 @@ const CloseBurger = () => {
   const [isAuthRequired, setIsAuthRequired] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const [hover, setHover] = useState("");
+  const [search, setSearch] = useState("");
   const navRef = useRef(null);
   const navigate = useNavigate();
 
@@ -93,9 +94,17 @@ const CloseBurger = () => {
         <Wrapper>
           <div className="px-[17px] py-[8px] md:px-0 flex items-center justify-between">
             <ThemeChanger />
-            <div className="bg-[#fff] w-[70%] flex items-center py-[9px] pl-[8px] gap-[13px] rounded-[15px]">
+            <div className="bg-[#fff] w-[70%] flex items-center py-[9px] pl-[8px] gap-[13px] rounded-[15px] relative">
               <FaSearch color="#000000" />
-              <input type="text" className="w-full border-none outline-none" />
+              <input
+                type="text"
+                className="w-full border-none outline-none text-[#000]"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              {search.length > 0 && (
+                <div className="absolute right-0 left-0 top-[70px] h-[600px] rounded-[10px] bg-gray-100 z-[99]"></div>
+              )}
             </div>
             <LanguageChanger />
           </div>
