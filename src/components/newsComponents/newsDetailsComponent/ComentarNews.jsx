@@ -17,7 +17,7 @@ const ComentarNews = ({ comments = [] }) => {
 
   return (
     <div
-      className={`w-full bg-transparent rounded-[20px] border tiny:p-1 smaller:p-2 smaller:pt-4 p-8 overflow-y-auto max-h-[450px] ${
+      className={`w-full bg-transparent rounded-[20px] border tiny:p-1 smaller:p-2 smaller:pt-4 p-8 overflow-y-auto max-h-[700px] ${
         darkMode ? "text-white border-white" : "text-black border-black"
       }`}
     >

@@ -26,11 +26,6 @@ const NewsShare = () => {
         <LinkedinShareButton url={shareUrl}>
           <LinkedinIcon size={40} />
         </LinkedinShareButton>
-        <img
-          src="/images/instagramIconNews.svg"
-          alt="instagram"
-          className="w-[40px] h-[40px] cursor-pointer"
-        />
       </div>
     </div>
   );
