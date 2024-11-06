@@ -7,7 +7,7 @@ function SingleWineCardImage({ wine }) {
   return (
     <div className="flex flex-col items-center justify-center max-w-[400px] md:max-w-[600px] lg:max-w-[50%] relative">
       <div
-        className={`absolute -bottom-1/3 -inset-10 xl:-inset-40 bg-no-repeat bg-center bg-contain z-0 ${
+        className={`absolute -bottom-1/3 -inset-10 xl:-inset-20 bg-no-repeat bg-center bg-contain -z-0 ${
           darkMode
             ? "bg-[url('/images/grapeContourDark.png')]"
             : "bg-[url('/images/grapeContour.png')]"

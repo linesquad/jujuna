@@ -93,7 +93,7 @@ function SaleProducts() {
               {discontProducts?.map((item) => {
                 return (
                   <SwiperSlide key={item._id}>
-                    <SingleProduct item={item} />
+                    <SingleProduct item={item} id={item._id} catName={item.type} />
                   </SwiperSlide>
                 );
               })}

@@ -1,14 +1,13 @@
-import { FaStar } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaStar, FaHeart, FaShoppingCart } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAddToCart } from "../../hooks/useAddToCart";
 import useAddToWishList from "../../hooks/useAddToWishList";
+import { Link } from "react-router-dom";
 
-function SingleProduct({ item }) {
+function SingleProduct({ item, id, catName }) {
   const [count, setCount] = useState(1);
   const [cartHover, setCartHover] = useState(false);
   const darkMode = useSelector(getMode);
@@ -16,7 +15,6 @@ function SingleProduct({ item }) {
 
   const { mutate: addToCart } = useAddToCart();
   const { mutate: addToWishList } = useAddToWishList();
-
   const handleAddToCart = () => {
     addToCart({
       productId: item._id,
@@ -55,13 +53,15 @@ function SingleProduct({ item }) {
   };
 
   return (
-    <div className="xl:w-[280px] lg:w-[240px] md:w-[200px]  pt-[4px] pb-[15px] px-[12px] relative mx-auto">
+    <div className="xl:w-[280px] lg:w-[240px] md:w-[200px] pt-[4px] pb-[15px] px-[12px] relative mx-auto">
       <div className="xl:w-[120px] lg:w-[100px] xl:h-[175px] lg:h-[150px] mx-auto">
-        <img
-          src={item?.url}
-          alt="product"
-          className="w-full h-full object-cover rounded-md"
-        />
+        <Link to={`/${catName}/${id}`}>
+          <img
+            src={item?.url}
+            alt="product"
+            className="w-full h-full object-cover rounded-md"
+          />
+        </Link>
       </div>
       <p
         className={`text-[12px] md:text-[20px] text-center mt-[20px] ${
@@ -91,9 +91,9 @@ function SingleProduct({ item }) {
         </p>
       </div>
 
-      <div className="mt-[16px] flex items-center justify-between ">
+      <div className="mt-[16px] flex items-center justify-between">
         <div className="flex flex-col gap-[8px]">
-          <p className="text-[#008E28] text-[12px] md:text-[16px] ">
+          <p className="text-[#008E28] text-[12px] md:text-[16px]">
             გაყიდვაშია
           </p>
           <p
@@ -107,7 +107,7 @@ function SingleProduct({ item }) {
 
         <div
           className="flex items-center gap-[6px] border-[1px] border-[#eaeaea] rounded-[20px] p-[2px]"
-          onMouseLeave={() => handleCartMouseLeave()}
+          onMouseLeave={handleCartMouseLeave}
         >
           {cartHover && (
             <div className="hidden xl:flex items-center gap-[6px]">

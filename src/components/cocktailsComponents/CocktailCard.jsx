@@ -53,7 +53,7 @@ function CocktailCard({ item }) {
         className={`max-w-[210px] md:max-w-none md:w-[210px] xl:w-[230px] border-[1px]  h-[280px]  cursor-pointer ${
           showCart ? " border-purple-600" : "border-transparent"
         }  rounded-[15px] py-[10px] px-[40px] xl:px-[50px] relative`}
-        onClick={() => navigate(`/cocktails/${_id}`)}
+        onClick={() => navigate(`/cocktail/${_id}`)}
         onMouseEnter={() => setShowCart(true)}
         onMouseLeave={() => setShowCart(false)}
       >

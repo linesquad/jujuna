@@ -13,12 +13,15 @@ function SingleWineCardContent({ wine }) {
   return (
     <div className="tiny:p-1 flex flex-col items-start max-w-full lg:max-w-[600px]">
       <div className="flex mt-6">
-        <Wrapper>
-          <h1 className="text-lg md:text-[48px]">
+        <div>
+          <h1
+            className="text-xl sm:text-2xl lg:text-4xl "
+          >
             {i18n.language === "ge"
               ? wine.titleTranslations.ge
               : wine.titleTranslations.en}
           </h1>
+
           <hr className="lg:hidden w-full mb-4 mt-2 md:mt-8" />
           <p className="hidden lg:block font-medium text-backgroundColor-purpleMid lg:text-[48px] mt-4">
             {wine.price}₾
@@ -52,7 +55,7 @@ function SingleWineCardContent({ wine }) {
           <div className="hidden lg:block mt-16">
             <CartQuantity />
           </div>
-        </Wrapper>
+        </div>
       </div>
       <div className="flex items-center tiny:gap-2 gap-4 justify-between w-full">
         <span
