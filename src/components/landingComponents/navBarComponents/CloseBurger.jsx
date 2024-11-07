@@ -8,11 +8,11 @@ import { useSelector, useDispatch } from "react-redux"; // Import useDispatch
 import { getIsOpen } from "../../../features/burgerMenuSlice";
 import { getMode } from "../../../features/darkModeSlice";
 import {
-  FaSearch,
   FaUser,
   FaHeart,
   FaShoppingCart,
   FaSignOutAlt,
+  FaArrowDown,
 } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -21,6 +21,7 @@ import FullWishListDisplay from "../../cart&wishlist/wishlist/FullWishListDispla
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { closeAuthModal, openAuthModal } from "../../../features/authSlice";
+import SingleSearchResult from "./SingleSearchResult";
 
 const CloseBurger = () => {
   const open = useSelector(getIsOpen);
@@ -34,6 +35,8 @@ const CloseBurger = () => {
   const [isFixed, setIsFixed] = useState(false);
   const [hover, setHover] = useState("");
   const [search, setSearch] = useState("");
+  const [flag, setFlag] = useState("wine");
+  const [isFlagModalOpen, setIsFlagModalOpen] = useState(false);
   const navRef = useRef(null);
   const navigate = useNavigate();
 
@@ -95,7 +98,29 @@ const CloseBurger = () => {
           <div className="px-[17px] py-[8px] md:px-0 flex items-center justify-between">
             <ThemeChanger />
             <div className="bg-[#fff] w-[70%] flex items-center py-[9px] pl-[8px] gap-[13px] rounded-[15px] relative">
-              <FaSearch color="#000000" />
+              <div
+                className="flex items-center gap-[10px] border border-[#000] rounded-[20px] py-[5px] px-[20px] cursor-pointer relative"
+                onClick={() => setIsFlagModalOpen((isOpen) => !isOpen)}
+              >
+                <p className="text-[#000]">{flag}</p>
+                <FaArrowDown color="#000" size={14} />
+                {isFlagModalOpen && (
+                  <div className="absolute right-0 left-0 top-[60px] border border-[#000] z-[100] flex flex-col gap-[10px] py-[10px] rounded-[10px]">
+                    <p
+                      className="text-[#000] border border-gray-100 pl-[10px]"
+                      onClick={() => setFlag("wine")}
+                    >
+                      Wine
+                    </p>
+                    <p
+                      className="text-[#000] border border-gray-100 pl-[10px]"
+                      onClick={() => setFlag("cocktail")}
+                    >
+                      Cocktail
+                    </p>
+                  </div>
+                )}
+              </div>
               <input
                 type="text"
                 className="w-full border-none outline-none text-[#000]"
@@ -103,7 +128,9 @@ const CloseBurger = () => {
                 onChange={(e) => setSearch(e.target.value)}
               />
               {search.length > 0 && (
-                <div className="absolute right-0 left-0 top-[70px] h-[600px] rounded-[10px] bg-gray-100 z-[99]"></div>
+                <div className="absolute right-0 left-0 top-[70px] h-[600px] rounded-[10px] bg-gray-100 z-[99] overflow-y-auto flex flex-col gap-[15px]">
+                  <SingleSearchResult />
+                </div>
               )}
             </div>
             <LanguageChanger />
