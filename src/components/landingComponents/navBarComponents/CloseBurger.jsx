@@ -70,6 +70,10 @@ const CloseBurger = () => {
     } else {
       setViewCart(true);
     }
+
+    if (isAuthModalOpen) {
+      dispatch(closeAuthModal());
+    }
   };
 
   const toggleSeeWishList = () => {
@@ -78,6 +82,18 @@ const CloseBurger = () => {
       setIsAuthRequired(true);
     } else {
       setSeeWishList(true);
+    }
+
+    if (isAuthModalOpen) {
+      dispatch(closeAuthModal());
+    }
+  };
+
+  const toggleUser = () => {
+    if (!isAuthModalOpen) {
+      dispatch(openAuthModal());
+    } else {
+      dispatch(closeAuthModal());
     }
   };
 
@@ -148,9 +164,7 @@ const CloseBurger = () => {
                   <FaUser
                     color={`${darkMode ? "#fff" : "#000"}`}
                     size={20}
-                    onClick={() => {
-                      dispatch(openAuthModal()); // Open the modal if tokens are not available
-                    }}
+                    onClick={toggleUser}
                     cursor="pointer"
                   />
                   <AnimatePresence>
@@ -175,7 +189,7 @@ const CloseBurger = () => {
                           onMouseLeave={() => setHover("")}
                           onClick={() => {
                             navigate("/userPage");
-                            dispatch(closeAuthModal()); // Close modal if navigating
+                            dispatch(closeAuthModal());
                           }}
                         >
                           <FaUser
@@ -189,7 +203,7 @@ const CloseBurger = () => {
                           onMouseLeave={() => setHover("")}
                           onClick={() => {
                             handleLogout();
-                            dispatch(closeAuthModal()); // Close modal on logout
+                            dispatch(closeAuthModal());
                           }}
                         >
                           <FaSignOutAlt
