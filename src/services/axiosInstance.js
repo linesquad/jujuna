@@ -1,11 +1,11 @@
 import axios from "axios";
 import { store } from "../store";
 import { openAuthModal } from "../features/authSlice";
-import { run_dev } from "../../config";
+import { run_time_url } from "../../config";
 
 // შევქმენი ინსტანსი
 const axiosInstance = axios.create({
-  baseURL: run_dev ,
+  baseURL: run_time_url ,
   headers: {
     "Content-Type": "application/json",
     "Cache-Control": "no-cache",

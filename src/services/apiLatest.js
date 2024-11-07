@@ -1,6 +1,6 @@
 import axios from "axios";
 import supabase from "./supabase";
-import { run_dev } from "../../config";
+import { run_time_url } from "../../config";
 
 export const fetchLatestCocktails = async () => {
   let { data, error } = await supabase
@@ -19,7 +19,7 @@ export const fetchLatestCocktails = async () => {
 
 export const fetchLatestBlogs = async () => {
   try {
-    const response = await axios.get(`${run_dev}/blogs?isLastThree=true`);
+    const response = await axios.get(`${run_time_url}/blogs?isLastThree=true`);
     return response.data;
   } catch (error) {
     console.error("Error fetching latest blog:", error);
