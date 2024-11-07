@@ -6,12 +6,12 @@ import { useState } from "react";
 
 const LanguageChanger = () => {
   const open = useSelector(getIsOpen);
-  const [language, setLanguage] = useState("ge");
+  const [language, setLanguage] = useState(localStorage.getItem("lng") || "ge");
 
   const handleChangeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     localStorage.setItem("lng", lng);
-    setLanguage(i18n.language);
+    setLanguage(lng);
   };
 
   const size = open ? 3 : 1.7;

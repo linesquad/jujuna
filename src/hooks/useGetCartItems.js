@@ -6,11 +6,9 @@ export const useGetCartItems = () => {
     queryKey: ["cartItems"],
     queryFn: getCartItems,
     onSuccess: () => {
-      console.log("warmatebit wamoigho");
+      console.log("Cart items fetched successfully");
     },
-    // staleTime: 3000 * 60,
     refetchOnWindowFocus: false,
   });
-
   return { data, isLoading, error, isError };
 };

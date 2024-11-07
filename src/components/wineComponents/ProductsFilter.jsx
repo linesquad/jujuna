@@ -43,7 +43,7 @@ export default function ProductsFilter({
             type="text"
             defaultValue={minValue}
             value={sliderValues[0]}
-            className="h-[30px] w-[60px] pl-[10px] border border-[#eaeaea] rounded-[6px]"
+            className="h-[30px] w-[60px] pl-[10px] border border-[#eaeaea] rounded-[6px] text-black"
           />
           <p className="text-[#78808C] text-[14px]">ლ</p>
         </div>
@@ -52,7 +52,7 @@ export default function ProductsFilter({
             type="text"
             defaultValue={maxValue}
             value={sliderValues[1]}
-            className="h-[30px] w-[60px] pl-[10px] border border-[#eaeaea] rounded-[6px]"
+            className="h-[30px] w-[60px] pl-[10px] border border-[#eaeaea] rounded-[6px] text-black"
           />
           <p className="text-[#78808C] text-[14px]">ლ</p>
         </div>

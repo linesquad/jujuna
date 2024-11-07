@@ -19,7 +19,13 @@ export const itemInCache = (itemId, unit, method, queryClient) => {
       .filter((item) => item.unit > 0);
 
     queryClient.setQueryData(["cartItems"], updatedData);
+
+    // Return the updated cart length
+    return updatedData.length;
   }
+
+  // If data is not available, return 0 or undefined
+  return 0;
 };
 
 export const handleDecrease = (
@@ -40,7 +46,8 @@ export const handleDecrease = (
     });
     if (isError) return;
 
-    itemInCache(item.productId, item.unit, "minus", queryClient);
+    const cartLength = itemInCache(item.productId, item.unit, "minus", queryClient);
+    console.log("Cart Length after decrease:", cartLength);
   }
 };
 
@@ -49,7 +56,9 @@ export const handleIncrease = (item, updateCart, itemInCache, queryClient) => {
     ...item,
     unit: item.unit + 1,
   });
-  itemInCache(item.productId, item.unit, "plus", queryClient);
+
+  const cartLength = itemInCache(item.productId, item.unit, "plus", queryClient);
+  console.log("Cart Length after increase:", cartLength);
 };
 
 export const handleDelete = (item, updateCart, itemInCache, queryClient) => {
@@ -57,5 +66,7 @@ export const handleDelete = (item, updateCart, itemInCache, queryClient) => {
     ...item,
     unit: 0,
   });
-  itemInCache(item.productId, item.unit, "delete", queryClient);
+
+  const cartLength = itemInCache(item.productId, item.unit, "delete", queryClient);
+  console.log("Cart Length after delete:", cartLength);
 };

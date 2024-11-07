@@ -1,7 +1,6 @@
 import { useState } from "react";
 
-export default function CartQuantity() {
-  const [count, setCount] = useState(1);
+export default function CartQuantity({ count, setCount }) {
   const increment = () => setCount(count + 1);
   const decrement = () => {
     if (count > 1) setCount(count - 1);

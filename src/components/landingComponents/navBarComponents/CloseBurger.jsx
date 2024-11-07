@@ -4,7 +4,7 @@ import NavLinks from "./NavLinks";
 import LanguageChanger from "./LanguageChanger";
 import ThemeChanger from "../../ThemeChanger";
 import BurgerNav from "./BurgerNav";
-import { useSelector, useDispatch } from "react-redux"; // Import useDispatch
+import { useSelector, useDispatch } from "react-redux";
 import { getIsOpen } from "../../../features/burgerMenuSlice";
 import { getMode } from "../../../features/darkModeSlice";
 import {
@@ -21,6 +21,9 @@ import FullWishListDisplay from "../../cart&wishlist/wishlist/FullWishListDispla
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { closeAuthModal, openAuthModal } from "../../../features/authSlice";
+import { useQueryClient } from "@tanstack/react-query";
+import useGetWishListItems from "../../../hooks/useGetWishListItems";
+import { useGetCartItems } from "../../../hooks/useGetCartItems";
 
 const CloseBurger = () => {
   const open = useSelector(getIsOpen);
@@ -86,6 +89,10 @@ const CloseBurger = () => {
       setIsAuthRequired(false);
     }
   }, [isAuthModalOpen, isAuthRequired]);
+  const { data: wishData } = useGetWishListItems();
+  const { data: cartData } = useGetCartItems();
+  const updatedCartCount = cartData?.length;
+  const wishListCount = wishData?.length;
 
   return (
     <div className={`top-0 w-full text-white z-40 header`}>
@@ -130,18 +137,28 @@ const CloseBurger = () => {
               </div>
               <div className="flex items-center gap-[10px] sm:gap-[12px] md:gap-[13.5px] lg:gap-[15px]">
                 <div className="flex items-center gap-[10px] sm:gap-[12px] md:gap-[13.5px] lg:gap-[15px]">
-                  <FaShoppingCart
-                    color={`${darkMode ? "#fff" : "#000"}`}
-                    size={20}
-                    onClick={toggleViewCart}
-                    className="cursor-pointer"
-                  />
-                  <FaHeart
-                    color={`${darkMode ? "#fff" : "#000"}`}
-                    size={20}
-                    onClick={toggleSeeWishList}
-                    className="cursor-pointer"
-                  />
+                  <div className="relative">
+                    <FaShoppingCart
+                      color={`${darkMode ? "#fff" : "#000"}`}
+                      size={20}
+                      onClick={toggleViewCart}
+                      className="cursor-pointer"
+                    />
+                    <span className="absolute top-[-12px] right-[-11px] bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                      {updatedCartCount}
+                    </span>
+                  </div>
+                  <div className="relative">
+                    <FaHeart
+                      color={`${darkMode ? "#fff" : "#000"}`}
+                      size={20}
+                      onClick={toggleSeeWishList}
+                      className="cursor-pointer"
+                    />
+                    <span className="absolute top-[-12px] right-[-11px] bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                      {wishListCount}
+                    </span>
+                  </div>
                   <div className="h-[27px] border-[1px] border-[#fff]"></div>
                 </div>
                 <div className="relative">
@@ -149,7 +166,7 @@ const CloseBurger = () => {
                     color={`${darkMode ? "#fff" : "#000"}`}
                     size={20}
                     onClick={() => {
-                      dispatch(openAuthModal()); // Open the modal if tokens are not available
+                      dispatch(openAuthModal());
                     }}
                     cursor="pointer"
                   />
@@ -175,7 +192,7 @@ const CloseBurger = () => {
                           onMouseLeave={() => setHover("")}
                           onClick={() => {
                             navigate("/userPage");
-                            dispatch(closeAuthModal()); // Close modal if navigating
+                            dispatch(closeAuthModal());
                           }}
                         >
                           <FaUser
@@ -189,7 +206,7 @@ const CloseBurger = () => {
                           onMouseLeave={() => setHover("")}
                           onClick={() => {
                             handleLogout();
-                            dispatch(closeAuthModal()); // Close modal on logout
+                            dispatch(closeAuthModal());
                           }}
                         >
                           <FaSignOutAlt
@@ -209,15 +226,8 @@ const CloseBurger = () => {
           </div>
         </Wrapper>
       </div>
-      {viewCart && (
-        <FullCartDisplay
-          onClose={closeAllModals}
-          title={t("cartSlicer.myCart")}
-        />
-      )}
-      {seeWishList && (
-        <FullWishListDisplay onClose={closeAllModals} title={"ფავორიტები"} />
-      )}
+      {viewCart && <FullCartDisplay onClose={closeAllModals} />}
+      {seeWishList && <FullWishListDisplay onClose={closeAllModals} />}
     </div>
   );
 };
