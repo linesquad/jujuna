@@ -1,25 +1,22 @@
 import axios from "axios";
-import supabase from "./supabase";
-import { run_time_url  } from "../../config";
+import { run_time_url } from "../../config";
 
 export const fetchLatestCocktails = async () => {
-  let { data, error } = await supabase
-    .from("cocktail")
-    .select("*")
-    .order("created_at", { ascending: false })
-    .limit(3);
-
-  if (error) {
-    console.error(error);
-    throw new Error("Cocktail could not be loaded");
+  try {
+    const res = await fetch(`${run_time_url}/cocktails`);
+    const data = await res.json();
+    const latestCocktails = data
+      .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+      .slice(0, 3);
+    return latestCocktails;
+  } catch (error) {
+    console.log(error.message);
   }
-
-  return data;
 };
 
 export const fetchLatestBlogs = async () => {
   try {
-    const response = await axios.get(`${run_time_url }/blogs?isLastThree=true`);
+    const response = await axios.get(`${run_time_url}/blogs?isLastThree=true`);
     return response.data;
   } catch (error) {
     console.error("Error fetching latest blog:", error);

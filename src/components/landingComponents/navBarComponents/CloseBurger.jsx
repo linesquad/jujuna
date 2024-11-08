@@ -15,15 +15,11 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
 import FullCartDisplay from "../../cart&wishlist/cart/FullCartDisplay";
 import FullWishListDisplay from "../../cart&wishlist/wishlist/FullWishListDisplay";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { closeAuthModal, openAuthModal } from "../../../features/authSlice";
-import { useQueryClient } from "@tanstack/react-query";
-import useGetWishListItems from "../../../hooks/useGetWishListItems";
-import { useGetCartItems } from "../../../hooks/useGetCartItems";
 import CartCount from "./CartCount";
 import WishlistCount from "./WishlistCount";
 
@@ -32,7 +28,6 @@ const CloseBurger = () => {
   const darkMode = useSelector(getMode);
   const isAuthModalOpen = useSelector((state) => state.auth.isAuthModalOpen);
   const dispatch = useDispatch();
-  const { t } = useTranslation();
   const [viewCart, setViewCart] = useState(false);
   const [seeWishList, setSeeWishList] = useState(false);
   const [isAuthRequired, setIsAuthRequired] = useState(false);
@@ -75,6 +70,10 @@ const CloseBurger = () => {
     } else {
       setViewCart(true);
     }
+
+    if (isAuthModalOpen) {
+      dispatch(closeAuthModal());
+    }
   };
 
   const toggleSeeWishList = () => {
@@ -83,6 +82,18 @@ const CloseBurger = () => {
       setIsAuthRequired(true);
     } else {
       setSeeWishList(true);
+    }
+
+    if (isAuthModalOpen) {
+      dispatch(closeAuthModal());
+    }
+  };
+
+  const toggleUser = () => {
+    if (!isAuthModalOpen) {
+      dispatch(openAuthModal());
+    } else {
+      dispatch(closeAuthModal());
     }
   };
 
@@ -172,9 +183,7 @@ const CloseBurger = () => {
                   <FaUser
                     color={`${darkMode ? "#fff" : "#000"}`}
                     size={20}
-                    onClick={() => {
-                      dispatch(openAuthModal());
-                    }}
+                    onClick={toggleUser}
                     cursor="pointer"
                   />
                   <AnimatePresence>
