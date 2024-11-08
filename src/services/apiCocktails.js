@@ -1,10 +1,10 @@
 import axiosInstance from "./axiosInstance";
 
-import { run_time_url } from "../../config";
+import { run_time_url  } from "../../config";
 
 export const fetchCocktails = async () => {
   try {
-    const res = await fetch(`${run_time_url}/cocktails`);
+    const res = await fetch(`${run_time_url }/cocktails`);
     const data = await res.json();
     return data;
   } catch (error) {
@@ -14,7 +14,7 @@ export const fetchCocktails = async () => {
 
 export const fetchCocktailsId = async (id) => {
   try {
-    const res = await fetch(`${run_time_url}/cocktail/${id}`);
+    const res = await fetch(`${run_time_url }/cocktail/${id}`);
     const data = await res.json();
     return data;
   } catch (error) {

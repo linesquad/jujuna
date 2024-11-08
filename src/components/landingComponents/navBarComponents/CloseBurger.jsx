@@ -24,6 +24,8 @@ import { closeAuthModal, openAuthModal } from "../../../features/authSlice";
 import { useQueryClient } from "@tanstack/react-query";
 import useGetWishListItems from "../../../hooks/useGetWishListItems";
 import { useGetCartItems } from "../../../hooks/useGetCartItems";
+import CartCount from "./CartCount";
+import WishlistCount from "./WishlistCount";
 
 const CloseBurger = () => {
   const open = useSelector(getIsOpen);
@@ -89,10 +91,6 @@ const CloseBurger = () => {
       setIsAuthRequired(false);
     }
   }, [isAuthModalOpen, isAuthRequired]);
-  const { data: wishData } = useGetWishListItems();
-  const { data: cartData } = useGetCartItems();
-  const updatedCartCount = cartData?.length;
-  const wishListCount = wishData?.length;
 
   return (
     <div className={`top-0 w-full text-white z-40 header`}>
@@ -144,9 +142,13 @@ const CloseBurger = () => {
                       onClick={toggleViewCart}
                       className="cursor-pointer"
                     />
-                    <span className="absolute top-[-12px] right-[-11px] bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                      {updatedCartCount}
-                    </span>
+                    {accesToken === null && refreshToken === null ? (
+                      <span className="absolute top-[-12px] right-[-11px] bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                        0
+                      </span>
+                    ) : (
+                      <CartCount />
+                    )}
                   </div>
                   <div className="relative">
                     <FaHeart
@@ -155,9 +157,14 @@ const CloseBurger = () => {
                       onClick={toggleSeeWishList}
                       className="cursor-pointer"
                     />
-                    <span className="absolute top-[-12px] right-[-11px] bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                      {wishListCount}
-                    </span>
+
+                    {accesToken === null && refreshToken === null ? (
+                      <span className="absolute top-[-12px] right-[-11px] bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                        0
+                      </span>
+                    ) : (
+                      <WishlistCount />
+                    )}
                   </div>
                   <div className="h-[27px] border-[1px] border-[#fff]"></div>
                 </div>

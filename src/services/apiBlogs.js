@@ -1,11 +1,11 @@
-import { run_time_url} from "../../config";
+import { run_time_url } from "../../config";
 
 import axios from "axios";
 import axiosInstance from "./axiosInstance";
 
 export const getBlogsById = async (blogId) => {
   try {
-    const response = await axios.get(`${run_time_url}/blog/${blogId}`);
+    const response = await axios.get(`${run_time_url }/blog/${blogId}`);
 
     return response.data;
   } catch (error) {
