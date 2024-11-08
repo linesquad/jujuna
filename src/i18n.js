@@ -191,7 +191,6 @@ i18n
               reviews: {
                 heading1: "შეფასებები",
                 heading2: "შეაფასე პროდუქტი",
-                paragraph: "შეფასებისთვის საჭიროა ვერიფიკაცია მეილით",
               },
               relatedWines: {
                 bottle: "ბოთლი",
@@ -482,8 +481,6 @@ i18n
               reviews: {
                 heading1: "COMMUNITY REVIEWS",
                 heading2: "REVIEW THIS PRODUCT",
-                paragraph:
-                  "Adding a review will require a valid email for verification",
               },
               relatedWines: {
                 bottle: "Bottle",

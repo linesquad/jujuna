@@ -1,6 +1,5 @@
 import Rate from "./Rate";
 import RatingBar from "./RatingBar";
-import ReviewComments from "./ReviewComments";
 import StarRatings from "./StarRatings";
 
 const SingleWineReviews = ({ wine }) => {
@@ -9,7 +8,6 @@ const SingleWineReviews = ({ wine }) => {
       <StarRatings wine={wine} />
       <RatingBar />
       <Rate />
-      <ReviewComments wine={wine} />
     </div>
   );
 };

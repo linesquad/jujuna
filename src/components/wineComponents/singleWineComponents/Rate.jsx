@@ -81,15 +81,6 @@ function Rate() {
               : `შენ შეაფასე პროდუქტი ${stars} ვარსკვლავით`}
           </div>
         )}
-
-        <p className="tiny:text-center smaller:text-center">
-          {t("winePage.singleWine.reviews.paragraph")}
-        </p>
-        <hr
-          className={`smaller:ml-4 smaller:mr-4 max-w-[640px] mt-8 border-t-2  ${
-            !darkMode && "border-gray-500"
-          }`}
-        />
       </Wrapper>
     </div>
   );
