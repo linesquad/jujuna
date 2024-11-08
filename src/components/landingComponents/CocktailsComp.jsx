@@ -16,6 +16,7 @@ import ReusableErrorRobot from "../../ui/ReusableErrorRobot";
 
 function CocktailsComp() {
   const { data: cocktails, isError, error, isLoading } = useLatestCocktails();
+  // console.log(cocktails);
   const { i18n } = useTranslation();
   const darkMode = useSelector(getMode);
 
@@ -59,22 +60,24 @@ function CocktailsComp() {
               }}
               modules={[Pagination]}
             >
-              {cocktails?.map((item, index) => {
+              {cocktails?.map((item) => {
                 return (
-                  <SwiperSlide key={item.id}>
+                  <SwiperSlide key={item._id}>
                     <div className="mb-20">
                       <OneCocktail
                         title={
-                          i18n.language === "en" ? item.name.en : item.name.ge
+                          i18n.language === "en"
+                            ? item.titleTranslations.en
+                            : item.titleTranslations.ge
                         }
-                        image={item.image}
+                        image={item.url}
                         ingredients={
                           i18n.language === "en"
-                            ? item.ingredients.en
-                            : item.ingredients.ge
+                            ? item.ingsTranslations.en
+                            : item.ingsTranslations.ge
                         }
-                        size={index === 0 ? "big" : "small"}
                         isSwiper={true}
+                        id={item._id}
                       />
                     </div>
                   </SwiperSlide>
@@ -86,17 +89,21 @@ function CocktailsComp() {
             {cocktails?.map((item, index) => {
               return (
                 <OneCocktail
-                  key={item.id}
-                  title={i18n.language === "en" ? item.name.en : item.name.ge}
-                  image={item.image}
+                  key={item._id}
+                  title={
+                    i18n.language === "en"
+                      ? item.titleTranslations.en
+                      : item.titleTranslations.ge
+                  }
+                  image={item.url}
                   ingredients={
                     i18n.language === "en"
-                      ? item.ingredients.en
-                      : item.ingredients.ge
+                      ? item.ingsTranslations.en
+                      : item.ingsTranslations.ge
                   }
                   size={index === 0 ? "big" : "small"}
                   position={index === 2 && "right"}
-                  id={item.id}
+                  id={item._id}
                 />
               );
             })}
