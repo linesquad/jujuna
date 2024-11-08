@@ -6,6 +6,7 @@ import { useAddToCart } from "../../../hooks/useAddToCart";
 import useAddToWishList from "../../../hooks/useAddToWishList";
 import CartQuantity from "./CartQuantity";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 function SingleWineCardAddButtons({ wine }) {
   const { t, i18n } = useTranslation();
@@ -28,6 +29,7 @@ function SingleWineCardAddButtons({ wine }) {
       unit: quantity,
       productType: "wine",
     });
+    toast.success(t("toast.productAdd"));
   };
 
   const handleAddToWishList = (e) => {
@@ -42,6 +44,7 @@ function SingleWineCardAddButtons({ wine }) {
       price: wine.price,
       productType: "wine",
     });
+    toast.success(t("toast.productAddWishList"));
   };
 
   return (

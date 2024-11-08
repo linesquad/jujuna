@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAddToCart } from "../../hooks/useAddToCart";
 import useAddToWishList from "../../hooks/useAddToWishList";
+import { toast } from "react-toastify";
+import { t } from "i18next";
 
 function CocktailCard({ item }) {
   const [showCart, setShowCart] = useState(false);
@@ -31,6 +33,7 @@ function CocktailCard({ item }) {
       unit: 1,
       productType: "cocktail",
     });
+    toast.success(t("toast.productAdd"));
   };
 
   const handleAddToWishList = (e) => {
@@ -45,6 +48,7 @@ function CocktailCard({ item }) {
       price: item.price,
       productType: "cocktail",
     });
+    toast.success(t("toast.productAddWishList"));
   };
 
   return (

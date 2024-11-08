@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { getMode } from "../features/darkModeSlice";
 import { useAddToCart } from "./useAddToCart";
 import useAddToWishList from "./useAddToWishList";
+import { toast } from "react-toastify";
 
 export function useWineCard(wine, count) {
   const { i18n, t } = useTranslation();
@@ -33,6 +34,8 @@ export function useWineCard(wine, count) {
       unit: count,
       productType: "wine",
     });
+
+    toast.success(t("toast.productAdd"));
   };
 
   const handleAddToWishList = (e) => {
@@ -49,6 +52,8 @@ export function useWineCard(wine, count) {
       price: wine.price,
       productType: "wine",
     });
+
+    toast.success(t("toast.productAddWishList"));
   };
 
   return {

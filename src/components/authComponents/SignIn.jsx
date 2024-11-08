@@ -5,6 +5,8 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import { useLogin } from "../../hooks/useLogin";
 import { useDispatch } from "react-redux";
 import { closeAuthModal } from "../../features/authSlice";
+import { toast } from "react-toastify";
+import { t } from "i18next";
 
 const SignIn = () => {
   const { i18n } = useTranslation();
@@ -21,6 +23,7 @@ const SignIn = () => {
   async function onSubmit(data) {
     dispatch(closeAuthModal());
     login(data);
+    toast.success(t(`toast.login`));
   }
 
   return (

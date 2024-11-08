@@ -9,6 +9,8 @@ import { BrowserRouter } from "react-router-dom";
 import "./i18n.js";
 import { Provider } from "react-redux";
 import { store } from "./store.js";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <ReactQueryDevtools initialIsOpen={false} />
         <BrowserRouter>
           <App />
+          <ToastContainer toastStyle={{ zIndex: 9999 }} />
         </BrowserRouter>
       </QueryClientProvider>
     </Provider>

@@ -36,6 +36,10 @@ i18n
             success: "მესიჯი წარმატებით გაიგზავნა!",
             error: "ვერ გაიგზავნა მესიჯი. გთხოვთ ცადოთ ხელახლა.",
             hardError: "ვერ ხერხდება მესიჯის გაგზავნა",
+            login: "წარმატებით გაიარეთ აუტორიზაცია",
+            logOut: "წარმატებით გახვედით",
+            productAdd: "პროდუქტი წარმატებით დაემატა კალათაში",
+            productAddWishList: "პროდუქტი წარმატებით დაემატა სურვილებში",
           },
           pageNotFound: {
             title1: "404 შეცდომა",
@@ -326,6 +330,10 @@ i18n
             success: "Message sent successfully!",
             error: "Failed to send the message. Please try again.",
             hardError: "Form reference is null",
+            login: "successfully authorized",
+            logOut: "Log Out successfully",
+            productAdd: "Product add to cart",
+            productAddWishList: "Product add to wish-list",
           },
           pageNotFound: {
             title1: "404 Error",

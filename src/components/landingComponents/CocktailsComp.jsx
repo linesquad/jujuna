@@ -16,7 +16,7 @@ import ReusableErrorRobot from "../../ui/ReusableErrorRobot";
 
 function CocktailsComp() {
   const { data: cocktails, isError, error, isLoading } = useLatestCocktails();
-  // console.log(cocktails);
+
   const { i18n } = useTranslation();
   const darkMode = useSelector(getMode);
 

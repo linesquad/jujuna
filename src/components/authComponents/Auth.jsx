@@ -61,7 +61,7 @@ function Auth() {
                 {t("auth.reg")}
               </p>
             </div>
-            {isSignIn && <SignIn />}{" "}
+            {isSignIn && <SignIn />}
             {!isSignIn && <SignUp setIsSignIn={setIsSignIn} />}
             {/* <GoogleSignIn /> */}
           </div>

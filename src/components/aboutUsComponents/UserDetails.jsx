@@ -3,7 +3,7 @@ import OneInputField from "./OneInputField";
 import { useForm } from "react-hook-form";
 import { useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 
@@ -113,7 +113,6 @@ function UserDetails() {
           {t("home.aboutUs.contactForm.button")}
         </button>
       </form>
-      <ToastContainer className="mt-[60px]" />
     </div>
   );
 }

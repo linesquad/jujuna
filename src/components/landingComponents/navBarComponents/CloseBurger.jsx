@@ -22,6 +22,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { closeAuthModal, openAuthModal } from "../../../features/authSlice";
 import CartCount from "./CartCount";
 import WishlistCount from "./WishlistCount";
+import { toast } from "react-toastify";
+import { t } from "i18next";
 
 const CloseBurger = () => {
   const open = useSelector(getIsOpen);
@@ -43,6 +45,7 @@ const CloseBurger = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
     dispatch(closeAuthModal());
+    toast.success(t("toast.logOut"));
   };
 
   useEffect(() => {

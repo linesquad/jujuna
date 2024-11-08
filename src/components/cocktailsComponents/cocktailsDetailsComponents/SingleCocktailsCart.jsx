@@ -4,6 +4,8 @@ import { getMode } from "../../../features/darkModeSlice";
 import { useAddToCart } from "../../../hooks/useAddToCart";
 import { useTranslation } from "react-i18next";
 import useAddToWishList from "../../../hooks/useAddToWishList";
+import { toast } from "react-toastify";
+import { t } from "i18next";
 
 function SingleCocktailsCart({ item }) {
   const darkMode = useSelector(getMode);
@@ -23,6 +25,7 @@ function SingleCocktailsCart({ item }) {
       unit: 1,
       productType: "wine",
     });
+    toast.success(t("toast.productAdd"));
   };
 
   const handleAddToWishList = () => {
@@ -36,6 +39,7 @@ function SingleCocktailsCart({ item }) {
       price: item.price,
       productType: "cocktail",
     });
+    toast.success(t("toast.productAddWishList"));
   };
 
   return (

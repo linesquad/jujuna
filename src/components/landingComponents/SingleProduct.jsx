@@ -2,10 +2,12 @@ import { FaStar, FaHeart, FaShoppingCart } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAddToCart } from "../../hooks/useAddToCart";
 import useAddToWishList from "../../hooks/useAddToWishList";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { t } from "i18next";
 
 function SingleProduct({ item, id, catName }) {
   const [count, setCount] = useState(1);
@@ -27,6 +29,7 @@ function SingleProduct({ item, id, catName }) {
       unit: count,
       productType: "singleProduct",
     });
+    toast.success(t("toast.productAdd"));
   };
 
   const handleAddToWishList = () => {
@@ -40,6 +43,7 @@ function SingleProduct({ item, id, catName }) {
       price: item.price,
       productType: "singleProduct",
     });
+    toast.success(t("toast.productAddWishList"));
   };
 
   const increment = () => setCount(count + 1);

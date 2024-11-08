@@ -92,7 +92,7 @@ function OneCocktail({
             <div className="lg:mt-[40px]">
               <Link
                 onClick={handleClick}
-                to={`/cocktails/${id}`}
+                to={`/cocktail/${id}`}
                 className={`pl-2 mt-4 mb-1 text-xs smallExtra:text-base smallExtra:px-4 text-white border border-white rounded-full flex items-center ${
                   i18n.language === "ge"
                     ? "w-[80px] smallExtra:w-[110px]"

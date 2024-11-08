@@ -9,7 +9,7 @@ export const useLogin = () => {
     onSuccess: (data) => {
       localStorage.setItem("accessToken", data.accessToken);
       localStorage.setItem("refreshToken", data.refreshToken);
-      navigate("/userPage");
+      navigate("/");
     },
     onError: (err) => {
       console.log("Login error", err);

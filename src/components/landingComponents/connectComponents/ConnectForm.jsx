@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import emailjs from "@emailjs/browser";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ConnectForm = () => {
@@ -144,7 +144,6 @@ const ConnectForm = () => {
           </div>
         </div>
       </form>
-      <ToastContainer />;
     </div>
   );
 };
