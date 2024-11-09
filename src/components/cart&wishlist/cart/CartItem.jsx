@@ -1,4 +1,10 @@
 import { RiDeleteBin7Line } from "react-icons/ri";
+import {
+  counterCartDelete,
+  counterCartMinus,
+  counterCartPlus,
+} from "../../../features/countSlice";
+import { useDispatch } from "react-redux";
 
 const CartItem = ({
   item,
@@ -7,6 +13,20 @@ const CartItem = ({
   handleDelete,
   isPending,
 }) => {
+  const dispatch = useDispatch();
+
+  const handleCountPlus = () => {
+    dispatch(counterCartPlus(1));
+  };
+
+  const handleCountMinus = () => {
+    dispatch(counterCartMinus(1));
+  };
+
+  const handleCountDelete = () => {
+    dispatch(counterCartDelete(0));
+  };
+
   return (
     <div
       key={item._id}
@@ -43,14 +63,20 @@ const CartItem = ({
         >
           <RiDeleteBin7Line
             size={20}
-            onClick={() => handleDelete(item)}
+            onClick={() => {
+              handleDelete(item);
+              handleCountDelete();
+            }}
             color="red"
             cursor="pointer"
           />
           <div className="w-[80px] h-[35px] border rounded-full border-[#8F8F8F] px-2 py-1 flex gap-4 text-[#000]">
             <button
               className="cursor-pointer"
-              onClick={() => handleDecrease(item)}
+              onClick={() => {
+                handleDecrease(item);
+                handleCountMinus();
+              }}
               disabled={isPending}
             >
               -
@@ -58,7 +84,10 @@ const CartItem = ({
             <span>{item.unit}</span>
             <button
               className="cursor-pointer"
-              onClick={() => handleIncrease(item)}
+              onClick={() => {
+                handleIncrease(item);
+                handleCountPlus();
+              }}
               disabled={isPending}
             >
               +

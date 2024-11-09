@@ -7,7 +7,7 @@ const useAddToWishList = () => {
     mutationFn: addToWishList,
     onSuccess: () => {
       console.log("wish list add to success");
-      queryClient.invalidateQueries("wishListItems");
+      queryClient.invalidateQueries(["wishListItems"]);
     },
     onError: (err) => {
       console.log(`${err.message} not add success`);

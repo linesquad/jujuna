@@ -5,7 +5,7 @@ export const useLatestCocktails = () => {
   const { isLoading, data, isError, error } = useQuery({
     queryKey: ["latestCocktails"],
     queryFn: fetchLatestCocktails,
-    staleTime: 0,
+    staleTime: 60000 * 10,
   });
 
   return { isLoading, data, isError, error };

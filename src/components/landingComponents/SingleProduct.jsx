@@ -1,6 +1,6 @@
 import { FaStar, FaHeart, FaShoppingCart } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getMode } from "../../features/darkModeSlice";
 import { useState } from "react";
 import { useAddToCart } from "../../hooks/useAddToCart";
@@ -8,12 +8,14 @@ import useAddToWishList from "../../hooks/useAddToWishList";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { t } from "i18next";
+import { counterCartPlus } from "../../features/countSlice";
 
 function SingleProduct({ item, id, catName }) {
   const [count, setCount] = useState(1);
   const [cartHover, setCartHover] = useState(false);
   const darkMode = useSelector(getMode);
   const { i18n } = useTranslation();
+  const dispatch = useDispatch();
 
   const { mutate: addToCart } = useAddToCart();
   const { mutate: addToWishList } = useAddToWishList();
@@ -54,6 +56,10 @@ function SingleProduct({ item, id, catName }) {
   const handleCartMouseLeave = () => {
     setCartHover(false);
     setCount(1);
+  };
+
+  const handleCountPlus = (value) => {
+    dispatch(counterCartPlus(value));
   };
 
   return (
@@ -134,7 +140,13 @@ function SingleProduct({ item, id, catName }) {
             className="w-[36px] h-[36px] bg-[#BB8DF580] rounded-[50%] flex items-center justify-center cursor-pointer"
             onMouseEnter={() => setCartHover(true)}
           >
-            <FaShoppingCart color="#FFFFFF" onClick={handleAddToCart} />
+            <FaShoppingCart
+              color="#FFFFFF"
+              onClick={() => {
+                handleAddToCart();
+                handleCountPlus(count);
+              }}
+            />
           </div>
         </div>
       </div>

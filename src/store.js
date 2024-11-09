@@ -4,6 +4,7 @@ import burgerMenuReducer from "./features/burgerMenuSlice";
 import cartReducer from "./features/cartSlice";
 import addressReducer from "./features/addressSlice";
 import authReducer from "./features/authSlice";
+import countReducer from "./features/countSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     cart: cartReducer,
     address: addressReducer,
     auth: authReducer,
+    count: countReducer,
   },
 });

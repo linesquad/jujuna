@@ -46,7 +46,12 @@ export const handleDecrease = (
     });
     if (isError) return;
 
-    const cartLength = itemInCache(item.productId, item.unit, "minus", queryClient);
+    const cartLength = itemInCache(
+      item.productId,
+      item.unit,
+      "minus",
+      queryClient
+    );
     console.log("Cart Length after decrease:", cartLength);
   }
 };
@@ -57,7 +62,12 @@ export const handleIncrease = (item, updateCart, itemInCache, queryClient) => {
     unit: item.unit + 1,
   });
 
-  const cartLength = itemInCache(item.productId, item.unit, "plus", queryClient);
+  const cartLength = itemInCache(
+    item.productId,
+    item.unit,
+    "plus",
+    queryClient
+  );
   console.log("Cart Length after increase:", cartLength);
 };
 
@@ -67,6 +77,11 @@ export const handleDelete = (item, updateCart, itemInCache, queryClient) => {
     unit: 0,
   });
 
-  const cartLength = itemInCache(item.productId, item.unit, "delete", queryClient);
+  const cartLength = itemInCache(
+    item.productId,
+    item.unit,
+    "delete",
+    queryClient
+  );
   console.log("Cart Length after delete:", cartLength);
 };
