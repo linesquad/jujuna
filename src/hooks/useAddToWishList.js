@@ -3,14 +3,23 @@ import { addToWishList } from "../services/apiWishList";
 
 const useAddToWishList = () => {
   const queryClient = useQueryClient();
+
   const { mutate, isPending, data } = useMutation({
     mutationFn: addToWishList,
-    onSuccess: () => {
-      console.log("wish list add to success");
-      queryClient.invalidateQueries("wishListItems");
+    onMutate: async (variables) => {
+      const previousWishList = queryClient.getQueryData(["wishListItems"]);
+
+      queryClient.setQueryData(["wishListItems"], (oldData) => {
+        return [...oldData, variables];
+      });
+
+      return { previousWishList };
     },
-    onError: (err) => {
-      console.log(`${err.message} not add success`);
+    onError: (err, variables, context) => {
+      queryClient.setQueryData(["wishListItems"], context.previousWishList);
+    },
+    onSuccess: () => {
+      console.log("Wish list item added successfully");
     },
   });
 

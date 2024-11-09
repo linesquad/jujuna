@@ -5,7 +5,9 @@ export const useDiscountProducts = () => {
   const { isLoading, data, isError, error } = useQuery({
     queryKey: ["discount"],
     queryFn: fetchDiscountProducts,
-    staleTime: 0,
+    refetchOnWindowFocus: false,
+    staleTime: 5 * 60 * 1000,
+    cacheTime: 10 * 60 * 1000,
   });
 
   return { isLoading, data, isError, error };
