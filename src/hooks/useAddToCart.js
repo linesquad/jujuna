@@ -7,9 +7,6 @@ export const useAddToCart = () => {
     onSuccess: () => {
       console.log("warmatebit daemata");
     },
-    onError: (err) => {
-      console.log("ver daemata", err);
-    },
   });
 
   return { mutate, isPending, data };

@@ -8,6 +8,7 @@ const useGetWishListItems = () => {
     onSuccess: () => {
       console.log("warmatebit daemata wishlistshi");
     },
+    refetchOnWindowFocus: false,
   });
 
   return { data, isError, error, isLoading };

@@ -5,7 +5,9 @@ const usePopularProducts = () => {
   const { isLoading, data, isError, error } = useQuery({
     queryKey: ["popular"],
     queryFn: fetchPopularProducts,
-    staleTime: 60000 * 10,
+    refetchOnWindowFocus: false,
+    staleTime: 5 * 60 * 1000,
+    cacheTime: 10 * 60 * 1000,
   });
 
   return { isLoading, data, isError, error };
