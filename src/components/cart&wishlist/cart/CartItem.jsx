@@ -24,7 +24,7 @@ const CartItem = ({
   };
 
   const handleCountDelete = () => {
-    dispatch(counterCartDelete(0));
+    dispatch(counterCartDelete(item.unit));
   };
 
   return (
@@ -65,7 +65,7 @@ const CartItem = ({
             size={20}
             onClick={() => {
               handleDelete(item);
-              handleCountDelete();
+              handleCountDelete(item.unit);
             }}
             color="red"
             cursor="pointer"

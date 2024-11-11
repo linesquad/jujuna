@@ -16,13 +16,13 @@ export const countSlice = createSlice({
       state.cartCount -= action.payload;
     },
     counterCartDelete: (state, action) => {
-      state.cartCount = action.payload;
-    },
-    counterWishListMinus: (state, action) => {
       state.cartCount -= action.payload;
     },
+    counterWishListMinus: (state, action) => {
+      state.wishListCount -= action.payload;
+    },
     counterWishListPlus: (state, action) => {
-      state.cartCount += action.payload;
+      state.wishListCount += action.payload;
     },
   },
 });

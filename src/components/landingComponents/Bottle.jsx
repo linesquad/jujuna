@@ -70,7 +70,7 @@ function Bottle() {
             }}
             modules={[Pagination]}
           >
-            {wines.map((wine) => (
+            {wines?.map((wine) => (
               <SwiperSlide key={wine._id}>
                 <div className="flex">
                   <WineCard key={wine.id} wine={wine} />

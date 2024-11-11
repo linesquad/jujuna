@@ -1,15 +1,17 @@
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getMode } from "../features/darkModeSlice";
 import { useAddToCart } from "./useAddToCart";
 import useAddToWishList from "./useAddToWishList";
 import { toast } from "react-toastify";
+import { counterCartPlus } from "../features/countSlice";
 
 export function useWineCard(wine, count) {
   const { i18n, t } = useTranslation();
   const darkMode = useSelector(getMode);
   const { mutate: addToCart } = useAddToCart();
   const { mutate: addToWishList } = useAddToWishList();
+  const dispatch = useDispatch();
 
   if (!wine) {
     return { wineNotAvailable: true };
@@ -17,6 +19,10 @@ export function useWineCard(wine, count) {
 
   const handleClick = () => {
     window.scrollTo(0, 0);
+  };
+
+  const handleCountPlus = () => {
+    dispatch(counterCartPlus(count));
   };
 
   const handleAddToCart = (e) => {
@@ -34,7 +40,7 @@ export function useWineCard(wine, count) {
       unit: count,
       productType: "wine",
     });
-
+    handleCountPlus();
     toast.success(t("toast.productAdd"));
   };
 

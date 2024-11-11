@@ -8,7 +8,10 @@ import useAddToWishList from "../../hooks/useAddToWishList";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { t } from "i18next";
-import { counterCartPlus } from "../../features/countSlice";
+import {
+  counterCartPlus,
+  counterWishListPlus,
+} from "../../features/countSlice";
 
 function SingleProduct({ item, id, catName }) {
   const [count, setCount] = useState(1);
@@ -45,6 +48,7 @@ function SingleProduct({ item, id, catName }) {
       price: item.price,
       productType: "singleProduct",
     });
+    dispatch(counterWishListPlus(1));
     toast.success(t("toast.productAddWishList"));
   };
 

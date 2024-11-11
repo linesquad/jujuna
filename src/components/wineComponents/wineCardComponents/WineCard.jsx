@@ -16,7 +16,11 @@ export default function WineCard({ wine }) {
   if (wineNotAvailable) return null;
 
   return (
-    <Link to={`/wine/${wine._id}`} onClick={handleClick} className="flex justify-center items-center">
+    <Link
+      to={`/wine/${wine._id}`}
+      onClick={handleClick}
+      className="flex justify-center items-center"
+    >
       <div className="flex items-center mb-14 max-w-[300px]">
         <img
           src={wine.url}

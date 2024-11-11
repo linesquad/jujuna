@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getMode } from "../../../features/darkModeSlice";
 import { useTranslation } from "react-i18next";
 import { CiHeart } from "react-icons/ci";
@@ -7,6 +7,7 @@ import useAddToWishList from "../../../hooks/useAddToWishList";
 import CartQuantity from "./CartQuantity";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { counterCartPlus } from "../../../features/countSlice";
 
 function SingleWineCardAddButtons({ wine }) {
   const { t, i18n } = useTranslation();
@@ -15,6 +16,12 @@ function SingleWineCardAddButtons({ wine }) {
   const { mutate: addToCart } = useAddToCart();
   const { mutate: addToWishList } = useAddToWishList();
   const [quantity, setQuantity] = useState(1);
+
+  const dispatch = useDispatch();
+
+  const handleCountPlus = (unit) => {
+    dispatch(counterCartPlus(unit));
+  };
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
@@ -29,6 +36,7 @@ function SingleWineCardAddButtons({ wine }) {
       unit: quantity,
       productType: "wine",
     });
+    handleCountPlus(quantity);
     toast.success(t("toast.productAdd"));
   };
 
