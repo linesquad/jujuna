@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   cartCount: 0,
-  wishListCount: 0,
+  wishList: [],
 };
 
 export const countSlice = createSlice({
@@ -18,11 +18,13 @@ export const countSlice = createSlice({
     counterCartDelete: (state, action) => {
       state.cartCount -= action.payload;
     },
-    counterWishListMinus: (state, action) => {
-      state.wishListCount -= action.payload;
+    insertToWishList: (state, action) => {
+      state.wishList.push({ id: action.payload });
     },
-    counterWishListPlus: (state, action) => {
-      state.wishListCount += action.payload;
+    removeFromWishList: (state, action) => {
+      state.wishList = state.wishList.filter(
+        (item) => item.id !== action.payload
+      );
     },
   },
 });
@@ -30,9 +32,9 @@ export const countSlice = createSlice({
 export const {
   counterCartPlus,
   counterCartMinus,
-  counterWishListMinus,
-  counterWishListPlus,
   counterCartDelete,
+  insertToWishList,
+  removeFromWishList,
 } = countSlice.actions;
 
 export default countSlice.reducer;

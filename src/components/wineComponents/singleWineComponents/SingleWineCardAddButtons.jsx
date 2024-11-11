@@ -7,7 +7,11 @@ import useAddToWishList from "../../../hooks/useAddToWishList";
 import CartQuantity from "./CartQuantity";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { counterCartPlus } from "../../../features/countSlice";
+import {
+  counterCartPlus,
+  insertToWishList,
+  removeFromWishList,
+} from "../../../features/countSlice";
 
 function SingleWineCardAddButtons({ wine }) {
   const { t, i18n } = useTranslation();
@@ -18,6 +22,7 @@ function SingleWineCardAddButtons({ wine }) {
   const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
+  const wishListArr = useSelector((state) => state.count.wishList);
 
   const handleCountPlus = (unit) => {
     dispatch(counterCartPlus(unit));
@@ -52,7 +57,15 @@ function SingleWineCardAddButtons({ wine }) {
       price: wine.price,
       productType: "wine",
     });
-    toast.success(t("toast.productAddWishList"));
+    const itemExists = wishListArr.some((wishItem) => wishItem.id === wine._id);
+
+    if (itemExists) {
+      dispatch(removeFromWishList(wine._id));
+      toast.info(t("toast.productRemovedWishList"));
+    } else {
+      dispatch(insertToWishList(wine._id));
+      toast.success(t("toast.productAddWishList"));
+    }
   };
 
   return (

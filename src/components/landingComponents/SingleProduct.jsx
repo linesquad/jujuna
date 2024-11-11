@@ -10,7 +10,8 @@ import { toast } from "react-toastify";
 import { t } from "i18next";
 import {
   counterCartPlus,
-  counterWishListPlus,
+  insertToWishList,
+  removeFromWishList,
 } from "../../features/countSlice";
 
 function SingleProduct({ item, id, catName }) {
@@ -19,6 +20,7 @@ function SingleProduct({ item, id, catName }) {
   const darkMode = useSelector(getMode);
   const { i18n } = useTranslation();
   const dispatch = useDispatch();
+  const wishListArr = useSelector((state) => state.count.wishList);
 
   const { mutate: addToCart } = useAddToCart();
   const { mutate: addToWishList } = useAddToWishList();
@@ -48,8 +50,16 @@ function SingleProduct({ item, id, catName }) {
       price: item.price,
       productType: "singleProduct",
     });
-    dispatch(counterWishListPlus(1));
-    toast.success(t("toast.productAddWishList"));
+
+    const itemExists = wishListArr.some((wishItem) => wishItem.id === item._id);
+
+    if (itemExists) {
+      dispatch(removeFromWishList(item._id));
+      toast.info(t("toast.productRemovedWishList"));
+    } else {
+      dispatch(insertToWishList(item._id));
+      toast.success(t("toast.productAddWishList"));
+    }
   };
 
   const increment = () => setCount(count + 1);

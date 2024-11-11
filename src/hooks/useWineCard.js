@@ -4,7 +4,11 @@ import { getMode } from "../features/darkModeSlice";
 import { useAddToCart } from "./useAddToCart";
 import useAddToWishList from "./useAddToWishList";
 import { toast } from "react-toastify";
-import { counterCartPlus } from "../features/countSlice";
+import {
+  counterCartPlus,
+  insertToWishList,
+  removeFromWishList,
+} from "../features/countSlice";
 
 export function useWineCard(wine, count) {
   const { i18n, t } = useTranslation();
@@ -12,6 +16,7 @@ export function useWineCard(wine, count) {
   const { mutate: addToCart } = useAddToCart();
   const { mutate: addToWishList } = useAddToWishList();
   const dispatch = useDispatch();
+  const wishListArr = useSelector((state) => state.count.wishList);
 
   if (!wine) {
     return { wineNotAvailable: true };
@@ -59,7 +64,15 @@ export function useWineCard(wine, count) {
       productType: "wine",
     });
 
-    toast.success(t("toast.productAddWishList"));
+    const itemExists = wishListArr.some((wishItem) => wishItem.id === wine._id);
+
+    if (itemExists) {
+      dispatch(removeFromWishList(wine._id));
+      toast.info(t("toast.productRemovedWishList"));
+    } else {
+      dispatch(insertToWishList(wine._id));
+      toast.success(t("toast.productAddWishList"));
+    }
   };
 
   return {

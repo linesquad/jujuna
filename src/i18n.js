@@ -40,6 +40,7 @@ i18n
             logOut: "წარმატებით გახვედით",
             productAdd: "პროდუქტი წარმატებით დაემატა კალათაში",
             productAddWishList: "პროდუქტი წარმატებით დაემატა სურვილებში",
+            productRemovedWishList: "პროდუქტი ამოიშალა სურვილებიდან",
           },
           pageNotFound: {
             title1: "404 შეცდომა",
@@ -334,6 +335,7 @@ i18n
             logOut: "Log Out successfully",
             productAdd: "Product add to cart",
             productAddWishList: "Product add to wish-list",
+            productRemovedWishList: "Product delete from wish-list",
           },
           pageNotFound: {
             title1: "404 Error",
