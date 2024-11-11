@@ -23,6 +23,7 @@ import Checkout from "./pages/Checkout";
 import DisplayOrders from "./components/userPageComponents/ordersComponents/DisplayOrders";
 import DisplayReviews from "./components/userPageComponents/reviewsComponents/DisplayReviews";
 import UserOrderDetails from "./pages/UserOrderDetails";
+import DisplayPriceFiltered from "./components/wineComponents/DisplayPriceFiltered";
 
 function App() {
   return (
@@ -50,6 +51,10 @@ function App() {
           <Route
             path="/wines/:layoutName/:categoryId"
             element={<DisplayWines />}
+          />
+          <Route
+            path="/wines/:layoutName/:minPrice/:maxPrice"
+            element={<DisplayPriceFiltered />}
           />
         </Route>
 

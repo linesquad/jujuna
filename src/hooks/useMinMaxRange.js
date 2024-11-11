@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchMinMaxRange } from "../services/apiProducts";
 
-export const useMinMaxRange = (isWine, target) => {
+export const useMinMaxRange = (minPrice, maxPrice) => {
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["minMax", isWine, target],
-    queryFn: () => fetchMinMaxRange(isWine, target),
+    queryKey: ["minMax", minPrice, maxPrice],
+    queryFn: () => fetchMinMaxRange(minPrice, maxPrice),
+    enabled: minPrice !== undefined && maxPrice !== undefined,
   });
 
   return { data, isLoading, isError, error };
