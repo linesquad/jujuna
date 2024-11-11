@@ -95,7 +95,11 @@ export default function PopularProducts() {
               {popularProducts?.map((item) => {
                 return (
                   <SwiperSlide key={item._id}>
-                    <SingleProduct item={item} />
+                    <SingleProduct
+                      item={item}
+                      pId={item._id}
+                      pType={item.type}
+                    />
                   </SwiperSlide>
                 );
               })}

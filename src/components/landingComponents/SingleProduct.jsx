@@ -7,7 +7,7 @@ import { useAddToCart } from "../../hooks/useAddToCart";
 import useAddToWishList from "../../hooks/useAddToWishList";
 import { Link } from "react-router-dom";
 
-function SingleProduct({ item, id, catName }) {
+function SingleProduct({ item,pId, pType }) {
   const [count, setCount] = useState(1);
   const [cartHover, setCartHover] = useState(false);
   const darkMode = useSelector(getMode);
@@ -55,7 +55,7 @@ function SingleProduct({ item, id, catName }) {
   return (
     <div className="xl:w-[280px] lg:w-[240px] md:w-[200px] pt-[4px] pb-[15px] px-[12px] relative mx-auto">
       <div className="xl:w-[120px] lg:w-[100px] xl:h-[175px] lg:h-[150px] mx-auto">
-        <Link to={`/${catName}/${id}`}>
+        <Link to={`/${pType}/${pId}`}>
           <img
             src={item?.url}
             alt="product"
