@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactSlider from "react-slider";
 import FilterItem from "./FilterItem";
 import { useTranslation } from "react-i18next";
@@ -12,25 +12,30 @@ export default function ProductsFilter({
 }) {
   const { i18n } = useTranslation();
   const navigate = useNavigate();
-  const { layoutName: layout } = useParams();
+  const {
+    layoutName,
+    minPrice: minPriceParam,
+    maxPrice: maxPriceParam,
+  } = useParams();
+  const [sliderValues, setSliderValues] = useState([
+    parseFloat(minPriceParam) || 0,
+    parseFloat(maxPriceParam) || 100,
+  ]);
 
-  const [sliderValues, setSliderValues] = useState([0, 100]);
-
-  
   const updateUrlWithFilters = () => {
-    const queryParams = new URLSearchParams({
-      minPrice: sliderValues[0],
-      maxPrice: sliderValues[1],
-    });
-
-    navigate(`/wines/${layout}/${queryParams.toString()}`);
+    navigate(`/wines/${layoutName}/${sliderValues[0]}/${sliderValues[1]}`);
   };
 
-  // Handle when the slider value changes
   const handleSliderAfterChange = (value) => {
     setSliderValues(value);
-    updateUrlWithFilters(); 
+    updateUrlWithFilters();
   };
+
+  useEffect(() => {
+    if (minPriceParam && maxPriceParam) {
+      setSliderValues([parseFloat(minPriceParam), parseFloat(maxPriceParam)]);
+    }
+  }, [minPriceParam, maxPriceParam]);
 
   return (
     <div className="h-[500px] px-[60px] py-[15px] lg:p-0 lg:block lg:h-96 lg:w-[200px]">
@@ -80,8 +85,8 @@ export default function ProductsFilter({
           thumbClassName="example-thumb"
           trackClassName="example-track"
           value={sliderValues}
-          max={100} // You can set this to a fixed value or dynamically based on your requirements
-          min={0} // Same for min, set this to a fixed value or dynamic value
+          max={100}
+          min={0}
           onChange={setSliderValues}
           onAfterChange={handleSliderAfterChange}
         />

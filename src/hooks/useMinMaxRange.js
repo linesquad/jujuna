@@ -7,6 +7,7 @@ export const useMinMaxRange = (minPrice, maxPrice) => {
     queryFn: () => fetchMinMaxRange(minPrice, maxPrice),
     enabled: minPrice !== undefined && maxPrice !== undefined,
   });
+  
 
   return { data, isLoading, isError, error };
 };

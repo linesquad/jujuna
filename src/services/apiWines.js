@@ -1,5 +1,5 @@
 import axiosInstance from "./axiosInstance";
-
+import axios from "axios";
 export const fetchWines = async () => {
   const { data } = await axiosInstance.get(`/wines`);
   return data;
@@ -22,7 +22,7 @@ export const fetchWinesByCategory = async (id) => {
 };
 
 export const fetchWinesByPriceRange = async (minPrice, maxPrice) => {
-  const { data } = await axiosInstance.get(
+  const { data } = await axios.get(
     `/price-range?minPrice=${minPrice}&maxPrice=${maxPrice}&isWine=true`
   );
 
