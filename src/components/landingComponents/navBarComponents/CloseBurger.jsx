@@ -129,7 +129,7 @@ const CloseBurger = () => {
               />
               {search.length > 0 && (
                 <div className="absolute right-0 left-0 top-[70px] h-[600px] rounded-[10px] bg-gray-100 z-[99] overflow-y-auto flex flex-col gap-[15px]">
-                  <SingleSearchResult />
+                  <SingleSearchResult flag={flag} title={search} />
                 </div>
               )}
             </div>
