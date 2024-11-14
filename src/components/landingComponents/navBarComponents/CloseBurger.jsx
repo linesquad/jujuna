@@ -142,7 +142,7 @@ const CloseBurger = () => {
                     transition={{ duration: 0.2 }}
                     className="absolute right-0 left-0 top-[70px] max-h-[500px]  bg-gray-100 z-[99] overflow-y-auto flex flex-col gap-[15px] shadow-lg"
                   >
-                    <SingleSearchResult flag={flag} title={search} />
+                    <SingleSearchResult flag={flag} title={search} clear={setSearch} />
                   </motion.div>
                 )}
               </AnimatePresence>

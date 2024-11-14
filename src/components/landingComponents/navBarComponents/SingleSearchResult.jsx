@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSearchProducts } from "../../../hooks/useSearchProducts";
 import { Link } from "react-router-dom";
 
-function SingleSearchResult({ flag, title }) {
+function SingleSearchResult({ flag, title, clear }) {
   const [searchQuery, setSearchQuery] = useState(title);
   const [debouncedQuery, setDebouncedQuery] = useState(title);
 
@@ -13,7 +13,7 @@ function SingleSearchResult({ flag, title }) {
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedQuery(searchQuery);
-    }, 500);
+    }, 2000);
 
     return () => {
       clearTimeout(handler);
@@ -22,6 +22,9 @@ function SingleSearchResult({ flag, title }) {
 
   const { data, isLoading, isError } = useSearchProducts(debouncedQuery, flag);
 
+  const closeModal = () => {
+    clear("");
+  };
   if (isLoading)
     return <div className="text-center text-gray-500">Loading...</div>;
   if (isError)
@@ -41,6 +44,7 @@ function SingleSearchResult({ flag, title }) {
               <Link
                 to={`/${item.type}/${item.id}`}
                 className="flex justify-between items-center"
+                onClick={closeModal}
               >
                 <div className="text-gray-800">
                   <p className="text-base font-medium truncate">{item.title}</p>
