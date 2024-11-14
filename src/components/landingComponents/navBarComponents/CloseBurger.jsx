@@ -105,20 +105,26 @@ const CloseBurger = () => {
                 <p className="text-[#000]">{flag}</p>
                 <FaArrowDown color="#000" size={14} />
                 {isFlagModalOpen && (
-                  <div className="absolute right-0 left-0 top-[60px] border border-[#000] z-[100] flex flex-col gap-[10px] py-[10px] rounded-[10px]">
+                  <motion.div
+                    className="absolute right-0 left-0 top-[60px] border border-[#ddd] z-[100] flex flex-col gap-[5px] py-[8px] rounded-[8px] shadow-lg bg-white"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 25 }}
+                  >
                     <p
-                      className="text-[#000] border border-gray-100 pl-[10px]"
+                      className="text-[#333] text-lg font-medium border-b border-gray-200 pl-[15px] py-[8px] cursor-pointer hover:bg-[#f4f4f4] hover:text-[#0070f3] rounded-[8px] transition-colors"
                       onClick={() => setFlag("wine")}
                     >
                       Wine
                     </p>
                     <p
-                      className="text-[#000] border border-gray-100 pl-[10px]"
+                      className="text-[#333] text-lg font-medium border-b border-gray-200 pl-[15px] py-[8px] cursor-pointer hover:bg-[#f4f4f4] hover:text-[#0070f3] rounded-[8px] transition-colors"
                       onClick={() => setFlag("cocktail")}
                     >
                       Cocktail
                     </p>
-                  </div>
+                  </motion.div>
                 )}
               </div>
               <input
@@ -127,11 +133,19 @@ const CloseBurger = () => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
-              {search.length > 0 && (
-                <div className="absolute right-0 left-0 top-[70px] h-[600px] rounded-[10px] bg-gray-100 z-[99] overflow-y-auto flex flex-col gap-[15px]">
-                  <SingleSearchResult flag={flag} title={search} />
-                </div>
-              )}
+              <AnimatePresence>
+                {search.length > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute right-0 left-0 top-[70px] max-h-[500px]  bg-gray-100 z-[99] overflow-y-auto flex flex-col gap-[15px] shadow-lg"
+                  >
+                    <SingleSearchResult flag={flag} title={search} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
             <LanguageChanger />
           </div>
