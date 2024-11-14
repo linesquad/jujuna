@@ -19,11 +19,14 @@ function DisplayWines() {
   const parsedMinPrice = parseFloat(minPrice) || 0;
   const parsedMaxPrice = parseFloat(maxPrice) || Infinity;
 
-
   const { data: wines, isLoading } = useWines();
   const { data: winesCategory, isLoading: categoryLoading } =
     useWinesByCategory(categoryId);
-  const { data: winePrices, isLoading: pricesLoading } = useMinMaxRange();
+  const { data: winePrices, isLoading: pricesLoading } = useMinMaxRange(
+    parsedMinPrice,
+    parsedMaxPrice
+  );
+  console.log(winePrices?.map((wine) => wine));
   const [layout, setLayout] = useState(layoutFromParams || "default");
 
   const layoutStyles = {
@@ -33,11 +36,7 @@ function DisplayWines() {
     col: "grid sm:grid-cols-1 sm:place-items-center lg:place-items-start",
   };
 
-  const winesToFilter = winesCategory?.products || wines;
-
-  const filteredWines = winesToFilter?.filter(
-    (wine) => wine.price >= parsedMinPrice && wine.price <= parsedMaxPrice
-  );
+  const winesToFilter = winePrices ? winePrices : winesCategory?.products || wines;
 
   useEffect(() => {
     const handleResize = () => {
@@ -63,15 +62,20 @@ function DisplayWines() {
       </div>
     );
 
+  if (winesToFilter.length === 0)
+    return (
+      <div className="min-h-[100vh] min-w-full flex flex-col justify-center items-center">
+        <h2>No products found</h2>
+      </div>
+    );
+
   return (
     <div
       className={`w-full lg:min-h-[100vh] items-start mb-24 ${layoutStyles[layout]}`}
     >
-      {filteredWines?.map((wine) => (
+      {winesToFilter.map((wine) => (
         <div
-          className={`flex flex-col items-start ${
-            layout === "default" ? "" : "w-full"
-          }`}
+          className={`flex flex-col items-start ${layout === "default" ? "" : "w-full"}`}
           key={wine._id}
         >
           {layout === "default" && <WineCard wine={wine} />}

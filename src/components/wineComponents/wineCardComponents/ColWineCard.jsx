@@ -114,7 +114,7 @@ const ColWineCard = ({ wine }) => {
             darkMode ? "#fff" : "text-black"
           } text-[28px] font-semibold`}
         >
-          ${parseFloat(wine.price).toFixed(2)}
+          ${parseFloat(wine.price.$numberDecimal).toFixed(2)}
         </p>
       </div>
     </div>

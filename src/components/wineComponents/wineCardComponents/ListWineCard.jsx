@@ -56,7 +56,7 @@ const ListWineCard = ({ wine }) => {
               darkMode ? "white" : "text-black"
             } text-[28px] font-semibold  `}
           >
-            ${parseFloat(wine.price).toFixed(2)}
+            ${parseFloat(wine.price.$numberDecimal).toFixed(2)}
           </p>
 
           <span className="text-[#008E28] mb-3">გაყიდვაშია</span>

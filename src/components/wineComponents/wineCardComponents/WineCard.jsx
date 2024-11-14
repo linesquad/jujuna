@@ -16,7 +16,11 @@ export default function WineCard({ wine }) {
   if (wineNotAvailable) return null;
 
   return (
-    <Link to={`/wine/${wine._id}`} onClick={handleClick} className="flex justify-center items-center">
+    <Link
+      to={`/wine/${wine._id}`}
+      onClick={handleClick}
+      className="flex justify-center items-center"
+    >
       <div className="flex items-center mb-14 max-w-[300px]">
         <img
           src={wine.url}
@@ -33,7 +37,7 @@ export default function WineCard({ wine }) {
             {i18n.language === "ge" ? wine.brand?.ge : wine.brand?.en}
           </p>
           <hr />
-          <p className="my-2">${wine.price}</p>
+          <p className="my-2">${wine.price.$numberDecimal}</p>
           <hr />
 
           <div className="flex gap-2 mt-4">
