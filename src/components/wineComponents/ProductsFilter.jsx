@@ -18,25 +18,19 @@ export default function ProductsFilter({
     maxPrice: maxPriceParam,
   } = useParams();
   const [sliderValues, setSliderValues] = useState([
-    parseFloat(minPriceParam) || 0,
-    parseFloat(maxPriceParam) || 100,
+    parseFloat(minPriceParam?.split("=")[1]) || 0,
+    parseFloat(maxPriceParam?.split("=")[1]) || 100,
   ]);
-
   const updateUrlWithFilters = () => {
-    navigate(`/wines/${layoutName}/${sliderValues[0]}/${sliderValues[1]}`);
+    navigate(
+      `/wines/${layoutName}/minPrice=${sliderValues[0]}/maxPrice=${sliderValues[1]}`
+    );
   };
 
   const handleSliderAfterChange = (value) => {
     setSliderValues(value);
     updateUrlWithFilters();
   };
-
-  useEffect(() => {
-    if (minPriceParam && maxPriceParam) {
-      setSliderValues([parseFloat(minPriceParam), parseFloat(maxPriceParam)]);
-    }
-  }, [minPriceParam, maxPriceParam]);
-
   return (
     <div className="h-[500px] px-[60px] py-[15px] lg:p-0 lg:block lg:h-96 lg:w-[200px]">
       <p className="text-[#78808C] text-[14px]">ფილტრი</p>

@@ -16,8 +16,8 @@ function DisplayWines() {
     maxPrice,
   } = useParams();
 
-  const parsedMinPrice = parseFloat(minPrice) || 0;
-  const parsedMaxPrice = parseFloat(maxPrice) || Infinity;
+  const parsedMinPrice = parseFloat(minPrice?.split("=")[1]) || 0;
+  const parsedMaxPrice = parseFloat(maxPrice?.split("=")[1]) || 10000;
 
   const { data: wines, isLoading } = useWines();
   const { data: winesCategory, isLoading: categoryLoading } =
@@ -26,7 +26,7 @@ function DisplayWines() {
     parsedMinPrice,
     parsedMaxPrice
   );
-  console.log(winePrices?.map((wine) => wine));
+ 
   const [layout, setLayout] = useState(layoutFromParams || "default");
 
   const layoutStyles = {
